@@ -45,16 +45,24 @@
 # code (have a look in the documentation of your software).	Normally this
 # would look like this:
 #
-#		;;; binclock site-lisp configuration
+#	;;; csv-mode site-lisp configuration
 #
-#		(add-to-list 'load-path "@SITELISP@")
-#		(require 'binclock)
+#	(add-to-list 'load-path "@SITELISP@")
+#	(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
+#	(autoload 'csv-mode "csv-mode" "Major mode for editing csv files." t)
 #
 #  If your Emacs support files are installed in a subdirectory of
 # /usr/share/emacs/site-lisp/ (which is recommended), you need to extend
 # Emacs' load-path as shown in the first non-comment.  Where the
 # "@SITELISP@" is replaced with the actual path by the elisp-site-file-install()
 # function of this eclass.
+#  The next line tell Emacs to load the mode opening a file ending with ".csv"
+# and load functions depending on the context and needed features.
+# Be careful though.  Commands as "load-library" or "require" bloat the
+# editor as they are loaded on every startup.  When having a lot of Emacs
+# support files, users may be annoyed by the start-up time.	 Also avoid
+# keybindings as they might interfere with the user's settings.	 Give a hint
+# in pkg_postinst(), which should be enough.
 #  The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
 # two digits at the beginning define the loading order.	 So if you depend
 # on another Emacs package, your site file's number must be higher!
