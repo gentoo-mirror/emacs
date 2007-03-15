@@ -38,7 +38,7 @@ PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22.0.95"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc-macos ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~x86"
 S="${WORKDIR}/emacs-${PV}"
 
 src_unpack() {
