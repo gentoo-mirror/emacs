@@ -15,7 +15,7 @@
 # of your package.	This is NOT for XEmacs!
 #  Many of the steps here are sometimes done by the build system of
 # your package (especially compilation), so this is mainly for standalone
-# elisp files you gathered from somewhere else!
+# elisp files you gathered from somewhere else.
 #  When relying on the emacs USE flag, you need to add
 #
 #		emacs? ( virtual/emacs )
@@ -23,8 +23,8 @@
 # to your DEPEND/RDEPEND line and use the functions provided
 # here to bring the files to the correct locations.
 #  An elisp file is compiled by the elisp-compile() function defined here
-# and simply takes the source files as arguments. In the case of on each
-# other depinding elisp files, you can use the elisp-comp() function
+# and simply takes the source files as arguments. In the case of
+# interdependent elisp files, you can use the elisp-comp() function
 # which makes sure all files are loadable.
 #
 #		elisp-compile *.el || die "elisp-compile failed!"
@@ -36,7 +36,7 @@
 # of elisp-install().  The following parameters are the files to be put in
 # that directory.  Usually the subdirectory should be ${PN}, you can choose
 # something else, but remember to tell elisp-site-file-install() (see below)
-# the change, as it defaults to ${PN}!
+# the change, as it defaults to ${PN}.
 #
 #		elisp-install ${PN} *.elc *.el || die "elisp-install failed!"
 #
