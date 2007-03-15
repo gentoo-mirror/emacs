@@ -1,0 +1,12 @@
+elisp.eclass
+	15 Mar 2007
+	documented
+	added some quotes to prevent variables with spaces to break commands
+	removed local Emacs variables
+
+elisp-common.eclass
+	15 Mar 2007
+	documented
+	added some quotes to prevent variables with spaces to break commands
+	straightened elisp-comp()
+	removed local Emacs variables
