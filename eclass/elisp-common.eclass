@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo/users/opfer/eclass/elisp-common.eclass,v 1.1 2007/03/15 10:33:11 opfer Exp $
+# $Header: $
 #
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
 # Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
