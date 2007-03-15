@@ -3,6 +3,10 @@
 # $Header: $
 
   15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-emacs-0.1.ebuild:
+  correct Header
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +eselect-emacs-0.1.ebuild:
   adding first revision, which installs desktop file, env.d file, icon plus
   eselect module
