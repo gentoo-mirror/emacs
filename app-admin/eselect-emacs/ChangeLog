@@ -3,6 +3,10 @@
 # $Header: $
 
   15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/digest-eselect-emacs-0.1, +Manifest:
+  adding Manifest and digests, so users can really use it
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   eselect-emacs-0.1.ebuild:
   correct Header
 
