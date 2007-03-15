@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  metadata.xml added; keywords reverted to ~x86 only
+
   15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/digest-emacs-cvs-22.0.95-r2, +files/digest-emacs-cvs-22.0.9999-r6,
   +files/digest-emacs-cvs-23.0.0-r2, +Manifest:
