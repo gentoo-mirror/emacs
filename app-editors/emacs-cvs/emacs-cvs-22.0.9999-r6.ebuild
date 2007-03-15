@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo/users/opfer/app-editors/emacs-cvs/emacs-cvs-22.0.9999-r6.ebuild,v 1.2 2007/03/15 11:23:09 opfer Exp $
+# $Header:	$
 
 ECVS_AUTH="pserver"
 ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
