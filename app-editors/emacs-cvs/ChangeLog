@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  correct value of SLOT
+
   15 Mar 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
   metadata.xml added; keywords reverted to ~x86 only
 

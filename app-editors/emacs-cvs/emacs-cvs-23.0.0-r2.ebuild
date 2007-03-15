@@ -41,7 +41,7 @@ RDEPEND="sys-libs/ncurses
 
 PROVIDE="virtual/emacs virtual/editor"
 
-SLOT="22.0.95"
+SLOT="23.0.0"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 S="${WORKDIR}/emacs"
