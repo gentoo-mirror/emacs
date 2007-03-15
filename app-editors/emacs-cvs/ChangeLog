@@ -3,6 +3,11 @@
 # $Header: $
 
   15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/digest-emacs-cvs-22.0.95-r2, +files/digest-emacs-cvs-22.0.9999-r6,
+  +files/digest-emacs-cvs-23.0.0-r2, +Manifest:
+  adding Manifest and digests, so users can really use it
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
   emacs-cvs-23.0.0-r2.ebuild:
   correct Header
