@@ -5,6 +5,7 @@
 ECVS_AUTH="pserver"
 ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
 ECVS_MODULE="emacs"
+ECVS_LOCALNAME="emacs-unicode"
 ECVS_BRANCH="emacs-unicode-2"
 
 WANT_AUTOCONF="2.61"

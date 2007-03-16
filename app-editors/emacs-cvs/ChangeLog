@@ -3,6 +3,11 @@
 # $Header: $
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  added ECVS_LOCALNAME to avoid checking out 22.0.9999 and 23.* in the same
+  distfiles directory
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
   emacs-cvs-23.0.0-r2.ebuild:
   removed commented out code, so the ebuilds look a bit lighter
