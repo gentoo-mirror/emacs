@@ -10,11 +10,11 @@ inherit alternatives autotools elisp-common eutils flag-o-matic
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 SRC_URI="ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-IUSE="alsa aqua gif gtk gzip-el jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d "
+IUSE="alsa aqua gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 
 RESTRICT="$RESTRICT nostrip"
 
-X_DEPEND="x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-misc/xbitmaps"
+X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 
 RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
@@ -26,6 +26,7 @@ RDEPEND="sys-libs/ncurses
 		jpeg? ( media-libs/jpeg )
 		tiff? ( media-libs/tiff )
 		png? ( media-libs/libpng )
+		xpm ( x11-libs/libXpm )
 		gtk? ( =x11-libs/gtk+-2* )
 		!gtk? ( Xaw3d? ( x11-libs/Xaw3d ) )
 		!Xaw3d? ( motif? ( x11-libs/openmotif ) )
@@ -80,7 +81,7 @@ src_compile() {
 
 	if use X; then
 		myconf="${myconf} --with-x"
-		myconf="${myconf} --with-xpm"
+		myconf="${myconf} $(use_with xpm)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_with jpeg) $(use_with tiff)"
 		myconf="${myconf} $(use_with gif) $(use_with png)"
@@ -116,7 +117,7 @@ src_compile() {
 	else
 		econf \
 			--program-suffix=.emacs-${SLOT} \
-			--without-carbon \
+			--without-carbon $(use_with hesiod) \
 			${myconf} || die "econf emacs failed"
 	fi
 
