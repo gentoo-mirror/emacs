@@ -79,31 +79,15 @@ src_install() {
 	done
 	dosym emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT}
 	mv "${D}"/usr/share/man/man1/emacs{,.emacs-${SLOT}}.1 || die
+	dosym ../emacs/${PV}/info /usr/share/info/emacs-${SLOT}
 
 	dodoc README PROBLEMS
 }
 
-#update-alternatives() {
-#	# Extract the suffix of the manpages to determine the correct
-#	# compression program.
-#	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
-
-	# This creates symlinks for binaries and man page, so the correct
-	# ones in a slotted environment can be accessed.
-#	for i in emacs emacsclient etags ctags; do
-#		alternatives_auto_makesym "/usr/bin/${i}" "/usr/bin/${i}.emacs-*"
-#	done
-
-#	alternatives_auto_makesym "/usr/share/man/man1/emacs.1${suffix}" \
-#		"/usr/share/man/man1/emacs.emacs-*.1${suffix}"
-#}
-
 pkg_postinst() {
-#	update-alternatives
 	eselect emacs update --if-unset
 }
 
 pkg_postrm() {
-#	update-alternatives
 	eselect emacs update --if-unset
 }
