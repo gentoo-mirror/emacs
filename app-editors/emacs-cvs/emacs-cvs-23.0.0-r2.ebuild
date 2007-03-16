@@ -46,7 +46,7 @@ PROVIDE="virtual/emacs virtual/editor"
 SLOT="23.0.0"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
-S="${WORKDIR}/emacs"
+S="${WORKDIR}/${ECVS_LOCALNAME}"
 
 src_unpack() {
 	cvs_src_unpack

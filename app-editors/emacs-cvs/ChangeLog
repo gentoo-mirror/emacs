@@ -4,6 +4,11 @@
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-23.0.0-r2.ebuild:
+  correct definition of $\{S\} so it can find its source files; pointed out by
+  Flameeyes on IRC
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
   added ECVS_LOCALNAME to avoid checking out 22.0.9999 and 23.* in the same
   distfiles directory
 
