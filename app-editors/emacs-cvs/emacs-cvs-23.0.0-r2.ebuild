@@ -25,7 +25,7 @@ RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
 	sys-libs/zlib
 	spell? ( || ( app-text/ispell app-text/aspell ) )
-	sound? ( alsa? ( media-sound/alsa-headers ) )
+	alsa? ( media-sound/alsa-headers )
 	X? ( $X_DEPEND )
 	X? ( gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
