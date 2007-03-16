@@ -1,8 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-18.59-r1.ebuild,v 1.3 2007/03/02 20:50:01 opfer Exp $
+# $Header: $
 
-inherit eutils toolchain-funcs flag-o-matic alternatives
+inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
@@ -15,8 +15,10 @@ SLOT="18"
 KEYWORDS="~x86"
 IUSE="X"
 
-DEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses
+	app-admin/eselect-emacs
 	X? ( x11-libs/libX11 )"
+DEPEND="${RDEPEND}"
 PROVIDE="virtual/emacs virtual/editor"
 
 MY_BASEDIR="/usr/share/emacs/${PV}"
@@ -76,30 +78,32 @@ src_install() {
 		mv ${i}{,.emacs-${SLOT}} || die "mv ${i} failed"
 	done
 	dosym emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT}
-	mv ${D}/usr/share/man/man1/emacs{,.emacs-${SLOT}}.1 || die
+	mv "${D}"/usr/share/man/man1/emacs{,.emacs-${SLOT}}.1 || die
 
 	dodoc README PROBLEMS
 }
 
-update-alternatives() {
-	# Extract the suffix of the manpages to determine the correct
-	# compression program.
-	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
+#update-alternatives() {
+#	# Extract the suffix of the manpages to determine the correct
+#	# compression program.
+#	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
 
 	# This creates symlinks for binaries and man page, so the correct
 	# ones in a slotted environment can be accessed.
-	for i in emacs emacsclient etags ctags; do
-		alternatives_auto_makesym "/usr/bin/${i}" "/usr/bin/${i}.emacs-*"
-	done
+#	for i in emacs emacsclient etags ctags; do
+#		alternatives_auto_makesym "/usr/bin/${i}" "/usr/bin/${i}.emacs-*"
+#	done
 
-	alternatives_auto_makesym "/usr/share/man/man1/emacs.1${suffix}" \
-		"/usr/share/man/man1/emacs.emacs-*.1${suffix}"
-}
+#	alternatives_auto_makesym "/usr/share/man/man1/emacs.1${suffix}" \
+#		"/usr/share/man/man1/emacs.emacs-*.1${suffix}"
+#}
 
 pkg_postinst() {
-	update-alternatives
+#	update-alternatives
+	eselect emacs update --if-unset
 }
 
 pkg_postrm() {
-	update-alternatives
+#	update-alternatives
+	eselect emacs update --if-unset
 }
