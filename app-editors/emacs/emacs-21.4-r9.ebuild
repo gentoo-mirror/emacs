@@ -22,8 +22,6 @@ RDEPEND="sys-libs/ncurses
 			x11-libs/libSM
 			x11-libs/libXmu
 			x11-libs/libXpm
-			|| ( media-fonts/font-adobe-100dpi
-					media-fonts/font-adobe-75dpi )
 			>=media-libs/giflib-4.1.0.1b
 			>=media-libs/jpeg-6b-r2
 			>=media-libs/tiff-3.5.5-r3
@@ -156,28 +154,10 @@ src_install() {
 	dodoc BUGS ChangeLog README
 }
 
-#update-alternatives() {
-#	# extract the suffix of the manpages to determine the correct compression program
-#	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
-#
-#	# this creates symlinks for binaries and man pages, so the correct ones in a slotted
-#	# environment can be accessed
-#	for i in emacs emacsclient etags ctags b2m ebrowse \
-#		rcs-checkin grep-changelog ; do
-#		alternatives_auto_makesym "/usr/bin/$i" "/usr/bin/${i}.emacs-*"
-#	done
-#
-#	for j in emacs etags ctags gfdl
-#	do
-#		alternatives_auto_makesym "/usr/share/man/man1/$j.1${suffix}" "/usr/share/man/man1/$j.emacs-*"
-#	done
-#}
-
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${PV},}/site-lisp/subdirs.el
 
-#	update-alternatives
 	eselect emacs update --if-unset
 
 	if use nosendmail; then
@@ -193,7 +173,8 @@ EOF
 
 You need to install some fonts for Emacs.  Under monolithic
 XFree86/Xorg you typically had such fonts installed by default.	 With
-modular Xorg, you will have to perform this step yourself.
+modular Xorg, you will have to perform this step yourself on the machine your
+X server is running.
 
 Installing media-fonts/font-adobe-{75,100}dpi would satisfy basic
 Emacs requirements under X11.
@@ -203,6 +184,5 @@ EOF
 }
 
 pkg_postrm() {
-#	update-alternatives
 	eselect emacs update --if-unset
 }

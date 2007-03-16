@@ -3,6 +3,10 @@
 # $Header: $
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org> emacs-21.4-r9.ebuild:
+  remove fonts from RDEPEND, as X server pulls them in plus adding a comment
+  on it
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org> emacs-21.4-r9.ebuild:
   remove all occurences of desktop file, is handled by eselect module now
 
   16 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-18.59-r2.ebuild:
