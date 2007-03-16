@@ -5,7 +5,7 @@
 WANT_AUTOCONF="2.61"
 WANT_AUTOMAKE="latest"
 
-inherit alternatives autotools elisp-common eutils flag-o-matic
+inherit autotools elisp-common eutils flag-o-matic
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 SRC_URI="ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz"
