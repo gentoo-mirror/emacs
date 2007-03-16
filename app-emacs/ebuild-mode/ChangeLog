@@ -3,6 +3,10 @@
 # $Header: $
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50ebuild-mode-gentoo.el:
+  straightened file extension handling a bit
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/50ebuild-mode-gentoo.el, +ebuild-mode-1.4.ebuild, +metadata.xml:
   ebuild-mode 1.4: functions from elisp-common.eclass, flag-o-matic.eclass,
   some from eutils.eclass added to highlighted keywords; keywords grouped by
