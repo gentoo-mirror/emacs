@@ -19,7 +19,7 @@ IUSE="alsa aqua gif gtk gzip-el jpeg lesstif motif png spell sound source tiff t
 
 RESTRICT="${RESTRICT} nostrip"
 
-X_DEPEND="x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-misc/xbitmaps || ( media-fonts/font-adobe-100dpi media-fonts/font-adobe-75dpi )"
+X_DEPEND="x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-misc/xbitmaps"
 
 RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
@@ -218,8 +218,8 @@ pkg_postinst() {
 		elog "You need to install some fonts for Emacs.	 Under monolithic"
 		elog "XFree86/Xorg you typically had such fonts installed by default."
 		elog "With modular Xorg, you will have to perform this step yourself."
-		elog "Installing media-fonts/font-adobe-{75,100}dpi would satisfy basic"
-		elog "Emacs requirements under X11."
+		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
+		elog " machine would satisfy basic Emacs requirements under X11."
 	fi
 
 	echo

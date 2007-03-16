@@ -5,6 +5,12 @@
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
   emacs-cvs-23.0.0-r2.ebuild:
+  removed font dependencies for X as at least one is pulled in by the X
+  server; adjusted comment on fonts a bit to clarify
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
   alsa should not depend on sound USE flag in RDEPEND
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
