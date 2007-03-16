@@ -52,11 +52,11 @@
 #	(autoload 'csv-mode "csv-mode" "Major mode for editing csv files." t)
 #
 #  If your Emacs support files are installed in a subdirectory of
-# /usr/share/emacs/site-lisp/ (which is recommended), you need to extend
-# Emacs' load-path as shown in the first non-comment.  Where the
-# "@SITELISP@" is replaced with the actual path by the elisp-site-file-install()
-# function of this eclass.
-#  The next line tell Emacs to load the mode opening a file ending with ".csv"
+# /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
+# installed), you need to extend Emacs's load-path as shown in the first
+# non-comment.  The elisp-site-file-install() function of this eclass will
+# replace "@SITELISP@" by the actual path.
+#  The next line tells Emacs to load the mode opening a file ending with ".csv"
 # and load functions depending on the context and needed features.
 # Be careful though.  Commands as "load-library" or "require" bloat the
 # editor as they are loaded on every startup.  When having a lot of Emacs

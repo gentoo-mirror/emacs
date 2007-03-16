@@ -10,3 +10,5 @@ elisp-common.eclass
 	added some quotes to prevent variables with spaces to break commands
 	straightened elisp-comp()
 	removed local Emacs variables
+	16 Mar 2007
+	Updated documentation on site-lisp dir.
