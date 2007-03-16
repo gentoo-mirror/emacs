@@ -1,8 +1,10 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r8.ebuild,v 1.2 2007/03/07 05:15:42 opfer Exp $
+# $Header: $
 
-inherit flag-o-matic eutils alternatives toolchain-funcs
+WANT_AUTOCONF="2.1"
+
+inherit flag-o-matic eutils toolchain-funcs autotools
 
 DESCRIPTION="An incredibly powerful, extensible text editor"
 HOMEPAGE="http://www.gnu.org/software/emacs"
@@ -11,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
 
 LICENSE="GPL-2"
 SLOT="21"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~x86"
 IUSE="X Xaw3d leim lesstif motif nls nosendmail"
 
 RDEPEND="sys-libs/ncurses
@@ -38,7 +40,6 @@ RDEPEND="sys-libs/ncurses
 	!nosendmail? ( virtual/mta )"
 
 DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-2.58
 	X? ( x11-misc/xbitmaps )"
 
 PROVIDE="virtual/emacs virtual/editor"
@@ -84,8 +85,7 @@ src_compile() {
 	# -march is known to cause signal 6 on some environment
 	filter-flags "-march=*"
 
-	export WANT_AUTOCONF=2.1
-	autoconf
+	eautoconf
 
 	local myconf
 	use nls || myconf="${myconf} --disable-nls"
@@ -138,7 +138,7 @@ src_install() {
 	mv "${T}/emacs-${SLOT}" "${D}/usr/share/info"
 	mv "${T}/dir" "${D}/usr/share/info/emacs-${SLOT}"
 
-	newenvd "${FILESDIR}/60emacs-${SLOT}.envd" "60emacs-${SLOT}"
+#	newenvd "${FILESDIR}/60emacs-${SLOT}.envd" "60emacs-${SLOT}"
 
 	einfo "Fixing manpages..."
 	for m in "${D}"/usr/share/man/man1/* ; do
@@ -161,28 +161,29 @@ src_install() {
 	doins "${FILESDIR}/${DFILE}"
 }
 
-update-alternatives() {
-	# extract the suffix of the manpages to determine the correct compression program
-	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
-
-	# this creates symlinks for binaries and man pages, so the correct ones in a slotted
-	# environment can be accessed
-	for i in emacs emacsclient etags ctags b2m ebrowse \
-		rcs-checkin grep-changelog ; do
-		alternatives_auto_makesym "/usr/bin/$i" "/usr/bin/${i}.emacs-*"
-	done
-
-	for j in emacs etags ctags gfdl
-	do
-		alternatives_auto_makesym "/usr/share/man/man1/$j.1${suffix}" "/usr/share/man/man1/$j.emacs-*"
-	done
-}
+#update-alternatives() {
+#	# extract the suffix of the manpages to determine the correct compression program
+#	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
+#
+#	# this creates symlinks for binaries and man pages, so the correct ones in a slotted
+#	# environment can be accessed
+#	for i in emacs emacsclient etags ctags b2m ebrowse \
+#		rcs-checkin grep-changelog ; do
+#		alternatives_auto_makesym "/usr/bin/$i" "/usr/bin/${i}.emacs-*"
+#	done
+#
+#	for j in emacs etags ctags gfdl
+#	do
+#		alternatives_auto_makesym "/usr/share/man/man1/$j.1${suffix}" "/usr/share/man/man1/$j.emacs-*"
+#	done
+#}
 
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${PV},}/site-lisp/subdirs.el
 
-	update-alternatives
+#	update-alternatives
+	eselect emacs update --if-unset
 
 	if use nosendmail; then
 		while read line; do einfo "${line}"; done<<'EOF'
@@ -207,5 +208,6 @@ EOF
 }
 
 pkg_postrm() {
-	update-alternatives
+#	update-alternatives
+	eselect emacs update --if-unset
 }
