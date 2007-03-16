@@ -236,5 +236,5 @@ pkg_postinst() {
 pkg_postrm() {
 #	use ppc-macos || update-alternatives
 	elisp-site-regen
-	eselect emacs --if-unset update
+	eselect emacs update --if-unset
 }
