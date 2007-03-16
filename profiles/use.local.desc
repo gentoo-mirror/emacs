@@ -8,3 +8,4 @@
 # Keep it sorted.
 
 app-editors/emacs-cvs:sound - Enable sound
+app-editors/emacs-cvs:hesiod - Enable support for hesiod
