@@ -113,6 +113,8 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 
+	use hesiod && myconf="${myconf} --with-hesiod"
+
 	if use aqua; then
 		einfo "Configuring to build with Carbon Emacs"
 		econf \
@@ -124,7 +126,7 @@ src_compile() {
 	else
 		econf \
 			--program-suffix=.emacs-${SLOT} \
-			--without-carbon $(use_with hesiod) \
+			--without-carbon \
 			${myconf} || die "econf emacs failed"
 	fi
 
