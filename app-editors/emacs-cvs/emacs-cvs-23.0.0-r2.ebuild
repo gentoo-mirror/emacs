@@ -158,11 +158,6 @@ src_install () {
 		fi
 	done
 
-#	insinto /etc/env.d
-#	cat >"${D}"/etc/env.d/50emacs-cvs-${SLOT} <<EOF
-#INFOPATH=/usr/share/info/emacs-${SLOT}
-#EOF
-
 	einfo "Fixing manpages..."
 	for m in  "${D}"/usr/share/man/man1/* ; do
 		mv ${m} ${m/.1/.emacs-${SLOT}.1} || die "mv man failed"
@@ -186,29 +181,10 @@ EOF
 	dodoc BUGS ChangeLog README
 }
 
-#update-alternatives() {
-	# extract the suffix of the manpages to determine the correct compression program
-#	local suffix=$(echo /usr/share/man/man1/emacs.emacs-*.1*|sed 's/.*\.1//')
-
-	# this creates symlinks for binaries and man pages, so the correct ones in a slotted
-	# environment can be accessed
-#	for i in emacs emacsclient etags ctags b2m ebrowse \
-#		rcs-checkin grep-changelog ;
-#	do
-#		alternatives_auto_makesym "/usr/bin/$i" "/usr/bin/$i.emacs-*"
-#	done
-
-#	for j in emacs emacsclient etags ctags
-#	do
-#		alternatives_auto_makesym "/usr/share/man/man1/$j.1${suffix}" "/usr/share/man/man1/$j.emacs-*"
-#	done
-#}
-
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${SLOT},}/site-lisp/subdirs.el
 
-#	use ppc-macos || update-alternatives
 	elisp-site-regen
 
 	# ecompress from Portage 2.2.* does auto-compression
@@ -234,7 +210,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-#	use ppc-macos || update-alternatives
 	elisp-site-regen
 	eselect emacs update --if-unset
 }
