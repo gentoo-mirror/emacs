@@ -121,6 +121,7 @@ src_compile() {
 			--enable-carbon-app=/Applications/Gentoo \
 			--without-x \
 			$(use_with jpeg) $(use_with tiff) \
+			$(use_enable xft font-backend) \
 			$(use_with gif) $(use_with png) $(use_with sound) \
 			 || die "econf carbon emacs failed"
 	else
