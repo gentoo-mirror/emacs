@@ -7,7 +7,7 @@ ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
 ECVS_MODULE="emacs"
 ECVS_BRANCH="emacs-unicode-2"
 
-WANT_AUTOCONF="latest"
+WANT_AUTOCONF="2.61"
 WANT_AUTOMAKE="latest"
 
 inherit autotools cvs elisp-common eutils flag-o-matic

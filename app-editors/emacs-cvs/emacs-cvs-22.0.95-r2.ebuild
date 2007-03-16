@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-WANT_AUTOCONF="latest"
+WANT_AUTOCONF="2.61"
 WANT_AUTOMAKE="latest"
 
 inherit alternatives autotools elisp-common eutils flag-o-matic

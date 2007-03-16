@@ -5,6 +5,12 @@
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
   emacs-cvs-23.0.0-r2.ebuild:
+  request AUTOCONF 2.61 instead of latest. Fixes bug 170969, reported by
+  <lkml_ccc@yahoo.it>
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
   finally fix eselect call
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
