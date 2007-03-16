@@ -6,7 +6,7 @@
 # Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 #
-# This is not an eclass, but it does provide emacs-related
+# This is not a real eclass, but it does provide emacs-related
 # installation utilities.
 #
 # USAGE:
