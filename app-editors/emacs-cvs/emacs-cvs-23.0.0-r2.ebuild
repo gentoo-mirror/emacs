@@ -15,7 +15,7 @@ inherit autotools cvs elisp-common eutils flag-o-matic
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 SRC_URI=""
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-IUSE="alsa aqua gif gtk gzip-el jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d "
+IUSE="alsa aqua gif gtk gzip-el jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xft"
 
 RESTRICT="$RESTRICT nostrip"
 
