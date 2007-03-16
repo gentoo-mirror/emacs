@@ -16,15 +16,16 @@ inherit autotools cvs elisp-common eutils flag-o-matic
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 SRC_URI=""
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-IUSE="alsa aqua gif gtk gzip-el jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xft"
+IUSE="alsa aqua gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xft xpm"
 
 RESTRICT="$RESTRICT nostrip"
 
-X_DEPEND="x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-misc/xbitmaps"
+X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 
 RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
 	sys-libs/zlib
+	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-sound/alsa-headers )
 	X? ( $X_DEPEND )
@@ -32,6 +33,7 @@ RDEPEND="sys-libs/ncurses
 		jpeg? ( media-libs/jpeg )
 		tiff? ( media-libs/tiff )
 		png? ( media-libs/libpng )
+		xpm? ( x11-libs/libXpm )
 		xft? ( media-libs/fontconfig virtual/xft >=dev-libs/libotf-0.9.4 )
 		gtk? ( =x11-libs/gtk+-2* )
 		!gtk? ( Xaw3d? ( x11-libs/Xaw3d ) )
@@ -87,7 +89,7 @@ src_compile() {
 
 	if use X; then
 		myconf="${myconf} --with-x"
-		myconf="${myconf} --with-xpm"
+		myconf="${myconf} $(use_with xpm)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_enable xft font-backend)"
 		myconf="${myconf} $(use_with xft freetype)"
@@ -127,7 +129,7 @@ src_compile() {
 	else
 		econf \
 			--program-suffix=.emacs-${SLOT} \
-			--without-carbon \
+			--without-carbon $(use_with hesiod) \
 			${myconf} || die "econf emacs failed"
 	fi
 

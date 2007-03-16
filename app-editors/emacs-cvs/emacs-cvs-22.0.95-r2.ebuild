@@ -19,6 +19,7 @@ X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
 	sys-libs/zlib
+	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-sound/alsa-headers )
 	X? ( $X_DEPEND )
@@ -26,7 +27,7 @@ RDEPEND="sys-libs/ncurses
 		jpeg? ( media-libs/jpeg )
 		tiff? ( media-libs/tiff )
 		png? ( media-libs/libpng )
-		xpm ( x11-libs/libXpm )
+		xpm? ( x11-libs/libXpm )
 		gtk? ( =x11-libs/gtk+-2* )
 		!gtk? ( Xaw3d? ( x11-libs/Xaw3d ) )
 		!Xaw3d? ( motif? ( x11-libs/openmotif ) )

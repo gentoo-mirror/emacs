@@ -3,6 +3,13 @@
 # $Header: $
 
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  added hesiod USE flag which pulls in support for a different gethost method;
+  make xpm support depending on xpm USE flag; emacs-22 CVS also gets a
+  straighter naming for the CVS checkout
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-23.0.0-r2.ebuild:
   correct definition of ${S} so it can find its source files; pointed out by
   Flameeyes on IRC
