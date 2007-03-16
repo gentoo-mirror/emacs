@@ -44,8 +44,6 @@ DEPEND="${RDEPEND}
 
 PROVIDE="virtual/emacs virtual/editor"
 
-DFILE=emacs-${SLOT}.desktop
-
 src_unpack() {
 
 	unpack ${A}
@@ -156,9 +154,6 @@ src_install() {
 	keepdir /usr/share/emacs/site-lisp
 
 	dodoc BUGS ChangeLog README
-
-	insinto /usr/share/applications
-	doins "${FILESDIR}/${DFILE}"
 }
 
 #update-alternatives() {

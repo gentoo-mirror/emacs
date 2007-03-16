@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org> emacs-21.4-r9.ebuild:
+  remove all occurences of desktop file, is handled by eselect module now
+
   16 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-18.59-r2.ebuild:
   Provide a symlink in /usr/share/info for info documentation.
 
