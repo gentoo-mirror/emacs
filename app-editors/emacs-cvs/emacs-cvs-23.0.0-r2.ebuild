@@ -21,8 +21,6 @@ RESTRICT="$RESTRICT nostrip"
 
 X_DEPEND="x11-libs/libXmu x11-libs/libXpm x11-libs/libXt x11-misc/xbitmaps || ( media-fonts/font-adobe-100dpi media-fonts/font-adobe-75dpi )"
 
-DEPEND="${RDEPEND}
-	gzip-el? ( app-arch/gzip )"
 RDEPEND="sys-libs/ncurses
 	app-admin/eselect-emacs
 	sys-libs/zlib
@@ -38,6 +36,9 @@ RDEPEND="sys-libs/ncurses
 		!gtk? ( Xaw3d? ( x11-libs/Xaw3d ) )
 		!Xaw3d? ( motif? ( x11-libs/openmotif ) )
 		!motif? ( lesstif? ( x11-libs/lesstif ) ) )"
+
+DEPEND="${RDEPEND}
+	gzip-el? ( app-arch/gzip )"
 
 PROVIDE="virtual/emacs virtual/editor"
 
