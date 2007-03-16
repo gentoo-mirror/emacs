@@ -53,8 +53,8 @@
 #
 #  If your Emacs support files are installed in a subdirectory of
 # /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
-# installed), you need to extend Emacs's load-path as shown in the first
-# non-comment.  The elisp-site-file-install() function of this eclass will
+# installed), you need to extend Emacs' load-path as shown in the first
+# non-comment.	The elisp-site-file-install() function of this eclass will
 # replace "@SITELISP@" by the actual path.
 #  The next line tells Emacs to load the mode opening a file ending with ".csv"
 # and load functions depending on the context and needed features.
