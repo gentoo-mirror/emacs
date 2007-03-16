@@ -217,7 +217,7 @@ pkg_postinst() {
 	# A forthcoming Portage version will handle that itself
 	rm "${ROOT}/usr/share/info/emacs-${SLOT}/dir.*" 2> /dev/null
 
-	eselect emacs --if-unset update
+	eselect emacs update --if-unset
 
 	if use X; then
 		elog "You need to install some fonts for Emacs.	 Under monolithic"
