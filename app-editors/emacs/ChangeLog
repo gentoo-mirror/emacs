@@ -1,0 +1,14 @@
+# ChangeLog for app-editors/emacs
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-18.59-r2.ebuild, +files/emacs-21.2-sh.patch,
+  +files/emacs-21.3-amd64.patch, +files/emacs-21.3-hppa.patch,
+  +files/emacs-21.3-ppc64.patch, +files/emacs-21.3-xorg.patch,
+  +emacs-21.4-r9.ebuild, +files/emacs-21.4-autosave-tmp.patch,
+  +files/emacs-21.4-blessmail-build.patch,
+  +files/emacs-21.4-libungif-gif-gentoo.patch, +metadata.xml:
+  initial import; taken versions from official tree and just changed version
+  number. Not ported to new eselect yet
+
