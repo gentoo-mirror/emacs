@@ -17,8 +17,8 @@ RDEPEND=">=app-admin/eselect-1.0.7"
 
 src_install() {
 	cd "${S}"
-	touch 50emacs
-	doenvd 50emacs
+	#touch 50emacs
+	#doenvd 50emacs
 	domenu emacs.desktop
 	doicon emacs.png
 	insinto /usr/share/eselect/modules
