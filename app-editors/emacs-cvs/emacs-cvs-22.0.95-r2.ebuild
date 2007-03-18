@@ -195,7 +195,7 @@ pkg_postinst() {
 		elog "XFree86/Xorg you typically had such fonts installed by default."
 		elog "With modular Xorg, you will have to perform this step yourself."
 		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
-		elog " machine would satisfy basic Emacs requirements under X11."
+		elog "machine would satisfy basic Emacs requirements under X11."
 	fi
 
 	echo
