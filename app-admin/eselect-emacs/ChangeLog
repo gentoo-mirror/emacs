@@ -2,6 +2,20 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +eselect-emacs-0.2.ebuild:
+  version bump: 
+  Remove man symlinks with all possible compress extensions;
+  Honour  in set_man_symlinks;
+  Don't test for -z  since the empty string
+    is a legal value (meaning no compression);
+  We don't have providers but versions;
+  Create symlinks for existing binaries only;
+  Added gfdl to MANPAGELIST;
+  Use MANPAGELIST instead of BINARYLIST for manpage removal;
+  do_update() now updates to the newest available version;
+  Cleanup env.d file in do_update()
+
   17 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   eselect-emacs-0.1.ebuild:
   Don't install env.d file since it might overwrite a valid configuration.
