@@ -1,0 +1,8 @@
+# ChangeLog for app-editors/emacs
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> +emacs-18.59-r3.ebuild,
+  +emacs-21.4-r10.ebuild:
+  Initial import: unchanged copy from emacs-overlay.
+
