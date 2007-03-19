@@ -199,7 +199,7 @@ pkg_postinst() {
 	eselect emacs update --if-unset
 
 	if use X; then
-		elog "You need to install some fonts for Emacs.	 Under monolithic"
+		elog "You need to install some fonts for Emacs. Under monolithic"
 		elog "XFree86/Xorg you typically had such fonts installed by default."
 		elog "With modular Xorg, you will have to perform this step yourself."
 		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
