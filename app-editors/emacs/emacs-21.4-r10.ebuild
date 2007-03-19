@@ -171,7 +171,7 @@ EOF
 		while read line; do einfo "${line}"; done<<'EOF'
 
 You need to install some fonts for Emacs.  Under monolithic
-XFree86/Xorg you typically had such fonts installed by default.	 With
+XFree86/Xorg you typically had such fonts installed by default. With
 modular Xorg, you will have to perform this step yourself on the machine your
 X server is running.
 
