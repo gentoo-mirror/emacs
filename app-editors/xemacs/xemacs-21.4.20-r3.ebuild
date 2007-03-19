@@ -45,7 +45,8 @@ DEPEND="virtual/libc
 	jpeg? ( media-libs/jpeg )
 	canna? ( app-i18n/canna )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
-	>=sys-libs/ncurses-5.2"
+	>=sys-libs/ncurses-5.2
+	app-admin/eselect-emacs"
 
 PDEPEND="app-xemacs/xemacs-base
 	mule? ( app-xemacs/mule-base )"
@@ -196,9 +197,9 @@ src_install() {
 	# Addresses bug #62991.
 	for i in b2m ctags etags rcs-checkin ; do
 		mv "${D}"/usr/bin/${i} "${D}"/usr/bin/${i}-xemacs || die "mv ${i} failed"
-		dosym /usr/bin/${i}-xemacs /usr/bin/${i}
 	done
 
+	# rename man pages
 	for i in ctags etags; do
 		mv "${D}"/usr/share/man/man1/${i}{,-xemacs}.1 || die "mv ${i}.1 failed"
 	done
@@ -227,4 +228,12 @@ src_install() {
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${PN}.desktop
+}
+
+pkg_postinst() {
+	eselect emacs update --if-unset
+}
+
+pkg_postrm() {
+	eselect emacs update --if-unset
 }
