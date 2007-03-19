@@ -164,8 +164,10 @@ src_install () {
 		mv ${m} ${m/.1/-emacs-${SLOT}.1} || die "mv man failed"
 	done
 
-	# avoid collision between slots
+	# avoid collision between slots, see bug #169033 e.g.
 	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
+	rm "${D}"/var/lib/games/emacs/{snake,tetris}-scores
+	keepdir /var/lib/games/emacs/
 
 	if use source; then
 		insinto /usr/share/emacs/${SLOT}/src
