@@ -17,7 +17,7 @@ RESTRICT="$RESTRICT nostrip"
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 
 RDEPEND="sys-libs/ncurses
-	app-admin/eselect-emacs
+	>=app-admin/eselect-emacs-0.3
 	sys-libs/zlib
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
