@@ -6,7 +6,7 @@
   +eselect-emacs-0.2.ebuild:
   version bump: 
   Remove man symlinks with all possible compress extensions;
-  Honour  in set_man_symlinks;
+  Honour ROOT in set_man_symlinks;
   Don't test for -z  since the empty string
     is a legal value (meaning no compression);
   We don't have providers but versions;
