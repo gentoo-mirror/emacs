@@ -35,7 +35,8 @@ RDEPEND="sys-libs/ncurses
 			)
 	)
 	nls? ( sys-devel/gettext )
-	!nosendmail? ( virtual/mta )"
+	!nosendmail? ( virtual/mta )
+	>=app-admin/eselect-emacs-0.3"
 
 DEPEND="${RDEPEND}
 	X? ( x11-misc/xbitmaps )"

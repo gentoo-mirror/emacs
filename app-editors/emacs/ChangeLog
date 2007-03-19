@@ -3,6 +3,10 @@
 # $Header: $
 
   19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-18.59-r3.ebuild, emacs-21.4-r10.ebuild:
+  correct dependency on the latest eselect module version
+
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +emacs-18.59-r3.ebuild, +emacs-21.4-r10.ebuild, +files/emacs-21.4-qa.patch:
   Don't install emacs executable twice; Suffix changed from .emacs- to -emacs-
   for better compatibility with XEmacs; get rid of compiler warnings

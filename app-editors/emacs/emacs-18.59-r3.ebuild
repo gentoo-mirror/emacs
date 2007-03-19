@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE="X"
 
 RDEPEND="sys-libs/ncurses
-	app-admin/eselect-emacs
+	>=app-admin/eselect-emacs-0.3
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
 PROVIDE="virtual/emacs virtual/editor"
