@@ -17,6 +17,7 @@ KEYWORDS="~x86"
 IUSE="X Xaw3d leim lesstif motif nls nosendmail"
 
 RDEPEND="sys-libs/ncurses
+	app-admin/eselect-emacs
 	X? ( x11-libs/libXext
 			x11-libs/libICE
 			x11-libs/libSM
