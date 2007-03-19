@@ -119,10 +119,10 @@ src_compile() {
 src_install() {
 	einstall || die
 	for i in "${D}"/usr/bin/* ; do
-		mv ${i} ${i}.emacs-${SLOT} || die "mv ${i} failed"
+		mv ${i} ${i}-emacs-${SLOT} || die "mv ${i} failed"
 	done
-	mv "${D}"/usr/bin/emacs{-${PV},}.emacs-${SLOT} || die "mv emacs failed"
-	dohard /usr/bin/emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT}
+	mv "${D}"/usr/bin/emacs{-${PV},}-emacs-${SLOT} || die "mv emacs failed"
+	dohard /usr/bin/emacs{-emacs,}-${SLOT} || die
 
 	einfo "Fixing info documentation..."
 	mkdir "${T}/emacs-${SLOT}"
@@ -134,11 +134,9 @@ src_install() {
 	mv "${T}/emacs-${SLOT}" "${D}/usr/share/info"
 	mv "${T}/dir" "${D}/usr/share/info/emacs-${SLOT}"
 
-#	newenvd "${FILESDIR}/60emacs-${SLOT}.envd" "60emacs-${SLOT}"
-
 	einfo "Fixing manpages..."
 	for m in "${D}"/usr/share/man/man1/* ; do
-		mv ${m} ${m/.1/.emacs-${SLOT}.1} || die "mv ${m} failed"
+		mv ${m} ${m/.1/-emacs-${SLOT}.1} || die "mv ${m} failed"
 	done
 
 	# avoid collision between slots

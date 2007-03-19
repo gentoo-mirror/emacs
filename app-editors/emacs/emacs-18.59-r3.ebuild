@@ -75,10 +75,10 @@ src_install() {
 	keepdir ${MY_LOCKDIR}
 
 	for i in "${D}"/usr/bin/*; do
-		mv ${i}{,.emacs-${SLOT}} || die "mv ${i} failed"
+		mv ${i}{,-emacs-${SLOT}} || die "mv ${i} failed"
 	done
-	dosym emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT}
-	mv "${D}"/usr/share/man/man1/emacs{,.emacs-${SLOT}}.1 || die
+	dosym emacs-emacs-${SLOT} /usr/bin/emacs-${SLOT}
+	mv "${D}"/usr/share/man/man1/emacs{,-emacs-${SLOT}}.1 || die
 	dosym ../emacs/${PV}/info /usr/share/info/emacs-${SLOT}
 
 	dodoc README PROBLEMS

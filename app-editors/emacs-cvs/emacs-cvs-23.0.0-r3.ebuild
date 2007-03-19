@@ -130,7 +130,7 @@ src_compile() {
 			 || die "econf carbon emacs failed"
 	else
 		econf \
-			--program-suffix=.emacs-${SLOT} \
+			--program-suffix=-emacs-${SLOT} \
 			--without-carbon \
 			${myconf} || die "econf emacs failed"
 	fi
@@ -142,8 +142,8 @@ src_compile() {
 src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
-	rm "${D}"/usr/bin/emacs-${SLOT}.emacs-${SLOT} || die "removing duplicate emacs executable failed"
-	dohard /usr/bin/emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT} || die
+	rm "${D}"/usr/bin/emacs-${SLOT}-emacs-${SLOT} || die "removing duplicate emacs executable failed"
+	dohard /usr/bin/emacs{-emacs,}-${SLOT} || die
 
 	if use aqua ; then
 		einfo "Installing Carbon Emacs..."
@@ -165,8 +165,8 @@ src_install () {
 	done
 
 	einfo "Fixing manpages..."
-	for m in  "${D}"/usr/share/man/man1/* ; do
-		mv ${m} ${m/.1/.emacs-${SLOT}.1} || die "mv man failed"
+	for m in "${D}"/usr/share/man/man1/* ; do
+		mv ${m} ${m/.1/-emacs-${SLOT}.1} || die "mv man failed"
 	done
 
 	# avoid collision between slots
