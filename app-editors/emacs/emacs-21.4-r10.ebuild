@@ -122,8 +122,8 @@ src_install() {
 	for i in "${D}"/usr/bin/* ; do
 		mv ${i} ${i}-emacs-${SLOT} || die "mv ${i} failed"
 	done
-	mv "${D}"/usr/bin/emacs{-${PV},}-emacs-${SLOT} || die "mv emacs failed"
-	dohard /usr/bin/emacs{-emacs,}-${SLOT} || die
+	mv "${D}"/usr/bin/emacs{-emacs,}-${SLOT} || die "mv emacs failed"
+	rm "${D}"/usr/bin/emacs-${PV}-emacs-${SLOT}
 
 	einfo "Fixing info documentation..."
 	mkdir "${T}/emacs-${SLOT}"
