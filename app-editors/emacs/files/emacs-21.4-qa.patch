@@ -68,3 +68,25 @@ diff -ur emacs-21.4-orig/src/xterm.c emacs-21.4/src/xterm.c
  		  }
  		else
  		  {
+diff -ur emacs-21.4-orig/oldXMenu/ChgPane.c emacs-21.4/oldXMenu/ChgPane.c
+--- emacs-21.4-orig/oldXMenu/ChgPane.c	1999-10-03 21:34:53.000000000 +0200
++++ emacs-21.4/oldXMenu/ChgPane.c	2007-03-19 15:10:00.000000000 +0100
+@@ -13,6 +13,7 @@
+  *
+  */
+ 
++#include <config.h>
+ #include "XMenuInt.h"
+ 
+ int
+diff -ur emacs-21.4-orig/oldXMenu/ChgSel.c emacs-21.4/oldXMenu/ChgSel.c
+--- emacs-21.4-orig/oldXMenu/ChgSel.c	1999-10-03 21:34:54.000000000 +0200
++++ emacs-21.4/oldXMenu/ChgSel.c	2007-03-19 15:10:02.000000000 +0100
+@@ -13,6 +13,7 @@
+  *
+  */
+ 
++#include <config.h>
+ #include "XMenuInt.h"
+ 
+ int
