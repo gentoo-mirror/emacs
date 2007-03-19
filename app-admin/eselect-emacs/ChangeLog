@@ -2,6 +2,14 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +eselect-emacs-0.3.ebuild:
+  If Emacs was not found, link {c,e}tags to XEmacs versions;
+  Suffix changed from .emacs- to -emacs-;
+  Removal of man page symlinks in remove_symlinks() simplified;
+  Use emacs- instead of emacs-emacs- as symlink target;
+  Test if Info directory exists
+
   18 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +eselect-emacs-0.2.ebuild:
   version bump: 
