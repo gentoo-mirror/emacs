@@ -2,7 +2,7 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  19 Mar 2007; <ulm@gentoo.org> emacs-21.4-r10.ebuild,
+  19 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r10.ebuild,
   +files/emacs-21.4-qa.patch:
   Get rid of compiler warnings.
 
