@@ -4,6 +4,10 @@
 
   19 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   xemacs-21.4.20-r3.ebuild:
+  Depend on the latest eselect module version.
+
+  19 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  xemacs-21.4.20-r3.ebuild:
   Don't create symlinks in src_install. Use emacs.eselect.
 
   19 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> +xemacs-21.4.20-r3.ebuild:
