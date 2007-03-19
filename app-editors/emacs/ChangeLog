@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-18.59-r3.ebuild, +emacs-21.4-r10.ebuild, +files/emacs-21.4-qa.patch:
+  Don't install emacs executable twice; Suffix changed from .emacs- to -emacs-
+  for better compatibility with XEmacs; get rid of compiler warnings
+
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org> emacs-21.4-r9.ebuild:
   remove fonts from RDEPEND, as X server pulls them in plus adding a comment
   on it
