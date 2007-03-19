@@ -199,6 +199,10 @@ src_install() {
 		dosym /usr/bin/${i}-xemacs /usr/bin/${i}
 	done
 
+	for i in ctags etags; do
+		mv "${D}"/usr/share/man/man1/${i}{,-xemacs}.1 || die "mv ${i}.1 failed"
+	done
+
 	# install base packages directories
 	dodir /usr/lib/xemacs/xemacs-packages/
 	dodir /usr/lib/xemacs/site-packages/
@@ -224,4 +228,3 @@ src_install() {
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${PN}.desktop
 }
-
