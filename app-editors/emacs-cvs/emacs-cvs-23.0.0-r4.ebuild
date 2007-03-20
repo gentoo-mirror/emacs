@@ -143,8 +143,10 @@ src_compile() {
 src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
-	rm "${D}"/usr/bin/emacs-${MIN_VERSION}-emacs-${SLOT} || die "removing duplicate emacs executable failed"
-	mv "${D}"/usr/bin/emacs-emacs-${MIN_VERSION} "${D}"/usr/bin/emacs-${SLOT}|| die "moving Emacs executable failed"
+	rm "${D}"/usr/bin/emacs-${MIN_VERSION}-emacs-${SLOT} \
+		|| die "removing duplicate emacs executable failed"
+	mv "${D}"/usr/bin/emacs-emacs-${SLOT} "${D}"/usr/bin/emacs-${SLOT} \
+		|| die "moving Emacs executable failed"
 
 	if use aqua ; then
 		einfo "Installing Carbon Emacs..."
@@ -176,13 +178,13 @@ src_install () {
 	keepdir /var/lib/games/emacs/
 
 	if use source; then
-		insinto /usr/share/emacs/${SLOT}/src
+		insinto /usr/share/emacs/${MIN_VERSION}/src
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
 		cat >00emacs-cvs-${SLOT}-gentoo.el <<EOF
-(when (substring emacs-version 0 (length "${SLOT}"))
-  (setq find-function-C-source-directory "/usr/share/emacs/${SLOT}/src"))
+(when (substring emacs-version 0 (length "${MIN_VERSION}"))
+  (setq find-function-C-source-directory "/usr/share/emacs/${MIN_VERSION}/src"))
 EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
@@ -192,7 +194,7 @@ EOF
 
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
-		cp ${ROOT}/usr/share/emacs{/${SLOT},}/site-lisp/subdirs.el
+		cp ${ROOT}/usr/share/emacs{/${MIN_VERSION},}/site-lisp/subdirs.el
 
 	elisp-site-regen
 
