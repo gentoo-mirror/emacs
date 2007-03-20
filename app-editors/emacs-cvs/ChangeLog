@@ -3,6 +3,11 @@
 # $Header: $
 
   20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  SLOT behaviour should now work
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +emacs-cvs-22.0.96.ebuild, +emacs-cvs-22.0.9999-r8.ebuild,
   +emacs-cvs-23.0.0-r4.ebuild:
   version bump to 22.0.96 and newer slotting settings...let's test it

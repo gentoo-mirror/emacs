@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22"
+MIN_VERSION="22.0.96"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 S="${WORKDIR}/${ECVS_LOCALNAME}"
@@ -138,7 +139,7 @@ src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
 	rm "${D}"/usr/bin/emacs-${SLOT}-emacs-${SLOT} || die "removing duplicate emacs executable failed"
-	mv "${D}"/usr/bin/emacs{-emacs,}-${SLOT} || die
+	mv "${D}"/usr/bin/emacs-emacs-${MIN_VERSION} "${D}"/usr/bin/emacs-${SLOT}|| die
 
 	if use aqua ; then
 		einfo "Installing Carbon Emacs..."
