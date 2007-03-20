@@ -132,7 +132,7 @@ src_compile() {
 src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
-	rm "${D}"/usr/bin/emacs-${SLOT}-emacs-${SLOT} || die "removing duplicate emacs executable failed"
+	rm "${D}"/usr/bin/emacs-${MIN_VERSION}-emacs-${SLOT} || die "removing duplicate emacs executable failed"
 	mv "${D}"/usr/bin/emacs-emacs-${MIN_VERSION} "${D}"/usr/bin/emacs-${SLOT}|| die
 
 	if use aqua ; then
