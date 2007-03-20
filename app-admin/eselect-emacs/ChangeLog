@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  20 Mar 2007; <ulm@gentoo.org> +eselect-emacs-0.3-r1.ebuild,
+  +files/eselect-emacs-0.3-r119.patch:
+  Make linking to XEmacs auxiliary programs really work.
+
   20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   eselect-emacs-0.3.ebuild:
   changed SRC_URI as the tarball can't find its way to the official mirrors

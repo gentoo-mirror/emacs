@@ -1,0 +1,51 @@
+Index: emacs.eselect
+===================================================================
+--- emacs.eselect	(revision 105)
++++ emacs.eselect	(revision 119)
+@@ -69,17 +69,10 @@
+ 
+ set_man_symlinks() {
+ 	local target="${1}" z
+-	local extension=$(echo ${ROOT}/usr/share/man/man1/emacs-${target}.1* |
++	local extension=$(echo ${ROOT}/usr/share/man/man1/*-${target}.1* |
+ 		sed 's/.*\.1//')
+ 
+-	if [[ ! -f "${ROOT}/usr/share/man/man1/emacs-${target}.1${extension}" ]]
+-	then
+-		echo "Couldn't find a man page for ${target}; skipping." 1>&2
+-		return 1
+-	fi
+-
+-	for z in ${MANPAGELIST}
+-	do
++	for z in ${MANPAGELIST}; do
+ 		if [[ -f "${ROOT}/usr/share/man/man1/${z}-${target}.1${extension}" ]]
+ 		then
+ 			ln -s "${z}-${target}.1${extension}" \
+@@ -95,12 +88,15 @@
+ 		target=${targets[$(( ${target} - 1 ))]}
+ 	fi
+ 	if [[ -f "${ROOT}/usr/bin/${target}" ]]; then
+-		remove_symlinks			# is this necessary here?
+-		ln -s "${target}" "${ROOT}/usr/bin/emacs" ||
+-			die "Couldn't set ${target} /usr/bin/emacs symlink"
++		remove_symlinks
++		if [[ ${target} == emacs-* ]]; then
++			ln -s "${target}" "${ROOT}/usr/bin/emacs" ||
++				die "Couldn't set ${target} /usr/bin/emacs symlink"
++		fi
+ 		set_bin_symlinks "${target}"
+ 		set_man_symlinks "${target}"
+ 		set_infopath "${target}"
++		return 0
+ 	else
+ 		die -q	"Target \"${1}\" doesn't appear to be valid!"
+ 	fi
+@@ -216,6 +212,6 @@
+ 		set_symlinks ${#targets[@]} || die -q "Couldn't set a new symlink"
+ 	elif [[ -f "${ROOT}/usr/bin/xemacs" ]]; then
+ 		# no Emacs target found - link ctags, etags etc. to XEmacs
+-		set_bin_symlinks xemacs
++		set_symlinks xemacs
+ 	fi
+ }
