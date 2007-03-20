@@ -183,8 +183,9 @@ src_install () {
 		# C source you might find via find-function
 		doins src/*.[ch]
 		cat >00emacs-cvs-${SLOT}-gentoo.el <<EOF
-(when (substring emacs-version 0 (length "${MIN_VERSION}"))
-  (setq find-function-C-source-directory "/usr/share/emacs/${MIN_VERSION}/src"))
+(if (string-match "\\\\\`${MIN_VERSION//./\\\\.}\\\\>" emacs-version)
+    (setq find-function-C-source-directory
+	  "/usr/share/emacs/${MIN_VERSION}/src"))
 EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
