@@ -3,6 +3,11 @@
 # $Header: $
 
   20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-cvs-22.0.96.ebuild, +emacs-cvs-22.0.9999-r8.ebuild,
+  +emacs-cvs-23.0.0-r4.ebuild:
+  version bump to 22.0.96 and newer slotting settings...let's test it
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   -emacs-cvs-22.0.95-r2.ebuild, -emacs-cvs-22.0.9999-r6.ebuild,
   -emacs-cvs-23.0.0-r2.ebuild:
   clean up
