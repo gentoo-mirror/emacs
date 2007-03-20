@@ -5,6 +5,11 @@
   20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
   emacs-cvs-23.0.0-r4.ebuild:
+  adding a comment to die command
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
   SLOT behaviour should now work, part II
 
   20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
