@@ -11,7 +11,7 @@ SRC_URI="http://dev.gentoo.org/~opfer/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="X"
 
 RDEPEND=">=app-admin/eselect-1.0.7"
 
@@ -22,9 +22,10 @@ src_unpack() {
 }
 
 src_install() {
-	cd "${S}"
-	domenu emacs.desktop
-	doicon emacs.png
+	if use X; then
+		domenu emacs.desktop
+		doicon emacs.png
+	fi
 	insinto /usr/share/eselect/modules
 	doins emacs.eselect || die "doins failed"
 }
