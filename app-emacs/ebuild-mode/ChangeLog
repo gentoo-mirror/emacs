@@ -2,6 +2,15 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*ebuild-mode-1.5 (22 Mar 2007)
+
+  22 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +ebuild-mode-1.5.ebuild:
+  Functions from elisp-common.eclass, flag-o-matic.eclass, some from
+  eutils.eclass added to highlighted keywords. Keywords grouped by type (not
+  yet finished). Should really add elisp-* functions. Duplicate keyword "into"
+  removed. Sort keywords in alphabetical order. Make TAB key work in Emacs 21.
+
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   files/50ebuild-mode-gentoo.el:
   straightened file extension handling a bit

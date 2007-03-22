@@ -2,6 +2,13 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eselect-emacs-0.4 (22 Mar 2007)
+
+  22 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +eselect-emacs-0.4.ebuild:
+  Some cleanup. Set Type=Application only in desktop file. Handling of
+  compression extensions made more robust.
+
   21 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -eselect-emacs-0.3-r1.ebuild, +eselect-emacs-0.3-r2.ebuild:
   Install desktop file and icon only if X USE flag is set.
