@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="23"
-MIN_VERSION="23.0.0"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 S="${WORKDIR}/${ECVS_LOCALNAME}"
@@ -55,6 +54,12 @@ src_unpack() {
 	cvs_src_unpack
 
 	cd "${S}"
+	# code snippet borrowed from ${S}/make-dist
+	MIN_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
+		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+	[ "${MIN_VERSION}" ] || die "Cannot determine current Emacs version"
+	einfo "Emacs version number is ${MIN_VERSION}"
+
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
 		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"

@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22"
-MIN_VERSION="22.0.96"
+MIN_VERSION="${PV}"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 S="${WORKDIR}/emacs-${PV}"
