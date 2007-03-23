@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
+inherit eutils fdo-mime
 
 DESCRIPTION="Manages the /usr/bin/emacs symlink"
 HOMEPAGE="http://www.gentoo.org/"
@@ -23,4 +23,12 @@ src_install() {
 	fi
 	insinto /usr/share/eselect/modules
 	doins emacs.eselect || die "doins failed"
+}
+
+pkg_postinst() {
+	use X && fdo-mime_desktop_database_update
+}
+
+pkg_postrm() {
+	use X && fdo-mime_desktop_database_update
 }
