@@ -60,9 +60,12 @@ src_unpack() {
 	epatch "${FILESDIR}/emacs-21.4-blessmail-build.patch"
 	epatch "${FILESDIR}/emacs-21.4-qa.patch"
 
+	# install emacsclient.1 man page (#165466)
+	sed -i -e "s/for page in emacs/& emacsclient/" Makefile.in || die
+
 	# This will need to be updated for X-Compilation
 	sed -i -e "s:/usr/lib/\([^ ]*\).o:/usr/$(get_libdir)/\1.o:g" \
-		   "${S}/src/s/gnu-linux.h"
+		   "${S}/src/s/gnu-linux.h" || die
 }
 
 src_compile() {
