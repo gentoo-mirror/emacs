@@ -6,7 +6,7 @@ inherit elisp-common
 
 IUSE="crypt tetex"
 
-DESCRIPTION="The Big Brother Database"
+DESCRIPTION="The Insidious Big Brother Database"
 HOMEPAGE="http://bbdb.sourceforge.net/"
 
 SRC_URI="http://bbdb.sourceforge.net/${P}.tar.gz
