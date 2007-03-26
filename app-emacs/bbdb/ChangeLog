@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/bbdb
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +files/50bbdb-gentoo.el, +bbdb-2.35_pre20040323-r1.ebuild,
+  +files/bbdb-decode-header.diff, +metadata.xml:
+  Initial import; copied from Portage tree.
+
