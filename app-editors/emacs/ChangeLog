@@ -3,6 +3,10 @@
 # $Header: $
 
   26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-21.4-r10.ebuild:
+  reworked the elog comments a bit about X fonts
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   -emacs-18.59-r2.ebuild, -emacs-21.4-r9.ebuild:
   clean up
 

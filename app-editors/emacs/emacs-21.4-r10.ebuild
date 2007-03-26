@@ -164,25 +164,17 @@ pkg_postinst() {
 	eselect emacs update --if-unset
 
 	if use nosendmail; then
-		while read line; do einfo "${line}"; done<<'EOF'
-
-You disabled sendmail support for Emacs.  If you later install a MTA
-then you will need to recompile Emacs.	See Bug #11104.
-
-EOF
+		elog "You disabled sendmail support for Emacs. If you later install a MTA"
+		elog "then you will need to recompile Emacs.	See Bug #11104."
 	fi
 	if use X; then
-		while read line; do einfo "${line}"; done<<'EOF'
-
-You need to install some fonts for Emacs.  Under monolithic
-XFree86/Xorg you typically had such fonts installed by default. With
-modular Xorg, you will have to perform this step yourself on the machine your
-X server is running.
-
-Installing media-fonts/font-adobe-{75,100}dpi would satisfy basic
-Emacs requirements under X11.
-
-EOF
+		elog "You need to install some fonts for Emacs. Under monolithic"
+		elog "XFree86/Xorg you typically had such fonts installed by default. With"
+		elog "modular Xorg, you will have to perform this step yourself on the machine"
+		elog  "your X server is running."
+		echo
+		elog "Installing media-fonts/font-adobe-{75,100}dpi would satisfy basic"
+		elog "Emacs requirements under X11."
 	fi
 }
 
