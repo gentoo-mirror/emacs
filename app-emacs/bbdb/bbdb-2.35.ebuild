@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit elisp eutils
+inherit elisp-common
 
 IUSE="crypt tetex"
 
@@ -20,6 +20,8 @@ DEPEND="virtual/emacs"
 RDEPEND="${DEPEND}
 	crypt? ( app-emacs/mailcrypt )
 	tetex? ( virtual/tetex )"
+
+SITEFILE=50bbdb-gentoo.el
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -52,7 +54,7 @@ src_compile() {
 src_install() {
 	elisp-install ${PN} lisp/*.el{,c} || die
 	elisp-install ${PN}/bits bits/*.el{,c} || die
-	elisp-site-file-install ${FILESDIR}/50bbdb-gentoo.el || die
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	doinfo texinfo/*.info*
 	dodoc ChangeLog INSTALL README bits/*.txt
 	newdoc bits/README README.bits

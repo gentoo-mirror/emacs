@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:
+  Use SITEFILE variable. Inherit only elisp-common.
+
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -bbdb-2.35_pre20040323-r1.ebuild, -files/bbdb-decode-header.diff:
   Removed previous version.
