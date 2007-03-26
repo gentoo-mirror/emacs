@@ -208,7 +208,7 @@ pkg_postinst() {
 	# which is not desired for the dir file, so remove it to
 	# let it be recreated
 	# A forthcoming Portage version will handle that itself
-	rm "${ROOT}/usr/share/info/emacs-${SLOT}/dir.*" 2> /dev/null
+	rm ${ROOT}/usr/share/info/emacs-${SLOT}/dir.* 2> /dev/null
 
 	eselect emacs update --if-unset
 
