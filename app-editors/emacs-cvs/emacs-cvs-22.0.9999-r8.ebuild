@@ -58,7 +58,9 @@ src_unpack() {
 	FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
 		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 	[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
+	echo
 	einfo "Emacs version number is ${FULL_VERSION}"
+	echo
 
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
@@ -89,7 +91,9 @@ src_compile() {
 	local myconf
 
 	if use alsa && ! use sound; then
+		echo
 		einfo "Although sound USE flag is disabled you chose to have alsa, so sound is switched on anyway."
+		echo
 		myconf="${myconf} --with-sound"
 	else
 		myconf="${myconf} $(use_with sound)"

@@ -79,7 +79,9 @@ src_compile() {
 	local myconf
 
 	if use alsa && ! use sound; then
+		echo
 		einfo "Although sound USE flag is disabled you chose to have alsa, so sound is switched on anyway."
+		echo
 		myconf="${myconf} --with-sound"
 	else
 		myconf="${myconf} $(use_with sound)"

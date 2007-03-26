@@ -5,6 +5,11 @@
   26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
   emacs-cvs-23.0.0-r4.ebuild:
+  added some echo commands to pretty-print the output
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
   added some comments for the tricky lines
 
   26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
