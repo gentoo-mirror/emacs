@@ -113,7 +113,9 @@ src_compile() {
 		myconf="${myconf} $(use_with jpeg) $(use_with tiff)"
 		myconf="${myconf} $(use_with gif) $(use_with png)"
 		if use gtk; then
-			einfo "Configuring to build with GTK support"
+			echo
+			einfo "Configuring to build with GTK support, disabling all other toolkits"
+			echo
 			myconf="${myconf} --with-x-toolkit=gtk"
 		elif use Xaw3d; then
 			einfo "Configuring to build with Xaw3d(athena) support"
