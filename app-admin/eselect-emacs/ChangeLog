@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  -eselect-emacs-0.3.ebuild, -eselect-emacs-0.3-r2.ebuild,
+  -eselect-emacs-0.4.ebuild:
+  clean up
+
   24 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +eselect-emacs-0.5.ebuild:
   MimeType and TryExec keys added to emacs.desktop. Desktop file for
