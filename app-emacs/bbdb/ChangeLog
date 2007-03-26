@@ -3,6 +3,11 @@
 # $Header: $
 
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:
+  Removed mailcrypt dependency and crypt USE flag (bug #156038); this does
+  not influence the building of the package. Always install bbdb-pgp.el.
+  Added explanation message to pkg_postinst.
+
+  26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:
   Die if sed fails.
 
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:

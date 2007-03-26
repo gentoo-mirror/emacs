@@ -13,11 +13,10 @@ SRC_URI="http://bbdb.sourceforge.net/${P}.tar.gz
 LICENSE="GPL-2 as-is"
 SLOT="0"
 KEYWORDS="-*"
-IUSE="crypt tetex"
+IUSE="tetex"
 
 DEPEND="virtual/emacs"
 RDEPEND="${DEPEND}
-	crypt? ( app-emacs/mailcrypt )
 	tetex? ( virtual/tetex )"
 
 SITEFILE=50bbdb-gentoo.el
@@ -30,12 +29,6 @@ src_unpack() {
 		bits/bbdb-mail-folders.el || die "sed failed"
 	sed -i -e '/^;/,$!d' bits/bbdb-sort-mailrc.el || die "sed failed"
 	cp ${DISTDIR}/{dates,point-at}.el bits
-
-	if ! use crypt; then
-		rm bits/bbdb-pgp.el
-		elog "Excluding bits/bbdb-pgp.el because the \"crypt\" USE flag"
-		elog "was not specified."
-	fi
 }
 
 src_compile() {
@@ -66,6 +59,13 @@ src_install() {
 pkg_postinst() {
 	elisp-site-regen
 	use tetex && texconfig rehash
+
+	echo
+	elog "If you use encryption or signing, you may specify the encryption"
+	elog "method by customising variable \"bbdb/pgp-method\". For details,"
+	elog "see the documentation of this variable. Depending on the Emacs"
+	elog "version, installation of additional packages like app-emacs/gnus"
+	elog "or app-emacs/mailcrypt may be required."
 }
 
 pkg_postrm() {
