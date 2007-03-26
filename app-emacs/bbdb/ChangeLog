@@ -3,6 +3,9 @@
 # $Header: $
 
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:
+  Die if sed fails.
+
+  26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> bbdb-2.35.ebuild:
   Use SITEFILE variable. Inherit only elisp-common.
 
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>

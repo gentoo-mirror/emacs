@@ -28,8 +28,8 @@ src_unpack() {
 	cd "${S}"
 
 	sed -i -e '0,/^--- bbdb-mail-folders.el ---$/d;/^--- end ---$/,$d' \
-		bits/bbdb-mail-folders.el
-	sed -i -e '/^;/,$!d' bits/bbdb-sort-mailrc.el
+		bits/bbdb-mail-folders.el || die "sed failed"
+	sed -i -e '/^;/,$!d' bits/bbdb-sort-mailrc.el || die "sed failed"
 	cp ${DISTDIR}/{dates,point-at}.el bits
 
 	if ! use crypt; then
