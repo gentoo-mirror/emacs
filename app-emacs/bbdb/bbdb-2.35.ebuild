@@ -12,7 +12,7 @@ SRC_URI="http://bbdb.sourceforge.net/${P}.tar.gz
 
 LICENSE="GPL-2 as-is"
 SLOT="0"
-KEYWORDS="-*"
+KEYWORDS="~x86"
 IUSE="tetex"
 
 DEPEND="virtual/emacs"
