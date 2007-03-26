@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22"
+# FULL_VERSION keeps the full version number, which is needed in order to
+# determine some path information correctly for copy/move operations later on
 FULL_VERSION="${PV}"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
@@ -58,6 +60,8 @@ src_unpack() {
 	fi
 
 	epatch "${FILESDIR}/${PN}-freebsd-sparc.patch"
+	# ALSA is detected and used even if not requested by the USE=alsa flag.	So remove the
+	# automagic check
 	use alsa || epatch "${FILESDIR}/${PN}-disable_alsa_detection.patch"
 	use ppc-macos && epatch "${FILESDIR}/emacs-cvs-21.3.50-nofink.diff"
 
@@ -82,6 +86,9 @@ src_compile() {
 	fi
 
 	if use X; then
+		# GTK+ is the default toolkit if USE=gtk is chosen with other possibilities.
+		# Emacs upstream thinks this should be standard policy on all
+		# distributions
 		myconf="${myconf} --with-x"
 		myconf="${myconf} $(use_with xpm)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
@@ -108,6 +115,8 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 
+	# $(use_with hesiod) is not possible, as "--without-hesiod" breaks the build
+	# system (has been reported upstream)
 	use hesiod && myconf="${myconf} --with-hesiod"
 
 	if use aqua; then
@@ -145,7 +154,7 @@ src_install () {
 		popd
 	fi
 
-	# fix info documentation
+	# move info documentation to the correct place
 	einfo "Fixing info documentation..."
 	dodir /usr/share/info/emacs-${SLOT}
 	mv "${D}"/usr/share/info/{,emacs-${SLOT}/}dir || die "mv dir failed"
@@ -156,6 +165,7 @@ src_install () {
 		fi
 	done
 
+	# move man pages to the correct place
 	einfo "Fixing manpages..."
 	for m in "${D}"/usr/share/man/man1/* ; do
 		mv ${m} ${m/.1/-emacs-${SLOT}.1} || die "mv man failed"
