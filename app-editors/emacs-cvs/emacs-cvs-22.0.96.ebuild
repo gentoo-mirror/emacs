@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22"
-MIN_VERSION="${PV}"
+FULL_VERSION="${PV}"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 S="${WORKDIR}/emacs-${PV}"
@@ -132,7 +132,7 @@ src_compile() {
 src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
-	rm "${D}"/usr/bin/emacs-${MIN_VERSION}-emacs-${SLOT} \
+	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-emacs-${SLOT} \
 		|| die "removing duplicate emacs executable failed"
 	mv "${D}"/usr/bin/emacs-emacs-${SLOT} "${D}"/usr/bin/emacs-${SLOT} \
 		|| die "moving Emacs executable failed"
@@ -167,14 +167,14 @@ src_install () {
 	keepdir /var/lib/games/emacs/
 
 	if use source; then
-		insinto /usr/share/emacs/${MIN_VERSION}/src
+		insinto /usr/share/emacs/${FULL_VERSION}/src
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
 		cat >00emacs-cvs-${SLOT}-gentoo.el <<EOF
-(if (string-match "\\\\\`${MIN_VERSION//./\\\\.}\\\\>" emacs-version)
-    (setq find-function-C-source-directory
-	  "/usr/share/emacs/${MIN_VERSION}/src"))
+(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
+	(setq find-function-C-source-directory
+	  "/usr/share/emacs/${FULL_VERSION}/src"))
 EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
@@ -184,7 +184,7 @@ EOF
 
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
-		cp ${ROOT}/usr/share/emacs{/${MIN_VERSION},}/site-lisp/subdirs.el
+		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 
 	elisp-site-regen
 

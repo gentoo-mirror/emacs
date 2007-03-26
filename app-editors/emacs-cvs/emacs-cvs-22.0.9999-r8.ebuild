@@ -54,10 +54,10 @@ src_unpack() {
 
 	cd "${S}"
 	# code snippet borrowed from ${S}/make-dist
-	MIN_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
+	FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
 		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
-	[ "${MIN_VERSION}" ] || die "Cannot determine current Emacs version"
-	einfo "Emacs version number is ${MIN_VERSION}"
+	[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
+	einfo "Emacs version number is ${FULL_VERSION}"
 
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
@@ -143,7 +143,7 @@ src_compile() {
 src_install () {
 	emake install DESTDIR="${D}" || die "make install failed"
 
-	rm "${D}"/usr/bin/emacs-${MIN_VERSION}-emacs-${SLOT} \
+	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-emacs-${SLOT} \
 		|| die "removing duplicate emacs executable failed"
 	mv "${D}"/usr/bin/emacs-emacs-${SLOT} "${D}"/usr/bin/emacs-${SLOT} \
 		|| die "moving Emacs executable failed"
@@ -178,14 +178,14 @@ src_install () {
 	keepdir /var/lib/games/emacs/
 
 	if use source; then
-		insinto /usr/share/emacs/${MIN_VERSION}/src
+		insinto /usr/share/emacs/${FULL_VERSION}/src
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
 		cat >00emacs-cvs-${SLOT}-gentoo.el <<EOF
-(if (string-match "\\\\\`${MIN_VERSION//./\\\\.}\\\\>" emacs-version)
-    (setq find-function-C-source-directory
-	  "/usr/share/emacs/${MIN_VERSION}/src"))
+(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
+	(setq find-function-C-source-directory
+	  "/usr/share/emacs/${FULL_VERSION}/src"))
 EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
@@ -195,7 +195,7 @@ EOF
 
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
-		cp ${ROOT}/usr/share/emacs{/${MIN_VERSION},}/site-lisp/subdirs.el
+		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 
 	elisp-site-regen
 
