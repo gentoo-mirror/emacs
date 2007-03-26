@@ -4,17 +4,16 @@
 
 inherit elisp-common
 
-IUSE="crypt tetex"
-
 DESCRIPTION="The Insidious Big Brother Database"
 HOMEPAGE="http://bbdb.sourceforge.net/"
-
 SRC_URI="http://bbdb.sourceforge.net/${P}.tar.gz
 	http://www.mit.edu/afs/athena/contrib/emacs-contrib/Fin/point-at.el
 	http://www.mit.edu/afs/athena/contrib/emacs-contrib/Fin/dates.el"
+
 LICENSE="GPL-2 as-is"
 SLOT="0"
 KEYWORDS="-*"
+IUSE="crypt tetex"
 
 DEPEND="virtual/emacs"
 RDEPEND="${DEPEND}
