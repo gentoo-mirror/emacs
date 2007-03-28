@@ -16,6 +16,20 @@ IUSE="X"
 
 RDEPEND=">=app-admin/eselect-1.0.7"
 
+src_unpack() {
+	unpack "${A}"
+	cd "${S}"
+	patch <<EOF
+Index: emacs.eselect
+187c187
+< 		true
+---
+> 		remove_symlinks || die -q "Couldn't remove existing symlink"
+212a213
+> 		remove_symlinks || die -q "Couldn't remove existing symlink"
+EOF
+}
+
 src_install() {
 	if use X; then
 		domenu emacs.desktop emacsclient.desktop

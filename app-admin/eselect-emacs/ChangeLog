@@ -3,6 +3,10 @@
 # $Header: $
 
   28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  -eselect-emacs-0.6.ebuild, +eselect-emacs-0.6-r1.ebuild:
+  Added remove_symlinks again.
+
+  28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +eselect-emacs-0.6.ebuild:
   Removed -n option in emacsclient.desktop. Call env-update to update the
   environment from env.d files. Brought do_set and do_update more in line.
