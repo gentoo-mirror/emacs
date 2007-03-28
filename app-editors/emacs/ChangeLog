@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r10.ebuild:
+  Rebuild Info dir file in pkg_postinst and pkg_postrm.
+
   26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-21.4-r10.ebuild:
   reworked the elog comments a bit about X fonts

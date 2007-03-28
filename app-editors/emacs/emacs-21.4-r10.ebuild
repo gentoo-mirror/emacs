@@ -161,6 +161,16 @@ pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${PV},}/site-lisp/subdirs.el
 
+	# Depending on the Portage version, the Info dir file is compressed
+	# or removed. It is only rebuilt by Portage if our directory is in
+	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
+	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
+	rm -f ${infodir}/dir{,.*}
+	for f in ${infodir}/*.info*; do
+		[[ ${f##*/} == *[0-9].info* ]] \
+			|| install-info --info-dir=${infodir} ${f} &>/dev/null
+	done
+
 	eselect emacs update --if-unset
 
 	if use nosendmail; then
@@ -179,5 +189,13 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	# Rebuild Info dir file.
+	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
+	rm -f ${infodir}/dir{,.*}
+	for f in ${infodir}/*.info*; do
+		[[ ${f##*/} == *[0-9].info* ]] \
+			|| install-info --info-dir=${infodir} ${f} &>/dev/null
+	done
+
 	eselect emacs update --if-unset
 }
