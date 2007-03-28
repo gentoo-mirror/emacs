@@ -242,5 +242,14 @@ pkg_postinst() {
 
 pkg_postrm() {
 	elisp-site-regen
+
+	# Rebuild Info dir file.
+	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
+	rm -f ${infodir}/dir{,.*}
+	for f in ${infodir}/*.info*; do
+		[[ ${f##*/} == *[0-9].info* ]] \
+			|| install-info --info-dir=${infodir} ${f} &>/dev/null
+	done
+
 	eselect emacs update --if-unset
 }
