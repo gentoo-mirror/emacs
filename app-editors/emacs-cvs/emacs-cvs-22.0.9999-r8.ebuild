@@ -214,11 +214,15 @@ pkg_postinst() {
 
 	elisp-site-regen
 
-	# ecompress from Portage 2.2.* does auto-compression
-	# which is not desired for the dir file, so remove it to
-	# let it be recreated
-	# A forthcoming Portage version will handle that itself
-	rm ${ROOT}/usr/share/info/emacs-${SLOT}/dir.* 2> /dev/null
+	# Depending on the Portage version, the Info dir file is compressed
+	# or removed. It is only rebuilt by Portage if our directory is in
+	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
+	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
+	rm -f ${infodir}/dir{,.*}
+	for f in ${infodir}/*.info*; do
+		[[ ${f##*/} == *[0-9].info* ]] \
+			|| install-info --info-dir=${infodir} ${f} &>/dev/null
+	done
 
 	eselect emacs update --if-unset
 
