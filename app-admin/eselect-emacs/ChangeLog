@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +eselect-emacs-0.7.ebuild:
+  Added man page.
+
   28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -eselect-emacs-0.6.ebuild, +eselect-emacs-0.6-r1.ebuild:
   Added remove_symlinks again.
