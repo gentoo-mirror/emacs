@@ -3,6 +3,10 @@
 # $Header: $
 
   29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  -files/eselect-emacs-0.3-r119.patch:
+  More cleanup.
+
+  29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -eselect-emacs-0.5.ebuild, -eselect-emacs-0.6-r1.ebuild:
   Clean up.
 
