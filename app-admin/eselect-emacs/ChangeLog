@@ -3,6 +3,10 @@
 # $Header: $
 
   29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  -eselect-emacs-0.5.ebuild, -eselect-emacs-0.6-r1.ebuild:
+  Clean up.
+
+  29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +eselect-emacs-0.7.ebuild:
   Added man page.
 
