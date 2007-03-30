@@ -196,22 +196,27 @@ EOF
 	dodoc BUGS ChangeLog README
 }
 
+emacs-infodir-rebuild() {
+	# Depending on the Portage version, the Info dir file is compressed
+	# or removed. It is only rebuilt by Portage if our directory is in
+	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
+
+	local infodir=/usr/share/info/emacs-${SLOT} f
+	einfo "Regenerating Info directory index in ${infodir} ..."
+	rm -f ${ROOT}${infodir}/dir{,.*}
+	for f in ${ROOT}${infodir}/*.info*; do
+		[[ ${f##*/} == *[0-9].info* ]] \
+			|| install-info --info-dir=${ROOT}${infodir} ${f} &>/dev/null
+	done
+	echo
+}
+
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 
 	elisp-site-regen
-
-	# Depending on the Portage version, the Info dir file is compressed
-	# or removed. It is only rebuilt by Portage if our directory is in
-	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
-	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
-	rm -f ${infodir}/dir{,.*}
-	for f in ${infodir}/*.info*; do
-		[[ ${f##*/} == *[0-9].info* ]] \
-			|| install-info --info-dir=${infodir} ${f} &>/dev/null
-	done
-
+	emacs-infodir-rebuild
 	eselect emacs update --if-unset
 
 	if use X; then
@@ -230,14 +235,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	elisp-site-regen
-
-	# Rebuild Info dir file.
-	local infodir=${ROOT}/usr/share/info/emacs-${SLOT} f
-	rm -f ${infodir}/dir{,.*}
-	for f in ${infodir}/*.info*; do
-		[[ ${f##*/} == *[0-9].info* ]] \
-			|| install-info --info-dir=${infodir} ${f} &>/dev/null
-	done
-
+	emacs-infodir-rebuild
 	eselect emacs update --if-unset
 }
