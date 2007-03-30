@@ -3,6 +3,11 @@
 # $Header: $
 
   30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +emacs-cvs-22.0.96-r1.ebuild, +emacs-cvs-22.0.9999-r9.ebuild,
+  +emacs-cvs-23.0.0-r5.ebuild:
+  RDEPEND on x11-misc/emacs-desktop.
+
+  30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
   emacs-cvs-23.0.0-r4.ebuild:
   Info rebuild moved to separate function.

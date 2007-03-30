@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +eselect-emacs-0.7-r1.ebuild:
+  Desktop and icon files moved to x11-misc/emacs-desktop.
+
   29 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -files/eselect-emacs-0.3-r119.patch:
   More cleanup.
