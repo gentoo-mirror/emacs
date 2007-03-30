@@ -46,7 +46,7 @@ DEPEND="virtual/libc
 	canna? ( app-i18n/canna )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
 	>=sys-libs/ncurses-5.2
-	>=app-admin/eselect-emacs-0.3-r1"
+	>=app-admin/eselect-emacs-0.7-r1"
 
 PDEPEND="app-xemacs/xemacs-base
 	mule? ( app-xemacs/mule-base )"
