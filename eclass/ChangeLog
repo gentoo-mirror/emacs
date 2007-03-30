@@ -13,3 +13,5 @@ elisp-common.eclass
 	16 Mar 2007
 	Updated documentation on site-lisp dir.
 	rephrased the fact that it is no real eclass
+	30 Mar 2007
+	Honour ${ROOT} in elisp-site-regen().
