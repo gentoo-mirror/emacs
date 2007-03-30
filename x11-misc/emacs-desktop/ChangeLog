@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-desktop-0.1.ebuild:
+  corrected HOMEPAGE
+
   30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +emacs-desktop-0.1.ebuild:
   Initial import.
