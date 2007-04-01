@@ -218,7 +218,13 @@ pkg_postinst() {
 
 	elisp-site-regen
 	emacs-infodir-rebuild
-	eselect emacs update --if-unset
+
+	if [[ "$(readlink ${ROOT}/usr/bin/emacs)" == emacs.emacs-${SLOT}* ]]; then
+		# transition from pre-eselect revision
+		eselect emacs set emacs-${SLOT}
+	else
+		eselect emacs update --if-unset
+	fi
 
 	if use X; then
 		elog "You need to install some fonts for Emacs. Under monolithic"

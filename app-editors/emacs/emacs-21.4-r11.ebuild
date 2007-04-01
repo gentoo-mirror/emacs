@@ -178,7 +178,13 @@ pkg_postinst() {
 		cp ${ROOT}/usr/share/emacs{/${PV},}/site-lisp/subdirs.el
 
 	emacs-infodir-rebuild
-	eselect emacs update --if-unset
+
+	if [[ "$(readlink ${ROOT}/usr/bin/emacs)" == emacs.emacs-${SLOT}* ]]; then
+		# transition from pre-eselect revision
+		eselect emacs set emacs-${SLOT}
+	else
+		eselect emacs update --if-unset
+	fi
 
 	if use nosendmail; then
 		elog "You disabled sendmail support for Emacs. If you later install a MTA"

@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r11.ebuild:
+  Test for previous symlink and eselect the same slot.
+
   30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> +emacs-21.4-r11.ebuild:
   RDEPEND on x11-misc/emacs-desktop.
 

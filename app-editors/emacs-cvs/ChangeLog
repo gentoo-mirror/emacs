@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96-r1.ebuild:
+  Test for previous symlink and eselect the same slot (only for non-masked
+  version; people using hardmasked versions should know what they are doing).
+
   30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +emacs-cvs-22.0.96-r1.ebuild, +emacs-cvs-22.0.9999-r9.ebuild,
   +emacs-cvs-23.0.0-r5.ebuild:
