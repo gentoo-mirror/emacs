@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/vm-robf
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  03 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +vm-robf-7.19.282.ebuild, +files/51vm-gentoo.el,
+  +files/vm-direntry-fix-gentoo.patch, +metadata.xml:
+  Initial import. Emacs VM mail reader subsystem with patches and addons from
+  Robert Widhopf-Fenk.
+
