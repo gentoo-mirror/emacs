@@ -3,6 +3,11 @@
 # $Header: $
 
   04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  vm-robf-7.19.282.ebuild, -files/vm-direntry-fix-gentoo.patch,
+  +files/vm-info-dir-fix-gentoo.patch:
+  Info dir category fixed.
+
+  04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   vm-robf-7.19.282.ebuild:
   Introduced bbdb USE flag and dependency.
 

@@ -32,7 +32,7 @@ src_unpack() {
 	cd "${S}"
 
 	epatch "${WORKDIR}/${VM_P}.patch" ### change to ${P}.patch
-	epatch "${FILESDIR}/vm-direntry-fix-gentoo.patch"
+	epatch "${FILESDIR}/vm-info-dir-fix-gentoo.patch"
 
 	# re-add missing file
 	echo "Version: \$""Id: ${VM_P}-devo-${PATCH_PV}\$" >,id
