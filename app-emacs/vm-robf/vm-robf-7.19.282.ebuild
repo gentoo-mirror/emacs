@@ -17,9 +17,11 @@ SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/vm/${VM_P}.tar.gz
 LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="bbdb"
 
-RDEPEND="!app-emacs/vm"
+DEPEND="!app-emacs/vm
+	bbdb? ( app-emacs/bbdb )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${VM_P}"
 
@@ -28,10 +30,19 @@ SITEFILE=51vm-gentoo.el
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+
 	epatch "${WORKDIR}/${VM_P}.patch" ### change to ${P}.patch
 	epatch "${FILESDIR}/vm-direntry-fix-gentoo.patch"
+
 	# re-add missing file
 	echo "Version: \$""Id: ${VM_P}-devo-${PATCH_PV}\$" >,id
+
+	if ! use bbdb; then
+		elog "Excluding vm-pcrisis.el since the \"bbdb\" USE flag is not set."
+		rm -f vm-pcrisis.*
+		sed -i -e '1,/^vm\.info:/s/ vm-pcrisis.info//' Makefile \
+			|| die "sed failed"
+	fi
 }
 
 src_compile() {

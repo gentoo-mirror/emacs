@@ -4,6 +4,10 @@
 
   04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   vm-robf-7.19.282.ebuild:
+  Introduced bbdb USE flag and dependency.
+
+  04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  vm-robf-7.19.282.ebuild:
   DESCRIPTION changed. Re-added file missing in distribution.
 
   04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
