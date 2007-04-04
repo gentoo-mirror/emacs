@@ -17,13 +17,14 @@ RESTRICT="$RESTRICT nostrip"
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 
 RDEPEND="sys-libs/ncurses
-	>=app-admin/eselect-emacs-0.3
+	>=app-admin/eselect-emacs-0.7-r1
 	sys-libs/zlib
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-sound/alsa-headers )
-	X? ( $X_DEPEND )
-	X? ( gif? ( media-libs/giflib )
+	X? ( $X_DEPEND
+		x11-misc/emacs-desktop
+		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
 		tiff? ( media-libs/tiff )
 		png? ( media-libs/libpng )
@@ -217,7 +218,13 @@ pkg_postinst() {
 
 	elisp-site-regen
 	emacs-infodir-rebuild
-	eselect emacs update --if-unset
+
+	if [[ "$(readlink ${ROOT}/usr/bin/emacs)" == emacs.emacs-${SLOT}* ]]; then
+		# transition from pre-eselect revision
+		eselect emacs set emacs-${SLOT}
+	else
+		eselect emacs update --if-unset
+	fi
 
 	if use X; then
 		elog "You need to install some fonts for Emacs. Under monolithic"
