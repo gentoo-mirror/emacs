@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  -eselect-emacs-0.7.ebuild, +eselect-emacs-0.8.ebuild:
+  Check for range of array in set_symlinks() and added error message.
+  Man page: fixed spelling, added copyright notice.
+
   30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +eselect-emacs-0.7-r1.ebuild:
   Desktop and icon files moved to x11-misc/emacs-desktop.
