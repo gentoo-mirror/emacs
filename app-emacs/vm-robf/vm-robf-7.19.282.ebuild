@@ -32,7 +32,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) all || die "compilation failed"
+	emake CC="$(tc-getCC)" || die "compilation failed"
 }
 
 src_install() {

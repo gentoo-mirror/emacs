@@ -4,7 +4,7 @@
 
   04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   vm-robf-7.19.282.ebuild:
-  Use emake instead of make. Unnecessary variables removed.
+  Use emake instead of make. Unnecessary variables removed. Added quoting.
 
   04 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
   vm-robf-7.19.282.ebuild:
