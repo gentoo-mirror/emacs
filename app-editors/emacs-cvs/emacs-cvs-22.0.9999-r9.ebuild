@@ -16,7 +16,7 @@ inherit autotools cvs elisp-common eutils flag-o-matic
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 SRC_URI=""
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-IUSE="alsa aqua gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
+IUSE="alsa gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 
 RESTRICT="${RESTRICT} nostrip"
 
@@ -76,7 +76,6 @@ src_unpack() {
 	# ALSA is detected and used even if not requested by the USE=alsa flag.	So remove the
 	# automagic check
 	use alsa || epatch "${FILESDIR}/${PN}-disable_alsa_detection.patch"
-	use ppc-macos && epatch "${FILESDIR}/emacs-cvs-21.3.50-nofink.diff"
 
 	eautoreconf
 }
@@ -136,20 +135,10 @@ src_compile() {
 	# system (has been reported upstream)
 	use hesiod && myconf="${myconf} --with-hesiod"
 
-	if use aqua; then
-		einfo "Configuring to build with Carbon Emacs"
-		econf \
-			--enable-carbon-app=/Applications/Gentoo \
-			--without-x \
-			$(use_with jpeg) $(use_with tiff) \
-			$(use_with gif) $(use_with png) $(use_with sound) \
-			 || die "econf carbon emacs failed"
-	else
-		econf \
-			--program-suffix=-emacs-${SLOT} \
-			--without-carbon \
-			${myconf} || die "econf emacs failed"
-	fi
+	econf \
+		--program-suffix=-emacs-${SLOT} \
+		--without-carbon \
+		${myconf} || die "econf emacs failed"
 
 	emake CC="$(tc-getCC) " bootstrap \
 		|| die "make bootstrap failed."
@@ -162,14 +151,6 @@ src_install () {
 		|| die "removing duplicate emacs executable failed"
 	mv "${D}"/usr/bin/emacs-emacs-${SLOT} "${D}"/usr/bin/emacs-${SLOT} \
 		|| die "moving Emacs executable failed"
-
-	if use aqua ; then
-		einfo "Installing Carbon Emacs..."
-		dodir /Applications/Gentoo/Emacs.app
-		pushd mac/Emacs.app
-		tar -chf - . | ( cd "${D}/Applications/Gentoo/Emacs.app"; tar -xf -)
-		popd
-	fi
 
 	# move info documentation to the correct place
 	einfo "Fixing info documentation..."
