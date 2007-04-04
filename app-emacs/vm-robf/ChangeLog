@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  vm-robf-7.19.282.ebuild:
+  added some die comments
+
   03 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +vm-robf-7.19.282.ebuild, +files/51vm-gentoo.el,
   +files/vm-direntry-fix-gentoo.patch, +metadata.xml:

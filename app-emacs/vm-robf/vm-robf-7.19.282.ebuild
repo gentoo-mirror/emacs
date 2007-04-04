@@ -37,7 +37,7 @@ src_compile() {
 		INFODIR="${D}/usr/share/info" \
 		LISPDIR="${D}/${SITELISP}/vm" \
 		PIXMAPDIR="${D}/usr/share/pixmaps/vm" \
-		all || die
+		all || die "compilation failed"
 }
 
 src_install() {
@@ -45,7 +45,7 @@ src_install() {
 		INFODIR="${D}/usr/share/info" \
 		LISPDIR="${D}/${SITELISP}/vm" \
 		PIXMAPDIR="${D}/usr/share/pixmaps/vm" \
-		install || die
+		install || die "installation failed"
 	elisp-install vm *.el
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc README ChangeLog oldChangeLog TODO #patchdoc.txt
