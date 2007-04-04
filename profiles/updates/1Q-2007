@@ -7,6 +7,7 @@ slotmove ~app-editors/emacs-cvs-22.0.93 22.0.93 22
 slotmove ~app-editors/emacs-cvs-22.0.94 22.0.94 22
 slotmove ~app-editors/emacs-cvs-22.0.95 22.0.95 22
 slotmove ~app-editors/emacs-cvs-22.0.96 22.0.96 22
+slotmove ~app-editors/emacs-cvs-22.0.97 22.0.97 22
 slotmove =app-editors/emacs-cvs-22.0.9999 22.0.93 22
 slotmove =app-editors/emacs-cvs-22.0.9999-r1 22.0.93 22
 slotmove =app-editors/emacs-cvs-22.0.9999-r2 22.0.93 22
