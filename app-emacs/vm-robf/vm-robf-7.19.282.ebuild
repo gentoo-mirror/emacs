@@ -32,12 +32,7 @@ src_unpack() {
 }
 
 src_compile() {
-	make CC=$(tc-getCC) \
-		prefix="${D}/usr" \
-		INFODIR="${D}/usr/share/info" \
-		LISPDIR="${D}/${SITELISP}/vm" \
-		PIXMAPDIR="${D}/usr/share/pixmaps/vm" \
-		all || die "compilation failed"
+	emake CC=$(tc-getCC) all || die "compilation failed"
 }
 
 src_install() {

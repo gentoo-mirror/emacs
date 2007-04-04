@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  vm-robf-7.19.282.ebuild:
+  Use emake instead of make. Unnecessary variables removed.
+
   04 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
   vm-robf-7.19.282.ebuild:
   added some die comments
