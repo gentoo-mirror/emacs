@@ -34,8 +34,10 @@ src_unpack() {
 	epatch "${WORKDIR}/${VM_P}.patch" ### change to ${P}.patch
 	epatch "${FILESDIR}/vm-info-dir-fix-gentoo.patch"
 
-	# re-add missing file
-	echo "Version: \$""Id: ${VM_P}-devo-${PATCH_PV}\$" >,id
+	# fix vm-version
+	sed -i -e '/^  (interactive)/,/^$/c\' \
+		-e "  (concat vm-version \"-devo-${PATCH_PV}\"))\n" vm-version.el \
+		|| die "sed failed"
 
 	if ! use bbdb; then
 		elog "Excluding vm-pcrisis.el since the \"bbdb\" USE flag is not set."
@@ -55,7 +57,7 @@ src_install() {
 		LISPDIR="${D}/${SITELISP}/vm" \
 		PIXMAPDIR="${D}/usr/share/pixmaps/vm" \
 		install || die "installation failed"
-	elisp-install vm *.el ,id
+	elisp-install vm *.el
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc README ChangeLog oldChangeLog TODO #patchdoc.txt
 }
