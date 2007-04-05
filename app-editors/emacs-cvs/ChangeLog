@@ -8,3 +8,227 @@
   remove all occurences of aqua and ppc-macos as support for that will be
   handled in Prefix overlay
 
+  04 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  -emacs-cvs-22.0.96.ebuild, +emacs-cvs-22.0.97.ebuild,
+  -emacs-cvs-22.0.9999-r8.ebuild, -emacs-cvs-23.0.0-r4.ebuild:
+  revision bump for newer pretest and clean up
+
+  01 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96-r1.ebuild:
+  Test for previous symlink and eselect the same slot (only for non-masked
+  version; people using hardmasked versions should know what they are doing).
+
+  30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  +emacs-cvs-22.0.96-r1.ebuild, +emacs-cvs-22.0.9999-r9.ebuild,
+  +emacs-cvs-23.0.0-r5.ebuild:
+  RDEPEND on x11-misc/emacs-desktop.
+
+  30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Info rebuild moved to separate function.
+
+  28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Rebuild Info dir file in pkg_postrm, too.
+
+  28 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Rebuild Info dir file in pkg_postinst.
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.9999-r8.ebuild:
+  readded the lost configuration line for USE=gtk
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  extending einfo output when GTK+ toolkit is chosen
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  added some echo commands to pretty-print the output
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  added some comments for the tricky lines
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  change variable name from MIN_VERSION to FULL_VERSION to emphasize its content
+
+  26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Don't quote wildcards.
+
+  26 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  -emacs-cvs-22.0.95-r3.ebuild, -emacs-cvs-22.0.9999-r7.ebuild,
+  -emacs-cvs-23.0.0-r3.ebuild:
+  clean up
+
+  22 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Determine MIN_VERSION automatically.
+
+  20 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Make version check in site-init file work.
+
+  20 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  Use /usr/share/emacs/${MIN_VERSION} instead of /usr/share/emacs/${SLOT}.
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  adding a comment to die command
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  SLOT behaviour should now work, part II
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.96.ebuild, emacs-cvs-22.0.9999-r8.ebuild,
+  emacs-cvs-23.0.0-r4.ebuild:
+  SLOT behaviour should now work
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-cvs-22.0.96.ebuild, +emacs-cvs-22.0.9999-r8.ebuild,
+  +emacs-cvs-23.0.0-r4.ebuild:
+  version bump to 22.0.96 and newer slotting settings...let's test it
+
+  20 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  -emacs-cvs-22.0.95-r2.ebuild, -emacs-cvs-22.0.9999-r6.ebuild,
+  -emacs-cvs-23.0.0-r2.ebuild:
+  clean up
+
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r3.ebuild, emacs-cvs-22.0.9999-r7.ebuild,
+  emacs-cvs-23.0.0-r3.ebuild:
+  fix a whitespace problem in elog message
+
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r3.ebuild, emacs-cvs-22.0.9999-r7.ebuild,
+  emacs-cvs-23.0.0-r3.ebuild:
+  remove colliding files between slots, see bug 169033
+
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r3.ebuild, emacs-cvs-22.0.9999-r7.ebuild,
+  emacs-cvs-23.0.0-r3.ebuild:
+  correct dependency on the latest eselect module version
+
+  19 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +emacs-cvs-22.0.95-r3.ebuild, +emacs-cvs-22.0.9999-r7.ebuild,
+  +emacs-cvs-23.0.0-r3.ebuild:
+  Don't install emacs executable twice; Suffix changed from .emacs- to -emacs-
+  for better compatibility with XEmacs.
+
+  18 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  removing a superfluos space
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  correct hesiod inclusion
+
+  16 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  emacs-cvs-22.0.95-r2.ebuild:
+  inherit alternatives no longer needed.
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  added hesiod USE flag which pulls in support for a different gethost method;
+  make xpm support depending on xpm USE flag; emacs-22 CVS also gets a
+  straighter naming for the CVS checkout
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  correct definition of ${S} so it can find its source files; pointed out by
+  Flameeyes on IRC
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  added ECVS_LOCALNAME to avoid checking out 22.0.9999 and 23.* in the same
+  distfiles directory
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  removed commented out code, so the ebuilds look a bit lighter
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  and again fixing eselect
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  removed font dependencies for X as at least one is pulled in by the X
+  server; adjusted comment on fonts a bit to clarify
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  alsa should not depend on sound USE flag in RDEPEND
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  request AUTOCONF 2.61 instead of latest. Fixes bug 170969, reported by
+  <lkml_ccc@yahoo.it>
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  finally fix eselect call
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  added xft to IUSE
+
+  16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  removed order or DEPEND and RDEPEND, so values are correctly inserted
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.0-r2.ebuild:
+  correct value of SLOT
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  metadata.xml added; keywords reverted to ~x86 only
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/digest-emacs-cvs-22.0.95-r2, +files/digest-emacs-cvs-22.0.9999-r6,
+  +files/digest-emacs-cvs-23.0.0-r2, +Manifest:
+  adding Manifest and digests, so users can really use it
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-22.0.95-r2.ebuild, emacs-cvs-22.0.9999-r6.ebuild,
+  emacs-cvs-23.0.0-r2.ebuild:
+  correct Header
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/emacs-cvs-21.3.50-nofink.diff, +emacs-cvs-22.0.95-r2.ebuild,
+  +emacs-cvs-22.0.9999-r6.ebuild, +emacs-cvs-23.0.0-r2.ebuild,
+  +files/emacs-cvs-disable_alsa_detection.patch,
+  +files/emacs-cvs-freebsd-sparc.patch:
+  adding first revisions: sound USE flag, also activated when USE=alsa is
+  alone; nls, gnome USE flags not necessary; alsa autodetection only activated
+  when USE=alsa; Most things put in RDEPEND, as spell USE flag; removed
+  symlink handling for binaries and man pages, all handled by eselect module
+  (new dependency); removed env.d file, handled by eselect module
