@@ -167,10 +167,10 @@ src_install () {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
-		cat >00emacs-cvs-${SLOT}-gentoo.el <<EOF
+		sed 's/^X//' >00emacs-cvs-${SLOT}-gentoo.el <<EOF
 (if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-	(setq find-function-C-source-directory
-	  "/usr/share/emacs/${FULL_VERSION}/src"))
+X    (setq find-function-C-source-directory
+X	  "/usr/share/emacs/${FULL_VERSION}/src"))
 EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
