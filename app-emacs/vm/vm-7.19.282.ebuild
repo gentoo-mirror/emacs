@@ -11,7 +11,8 @@ PATCH_PV=$(get_version_component_range 3- ${PV})
 DESCRIPTION="The VM mail reader for Emacs"
 HOMEPAGE="http://www.robf.de/Hacking/elisp/"
 SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/vm/${VM_P}.tar.gz
-	mirror://gentoo/${P}.patch.gz"
+	http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.patch.gz"
+#	mirror://gentoo/${P}.patch.gz"
 # patch taken from http://www.robf.de/Hacking/elisp/${VM_P}.patch.gz
 
 LICENSE="GPL-1"

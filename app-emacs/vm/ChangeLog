@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> vm-7.19.282.ebuild:
+  SRC_URI changed (for the time being).
+
   07 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   -vm-robf-7.19.282.ebuild, +vm-7.19.282.ebuild:
   Package moved from app-emacs/vm-robf to app-emacs/vm.
