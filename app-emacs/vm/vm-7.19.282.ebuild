@@ -8,7 +8,7 @@ VM_PV=$(get_version_component_range 1-2 ${PV})
 VM_P=vm-${VM_PV}
 PATCH_PV=$(get_version_component_range 3- ${PV})
 
-DESCRIPTION="The VM mail reader for Emacs (development version)"
+DESCRIPTION="The VM mail reader for Emacs"
 HOMEPAGE="http://www.robf.de/Hacking/elisp/"
 SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/vm/${VM_P}.tar.gz
 	mirror://gentoo/${P}.patch.gz"
