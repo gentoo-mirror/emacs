@@ -11,16 +11,15 @@ PATCH_PV=$(get_version_component_range 3- ${PV})
 DESCRIPTION="The VM mail reader for Emacs (development version)"
 HOMEPAGE="http://www.robf.de/Hacking/elisp/"
 SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/vm/${VM_P}.tar.gz
-	http://www.robf.de/Hacking/elisp/${VM_P}.patch.gz"
-### mirror://gentoo/${P}.patch.gz
+	mirror://gentoo/${P}.patch.gz"
+# patch taken from http://www.robf.de/Hacking/elisp/${VM_P}.patch.gz
 
 LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="bbdb"
 
-DEPEND="!app-emacs/vm
-	bbdb? ( app-emacs/bbdb )"
+DEPEND="bbdb? ( app-emacs/bbdb )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${VM_P}"
@@ -31,11 +30,11 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${WORKDIR}/${VM_P}.patch" ### change to ${P}.patch
+	epatch "${WORKDIR}/${P}.patch"
 	epatch "${FILESDIR}/vm-info-dir-fix-gentoo.patch"
 
 	# extract patchdoc.txt from leading text of patch
-	sed -e '1,/^\*\**$/d;/^diff\|^Bin/,$d' "${WORKDIR}/${VM_P}.patch" \
+	sed -e '1,/^\*\**$/d;/^diff\|^Bin/,$d' "${WORKDIR}/${P}.patch" \
 		>patchdoc.txt || die "sed failed"
 
 	# fix vm-version
