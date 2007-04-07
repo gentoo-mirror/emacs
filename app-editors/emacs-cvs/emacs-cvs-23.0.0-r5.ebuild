@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="23"
-LICENSE="GPL-2"
+LICENSE="GPL-2 FDL-1.2"
 KEYWORDS="~x86"
 S="${WORKDIR}/${ECVS_LOCALNAME}"
 

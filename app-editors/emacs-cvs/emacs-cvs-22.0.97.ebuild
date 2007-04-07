@@ -43,7 +43,7 @@ SLOT="22"
 # FULL_VERSION keeps the full version number, which is needed in order to
 # determine some path information correctly for copy/move operations later on
 FULL_VERSION="${PV}"
-LICENSE="GPL-2"
+LICENSE="GPL-2 FDL-1.2"
 KEYWORDS="~x86"
 S="${WORKDIR}/emacs-${PV}"
 

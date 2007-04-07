@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs"
 SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
 	leim? ( mirror://gnu/emacs/leim-${PV}.tar.gz )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 FDL-1.1"
 SLOT="21"
 KEYWORDS="~x86"
 IUSE="X Xaw3d leim lesstif motif nls nosendmail"
