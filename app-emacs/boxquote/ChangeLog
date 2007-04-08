@@ -3,6 +3,10 @@
 # $Header: $
 
   08 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  files/51boxquote-gentoo.el:
+  Use "load" instead of "require".
+
+  08 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   +files/51boxquote-gentoo.el, +boxquote-1.18-r1.ebuild, +metadata.xml:
   Copied from Portage tree. Generate autoload file for package initialisation.
 
