@@ -15,3 +15,7 @@ elisp-common.eclass
 	rephrased the fact that it is no real eclass
 	30 Mar 2007
 	Honour ${ROOT} in elisp-site-regen().
+
+  08 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  remove SRC_URI pointing to mkennedy's devspace
+

@@ -18,9 +18,6 @@ inherit elisp-common
 # keeps the local elisp mirror, since most app-emacs packages are
 # upstream as a single .el file.
 
-# Note: This is no longer necessary.
-
-SRC_URI="http://cvs.gentoo.org/~mkennedy/app-emacs/${P}.el.bz2"
 if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
 fi
