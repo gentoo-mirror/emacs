@@ -11,6 +11,14 @@
 # Emacs support for other than pure elisp packages is handled by
 # elisp-common.eclass where you won't have a dependency on Emacs
 # itself.  All elisp-* functions are documented there.
+#
+# Setting SIMPLE_ELISP=t in an ebuild means, that the package's source
+# is a single (in whatever way) compressed elisp file  with the file name
+# ${PN}-${PV}.	The consequences:
+#
+# 1.) ${S} is redefined
+# 2.) ${PN}-${PV}.el is moved to ${PN} in the system.
+#
 
 inherit elisp-common
 
