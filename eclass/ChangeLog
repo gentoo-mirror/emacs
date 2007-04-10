@@ -17,6 +17,9 @@ elisp-common.eclass
 	Honour ${ROOT} in elisp-site-regen().
 
   10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
+  Documentation change: use ${PN} in name of SITEFILE.
+
+  10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
   New function elisp_make_autoload_file().
 
   10 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:

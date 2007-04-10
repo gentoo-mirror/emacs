@@ -82,7 +82,7 @@
 #  Best practise is to define a SITEFILE variable in the global scope of your
 # ebuild (right after DEPEND e.g.):
 #
-#		SITEFILE=50binclock-gentoo.el
+#		SITEFILE=50${PN}-gentoo.el
 #
 #  Which is then installed by
 #
