@@ -7,7 +7,7 @@
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@kph.uni-mainz.de>
 #
-# This is not a real eclass, but it does provide emacs-related installation
+# This is not a real eclass, but it does provide Emacs-related installation
 # utilities.
 #
 # USAGE:
@@ -55,7 +55,7 @@
 #
 #  To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
-# code (have a look in the documentation of your software).	Normally this
+# code (have a look in the documentation of your software).  Normally this
 # would look like this:
 #
 #	;;; csv-mode site-lisp configuration
@@ -67,19 +67,19 @@
 #  If your Emacs support files are installed in a subdirectory of
 # /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
 # installed), you need to extend Emacs' load-path as shown in the first
-# non-comment.	The elisp-site-file-install() function of this eclass will
+# non-comment.  The elisp-site-file-install() function of this eclass will
 # replace "@SITELISP@" by the actual path.
 #  The next line tells Emacs to load the mode opening a file ending with
 # ".csv" and load functions depending on the context and needed features.
 # Be careful though.  Commands as "load-library" or "require" bloat the
 # editor as they are loaded on every startup.  When having a lot of Emacs
-# support files, users may be annoyed by the start-up time.	 Also avoid
-# keybindings as they might interfere with the user's settings.	 Give a hint
+# support files, users may be annoyed by the start-up time.  Also avoid
+# keybindings as they might interfere with the user's settings.  Give a hint
 # in pkg_postinst(), which should be enough.
 #  The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
-# two digits at the beginning define the loading order.	 So if you depend on
+# two digits at the beginning define the loading order.  So if you depend on
 # another Emacs package, your site file's number must be higher!
-#  Best practise is to define a SITEFILE variable in the global scope of your
+#  Best practice is to define a SITEFILE variable in the global scope of your
 # ebuild (right after DEPEND e.g.):
 #
 #		SITEFILE=50${PN}-gentoo.el
@@ -88,7 +88,7 @@
 #
 #		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 #
-# in src_install().	 If your subdirectory is not named ${PN}, give the
+# in src_install().  If your subdirectory is not named ${PN}, give the
 # differing name as second argument.
 #
 # pkg_postinst() / pkg_postrm() usage:
