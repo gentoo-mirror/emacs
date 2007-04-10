@@ -5,6 +5,7 @@
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
 # Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
+# Copyright 2007 Ulrich Mueller <ulm@kph.uni-mainz.de>
 #
 # This is not a real eclass, but it does provide emacs-related
 # installation utilities.
@@ -22,6 +23,10 @@
 #
 # to your DEPEND/RDEPEND line and use the functions provided
 # here to bring the files to the correct locations.
+#
+# src_compile() usage:
+# --------------------
+#
 #  An elisp file is compiled by the elisp-compile() function defined here
 # and simply takes the source files as arguments. In the case of
 # interdependent elisp files, you can use the elisp-comp() function
@@ -30,6 +35,14 @@
 #		elisp-compile *.el || die "elisp-compile failed!"
 # or
 #		elisp-comp *.el || die "elisp-comp failed!"
+#
+#  Function elisp-make-autoload-file() can be used to generate a file with
+# autoload definitions for the lisp functions. This requires that the lisp
+# source files contain magic ";;;###autoload" comments. See the Emacs Lisp
+# Reference Manual (node "Autoload") for a detailed explanation.
+#
+# src_install() usage:
+# --------------------
 #
 #  The resulting compiled files (.elc) should be put in a subdirectory of
 # /usr/share/emacs/site-lisp/ which is named after the first argument
@@ -77,6 +90,10 @@
 #
 # in src_install().	 If your subdirectory is not named ${PN}, give the differing
 # name as second argument.
+#
+# pkg_postinst() / pkg_postrm() usage:
+# ------------------------------------
+#
 #  After that you need to recreate the start-up file of Emacs after emerging
 # and unmerging by using
 #
@@ -94,6 +111,16 @@ SITELISP=/usr/share/emacs/site-lisp
 
 elisp-compile() {
 	/usr/bin/emacs --batch -f batch-byte-compile --no-site-file --no-init-file $*
+}
+
+elisp-make-autoload-file () {
+	local f="${1-${PN}-autoloads.el}"
+	shift
+	echo >"${f}"
+	emacs --batch -q --no-site-file \
+		--eval "(setq make-backup-files nil)" \
+		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
+		-f batch-update-autoloads "${@-.}"
 }
 
 elisp-install() {
