@@ -1,3 +1,22 @@
+
+  11 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
+  Document arguments of elisp-make-autoload-file().
+
+  10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
+  Documentation change: use ${PN} in name of SITEFILE.
+
+  10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
+  New function elisp_make_autoload_file().
+
+  10 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  document SIMPLE_ELISP
+
+  08 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  remove SRC_URI pointing to mkennedy's devspace
+
+  30 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
+  Honour ${ROOT} in elisp-site-regen().
+
 elisp.eclass
 	15 Mar 2007
 	documented
@@ -13,18 +32,3 @@ elisp-common.eclass
 	16 Mar 2007
 	Updated documentation on site-lisp dir.
 	rephrased the fact that it is no real eclass
-	30 Mar 2007
-	Honour ${ROOT} in elisp-site-regen().
-
-  10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
-  Documentation change: use ${PN} in name of SITEFILE.
-
-  10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
-  New function elisp_make_autoload_file().
-
-  10 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  document SIMPLE_ELISP
-
-  08 Apr 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  remove SRC_URI pointing to mkennedy's devspace
-

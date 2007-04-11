@@ -37,7 +37,9 @@
 #		elisp-comp *.el || die "elisp-comp failed!"
 #
 #  Function elisp-make-autoload-file() can be used to generate a file with
-# autoload definitions for the lisp functions. This requires that the elisp
+# autoload definitions for the lisp functions.  It takes the output file name
+# (default: "${PN}-autoloads.el") and a list of directories (default: working
+# directory) as its arguments.  Use of this function requires that the elisp
 # source files contain magic ";;;###autoload" comments. See the Emacs Lisp
 # Reference Manual (node "Autoload") for a detailed explanation.
 #
