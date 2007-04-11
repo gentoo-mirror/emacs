@@ -17,6 +17,6 @@ IUSE=""
 SITEFILE=51${PN}-gentoo.el
 
 src_compile() {
-	elisp-make-autoload-file || die "elisp-make-autoload-file failed"
 	elisp-compile *.el || die "elisp-compile failed"
+	elisp-make-autoload-file || die "elisp-make-autoload-file failed"
 }

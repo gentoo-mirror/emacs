@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
+  boxquote-1.18-r1.ebuild:
+  Don't compile the autoload file.
+
   10 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
   boxquote-1.18-r1.ebuild:
   Use new function elisp-make-autoload-file of elisp-common.eclass.

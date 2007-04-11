@@ -17,6 +17,6 @@ SITEFILE=51${PN}-gentoo.el
 SIMPLE_ELISP=t
 
 src_compile() {
-	elisp-make-autoload-file || die "elisp-make-autoload-file failed"
 	elisp-compile *.el || die "elisp-compile failed"
+	elisp-make-autoload-file || die "elisp-make-autoload-file failed"
 }
