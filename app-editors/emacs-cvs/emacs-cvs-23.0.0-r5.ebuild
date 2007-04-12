@@ -191,7 +191,7 @@ EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
 
-	dodoc BUGS ChangeLog README
+	dodoc AUTHORS BUGS CONTRIBUTE ChangeLog MAINTAINERS README README.unicode
 }
 
 emacs-infodir-rebuild() {
