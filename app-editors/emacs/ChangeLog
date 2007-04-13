@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r11.ebuild:
+  Depend on x11-libs/libXaw unconditionally at build-time. Fixes bug #174453,
+  reported by Wulf Krueger <philantrop@gentoo.org>.
+
   07 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r11.ebuild:
   Include FDL-1.1 in LICENSE.
 

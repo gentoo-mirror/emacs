@@ -40,7 +40,8 @@ RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-0.7-r1"
 
 DEPEND="${RDEPEND}
-	X? ( x11-misc/xbitmaps )"
+	X? ( x11-misc/xbitmaps
+		!arm? ( x11-libs/libXaw ) )"
 
 PROVIDE="virtual/emacs virtual/editor"
 
