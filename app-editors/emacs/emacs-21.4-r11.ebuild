@@ -29,7 +29,6 @@ RDEPEND="sys-libs/ncurses
 			>=media-libs/libpng-1.2.1
 			!arm? (
 				Xaw3d? ( x11-libs/Xaw3d )
-				!Xaw3d? ( x11-libs/libXaw )
 				motif? (
 					lesstif? ( x11-libs/lesstif )
 				!lesstif? ( >=x11-libs/openmotif-2.1.30 ) )
@@ -41,7 +40,8 @@ RDEPEND="sys-libs/ncurses
 
 DEPEND="${RDEPEND}
 	X? ( x11-misc/xbitmaps
-		!arm? ( x11-libs/libXaw ) )"
+		!arm? (	Xaw3d? ( x11-libs/libXaw ) )
+	)"
 
 PROVIDE="virtual/emacs virtual/editor"
 

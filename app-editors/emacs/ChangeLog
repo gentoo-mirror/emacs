@@ -3,6 +3,9 @@
 # $Header: $
 
   13 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r11.ebuild:
+  libXaw only needed with USE=Xaw3d, bug #174453.
+
+  13 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> emacs-21.4-r11.ebuild:
   Depend on x11-libs/libXaw unconditionally at build-time. Fixes bug #174453,
   reported by Wulf Krueger <philantrop@gentoo.org>.
 
