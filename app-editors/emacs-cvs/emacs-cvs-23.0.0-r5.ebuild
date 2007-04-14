@@ -42,6 +42,7 @@ RDEPEND="sys-libs/ncurses
 		!motif? ( lesstif? ( x11-libs/lesstif ) ) )"
 
 DEPEND="${RDEPEND}
+	X? ( !gtk? ( Xaw3d? ( x11-libs/libXaw ) ) )
 	gzip-el? ( app-arch/gzip )"
 
 PROVIDE="virtual/emacs virtual/editor"
@@ -191,7 +192,8 @@ EOF
 		elisp-site-file-install 00emacs-cvs-${SLOT}-gentoo.el
 	fi
 
-	dodoc AUTHORS BUGS CONTRIBUTE ChangeLog MAINTAINERS README README.unicode
+	dodoc AUTHORS BUGS CONTRIBUTE MAINTAINERS README README.unicode \
+		|| die "dodoc failed"
 }
 
 emacs-infodir-rebuild() {
