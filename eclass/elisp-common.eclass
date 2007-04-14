@@ -5,7 +5,7 @@
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
 # Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
-# Copyright 2007 Ulrich Mueller <ulm@kph.uni-mainz.de>
+# Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
 # This is not a real eclass, but it does provide Emacs-related installation
 # utilities.

@@ -1,4 +1,7 @@
 
+  14 Apr 2007; Ulrich Mueller <ulm@gentoo.org> elisp-common.eclass:
+  E-mail address updated.
+
   11 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> elisp-common.eclass:
   Document arguments of elisp-make-autoload-file().
 
