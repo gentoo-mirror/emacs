@@ -6,8 +6,7 @@ inherit eutils fdo-mime
 
 DESCRIPTION="Desktop entry and icon for Emacs"
 HOMEPAGE="http://bugs.gentoo.org/"
-#SRC_URI="mirror://gentoo/${P}.tar.gz"
-SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

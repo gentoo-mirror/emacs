@@ -4,8 +4,7 @@
 
 DESCRIPTION="Manages the /usr/bin/emacs symlink"
 HOMEPAGE="http://www.gentoo.org/"
-#SRC_URI="mirror://gentoo/${P}.tar.bz2"
-SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

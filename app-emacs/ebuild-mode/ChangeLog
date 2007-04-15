@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Apr 2007; Ulrich Mueller <ulm@gentoo.org> ebuild-mode-1.5.ebuild:
+  SRC_URI changed to Gentoo mirrors.
+
   26 Mar 2007; Ulrich Mueller <ulm@kph.uni-mainz.de> ebuild-mode-1.5.ebuild:
   More appropriate HOMEPAGE.
 
