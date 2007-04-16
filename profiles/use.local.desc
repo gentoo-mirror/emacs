@@ -9,4 +9,3 @@
 
 app-editors/emacs-cvs:sound - Enable sound
 app-editors/emacs-cvs:hesiod - Enable support for hesiod
-app-emacs/vm:bbdb - Include support for app-emacs/bbdb
