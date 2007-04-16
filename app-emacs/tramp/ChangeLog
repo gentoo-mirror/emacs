@@ -1,8 +1,0 @@
-# ChangeLog for app-emacs/tramp
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  11 Apr 2007; Ulrich Mueller <ulm@kph.uni-mainz.de>
-  +files/51tramp-gentoo.el, +tramp-2.1.9-r1.ebuild, +metadata.xml:
-  Generate autoload file for package initialisation.
-
