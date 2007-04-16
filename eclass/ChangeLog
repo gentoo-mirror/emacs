@@ -1,4 +1,9 @@
 
+
+  16 Apr 2007; Christian Faulhammer <opfer@gentoo.org> -elisp.eclass,
+  -elisp-common.eclass:
+  removed as they are in Portage now
+
   14 Apr 2007; Ulrich Mueller <ulm@gentoo.org> elisp-common.eclass:
   E-mail address updated.
 
