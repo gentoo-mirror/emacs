@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/easypg
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/50easypg-gentoo.el, +easypg-0.0.11.ebuild, +metadata.xml:
+  initial commit, as request in bug 175028
+
