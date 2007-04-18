@@ -3,6 +3,10 @@
 # $Header: $
 
   18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50easypg-gentoo.el, easypg-0.0.11.ebuild, +easypg-0.0.11-r1.ebuild:
+  generate autoloads and use them
+
+  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/50easypg-gentoo.el, +easypg-0.0.11.ebuild, +metadata.xml:
   initial commit, as request in bug 175028
 

@@ -1,4 +1,4 @@
-s # Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,21 +15,21 @@ IUSE=""
 DEPEND="app-crypt/gnupg"
 RDEPEND="${DEPEND}"
 
-SITEFILE=50${PN}-gentoo.el
+SITEFILE=50easypg-gentoo.el
 
 S=${WORKDIR}/epg-${PV}
 
 src_compile(){
 	econf
 	emake||die "emake failed"
-	elisp-make-autoload-file lisp/${PN}-autoloads.el lisp \
+	elisp-make-autoload-file \
 		|| die "elisp-make-autoload-file failed"
 }
 
 src_install() {
 	einstall || die "einstall failed"
-	elisp-install ${PN} lisp/${PN}-autoloads.el
 
+	elisp-install ${PN} ${PN}-autoloads.el
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 }
 

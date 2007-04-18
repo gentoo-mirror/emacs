@@ -1,3 +1,4 @@
 ;; app-emacs/easypg site-lisp initialisation
 
-(require 'epa-setup)
+(add-to-list 'load-path "@SITELISP@")
+(load "easypg-autoloads" nil t)
