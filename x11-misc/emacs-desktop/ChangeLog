@@ -1,0 +1,7 @@
+# ChangeLog for x11-misc/emacs-desktop
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  19 Apr 2007; <ulm@gentoo.org> +emacs-desktop-0.2-r1.ebuild, +metadata.xml:
+  Copied from Portage. Use "official" icons.
+
