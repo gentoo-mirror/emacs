@@ -5,7 +5,7 @@
 inherit eutils fdo-mime gnome2-utils
 
 DESCRIPTION="Desktop entry and icon for Emacs"
-HOMEPAGE="http://www.gentoo.org/"
+HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
