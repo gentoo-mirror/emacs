@@ -15,7 +15,7 @@ IUSE=""
 
 src_install() {
 	domenu emacs.desktop emacsclient.desktop
-	doicon emacs_48.png
+	newicon emacs_48.png emacs.png
 	for i in 16 24 32 48; do
 		insinto /usr/share/icons/hicolor/${i}x${i}/apps
 		newins emacs_${i}.png emacs.png
