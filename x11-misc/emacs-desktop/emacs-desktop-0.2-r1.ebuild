@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86"
 IUSE=""
 
 src_install() {
+	local i
 	domenu emacs.desktop emacsclient.desktop
 	newicon emacs_48.png emacs.png
 	for i in 16 24 32 48; do

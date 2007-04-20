@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  20 Apr 2007; Ulrich Mueller <ulm@gentoo.org> emacs-desktop-0.2-r1.ebuild:
+  Declare i as local variable.
+
   19 Apr 2007; <ulm@gentoo.org> emacs-desktop-0.2-r1.ebuild:
   HOMEPAGE updated.
 
