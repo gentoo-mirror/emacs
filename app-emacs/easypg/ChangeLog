@@ -3,6 +3,10 @@
 # $Header: $
 
   23 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  easypg-0.0.11-r2.ebuild:
+  correct USE flag conditional RDEPEND
+
+  23 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
   +easypg-0.0.11-r2.ebuild:
   revision bump: added gnus support with an additional elisp file, including
   some elogs about usage; improved installation

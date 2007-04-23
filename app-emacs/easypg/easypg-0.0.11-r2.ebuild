@@ -17,14 +17,14 @@ IUSE="gnus"
 
 DEPEND="app-crypt/gnupg"
 RDEPEND="${DEPEND}
-	gnus? || ( app-emacs/gnus app-emacs/gnus-cvs )"
+	gnus? ( || ( app-emacs/gnus app-emacs/gnus-cvs ) )"
 
 SITEFILE=50${PN}-gentoo.el
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
 src_compile(){
-	econf 
+	econf
 	emake||die "emake failed"
 	elisp-make-autoload-file \
 		|| die "elisp-make-autoload-file failed"
