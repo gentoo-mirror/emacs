@@ -2,15 +2,8 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
-  -easypg-0.0.11.ebuild:
-  remove old version
-
-  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
-  files/50easypg-gentoo.el, easypg-0.0.11.ebuild, +easypg-0.0.11-r1.ebuild:
-  generate autoloads and use them
-
-  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
-  +files/50easypg-gentoo.el, +easypg-0.0.11.ebuild, +metadata.xml:
-  initial commit, as request in bug 175028
+  23 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  +easypg-0.0.11-r2.ebuild:
+  revision bump: added gnus support with an additional elisp file, including
+  some elogs about usage; improved installation
 
