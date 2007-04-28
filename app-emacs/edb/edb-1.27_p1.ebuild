@@ -4,7 +4,7 @@
 
 inherit elisp eutils versionator
 
-MY_PV=$(replace_version_separator 2 '')
+MY_PV=$(delete_version_separator 2)
 DESCRIPTION="EDB, The Emacs Database"
 HOMEPAGE="http://www.gnuvola.org/software/edb/"
 SRC_URI="http://www.gnuvola.org/software/edb/${PN}-${MY_PV}.tar.gz"
