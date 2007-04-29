@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Apr 2007; Ulrich Mueller <ulm@gentoo.org> easypg-0.0.11-r2.ebuild:
+  Run-time dependency changed to new virtual/gnus.
+
   23 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
   easypg-0.0.11-r2.ebuild:
   correct USE flag conditional RDEPEND

@@ -9,7 +9,8 @@ MY_PN=epg
 DESCRIPTION="GnuPG interface for Emacs"
 HOMEPAGE="http://www.easypg.org/"
 SRC_URI="mirror://sourceforge.jp/epg/24683/${MY_PN}-${PV}.tar.gz
-gnus? ( mirror://sourceforge.jp/epg/24683/pgg-${MY_PN}.el )"
+	gnus? ( mirror://sourceforge.jp/epg/24683/pgg-${MY_PN}.el )"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
@@ -17,7 +18,7 @@ IUSE="gnus"
 
 DEPEND="app-crypt/gnupg"
 RDEPEND="${DEPEND}
-	gnus? ( || ( app-emacs/gnus app-emacs/gnus-cvs ) )"
+	gnus? ( virtual/gnus )"
 
 SITEFILE=50${PN}-gentoo.el
 
@@ -25,7 +26,7 @@ S=${WORKDIR}/${MY_PN}-${PV}
 
 src_compile(){
 	econf
-	emake||die "emake failed"
+	emake || die "emake failed"
 	elisp-make-autoload-file \
 		|| die "elisp-make-autoload-file failed"
 
