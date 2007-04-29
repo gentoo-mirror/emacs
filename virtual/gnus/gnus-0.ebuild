@@ -15,4 +15,5 @@ DEPEND=""
 RDEPEND="|| (
 	>=app-editors/emacs-cvs-22.0.98
 	>=app-emacs/gnus-5.10.8
+	>=app-emacs/gnus-cvs-5.11
 	)"
