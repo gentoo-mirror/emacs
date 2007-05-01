@@ -1,9 +1,0 @@
-# ChangeLog for app-emacs/mode-compile
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  18 Apr 2007; Ulrich Mueller <ulm@gentoo.org>
-  +files/50mode-compile-gentoo.el, +mode-compile-2.29.ebuild, +metadata.xml:
-  Initial import. Ebuild submitted by Davide Angelocola
-  <davide.angelocola@tiscali.it>, bug #162061.
-
