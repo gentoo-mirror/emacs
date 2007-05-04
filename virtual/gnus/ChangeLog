@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 May 2007; Ulrich Mueller <ulm@gentoo.org> gnus-0.ebuild:
+  Depend on virtual/emacs, change ordering of alternatives.
+
   29 Apr 2007; Ulrich Mueller <ulm@gentoo.org> +gnus-0.ebuild,
   +metadata.xml:
   Initial import.
