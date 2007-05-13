@@ -183,13 +183,13 @@ src_install () {
 		doins src/*.[ch]
 		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<EOF
 (if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-X	 (setq find-function-C-source-directory
+X    (setq find-function-C-source-directory
 X	  "/usr/share/emacs/${FULL_VERSION}/src"))
 EOF
 		elisp-site-file-install 00${PN}-${SLOT}-gentoo.el
 	fi
 
-	dodoc AUTHORS BUGS CONTRIBUTE README || die "dodoc failed"
+	dodoc AUTHORS BUGS CONTRIBUTE README README.multi-tty || die "dodoc failed"
 }
 
 emacs-infodir-rebuild() {
