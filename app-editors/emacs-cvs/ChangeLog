@@ -1,0 +1,10 @@
+# ChangeLog for app-editors/emacs-cvs
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  13 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-cvs-Xaw3d-headers.patch, +emacs-cvs-23.0.51.ebuild,
+  +files/emacs-cvs-disable_alsa_detection.patch,
+  +files/emacs-cvs-freebsd-sparc.patch, +metadata.xml:
+  Live CVS ebuild for the Emacs multi-tty branch.
+
