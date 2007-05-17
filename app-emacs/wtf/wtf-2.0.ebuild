@@ -5,7 +5,7 @@
 inherit elisp
 
 DESCRIPTION="Look up conversational and computing acronyms"
-HOMEPAGE="http://centaur.maths.qmw.ac.uk/Emacs/"
+HOMEPAGE="http://mwolson.org/projects/"
 # taken from: http://mwolson.org/static/dist/wtf/wtf.el
 SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.el.bz2"
 
