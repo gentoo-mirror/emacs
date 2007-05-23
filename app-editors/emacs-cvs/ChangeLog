@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 May 2007; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.51.ebuild:
+  Sync ebuild with latest versions in Portage.
+
   13 May 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/emacs-cvs-Xaw3d-headers.patch, +emacs-cvs-23.0.51.ebuild,
   +files/emacs-cvs-disable_alsa_detection.patch,

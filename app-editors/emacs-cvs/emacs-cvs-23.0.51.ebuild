@@ -18,7 +18,7 @@ SRC_URI=""
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 IUSE="alsa gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 
-RESTRICT="${RESTRICT} nostrip"
+RESTRICT="strip"
 
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
 
@@ -28,7 +28,8 @@ RDEPEND="sys-libs/ncurses
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-sound/alsa-headers )
-	X? ( $X_DEPEND
+	X? (
+		$X_DEPEND
 		x11-misc/emacs-desktop
 		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
@@ -36,14 +37,19 @@ RDEPEND="sys-libs/ncurses
 		png? ( media-libs/libpng )
 		xpm? ( x11-libs/libXpm )
 		gtk? ( =x11-libs/gtk+-2* )
-		!gtk? ( Xaw3d? ( x11-libs/Xaw3d ) )
-		!Xaw3d? ( motif? ( x11-libs/openmotif ) )
-		!motif? ( lesstif? ( x11-libs/lesstif ) ) )"
+		!gtk? (
+			Xaw3d? ( x11-libs/Xaw3d )
+			!Xaw3d? (
+				motif? ( x11-libs/openmotif )
+				!motif? ( lesstif? ( x11-libs/lesstif ) )
+			)
+		)
+	)"
 
 DEPEND="${RDEPEND}
 	gzip-el? ( app-arch/gzip )"
 
-PROVIDE="virtual/emacs virtual/editor"
+PROVIDE="virtual/editor"
 
 SLOT="23-multi-tty"
 LICENSE="GPL-2 FDL-1.2"
@@ -55,8 +61,9 @@ src_unpack() {
 	cvs_src_unpack
 
 	cd "${S}"
-	# FULL_VERSION keeps the full version number, which is needed in order to
-	# determine some path information correctly for copy/move operations later on
+	# FULL_VERSION keeps the full version number, which is needed in
+	# order to determine some path information correctly for copy/move
+	# operations later on
 	FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
 		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 	[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
@@ -68,9 +75,11 @@ src_unpack() {
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
 		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"
 	if ! use gzip-el; then
-		# Emacs' build system automatically detects the gzip binary and compresses
-		# el files.	 We don't want that so confuse it with a wrong binary name
-		sed -i -e "s/ gzip/ PrEvEnTcOmPrEsSiOn/" configure.in || die "unable to sed configure.in"
+		# Emacs' build system automatically detects the gzip binary and
+		# compresses el files. We don't want that so confuse it with a
+		# wrong binary name
+		sed -i -e "s/ gzip/ PrEvEnTcOmPrEsSiOn/" configure.in \
+			|| die "unable to sed configure.in"
 	fi
 
 	epatch "${FILESDIR}/${PN}-Xaw3d-headers.patch"
@@ -103,9 +112,9 @@ src_compile() {
 	fi
 
 	if use X; then
-		# GTK+ is the default toolkit if USE=gtk is chosen with other possibilities.
-		# Emacs upstream thinks this should be standard policy on all
-		# distributions
+		# GTK+ is the default toolkit if USE=gtk is chosen with other
+		# possibilities. Emacs upstream thinks this should be standard
+		# policy on all distributions
 		myconf="${myconf} --with-x"
 		myconf="${myconf} $(use_with xpm)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
@@ -133,8 +142,8 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 
-	# $(use_with hesiod) is not possible, as "--without-hesiod" breaks the build
-	# system (has been reported upstream)
+	# $(use_with hesiod) is not possible, as "--without-hesiod" breaks
+	# the build system (has been reported upstream)
 	use hesiod && myconf="${myconf} --with-hesiod"
 
 	econf \
