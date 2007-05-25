@@ -10,29 +10,27 @@ SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="X"
+KEYWORDS="~x86"
+IUSE=""
 
-DEPEND="X? ( x11-libs/libXau )"
+DEPEND="|| ( ~app-emacs/gnuserv-programs-${PV}
+			>=app-editors/xemacs-21.4.20 )"
 RDEPEND="${DEPEND}"
 
 SITEFILE=50${PN}-gentoo.el
 
-src_compile() {
-	# bug #83112
-	unset LDFLAGS
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-path-xemacs.patch"
+}
 
-	econf $(use_enable X xauth) \
-		--x-includes=/usr/X11R6/include \
-		--x-libraries=/usr/X11R6/lib || die "econf failed"
-	emake || die "emake failed"
+src_compile() {
+	elisp-comp *.el || die "elisp-comp failed"
 }
 
 src_install() {
-	einstall man1dir="${D}"/usr/share/man/man1 || die "einstall failed"
-
 	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
-
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc ChangeLog README README.orig || die "dodoc failed"
 }
