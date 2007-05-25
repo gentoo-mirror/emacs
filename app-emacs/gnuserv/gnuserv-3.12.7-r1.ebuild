@@ -13,9 +13,9 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="|| ( ~app-emacs/gnuserv-programs-${PV}
+DEPEND=""
+RDEPEND="|| ( ~app-emacs/gnuserv-programs-${PV}
 			>=app-editors/xemacs-21.4.20 )"
-RDEPEND="${DEPEND}"
 
 SITEFILE=50${PN}-gentoo.el
 
