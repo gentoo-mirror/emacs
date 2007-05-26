@@ -1,6 +1,6 @@
 --- gnuserv.el~	2004-10-19 10:50:01.000000000 +0200
 +++ gnuserv.el	2007-05-25 22:49:01.000000000 +0200
-@@ -733,7 +733,15 @@
+@@ -733,7 +733,16 @@
    (unless leave-dead
      (setq gnuserv-string ""
  	  gnuserv-current-client nil)
@@ -8,6 +8,7 @@
 +    (let* ((process-connection-type t)
 +	   (xe-sysconf
 +	    ;; XEmacs uses i*86-pc-linux instead of i*86-pc-linux-gnu
++	    ;; Do they want to be deliberately incompatible? :-(
 +	    (replace-regexp-in-string
 +	     "^\\([^-]+-[^-]+-[^-]+\\)-.*$" "\\1" system-configuration))
 +	   (exec-path
