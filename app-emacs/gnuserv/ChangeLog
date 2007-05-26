@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  files/gnuserv-3.12.7-path-xemacs.patch:
+  Use system-configuration to determine exec-path in gnuserv.el.
+
   25 May 2007; Ulrich Mueller <ulm@gentoo.org> -gnuserv-3.12.7.ebuild,
   +gnuserv-3.12.7-r1.ebuild, +files/gnuserv-3.12.7-path-xemacs.patch:
   Binary programs moved to new package app-emacs/gnuserv-programs to avoid
