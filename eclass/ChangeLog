@@ -1,4 +1,9 @@
 
+
+  28 May 2007; Hans de Graaff <graaff@gentoo.org> +xemacs-elisp.class
+  +xemacs-elisp-common.eclass:
+  Add initial XEmacs elisp classes modelled after the Emacs elisp classes.
+
   16 Apr 2007; Christian Faulhammer <opfer@gentoo.org> -elisp.eclass,
   -elisp-common.eclass:
   removed as they are in Portage now
