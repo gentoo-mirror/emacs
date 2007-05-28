@@ -1,0 +1,22 @@
+--- ebuild-mode.el.~1~	2007-03-22 16:02:50.000000000 +0100
++++ ebuild-mode.el	2007-05-28 21:12:20.000000000 +0200
+@@ -75,6 +75,7 @@
+   (save-excursion
+     (tabify (point-min) (point-max))))
+ 
++;;;###autoload
+ (define-derived-mode ebuild-mode shell-script-mode "Ebuild"
+   "Major mode for Portage .ebuild and .eclass files."
+   (font-lock-add-keywords 'ebuild-mode
+@@ -148,6 +149,11 @@
+ (define-ebuild-mode-command "\C-cef" "fetch")
+ (define-ebuild-mode-command "\C-ceu" "unpack")
+ 
++;;;###autoload(add-to-list 'auto-mode-list '("\\.ebuild$" . ebuild-mode))
++;;;###autoload(add-to-list 'auto-mode-list '("\\.eclass$" . ebuild-mode))
++;;;###autoload(add-to-list 'auto-mode-list '("\\.eselect$" . ebuild-mode))
++
++
+ (provide 'ebuild-mode)
+ 
+ ;;; ebuild-mode.el ends here
