@@ -19,16 +19,14 @@
 # 1.) ${S} is redefined
 # 2.) ${PN}-${PV}.el is moved to ${PN} in the system.
 #
-# Experimental code (this needs the new Emacs system with the eselect module
-# stable everywhere:
+# Experimental code for proper new style virtual dependencies:
 # VERSION=${NEED_EMACS:-21}
 #
 # DEPEND="virtual/emacs-${VERSION}"
 #
-# pkg_setup() {
-#	typeset -i CURRENT_EMACS=$(eselect emacs show |grep emacs|sed -e 's/emacs-//g')
+# elisp_pkg_setup() {
 #
-#	if [ ${VERSION} -lt ${CURRENT_EMACS} ]; then
+#	if [ "0$(elisp-emacs-major-version)" -lt "${VERSION}" ]; then
 #		die "You need at least Emacs ${VERSION} as your current active version.
 #		 Use \"eselect emacs set emacs-${VERSION}\" to do so."
 #	fi
