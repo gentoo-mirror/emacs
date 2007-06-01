@@ -1,4 +1,13 @@
+ # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header:  $
 
+  01 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass,
+  +elisp-common.eclass:
+  provide elisp-emacs-major-version() in -common.eclass and use it in in
+  pkg_setup
+
+  31 May 2007; Christian Faulhammer <opfer@gentoo.org> +elisp.eclass:
+  add inactive code for new style dependencies on virtual/emacs
 
   28 May 2007; Hans de Graaff <graaff@gentoo.org> +xemacs-elisp.class
   +xemacs-elisp-common.eclass:
