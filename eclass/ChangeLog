@@ -1,6 +1,9 @@
  # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  01 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass:
+  Depend on >=virtual/emacs-${VERSION} since this is what we later ask for.
+
   01 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass,
   +elisp-common.eclass:
   provide elisp-emacs-major-version() in -common.eclass and use it in in

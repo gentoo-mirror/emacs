@@ -22,7 +22,7 @@
 # Experimental code for proper new style virtual dependencies:
 # VERSION=${NEED_EMACS:-21}
 #
-# DEPEND="virtual/emacs-${VERSION}"
+# DEPEND=">=virtual/emacs-${VERSION}"
 #
 # elisp_pkg_setup() {
 #
