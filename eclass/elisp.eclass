@@ -19,24 +19,29 @@
 # 1.) ${S} is redefined
 # 2.) ${PN}-${PV}.el is moved to ${PN} in the system.
 #
-# Experimental code for proper new style virtual dependencies:
-# VERSION=${NEED_EMACS:-21}
-#
-# DEPEND=">=virtual/emacs-${VERSION}"
-#
-# elisp_pkg_setup() {
-#
-#	if [ "0$(elisp-emacs-major-version)" -lt "${VERSION}" ]; then
-#		die "You need at least Emacs ${VERSION} as your current active version.
-#		 Use \"eselect emacs set emacs-${VERSION}\" to do so."
-#	fi
-# }
-
 inherit elisp-common
 
 # SRC_URI should be set to wherever the primary app-emacs/ maintainer
 # keeps the local elisp mirror, since most app-emacs packages are
 # upstream as a single .el file.
+
+## Experimental code for proper new style virtual dependencies:
+VERSION=${NEED_EMACS:-21}
+#
+# DEPEND=">=virtual/emacs-${VERSION}"
+#
+elisp_pkg_setup() {
+	if ! [ -z ${VERSION//[0-9][0-9]/} ]; then
+		die "Please specify a proper Emacs version number.	It has to be two digits!"
+	fi
+	echo "Given Emacs version number: " ${VERSION} #for debugging
+#	if [ "0$(elisp-emacs-major-version)" -lt "${VERSION}" ]; then
+#		die "You need at least Emacs ${VERSION} as your current active version.
+#		 Use \"eselect emacs set emacs-${VERSION}\" to do so."
+#	fi
+}
+
+##
 
 if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
@@ -70,4 +75,4 @@ elisp_pkg_postrm() {
 	elisp-site-regen
 }
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm pkg_setup
