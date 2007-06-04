@@ -106,11 +106,10 @@
 #			elisp-site-regen
 #		}
 #
-# Miscellaneous functions
-# -------------------------------------
+# Miscellaneous functions:
+# ------------------------
 #
-# To receive the major version of the currently active Emacs, use
-# elisp-emacs-major-version().
+# elisp-emacs-version() outputs the version of the currently active Emacs.
 #
 #  As always: Feel free to contact Emacs team through emacs@gentoo.org if you
 # have problems, suggestions or questions.
