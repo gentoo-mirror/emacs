@@ -122,10 +122,11 @@ elisp-compile() {
 	/usr/bin/emacs --batch -f batch-byte-compile --no-site-file --no-init-file $*
 }
 
-elisp-emacs-major-version() {
-	# return major version of current active Emacs
-	# version 18 and prior don't give back anything!
-	emacs -batch -q -no-site-file -eval "(princ emacs-major-version)"
+elisp-emacs-version() {
+	# Output version of currently active Emacs.
+	# The following will work for at least versions 18-22.
+	echo "(princ emacs-version)" >"${T}"/emacs-version.el
+	/usr/bin/emacs -batch -q -no-site-file -l "${T}"/emacs-version.el
 }
 
 elisp-make-autoload-file () {
@@ -147,9 +148,9 @@ elisp-make-autoload-file () {
 	;; End:
 	;;; ${f##*/} ends here
 	EOF
-	emacs --batch -q --no-site-file \
-		--eval "(setq make-backup-files nil)" \
-		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
+	/usr/bin/emacs -batch -q -no-site-file \
+		-eval "(setq make-backup-files nil)" \
+		-eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
 }
 

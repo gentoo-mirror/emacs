@@ -19,8 +19,6 @@
 # 1.) ${S} is redefined
 # 2.) ${PN}-${PV}.el is moved to ${PN} in the system.
 #
-inherit elisp-common
-
 # SRC_URI should be set to wherever the primary app-emacs/ maintainer
 # keeps the local elisp mirror, since most app-emacs packages are
 # upstream as a single .el file.
@@ -29,19 +27,23 @@ inherit elisp-common
 # before inheriting elisp.eclass.  Set it to the major version your package uses
 # and the dependency will be adjusted. (still experimental, not working!)
 
+inherit elisp-common versionator
+
 ## Experimental code for proper new style virtual dependencies:
 VERSION=${NEED_EMACS:-21}
 #
 # DEPEND=">=virtual/emacs-${VERSION}"
 #
 elisp_pkg_setup() {
+	# Is this first test necessary? The case of < 2 digits will be caught
+	# by the version comparison anyway. - ulm
 	if ! [ -z ${VERSION//[0-9][0-9]/} ]; then
 		die "Please specify a proper Emacs version number.	It has to be two digits!"
 	fi
 	echo "Given Emacs version number: " ${VERSION} #for debugging
-#	if [ "0$(elisp-emacs-major-version)" -lt "${VERSION}" ]; then
+#	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then
 #		die "You need at least Emacs ${VERSION} as your current active version.
-#		 Use \"eselect emacs set emacs-${VERSION}\" to do so."
+#		Use \"eselect emacs\" to select the version."
 #	fi
 }
 

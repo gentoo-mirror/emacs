@@ -1,6 +1,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  04 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  New function elisp-emacs-version, works for all known Emacs versions.
+  Use versionator.eclass for comparison for versions.
+
   04 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass,
   elisp-common.eclass:
   added a comment about elisp-emacs-major-version() in the documentation;
