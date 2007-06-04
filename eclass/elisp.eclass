@@ -24,6 +24,10 @@ inherit elisp-common
 # SRC_URI should be set to wherever the primary app-emacs/ maintainer
 # keeps the local elisp mirror, since most app-emacs packages are
 # upstream as a single .el file.
+#
+# If you need anything different from Emacs 21, use the NEED_EMACS variable
+# before inheriting elisp.eclass.  Set it to the major version your package uses
+# and the dependency will be adjusted. (still experimental, not working!)
 
 ## Experimental code for proper new style virtual dependencies:
 VERSION=${NEED_EMACS:-21}
