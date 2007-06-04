@@ -1,5 +1,14 @@
- # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
+
+  04 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  added a comment about elisp-emacs-major-version() in the documentation;
+  documented NEED_EMACS a bit, added some more comments
+
+  04 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  export pkg_setup function; uncomment parts of it and add some checks and
+  output for testing
 
   01 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass:
   Depend on >=virtual/emacs-${VERSION} since this is what we later ask for.
