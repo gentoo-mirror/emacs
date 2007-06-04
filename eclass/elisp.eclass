@@ -13,8 +13,8 @@
 # itself.  All elisp-* functions are documented there.
 #
 # Setting SIMPLE_ELISP=t in an ebuild means, that the package's source
-# is a single (in whatever way) compressed elisp file  with the file name
-# ${PN}-${PV}.	The consequences:
+# is a single (in whatever way) compressed elisp file with the file name
+# ${PN}-${PV}.  The consequences:
 #
 # 1.) ${S} is redefined
 # 2.) ${PN}-${PV}.el is moved to ${PN} in the system.
@@ -38,7 +38,7 @@ elisp_pkg_setup() {
 	# Is this first test necessary? The case of < 2 digits will be caught
 	# by the version comparison anyway. - ulm
 	if ! [ -z ${VERSION//[0-9][0-9]/} ]; then
-		die "Please specify a proper Emacs version number.	It has to be two digits!"
+		die "Please specify a proper Emacs version number.  It has to be two digits!"
 	fi
 	echo "Given Emacs version number: " ${VERSION} #for debugging
 #	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then

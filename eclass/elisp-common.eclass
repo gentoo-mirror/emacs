@@ -13,7 +13,7 @@
 # USAGE:
 #
 # Usually you want to use this eclass for (optional) GNU Emacs support of
-# your package.	 This is NOT for XEmacs!
+# your package.  This is NOT for XEmacs!
 #  Many of the steps here are sometimes done by the build system of your
 # package (especially compilation), so this is mainly for standalone elisp
 # files you gathered from somewhere else.
@@ -37,9 +37,9 @@
 #		elisp-comp *.el || die "elisp-comp failed!"
 #
 #  Function elisp-make-autoload-file() can be used to generate a file with
-# autoload definitions for the lisp functions.	It takes the output file name
+# autoload definitions for the lisp functions.  It takes the output file name
 # (default: "${PN}-autoloads.el") and a list of directories (default: working
-# directory) as its arguments.	Use of this function requires that the elisp
+# directory) as its arguments.  Use of this function requires that the elisp
 # source files contain magic ";;;###autoload" comments. See the Emacs Lisp
 # Reference Manual (node "Autoload") for a detailed explanation.
 #
@@ -57,7 +57,7 @@
 #
 #  To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
-# code (have a look in the documentation of your software).	 Normally this
+# code (have a look in the documentation of your software).  Normally this
 # would look like this:
 #
 #	;;; csv-mode site-lisp configuration
@@ -69,17 +69,17 @@
 #  If your Emacs support files are installed in a subdirectory of
 # /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
 # installed), you need to extend Emacs' load-path as shown in the first
-# non-comment.	The elisp-site-file-install() function of this eclass will
+# non-comment.  The elisp-site-file-install() function of this eclass will
 # replace "@SITELISP@" by the actual path.
 #  The next line tells Emacs to load the mode opening a file ending with
 # ".csv" and load functions depending on the context and needed features.
 # Be careful though.  Commands as "load-library" or "require" bloat the
 # editor as they are loaded on every startup.  When having a lot of Emacs
-# support files, users may be annoyed by the start-up time.	 Also avoid
-# keybindings as they might interfere with the user's settings.	 Give a hint
+# support files, users may be annoyed by the start-up time.  Also avoid
+# keybindings as they might interfere with the user's settings.  Give a hint
 # in pkg_postinst(), which should be enough.
 #  The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
-# two digits at the beginning define the loading order.	 So if you depend on
+# two digits at the beginning define the loading order.  So if you depend on
 # another Emacs package, your site file's number must be higher!
 #  Best practice is to define a SITEFILE variable in the global scope of your
 # ebuild (right after DEPEND e.g.):
@@ -90,7 +90,7 @@
 #
 #		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 #
-# in src_install().	 If your subdirectory is not named ${PN}, give the
+# in src_install().  If your subdirectory is not named ${PN}, give the
 # differing name as second argument.
 #
 # pkg_postinst() / pkg_postrm() usage:
@@ -114,7 +114,6 @@
 #
 #  As always: Feel free to contact Emacs team through emacs@gentoo.org if you
 # have problems, suggestions or questions.
-
 
 SITELISP=/usr/share/emacs/site-lisp
 
@@ -183,7 +182,7 @@ EOF
 	for sf in ${ROOT}${SITELISP}/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		einfo "	 Adding $(basename ${sf}) ..."
+		einfo "  Adding $(basename ${sf}) ..."
 		cat "${sf}" >>${ROOT}${SITELISP}/site-gentoo.el
 	done
 	while read line; do einfo "${line}"; done <<EOF
