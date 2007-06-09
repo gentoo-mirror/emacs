@@ -14,10 +14,13 @@ WANT_AUTOMAKE="latest"
 inherit autotools cvs elisp-common eutils flag-o-matic
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
-SRC_URI=""
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-IUSE="alsa gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
+SRC_URI=""
 
+LICENSE="GPL-2 FDL-1.2"
+SLOT="23-multi-tty"
+KEYWORDS="~x86"
+IUSE="alsa gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 RESTRICT="strip"
 
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
@@ -40,8 +43,10 @@ RDEPEND="sys-libs/ncurses
 		!gtk? (
 			Xaw3d? ( x11-libs/Xaw3d )
 			!Xaw3d? (
-				motif? ( x11-libs/openmotif )
-				!motif? ( lesstif? ( x11-libs/lesstif ) )
+				motif? (
+					lesstif? ( x11-libs/lesstif )
+					!lesstif? ( x11-libs/openmotif )
+				)
 			)
 		)
 	)"
@@ -51,10 +56,8 @@ DEPEND="${RDEPEND}
 
 PROVIDE="virtual/editor"
 
-SLOT="23-multi-tty"
-LICENSE="GPL-2 FDL-1.2"
-KEYWORDS="~x86"
 S="${WORKDIR}/${ECVS_LOCALNAME}"
+
 EMACS_SUFFIX="emacs-${SLOT}"
 
 src_unpack() {
@@ -68,7 +71,10 @@ src_unpack() {
 		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 	[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 	echo
-	einfo "Emacs version number is ${FULL_VERSION}"
+	einfo "Emacs CVS branch: ${ECVS_BRANCH}"
+	einfo "Emacs version number: ${FULL_VERSION}"
+	[ "${FULL_VERSION}" = ${PV} ] \
+		|| die "Upstream version number changed to ${FULL_VERSION}"
 	echo
 
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
@@ -86,7 +92,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${PN}-freebsd-sparc.patch"
 	# ALSA is detected and used even if not requested by the USE=alsa flag.
 	# So remove the automagic check
-	use alsa || epatch "${FILESDIR}/${PN}-disable_alsa_detection.patch"
+	use alsa || epatch "${FILESDIR}/${PN}-disable_alsa_detection-r1.patch"
 
 	eautoreconf
 }
@@ -131,12 +137,12 @@ src_compile() {
 			myconf="${myconf} --without-gtk"
 		elif use motif; then
 			einfo "Configuring to build with motif toolkit support"
-			myconf="${myconf} --without-gtk"
 			myconf="${myconf} --with-x-toolkit=motif"
-		elif use lesstif; then
-			einfo "Configuring to build with lesstif toolkit support"
 			myconf="${myconf} --without-gtk"
-			myconf="${myconf} --with-x-toolkit=motif"
+		else
+			einfo "Configuring to build with no toolkit"
+			myconf="${myconf} --with-x-toolkit=no"
+			myconf="${myconf} --without-gtk"
 		fi
 	else
 		myconf="${myconf} --without-x"
@@ -148,11 +154,11 @@ src_compile() {
 
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
+		--infodir=/usr/share/info/${EMACS_SUFFIX} \
 		--without-carbon \
 		${myconf} || die "econf emacs failed"
 
-	emake CC="$(tc-getCC) " bootstrap \
-		|| die "make bootstrap failed."
+	emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
 }
 
 src_install () {
@@ -164,18 +170,13 @@ src_install () {
 		|| die "moving Emacs executable failed"
 
 	# move info documentation to the correct place
-	einfo "Fixing info documentation..."
-	dodir /usr/share/info/${EMACS_SUFFIX}
-	mv "${D}"/usr/share/info/{,${EMACS_SUFFIX}/}dir || die "mv dir failed"
-	for i in "${D}"/usr/share/info/*
-	do
-		if [ "${i##*/}" != ${EMACS_SUFFIX} ] ; then
-			mv ${i} ${i/info/info/${EMACS_SUFFIX}}.info
-		fi
+	einfo "Fixing info documentation ..."
+	for i in "${D}"/usr/share/info/${EMACS_SUFFIX}/*; do
+		mv ${i} ${i}.info || die "mv info failed"
 	done
 
 	# move man pages to the correct place
-	einfo "Fixing manpages..."
+	einfo "Fixing manpages ..."
 	for m in "${D}"/usr/share/man/man1/* ; do
 		mv ${m} ${m%.1}-${EMACS_SUFFIX}.1 || die "mv man failed"
 	done

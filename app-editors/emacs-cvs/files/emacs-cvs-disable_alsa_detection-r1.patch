@@ -1,6 +1,6 @@
---- /tmp/configure.in	2007-03-13 11:09:44.000000000 +0100
-+++ configure.in	2007-03-13 11:11:48.000000000 +0100
-@@ -1527,40 +1527,6 @@
+--- configure.in	22 May 2007 15:54:32 -0000	1.448
++++ configure.in	30 May 2007 13:19:39 -0000
+@@ -1590,39 +1590,6 @@
    # Emulation library used on NetBSD.
    AC_CHECK_LIB(ossaudio, _oss_ioctl, LIBSOUND=-lossaudio, LIBSOUND=)
    AC_SUBST(LIBSOUND)
@@ -36,7 +36,6 @@
 -    LIBSOUND="$LIBSOUND $ALSA_LIBS"
 -    CFLAGS_SOUND="$CFLAGS_SOUND $ALSA_CFLAGS"
 -    AC_DEFINE(HAVE_ALSA, 1, [Define to 1 if ALSA is available.])
--    AC_SUBST()
 -  fi
    AC_SUBST(CFLAGS_SOUND)
  fi
