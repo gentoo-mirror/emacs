@@ -31,9 +31,10 @@ inherit elisp-common versionator
 
 ## Experimental code for proper new style virtual dependencies:
 VERSION=${NEED_EMACS:-21}
-#
-# DEPEND=">=virtual/emacs-${VERSION}"
-#
+
+DEPEND=">=virtual/emacs-${VERSION}"
+#DEPEND="virtual/emacs"
+
 elisp_pkg_setup() {
 	# Is this first test necessary? The case of < 2 digits will be caught
 	# by the version comparison anyway. - ulm
@@ -41,10 +42,10 @@ elisp_pkg_setup() {
 		die "Please specify a proper Emacs version number.  It has to be two digits!"
 	fi
 	echo "Given Emacs version number: " ${VERSION} #for debugging
-#	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then
-#		die "You need at least Emacs ${VERSION} as your current active version.
-#		Use \"eselect emacs\" to select the version."
-#	fi
+	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then
+		die "You need at least Emacs ${VERSION} as your current active version.
+		Use \"eselect emacs\" to select the version."
+	fi
 }
 
 ##
@@ -53,7 +54,6 @@ if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
 fi
 
-DEPEND="virtual/emacs"
 IUSE=""
 
 elisp_src_unpack() {
