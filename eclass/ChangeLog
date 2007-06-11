@@ -1,6 +1,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  11 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  set free the ghosts of the NEED_EMACS depending scheme, for the new-style
+  Emacs virtuals
+
   04 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
   elisp-common.eclass:
   New function elisp-emacs-version, works for all known Emacs versions.
