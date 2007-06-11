@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/delicious
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  11 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  +delicious-0.3-r1.ebuild, +files/50delicious-gentoo.el, +metadata.xml:
+  use new-style virtual DEPEND; added a pair of quotes; did some pretty-printing
+
