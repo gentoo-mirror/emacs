@@ -35,21 +35,22 @@ VERSION=${NEED_EMACS:-21}
 DEPEND=">=virtual/emacs-${VERSION}"
 #DEPEND="virtual/emacs"
 
-elisp_pkg_setup() {
-	echo "Given Emacs version number: " ${VERSION} #for debugging
-	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then
-		die "You need at least Emacs ${VERSION} as your current active version.
-		Use \"eselect emacs\" to select the version."
-	fi
-}
-
-##
-
 if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
 fi
 
 IUSE=""
+
+elisp_pkg_setup() {
+	local emacs_version="$(elisp-emacs-version)"
+	echo "Given Emacs version number: " ${VERSION} #for debugging
+	echo "Activ Emacs version number: " ${emacs_version} # more debugging
+	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
+		eerror "This package needs at least Emacs ${VERSION}."
+		eerror "Use \"eselect emacs\" to select the active version."
+		die "Emacs version ${emacs_version} is too low."
+	fi
+}
 
 elisp_src_unpack() {
 	unpack ${A}
@@ -76,4 +77,5 @@ elisp_pkg_postrm() {
 	elisp-site-regen
 }
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm pkg_setup
+EXPORT_FUNCTIONS src_unpack src_compile src_install
+EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_postrm
