@@ -1,6 +1,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  12 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
+  remove an uncessary test
+
   11 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
   set free the ghosts of the NEED_EMACS depending scheme, for the new-style
   Emacs virtuals
