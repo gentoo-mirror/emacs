@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Jun 2007; Ulrich Mueller <ulm@gentoo.org> csharp-mode-0.6.0-r1.ebuild:
+  Test for required cc-mode version in pkg_setup().
+
   11 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/80csharp-mode-gentoo.el, +csharp-mode-0.6.0-r1.ebuild,
   +metadata.xml:

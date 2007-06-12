@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-NEED_EMACS=22
-
-inherit elisp
+inherit elisp versionator
 
 DESCRIPTION="A derived Emacs mode implementing most of the C# rules"
 HOMEPAGE="http://mfgames.com/linux/csharp-mode"
@@ -15,7 +13,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=""
+NEED_CCMODE=5.30
+
+DEPEND="|| ( >=app-emacs/cc-mode-${NEED_CCMODE} >=virtual/emacs-22 )"
+RDEPEND="${DEPEND}"
 
 SIMPLE_ELISP=t
 SITEFILE=80${PN}-gentoo.el
+
+pkg_setup () {
+	local HAVE_CCMODE
+	HAVE_CCMODE=$(emacs -batch -q \
+		-eval "(and (require 'cc-mode nil t) (princ c-version))")
+	if [ -z "${HAVE_CCMODE}" ] \
+		|| ! version_is_at_least "${NEED_CCMODE}" "${HAVE_CCMODE}"; then
+		eerror "This package needs at least cc-mode version ${NEED_CCMODE}."
+		eerror "You should either install package app-emacs/cc-mode,"
+		eerror "or use \"eselect emacs\" to select an Emacs version >= 22."
+		die "cc-mode version ${HAVE_CCMODE} is too low."
+	fi
+}
