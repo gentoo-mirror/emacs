@@ -36,11 +36,6 @@ DEPEND=">=virtual/emacs-${VERSION}"
 #DEPEND="virtual/emacs"
 
 elisp_pkg_setup() {
-	# Is this first test necessary? The case of < 2 digits will be caught
-	# by the version comparison anyway. - ulm
-	if ! [ -z ${VERSION//[0-9][0-9]/} ]; then
-		die "Please specify a proper Emacs version number.  It has to be two digits!"
-	fi
 	echo "Given Emacs version number: " ${VERSION} #for debugging
 	if ! version_is_at_least "${VERSION}" "$(elisp-emacs-version)"; then
 		die "You need at least Emacs ${VERSION} as your current active version.
