@@ -23,7 +23,8 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-gentoo.patch
-	sed -i -e "s%/usr/local/share/%/usr/share/doc/${PF}/%" ee.1
+	sed -i -e "s%/usr/local/share/%/usr/share/doc/${PF}/%" ee.1 \
+		|| die "sed failed"
 }
 
 src_compile() {
