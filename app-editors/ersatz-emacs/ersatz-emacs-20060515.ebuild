@@ -15,6 +15,7 @@ IUSE=""
 
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"
+PROVIDE="virtual/editor"
 
 S="${WORKDIR}"
 
