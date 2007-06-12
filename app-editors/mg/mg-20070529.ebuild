@@ -13,6 +13,7 @@ KEYWORDS="~x86"
 IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
+PROVIDE="virtual/editor"
 
 src_compile() {
 	# econf won't work, as this script does not accept any parameters
