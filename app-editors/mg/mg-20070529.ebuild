@@ -5,12 +5,12 @@
 DESCRIPTION="Micro GNU/emacs, a port from the BSDs"
 HOMEPAGE="http://www.xs4all.nl/~hanb/software/mg/"
 SRC_URI="http://www.xs4all.nl/~hanb/software/mg/${P}.tar.gz"
-LICENSE="public-domain"
 
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~x86"
-
 IUSE=""
+
 DEPEND=""
 RDEPEND="${DEPEND}"
 PROVIDE="virtual/editor"
