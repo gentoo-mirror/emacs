@@ -44,7 +44,7 @@ IUSE=""
 elisp_pkg_setup() {
 	local emacs_version="$(elisp-emacs-version)"
 	echo "Given Emacs version number: " ${VERSION} #for debugging
-	echo "Activ Emacs version number: " ${emacs_version} # more debugging
+	echo "Active Emacs version number: " ${emacs_version} # more debugging
 	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
 		eerror "This package needs at least Emacs ${VERSION}."
 		eerror "Use \"eselect emacs\" to select the active version."
