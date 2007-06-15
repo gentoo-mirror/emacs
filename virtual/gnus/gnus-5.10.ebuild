@@ -10,8 +10,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-#KEYWORDS="alpha amd64 ppc ~ppc64 sparc ~sparc-fbsd x86 ~x86-fbsd"
-KEYWORDS=""
+KEYWORDS="alpha amd64 ppc ~ppc64 sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="|| (
@@ -23,7 +22,8 @@ RDEPEND="|| (
 DEPEND="${RDEPEND}
 	virtual/emacs"
 
-# Are functions allowed in a virtual? PMS says (chapters 5 and 13):
+# Are functions allowed in a virtual? PMS (chapters 5 and 13) defines
+# virtual packages as follows:
 #  "A new-style virtual is a normal package in the virtual category
 #   which installs no files and uses its dependency requirements to
 #   pull in a 'provider'."

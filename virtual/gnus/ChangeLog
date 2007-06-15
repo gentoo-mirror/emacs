@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Jun 2007; Ulrich Mueller <ulm@gentoo.org> gnus-5.10.ebuild:
+  Unmask.
+
   13 Jun 2007; Ulrich Mueller <ulm@gentoo.org> +gnus-5.10.ebuild,
   +metadata.xml:
   Copied from portage tree. Check Gnus version in pkg_setup().
