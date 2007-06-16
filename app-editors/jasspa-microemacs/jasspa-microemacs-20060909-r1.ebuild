@@ -19,7 +19,8 @@ IUSE="nanoemacs X xpm"
 
 RDEPEND="sys-libs/ncurses
 	X? ( x11-libs/libX11
-		xpm? ( x11-libs/libXpm ) )"
+		xpm? ( x11-libs/libXpm ) )
+	nanoemacs? ( !app-editors/ne )"
 
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libXt

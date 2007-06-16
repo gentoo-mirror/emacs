@@ -4,7 +4,8 @@
 
   16 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
   jasspa-microemacs-20060909-r1.ebuild:
-  Simplify logic for xpm USE flag.
+  Simplify logic for xpm USE flag. Block against app-editors/ne since it also
+  installs /usr/bin/ne.
 
   14 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/20050505-ncurses.patch, +jasspa-microemacs-20060909-r1.ebuild,
