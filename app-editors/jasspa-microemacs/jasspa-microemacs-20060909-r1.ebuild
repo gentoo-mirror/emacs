@@ -43,11 +43,6 @@ src_unpack() {
 	# allow for some variables to be passed to make
 	sed -i '/make/s/\$OPTIONS/& CC="$CC" COPTIMISE="$CFLAGS" STRIP=true/' \
 		build || die "sed failed"
-
-	if ! use xpm; then
-		# prevent autodetection of xpm
-		sed -i 's/xpm.h/th15d035n0t3x15t/' build || die "sed failed"
-	fi
 }
 
 src_compile() {
@@ -55,6 +50,7 @@ src_compile() {
 	local me="" type=c
 	use nanoemacs && me="-ne"
 	use X && type=cw
+	use xpm || export XPM_INCLUDE=.		# prevent Xpm autodetection
 
 	CC="$(tc-getCC)" ./build ${me} -t ${type} -p "${loadpath}" \
 		|| die "build failed"

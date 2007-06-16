@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
+  jasspa-microemacs-20060909-r1.ebuild:
+  Simplify logic for xpm USE flag.
+
   14 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/20050505-ncurses.patch, +jasspa-microemacs-20060909-r1.ebuild,
   +files/jasspa-microemacs.desktop, +metadata.xml:
