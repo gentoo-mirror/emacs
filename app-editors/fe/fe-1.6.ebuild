@@ -13,6 +13,7 @@ IUSE=""
 
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"
+PROVIDE="virtual/editor"
 
 src_install() {
 	emake \
