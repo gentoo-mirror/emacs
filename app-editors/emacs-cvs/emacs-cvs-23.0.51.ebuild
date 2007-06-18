@@ -88,7 +88,6 @@ src_unpack() {
 			|| die "unable to sed configure.in"
 	fi
 
-	epatch "${FILESDIR}/${PN}-Xaw3d-headers.patch"
 	epatch "${FILESDIR}/${PN}-freebsd-sparc.patch"
 	# ALSA is detected and used even if not requested by the USE=alsa flag.
 	# So remove the automagic check
