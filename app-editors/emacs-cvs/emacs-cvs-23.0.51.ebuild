@@ -20,7 +20,7 @@ SRC_URI=""
 LICENSE="GPL-2 FDL-1.2"
 SLOT="23-multi-tty"
 KEYWORDS="~x86"
-IUSE="alsa gif gtk gzip-el hesiod jpeg lesstif motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
+IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 RESTRICT="strip"
 
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
@@ -43,10 +43,7 @@ RDEPEND="sys-libs/ncurses
 		!gtk? (
 			Xaw3d? ( x11-libs/Xaw3d )
 			!Xaw3d? (
-				motif? (
-					lesstif? ( x11-libs/lesstif )
-					!lesstif? ( x11-libs/openmotif )
-				)
+				motif? ( virtual/motif )
 			)
 		)
 	)"

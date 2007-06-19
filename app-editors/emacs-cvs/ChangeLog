@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jun 2007; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.51.ebuild:
+  Depend on virtual/motif and remove lesstif USE flag.
+
   18 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   emacs-cvs-23.0.51.ebuild:
   remove Xawd3d patch (added upstream)
