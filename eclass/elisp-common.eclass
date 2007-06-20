@@ -179,17 +179,17 @@ elisp-site-regen() {
 ;;; -----------------------------------------------------------------
 
 EOF
-	for sf in ${ROOT}${SITELISP}/[0-9][0-9]*-gentoo.el
+	for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		sflist="${sflist} $(basename ${sf})"
+		sflist="${sflist} $(basename "${sf}")"
 		cat "${sf}" >>"${T}"/site-gentoo.el
 	done
 
-	if cmp -s ${ROOT}${SITELISP}/site-gentoo.el "${T}"/site-gentoo.el; then
+	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${T}"/site-gentoo.el; then
 		einfo "... no changes"
 	else
-		mv -b "${T}"/site-gentoo.el ${ROOT}${SITELISP}/site-gentoo.el
+		mv -b "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
 		einfo ""
 		for sf in ${sflist}; do
 			einfo "  Adding ${sf} ..."
