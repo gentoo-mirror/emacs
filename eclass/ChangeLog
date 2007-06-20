@@ -1,6 +1,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  20 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
+  elisp-common.eclass:
+  Generate output in elisp-site-regen only if site-gentoo.el has changed.
+
   20 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
   add --silent option to elisp_pkg_postrm()
 

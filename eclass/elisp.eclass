@@ -74,7 +74,7 @@ elisp_pkg_postinst() {
 }
 
 elisp_pkg_postrm() {
-	elisp-site-regen --silent
+	elisp-site-regen
 }
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
