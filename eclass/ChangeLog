@@ -1,6 +1,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  20 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
+  applied changes for a silent option for elisp-site-regen()
+
   12 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass:
   Add more explanations to error message. Function elisp_pkg_setup moved down
   to proper place.
