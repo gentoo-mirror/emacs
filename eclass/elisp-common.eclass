@@ -193,6 +193,9 @@ EOF
 	done
 
 	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${T}"/site-gentoo.el; then
+		# This is prevents outputting unnecessary text when there
+		# was actually no change
+		# A case is a remerge where we have doubled output
 		einfo "... no changes"
 	else
 		mv -b "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
