@@ -106,6 +106,12 @@
 #			elisp-site-regen
 #		}
 #
+#  When having optional Emacs support you should prefix above calls of
+# elisp-site-regen() with "use emacs &&".  Don't use "has_version app-editors/emacs"!
+# When unmerging the state of the USE flag emacs is taken from the package
+# database and not from the environment, so it is no problem when you unset
+# USE=emacs between merge und unmerge of a package.
+#
 # Miscellaneous functions:
 # ------------------------
 #
