@@ -2,6 +2,9 @@
 # $Header:  $
 
   21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
+  added a comment when the site-start generation hints reveal nearly no output
+
+  21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
   added hint why has_version is not needed in connection with
   elisp-site-regen() and pkg_postrm
 
