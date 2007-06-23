@@ -123,14 +123,14 @@
 SITELISP=/usr/share/emacs/site-lisp
 
 elisp-compile() {
-	/usr/bin/emacs --batch -f batch-byte-compile --no-site-file --no-init-file $*
+	/usr/bin/emacs -batch -q --no-site-file -f batch-byte-compile $*
 }
 
 elisp-emacs-version() {
 	# Output version of currently active Emacs.
 	# The following will work for at least versions 18-22.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
-	/usr/bin/emacs -batch -q -no-site-file -l "${T}"/emacs-version.el
+	/usr/bin/emacs -batch -q --no-site-file -l "${T}"/emacs-version.el
 }
 
 elisp-make-autoload-file () {
@@ -152,9 +152,9 @@ elisp-make-autoload-file () {
 	;; End:
 	;;; ${f##*/} ends here
 	EOF
-	/usr/bin/emacs -batch -q -no-site-file \
-		-eval "(setq make-backup-files nil)" \
-		-eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
+	/usr/bin/emacs -batch -q --no-site-file \
+		--eval "(setq make-backup-files nil)" \
+		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
 }
 
@@ -254,10 +254,13 @@ elisp-comp() {
 		cd ${tempdir}
 
 		echo "(add-to-list 'load-path \"../\")" > script
-		${EMACS} -batch -q --no-site-file --no-init-file -l script -f batch-byte-compile *.el
+		${EMACS} -batch -q --no-site-file --no-init-file -l script \
+			-f batch-byte-compile *.el
+		local status=$?
 		mv *.elc ..
 
 		cd ..
 		rm -fr ${tempdir}
+		return ${status}
 	fi
 }

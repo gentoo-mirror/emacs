@@ -1,6 +1,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header:  $
 
+  23 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp-common.eclass:
+  Check for Emacs return status in elisp-comp. Call Emacs with arguments
+  in their canonical form.
+
   21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
   added a comment when the site-start generation hints reveal nearly no output
 
