@@ -12,9 +12,9 @@
  (define-ebuild-mode-command "\C-cef" "fetch")
  (define-ebuild-mode-command "\C-ceu" "unpack")
  
-+;;;###autoload(add-to-list 'auto-mode-list '("\\.ebuild$" . ebuild-mode))
-+;;;###autoload(add-to-list 'auto-mode-list '("\\.eclass$" . ebuild-mode))
-+;;;###autoload(add-to-list 'auto-mode-list '("\\.eselect$" . ebuild-mode))
++;;;###autoload(add-to-list 'auto-mode-alist '("\\.ebuild$" . ebuild-mode))
++;;;###autoload(add-to-list 'auto-mode-alist '("\\.eclass$" . ebuild-mode))
++;;;###autoload(add-to-list 'auto-mode-alist '("\\.eselect$" . ebuild-mode))
 +
 +
  (provide 'ebuild-mode)
