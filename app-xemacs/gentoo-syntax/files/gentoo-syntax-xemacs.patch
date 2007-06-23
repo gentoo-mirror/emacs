@@ -1,0 +1,466 @@
+--- gentoo-syntax-1.6.el.orig	2007-06-23 08:51:26.000000000 +0200
++++ gentoo-syntax.el	2007-06-23 14:29:40.000000000 +0200
+@@ -1,6 +1,221 @@
+ ;;; gentoo-syntax.el --- a mode for editing .ebuild, .eclass and .eselect files.
+ 
+-;; Copyright (C) 2003-2007  Gentoo Foundation
++;;; Add font-lock-keywords functions needed for gentoo-syntax. This
++;;; could be done in better ways... Note that xemacs 21.5.28 and
++;;; better don't need this as this code has been added to
++;;; lisp/font-lock.el.
++
++
++(defvar font-lock-keywords-alist nil
++  "Alist of additional `font-lock-keywords' elements for major modes.
++
++Each element has the form (MODE KEYWORDS . HOW).
++`font-lock-set-defaults' adds the elements in the list KEYWORDS to
++`font-lock-keywords' when Font Lock is turned on in major mode MODE.
++
++If HOW is nil, KEYWORDS are added at the beginning of
++`font-lock-keywords'.  If it is `set', they are used to replace the
++value of `font-lock-keywords'.	If HOW is any other non-nil value,
++they are added at the end.
++
++This is normally set via `font-lock-add-keywords' and
++`font-lock-remove-keywords'.")
++
++(defvar font-lock-removed-keywords-alist nil
++  "Alist of `font-lock-keywords' elements to be removed for major modes.
++
++Each element has the form (MODE . KEYWORDS).  `font-lock-set-defaults'
++removes the elements in the list KEYWORDS from `font-lock-keywords'
++when Font Lock is turned on in major mode MODE.
++
++This is normally set via `font-lock-add-keywords' and
++`font-lock-remove-keywords'.")
++
++(defun font-lock-add-keywords (mode keywords &optional how)
++  "Add highlighting KEYWORDS for MODE.
++
++MODE should be a symbol, the major mode command name, such as `c-mode'
++or nil.	 If nil, highlighting keywords are added for the current buffer.
++KEYWORDS should be a list; see the variable `font-lock-keywords'.
++By default they are added at the beginning of the current highlighting list.
++If optional argument HOW is `set', they are used to replace the current
++highlighting list.	If HOW is any other non-nil value, they are added at the
++end of the current highlighting list.
++
++For example:
++
++ (font-lock-add-keywords 'c-mode
++  '((\"\\\\\\=<\\\\(FIXME\\\\):\" 1 font-lock-warning-face prepend)
++	(\"\\\\\\=<\\\\(and\\\\|or\\\\|not\\\\)\\\\\\=>\" . font-lock-keyword-face)))
++
++adds two fontification patterns for C mode, to fontify `FIXME:' words, even in
++comments, and to fontify `and', `or' and `not' words as keywords.
++
++The above procedure will only add the keywords for C mode, not
++for modes derived from C mode.	To add them for derived modes too,
++pass nil for MODE and add the call to c-mode-hook.
++
++For example:
++
++ (add-hook 'c-mode-hook
++  (lambda ()
++   (font-lock-add-keywords nil
++	'((\"\\\\\\=<\\\\(FIXME\\\\):\" 1 font-lock-warning-face prepend)
++	  (\"\\\\\\=<\\\\(and\\\\|or\\\\|not\\\\)\\\\\\=>\" .
++	   font-lock-keyword-face)))))
++
++The above procedure may fail to add keywords to derived modes if
++some involved major mode does not follow the standard conventions.
++File a bug report if this happens, so the major mode can be corrected.
++
++Note that some modes have specialized support for additional patterns, e.g.,
++see the variables `c-font-lock-extra-types', `c+-font-lock-extra-types',
++`objc-font-lock-extra-types' and `java-font-lock-extra-types'."
++  (cond (mode
++		 ;; If MODE is non-nil, add the KEYWORDS and HOW spec to
++		 ;; `font-lock-keywords-alist' so `font-lock-set-defaults' uses them.
++		 (let ((spec (cons keywords how)) cell)
++		   (if (setq cell (assq mode font-lock-keywords-alist))
++			   (if (eq how 'set)
++				   (setcdr cell (list spec))
++				 (setcdr cell (append (cdr cell) (list spec))))
++			 (push (list mode spec) font-lock-keywords-alist)))
++		 ;; Make sure that `font-lock-removed-keywords-alist' does not
++		 ;; contain the new keywords.
++		 (font-lock-update-removed-keyword-alist mode keywords how))
++		(t
++		 ;; Otherwise set or add the keywords now.
++		 ;; This is a no-op if it has been done already in this buffer
++		 ;; for the correct major mode.
++		 (font-lock-set-defaults)
++		 (let ((was-compiled (eq (car font-lock-keywords) t)))
++		   ;; Bring back the user-level (uncompiled) keywords.
++		   (if was-compiled
++			   (setq font-lock-keywords (cadr font-lock-keywords)))
++		   ;; Now modify or replace them.
++		   (if (eq how 'set)
++			   (setq font-lock-keywords keywords)
++			 (font-lock-remove-keywords nil keywords) ;to avoid duplicates
++			 (let ((old (if (eq (car-safe font-lock-keywords) t)
++							(cdr font-lock-keywords)
++						  font-lock-keywords)))
++			   (setq font-lock-keywords (if how
++											(append old keywords)
++										  (append keywords old)))))
++		   ;; If the keywords were compiled before, compile them again.
++		   (if was-compiled
++			   (setq font-lock-keywords
++					 (font-lock-compile-keywords font-lock-keywords)))))))
++
++(defun font-lock-update-removed-keyword-alist (mode keywords how)
++  "Update `font-lock-removed-keywords-alist' when adding new KEYWORDS to MODE."
++  ;; When font-lock is enabled first all keywords in the list
++  ;; `font-lock-keywords-alist' are added, then all keywords in the
++  ;; list `font-lock-removed-keywords-alist' are removed.  If a
++  ;; keyword was once added, removed, and then added again it must be
++  ;; removed from the removed-keywords list.  Otherwise the second add
++  ;; will not take effect.
++  (let ((cell (assq mode font-lock-removed-keywords-alist)))
++	(if cell
++		(if (eq how 'set)
++			;; A new set of keywords is defined.  Forget all about
++			;; our old keywords that should be removed.
++			(setq font-lock-removed-keywords-alist
++				  (delq cell font-lock-removed-keywords-alist))
++		  ;; Delete all previously removed keywords.
++		  (dolist (kword keywords)
++			(setcdr cell (delete kword (cdr cell))))
++		  ;; Delete the mode cell if empty.
++		  (if (null (cdr cell))
++			  (setq font-lock-removed-keywords-alist
++					(delq cell font-lock-removed-keywords-alist)))))))
++
++;; Written by Anders Lindgren <andersl at andersl.com>.
++;;
++;; Case study:
++;; (I)	The keywords are removed from a major mode.
++;;		In this case the keyword could be local (i.e. added earlier by
++;;		`font-lock-add-keywords'), global, or both.
++;;
++;;		(a) In the local case we remove the keywords from the variable
++;;			`font-lock-keywords-alist'.
++;;
++;;		(b) The actual global keywords are not known at this time.
++;;			All keywords are added to `font-lock-removed-keywords-alist',
++;;			when font-lock is enabled those keywords are removed.
++;;
++;;		Note that added keywords are taken out of the list of removed
++;;		keywords.  This ensure correct operation when the same keyword
++;;		is added and removed several times.
++;;
++;; (II) The keywords are removed from the current buffer.
++(defun font-lock-remove-keywords (mode keywords)
++  "Remove highlighting KEYWORDS for MODE.
++
++MODE should be a symbol, the major mode command name, such as `c-mode'
++or nil.	 If nil, highlighting keywords are removed for the current buffer.
++
++To make the removal apply to modes derived from MODE as well,
++pass nil for MODE and add the call to MODE-hook.  This may fail
++for some derived modes if some involved major mode does not
++follow the standard conventions.  File a bug report if this
++happens, so the major mode can be corrected."
++  (cond (mode
++		 ;; Remove one keyword at the time.
++		 (dolist (keyword keywords)
++		   (let ((top-cell (assq mode font-lock-keywords-alist)))
++			 ;; If MODE is non-nil, remove the KEYWORD from
++			 ;; `font-lock-keywords-alist'.
++			 (when top-cell
++			   (dolist (keyword-list-how-pair (cdr top-cell))
++				 ;; `keywords-list-how-pair' is a cons with a list of
++				 ;; keywords in the car top-cell and the original how
++				 ;; argument in the cdr top-cell.
++				 (setcar keyword-list-how-pair
++						 (delete keyword (car keyword-list-how-pair))))
++			   ;; Remove keyword list/how pair when the keyword list
++			   ;; is empty and how doesn't specify `set'.  (If it
++			   ;; should be deleted then previously deleted keywords
++			   ;; would appear again.)
++			   (let ((cell top-cell))
++				 (while (cdr cell)
++				   (if (and (null (car (car (cdr cell))))
++							(not (eq (cdr (car (cdr cell))) 'set)))
++					   (setcdr cell (cdr (cdr cell)))
++					 (setq cell (cdr cell)))))
++			   ;; Final cleanup, remove major mode cell if last keyword
++			   ;; was deleted.
++			   (if (null (cdr top-cell))
++				   (setq font-lock-keywords-alist
++						 (delq top-cell font-lock-keywords-alist))))
++			 ;; Remember the keyword in case it is not local.
++			 (let ((cell (assq mode font-lock-removed-keywords-alist)))
++			   (if cell
++				   (unless (member keyword (cdr cell))
++					 (nconc cell (list keyword)))
++				 (push (cons mode (list keyword))
++					   font-lock-removed-keywords-alist))))))
++		(t
++		 ;; Otherwise remove it immediately.
++		 (font-lock-set-defaults)
++		 (let ((was-compiled (eq (car font-lock-keywords) t)))
++		   ;; Bring back the user-level (uncompiled) keywords.
++		   (if was-compiled
++			   (setq font-lock-keywords (cadr font-lock-keywords)))
++
++		   ;; Edit them.
++		   (setq font-lock-keywords (copy-sequence font-lock-keywords))
++		   (dolist (keyword keywords)
++			 (setq font-lock-keywords
++				   (delete keyword font-lock-keywords)))
++
++		   ;; If the keywords were compiled before, compile them again.
++		   (if was-compiled
++			   (setq font-lock-keywords
++					 (font-lock-compile-keywords font-lock-keywords)))))))
++
++
++;; Copyright (C) 2003-2007	Gentoo Foundation
+ 
+ ;; Author: Matthew Kennedy <mkennedy@gentoo.org>
+ ;; Author: Diego Pettenò <flameeyes@gentoo.org>
+@@ -16,11 +231,11 @@
+ 
+ ;; This file is distributed in the hope that it will be useful,
+ ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+ ;; GNU General Public License for more details.
+ 
+ ;; You should have received a copy of the GNU General Public License
+-;; along with GNU Emacs; see the file COPYING.  If not, write to
++;; along with GNU Emacs; see the file COPYING.	If not, write to
+ ;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ ;; Boston, MA 02111-1307, USA.
+ 
+@@ -36,42 +251,42 @@
+ 
+ (defvar ebuild-mode-commands-0
+   '("best_version" "check_KV" "die" "diropts" "dobin" "docinto" "doconfd"
+-    "dodir" "dodoc" "doenvd" "doexe" "dohard" "dohtml" "doinfo" "doinitd"
+-    "doins" "dojar" "dolib" "dolib.a" "dolib.so" "doman" "domo" "dopython"
+-    "dosbin" "dosed" "dosym" "ebegin" "econf" "eend" "eerror" "einfo" "einfon"
+-    "einstall" "elog" "emake" "ewarn" "exeinto" "exeopts" "fowners" "fperms"
+-    "has" "has_version" "hasq" "hasv" "insinto" "insopts" "into" "keepdir"
+-    "libopts" "newbin" "newconfd" "newdoc" "newenvd" "newexe" "newinitd"
+-    "newins" "newlib.a" "newlib.so" "newman" "newsbin" "prepall" "prepalldocs"
+-    "prepallinfo" "prepallman" "prepallstrip" "unpack" "use" "use_enable"
+-    "use_with" "useq" "usev"))
++	"dodir" "dodoc" "doenvd" "doexe" "dohard" "dohtml" "doinfo" "doinitd"
++	"doins" "dojar" "dolib" "dolib.a" "dolib.so" "doman" "domo" "dopython"
++	"dosbin" "dosed" "dosym" "ebegin" "econf" "eend" "eerror" "einfo" "einfon"
++	"einstall" "elog" "emake" "ewarn" "exeinto" "exeopts" "fowners" "fperms"
++	"has" "has_version" "hasq" "hasv" "insinto" "insopts" "into" "keepdir"
++	"libopts" "newbin" "newconfd" "newdoc" "newenvd" "newexe" "newinitd"
++	"newins" "newlib.a" "newlib.so" "newman" "newsbin" "prepall" "prepalldocs"
++	"prepallinfo" "prepallman" "prepallstrip" "unpack" "use" "use_enable"
++	"use_with" "useq" "usev"))
+ 
+ (defvar ebuild-mode-commands-autotools
+   '("eautoreconf" "eaclocal" "_elibtoolize" "eautoconf" "eautoheader" "eautomake"))
+ 
+ (defvar ebuild-mode-commands-multilib
+   '("has_multilib_profile" "get_libdir" "get_multilibdir" "get_libdir_override"
+-    "get_abi_" "get_install_abis" "get_all_abis" "get_all_libdirs" "is_final_abi"
+-    "number_abis" "get_ml_incdir" "prep_ml_includes" "create_ml_includes"
+-    "get_libname" "multilib_env" "multilib_toolchain_setup"))
++	"get_abi_" "get_install_abis" "get_all_abis" "get_all_libdirs" "is_final_abi"
++	"number_abis" "get_ml_incdir" "prep_ml_includes" "create_ml_includes"
++	"get_libname" "multilib_env" "multilib_toolchain_setup"))
+ 
+ (defvar ebuild-mode-commands-java-ant-2
+   '("java-ant_bsfix_files" "java-ant_bsfix_one" "java-ant_rewrite-classpath"
+-    "java-ant_ignore-system-classes" "java-ant_xml-rewrite"))
++	"java-ant_ignore-system-classes" "java-ant_xml-rewrite"))
+ 
+ (defvar ebuild-mode-commands-java-utils-2
+   '("java-pkg_doexamples" "java-pkg_dojar" "java-pkg_regjar" "java-pkg_newjar"
+-    "java-pkg_addcp" "java-pkg_doso" "java-pkg_regso" "java-pkg_jarinto"
+-    "java-pkg_sointo" "java-pkg_dohtml" "java-pkg_dojavadoc" "java-pkg_dosrc"
+-    "java-pkg_dolauncher" "java-pkg_dowar" "java-pkg_jar-from" "java-pkg_jarfrom"
+-    "java-pkg_getjars" "java-pkg_getjar" "java-pkg_register-dependency"
+-    "java-pkg_register-optional-dependency" "java-pkg_register-environment-variable"
+-    "java-pkg_find-normal-jars" "java-pkg_ensure-no-bundled-jars"
+-    "java-pkg_get-source" "java-pkg_set-current-vm" "java-pkg_get-current-vm"
+-    "java-pkg_current-vm-matches" "java-pkg_get-target" "java-pkg_get-javac"
+-    "java-pkg_javac-args" "java-pkg_get-jni-cflags" "java-pkg_ensure-gcj"
+-    "java-pkg_ensure-test" "java-pkg_register-ant-task" "ejunit" "eant"
+-    "ejavac" "java-pkg_filter-compiler" "java-pkg_force-compiler" "use_doc"))
++	"java-pkg_addcp" "java-pkg_doso" "java-pkg_regso" "java-pkg_jarinto"
++	"java-pkg_sointo" "java-pkg_dohtml" "java-pkg_dojavadoc" "java-pkg_dosrc"
++	"java-pkg_dolauncher" "java-pkg_dowar" "java-pkg_jar-from" "java-pkg_jarfrom"
++	"java-pkg_getjars" "java-pkg_getjar" "java-pkg_register-dependency"
++	"java-pkg_register-optional-dependency" "java-pkg_register-environment-variable"
++	"java-pkg_find-normal-jars" "java-pkg_ensure-no-bundled-jars"
++	"java-pkg_get-source" "java-pkg_set-current-vm" "java-pkg_get-current-vm"
++	"java-pkg_current-vm-matches" "java-pkg_get-target" "java-pkg_get-javac"
++	"java-pkg_javac-args" "java-pkg_get-jni-cflags" "java-pkg_ensure-gcj"
++	"java-pkg_ensure-test" "java-pkg_register-ant-task" "ejunit" "eant"
++	"ejavac" "java-pkg_filter-compiler" "java-pkg_force-compiler" "use_doc"))
+ 
+ ;; contains functions from bash-completion, fdo-mime, gnome2-utils
+ (defvar ebuild-mode-commands-bash-completion
+@@ -82,28 +297,28 @@
+ 
+ (defvar ebuild-mode-commands-gnome2-utils
+   '("gnome2_gconf_install" "gconf_uninstall" "icon_cache_update" "gnome2_omf_fix"
+-    "gnome2_scrollkeeper_update"))
++	"gnome2_scrollkeeper_update"))
+ 
+ (defvar ebuild-mode-commands-alternatives
+   '("alternatives_pkg_postinst" "alternatives_pkg_postrm" "alternatives_makesym"
+-    "alternatives_auto_makesym"))
++	"alternatives_auto_makesym"))
+ 
+ (defvar ebuild-mode-commands-eutils
+   '("epause" "ebeep" "epatch" "emktemp" "enewuser" "enewgroup" "edos2unix"
+-    "make_desktop_entry" "validate_desktop_entries" "make_session_desktop"
+-    "domenu" "newmenu" "doicon" "newicon" "check_license" "cdrom_get_cds"
+-    "cdrom_load_next_cd" "strip-linguas" "set_arch_to_kernel" "set_arch_to_portage"
+-    "preserve_old_lib" "preserve_old_lib_notify" "built_with_use" "epunt_cxx"
+-    "make_wrapper"))
++	"make_desktop_entry" "validate_desktop_entries" "make_session_desktop"
++	"domenu" "newmenu" "doicon" "newicon" "check_license" "cdrom_get_cds"
++	"cdrom_load_next_cd" "strip-linguas" "set_arch_to_kernel" "set_arch_to_portage"
++	"preserve_old_lib" "preserve_old_lib_notify" "built_with_use" "epunt_cxx"
++	"make_wrapper"))
+ 
+ (defvar ebuild-mode-commands-pam
+   '("dopamd" "newpamd" "dopamsecurity" "newpamsecurity" "getpam_mod_dir"
+-    "dopammod" "newpammod" "pamd_mimic_system" "clean_pamd"))
++	"dopammod" "newpammod" "pamd_mimic_system" "clean_pamd"))
+ 
+ ;; commands for all Source Code Managment or other package system eclasses
+ (defvar ebuild-mode-commands-scm
+   '("cvs_src_unpack" "subversion_src_unpack" "git_src_unpack" "rpm_src_unpack"
+-    "mercurial_src_unpack"))
++	"mercurial_src_unpack"))
+ 
+ (defvar ebuild-mode-commands-sandbox
+   '("adddeny" "addpredict" "addread" "addwrite"))
+@@ -114,27 +329,27 @@
+ ;; functions from flag-o-matic eclass
+ (defvar ebuild-mode-commands-flag-o-matic
+   '("append-flags" "append-ldflags" "filter-flags" "filter-ldflags"
+-    "filter-mfpmath" "get-flag" "is-flag" "replace-cpu-flags" "replace-flags"
+-    "strip-flags" "strip-unsupported-flags"))
++	"filter-mfpmath" "get-flag" "is-flag" "replace-cpu-flags" "replace-flags"
++	"strip-flags" "strip-unsupported-flags"))
+ 
+ ;; functions from elisp-common eclass
+ (defvar ebuild-mode-commands-elisp
+   '("elisp-comp" "elisp-compile" "elisp-install" "elisp-site-file-install"
+-    "elisp-site-regen" "elisp-emacs-version" "elisp-make-autoload-file"))
++	"elisp-site-regen" "elisp-emacs-version" "elisp-make-autoload-file"))
+ 
+ (defvar ebuild-mode-commands-versionator
+   '("get_all_version_components" "get_version_components" "get_major_version"
+-    "get_version_component_range" "get_after_major_version" "replace_version_separator"
+-    "replace_all_version_separators" "delete_version_separator" "delete_all_version_separators"
+-    "get_version_component_count" "get_last_version_component_index" "version_is_at_least"
+-    "version_compare" "version_sort"))
++	"get_version_component_range" "get_after_major_version" "replace_version_separator"
++	"replace_all_version_separators" "delete_version_separator" "delete_all_version_separators"
++	"get_version_component_count" "get_last_version_component_index" "version_is_at_least"
++	"version_compare" "version_sort"))
+ 
+ (defun ebuild-mode-make-keywords-list (keywords-list face
+-						     &optional prefix suffix)
++							 &optional prefix suffix)
+   ;; based on `generic-make-keywords-list' from generic.el
+   ;; Note: XEmacs doesn't have generic.el
+   (unless (listp keywords-list)
+-    (error "Keywords argument must be a list of strings"))
++	(error "Keywords argument must be a list of strings"))
+   (cons (concat prefix "\\<"
+ 		(regexp-opt keywords-list t)
+ 		"\\>" suffix)
+@@ -165,12 +380,13 @@
+ (defun ebuild-mode-tabify ()
+   ;; tabify whitespace only at beginning of lines
+   (let ((tabify-regexp "^\t* [ \t]+"))
+-    (tabify (point-min) (point-max))))
++	(tabify (point-min) (point-max))))
+ 
++;;;###autoload
+ (define-derived-mode ebuild-mode shell-script-mode "Ebuild"
+   "Major mode for Portage .ebuild and .eclass files."
+-  (add-hook 'write-contents-hooks 'delete-trailing-whitespace t t)
+-  (add-hook 'write-contents-hooks 'ebuild-mode-tabify t t)
++  ;(add-hook 'write-contents-hooks 'delete-trailing-whitespace t t)
++  ;(add-hook 'write-contents-hooks 'ebuild-mode-tabify t t)
+   (setq tab-width 4)
+   (setq indent-tabs-mode t)
+   ;; run user-defined hooks
+@@ -190,8 +406,8 @@
+ 
+ (defvar eselect-mode-commands-eselect
+   '("highlight" "highlight_warning" "space" "write_error_msg"
+-    "write_kv_list_entry" "write_list_start" "write_numbered_list"
+-    "write_numbered_list_entry"))
++	"write_kv_list_entry" "write_list_start" "write_numbered_list"
++	"write_numbered_list_entry"))
+ 
+ (defvar eselect-mode-commands-5
+   '("is_number" "canonicalise"))
+@@ -209,16 +425,16 @@
+ 
+ (define-derived-mode eselect-mode shell-script-mode "Eselect"
+   "Major mode for .eselect files."
+-  (add-hook 'write-contents-hooks 'delete-trailing-whitespace t t)
+-  (add-hook 'write-contents-hooks 'ebuild-mode-tabify t t)
++  ;(add-hook 'write-contents-hooks 'delete-trailing-whitespace t t)
++  ;(add-hook 'write-contents-hooks 'ebuild-mode-tabify t t)
+   (setq tab-width 4)
+   (setq indent-tabs-mode t))
+ 
+ (defvar ebuild-commands-alist
+   (mapcar 'list
+ 	  '("help" "setup" "fetch" "digest" "manifest" "unpack" "compile"
+-	    "test" "preinst" "postinst" "install" "qmerge" "merge"
+-	    "prerm" "postrm" "unmerge" "config" "package" "rpm" "clean")))
++		"test" "preinst" "postinst" "install" "qmerge" "merge"
++		"prerm" "postrm" "unmerge" "config" "package" "rpm" "clean")))
+ 
+ (defun ebuild-run-command (command)
+   "Run ebuild COMMAND, with output to a compilation buffer."
+@@ -226,26 +442,29 @@
+    (list (completing-read
+ 	  "Run ebuild command: " ebuild-commands-alist nil t)))
+   (or (assoc command ebuild-commands-alist)
+-      (error "Ebuild command \"%s\" not known" command))
++	  (error "Ebuild command \"%s\" not known" command))
+   (let ((process-environment
+ 	 (cons "NOCOLOR=true" process-environment))
+ 	;;(compilation-mode-hook
+ 	;; (lambda () (setq truncate-lines t)))
+ 	(compilation-buffer-name-function
+ 	 (list 'lambda '(mode) (concat "*ebuild " command "*"))))
+-    (compile (format "ebuild %s %s" buffer-file-name command))))
++	(compile (format "ebuild %s %s" buffer-file-name command))))
+ 
+ (define-key ebuild-mode-map "\C-ce" 'ebuild-run-command)
+ 
+ (and (< emacs-major-version 22)
+-     ;; make TAB key work
+-     (defadvice sh-must-be-shell-mode
+-       (around ebuild-mode-sh-must-be-shell-mode activate)
+-       (or (memq major-mode '(ebuild-mode eselect-mode))
++	 ;; make TAB key work
++	 (defadvice sh-must-be-shell-mode
++	   (around ebuild-mode-sh-must-be-shell-mode activate)
++	   (or (memq major-mode '(ebuild-mode eselect-mode))
+ 	   ad-do-it)))
+ 
++;;;###autoload
+ (add-to-list 'auto-mode-alist '("\\.ebuild\\'" . ebuild-mode))
++;;;###autoload
+ (add-to-list 'auto-mode-alist '("\\.eclass\\'" . ebuild-mode))
++;;;###autoload
+ (add-to-list 'auto-mode-alist '("\\.eselect\\'" . eselect-mode))
+ 
+ (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
