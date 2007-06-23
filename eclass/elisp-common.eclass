@@ -239,28 +239,26 @@ elisp-comp() {
 # be compiled are made visible between themselves, in the event
 # they require or load-library one another.
 
-	if test $# = 0; then
-		exit 1
-	else
-		if test -z "${EMACS}" || test "${EMACS}" = "t"; then
+	test $# -gt 0 || return 1
+
+	if test -z "${EMACS}" || test "${EMACS}" = "t"; then
 		# Value of "t" means we are running in a shell under Emacs.
 		# Just assume Emacs is called "emacs".
-			EMACS=emacs
-		fi
-
-		tempdir=elc.$$
-		mkdir ${tempdir}
-		cp $* ${tempdir}
-		cd ${tempdir}
-
-		echo "(add-to-list 'load-path \"../\")" > script
-		${EMACS} -batch -q --no-site-file --no-init-file -l script \
-			-f batch-byte-compile *.el
-		local status=$?
-		mv *.elc ..
-
-		cd ..
-		rm -fr ${tempdir}
-		return ${status}
+		EMACS=/usr/bin/emacs
 	fi
+
+	tempdir=elc.$$
+	mkdir ${tempdir}
+	cp $* ${tempdir}
+	cd ${tempdir}
+
+	echo "(add-to-list 'load-path \"../\")" > script
+	${EMACS} -batch -q --no-site-file --no-init-file -l script \
+		-f batch-byte-compile *.el
+	local status=$?
+	mv *.elc ..
+
+	cd ..
+	rm -fr ${tempdir}
+	return ${status}
 }

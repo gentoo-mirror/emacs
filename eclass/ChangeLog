@@ -2,8 +2,8 @@
 # $Header:  $
 
   23 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp-common.eclass:
-  Check for Emacs return status in elisp-comp. Call Emacs with arguments
-  in their canonical form.
+  Check for Emacs return status in elisp-comp. Test numerical condition and
+  return instead of exit. Call Emacs with arguments in their canonical form.
 
   21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
   added a comment when the site-start generation hints reveal nearly no output
