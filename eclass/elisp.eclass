@@ -23,6 +23,9 @@
 # keeps the local elisp mirror, since most app-emacs packages are
 # upstream as a single .el file.
 #
+# DOCS="blah.txt ChangeLog" is automatically used to install the given
+# files by dodoc in src_install()
+#
 # If you need anything different from Emacs 21, use the NEED_EMACS variable
 # before inheriting elisp.eclass.  Set it to the major version your package uses
 # and the dependency will be adjusted. (still experimental, not working!)
@@ -33,7 +36,6 @@ inherit elisp-common versionator
 VERSION=${NEED_EMACS:-21}
 
 DEPEND=">=virtual/emacs-${VERSION}"
-#DEPEND="virtual/emacs"
 
 if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
@@ -67,6 +69,7 @@ elisp_src_compile() {
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	[ -n "${DOCS}" ] && dodoc ${DOCS}
 }
 
 elisp_pkg_postinst() {
