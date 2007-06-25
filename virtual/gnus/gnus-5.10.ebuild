@@ -14,10 +14,10 @@ KEYWORDS="alpha amd64 ppc ~ppc64 sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="|| (
-			>=app-emacs/gnus-5.10.8
-			>=app-emacs/gnus-cvs-5.11
-			>=virtual/emacs-22
-		)"
+		>=app-emacs/gnus-5.10.8
+		>=app-emacs/gnus-cvs-5.11
+		>=virtual/emacs-22
+	)"
 
 DEPEND="${RDEPEND}
 	virtual/emacs"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup () {
 	local gvn=$(emacs -batch -q \
-		-eval "(and (require 'gnus nil t) (princ gnus-version-number))")
+		--eval "(and (require 'gnus nil t) (princ gnus-version-number))")
 
 	if [ "${gvn}" ] && version_is_at_least ${PV} "${gvn}"; then
 		einfo "Gnus version ${gvn} detected."
