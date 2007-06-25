@@ -24,7 +24,7 @@ SITEFILE=80${PN}-gentoo.el
 pkg_setup () {
 	local HAVE_CCMODE
 	HAVE_CCMODE=$(emacs -batch -q \
-		-eval "(and (require 'cc-mode nil t) (princ c-version))")
+		--eval "(and (require 'cc-mode nil t) (princ c-version))")
 	if [ -z "${HAVE_CCMODE}" ] \
 		|| ! version_is_at_least "${NEED_CCMODE}" "${HAVE_CCMODE}"; then
 		eerror "This package needs at least cc-mode version ${NEED_CCMODE}."
