@@ -138,6 +138,7 @@ elisp-make-autoload-file () {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
 	einfo "Generating autoload file for GNU Emacs ..."
+
 	sed 's/^FF/\f/' >"${f}" <<-EOF
 	;;; ${f##*/} --- autoloads for ${P}
 
@@ -154,6 +155,7 @@ elisp-make-autoload-file () {
 	;; End:
 	;;; ${f##*/} ends here
 	EOF
+
 	/usr/bin/emacs -batch -q --no-site-file \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \

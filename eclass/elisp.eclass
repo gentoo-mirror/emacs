@@ -32,21 +32,16 @@
 
 inherit elisp-common versionator
 
-## Experimental code for proper new style virtual dependencies:
 VERSION=${NEED_EMACS:-21}
-
 DEPEND=">=virtual/emacs-${VERSION}"
+IUSE=""
 
 if [ "${SIMPLE_ELISP}" = 't' ]; then
 	S="${WORKDIR}/"
 fi
 
-IUSE=""
-
 elisp_pkg_setup() {
 	local emacs_version="$(elisp-emacs-version)"
-	echo "Given Emacs version number: " ${VERSION} #for debugging
-	echo "Active Emacs version number: " ${emacs_version} # more debugging
 	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
 		eerror "This package needs at least Emacs ${VERSION}."
 		eerror "Use \"eselect emacs\" to select the active version."
@@ -56,20 +51,21 @@ elisp_pkg_setup() {
 
 elisp_src_unpack() {
 	unpack ${A}
-	if [ "${SIMPLE_ELISP}" = 't' ]
-		then
+	if [ "${SIMPLE_ELISP}" = 't' ]; then
 		cd "${S}" && mv ${P}.el ${PN}.el
 	fi
 }
 
 elisp_src_compile() {
-	elisp-compile *.el || die
+	elisp-compile *.el || die "elisp-compile failed"
 }
 
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	[ -n "${DOCS}" ] && dodoc ${DOCS}
+	if [ -n "${DOCS}" ]; then
+		dodoc ${DOCS} || die "dodoc failed"
+	fi
 }
 
 elisp_pkg_postinst() {

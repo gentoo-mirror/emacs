@@ -1,5 +1,8 @@
 2007-06-25  Ulrich Mueller  <ulm@gentoo.org>
 
+	* elisp.eclass: Remove debugging code. Add some messages to die
+	commands.
+
 	* elisp-common.eclass (elisp-comp): Use pushd and popd.
 
 2007-06-25  Christian Faulhammer  <opfer@gentoo.org>
