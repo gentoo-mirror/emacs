@@ -19,18 +19,12 @@ SLOT="0"
 DEPEND="planner? ( app-emacs/planner )"
 
 SITEFILE=50${PN}-gentoo.el
+DOCS="README"
 
 S="${WORKDIR}/${PN}-el"
 
 src_compile() {
 	local FILES="delicioapi.el delicious.el"
 	use planner && FILES="${FILES} planner-delicious.el"
-	elisp-comp ${FILES} || die "elisp-comp fails"
-}
-
-src_install() {
-	cd "${S}"
-	dodoc README
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-comp ${FILES} || die "elisp-comp failed"
 }
