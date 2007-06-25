@@ -232,16 +232,16 @@ EOF
 # autotools.
 
 elisp-comp() {
-# Copyright 1995 Free Software Foundation, Inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1995.
-# This script byte-compiles all `.el' files which are part of its
-# arguments, using GNU Emacs, and put the resulting `.elc' files into
-# the current directory, so disregarding the original directories used
-# in `.el' arguments.
-#
-# This script manages in such a way that all Emacs LISP files to
-# be compiled are made visible between themselves, in the event
-# they require or load-library one another.
+	# Copyright 1995 Free Software Foundation, Inc.
+	# François Pinard <pinard@iro.umontreal.ca>, 1995.
+	# This script byte-compiles all `.el' files which are part of its
+	# arguments, using GNU Emacs, and put the resulting `.elc' files into
+	# the current directory, so disregarding the original directories used
+	# in `.el' arguments.
+	#
+	# This script manages in such a way that all Emacs LISP files to
+	# be compiled are made visible between themselves, in the event
+	# they require or load-library one another.
 
 	test $# -gt 0 || return 1
 
@@ -255,7 +255,7 @@ elisp-comp() {
 	tempdir=elc.$$
 	mkdir ${tempdir}
 	cp $* ${tempdir}
-	cd ${tempdir}
+	pushd ${tempdir}
 
 	echo "(add-to-list 'load-path \"../\")" > script
 	${EMACS} -batch -q --no-site-file --no-init-file -l script \
@@ -263,7 +263,7 @@ elisp-comp() {
 	local status=$?
 	mv *.elc ..
 
-	cd ..
+	popd
 	rm -fr ${tempdir}
 	return ${status}
 }
