@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ebuild-mode/ebuild-mode-1.2.ebuild,v 1.1 2006/12/15 04:05:23 mkennedy Exp $
+# $Header: $
 
 inherit xemacs-elisp eutils
 
@@ -15,8 +15,9 @@ IUSE=""
 RDEPEND=">=app-editors/xemacs-21.4.20-r4"
 
 src_unpack() {
-	unpack "${A}"
+	unpack ${A}
 	cd "${S}"
+	dodoc ChangeLog
 
 	# Patch up problems for xemacs: font-lock-keywords functions,
 	# autoloads, delete-trailing-whitespace.

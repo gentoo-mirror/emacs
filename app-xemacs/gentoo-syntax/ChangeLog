@@ -1,0 +1,9 @@
+# ChangeLog for app-xemacs/gentoo-syntax
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  25 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-syntax-1.6.ebuild:
+  install ChangeLog file; remove Header info; remove a pair of quotes which
+  could become dangerous
+
