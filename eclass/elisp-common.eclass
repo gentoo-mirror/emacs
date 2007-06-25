@@ -123,6 +123,7 @@
 SITELISP=/usr/share/emacs/site-lisp
 
 elisp-compile() {
+	einfo "Compiling GNU Emacs Elisp files ..."
 	/usr/bin/emacs -batch -q --no-site-file -f batch-byte-compile $*
 }
 
@@ -136,6 +137,7 @@ elisp-emacs-version() {
 elisp-make-autoload-file () {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
+	einfo "Generating autoload file for GNU Emacs ..."
 	sed 's/^FF/\f/' >"${f}" <<-EOF
 	;;; ${f##*/} --- autoloads for ${P}
 
@@ -160,6 +162,7 @@ elisp-make-autoload-file () {
 
 elisp-install() {
 	local subdir=$1
+	einfo "Installing Elisp files for GNU Emacs support ..."
 	dodir "${SITELISP}/${subdir}"
 	insinto "${SITELISP}/${subdir}"
 	shift
@@ -168,6 +171,7 @@ elisp-install() {
 
 elisp-site-file-install() {
 	local sitefile=$1 my_pn=${2:-${PN}}
+	einfo "Installing site initialisation file for GNU Emacs ..."
 	pushd "${S}"
 	cp ${sitefile} "${T}"
 	sed -i "s:@SITELISP@:${SITELISP}/${my_pn}:g" "${T}/$(basename ${sitefile})"
@@ -246,6 +250,7 @@ elisp-comp() {
 		# Just assume Emacs is called "emacs".
 		EMACS=/usr/bin/emacs
 	fi
+	einfo "Compiling GNU Emacs Elisp files ..."
 
 	tempdir=elc.$$
 	mkdir ${tempdir}
