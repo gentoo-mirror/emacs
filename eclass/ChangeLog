@@ -1,50 +1,61 @@
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header:  $
+2007-06-25  Christian Faulhammer  <opfer@gentoo.org>
 
-  24 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  added DOCS variable for src_install
+	* elisp-common.eclass: Add einfo output for all functions
 
-  23 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp-common.eclass:
-  Check for Emacs return status in elisp-comp. Test numerical condition and
-  return instead of exit. Call Emacs with arguments in their canonical form.
+2007-06-24  Christian Faulhammer  <opfer@gentoo.org>
 
-  21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
-  added a comment when the site-start generation hints reveal nearly no output
+	* elisp.eclass: added DOCS variable for src_install
 
-  21 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
-  added hint why has_version is not needed in connection with
-  elisp-site-regen() and pkg_postrm
+2007-06-23 Ulrich Mueller <ulm@gentoo.org>
 
-  20 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
-  elisp-common.eclass:
-  Generate output in elisp-site-regen only if site-gentoo.el has changed.
+	* elisp-common.eclass: Check for Emacs return status in
+	elisp-comp.  Test numerical condition and return instead of exit.
+	Call Emacs with arguments in their canonical form.
 
-  20 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  add --silent option to elisp_pkg_postrm()
+2007-06-21  Christian Faulhammer  <opfer@gentoo.org>
 
-  20 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp-common.eclass:
-  applied changes for a silent option for elisp-site-regen()
+	* elisp.eclass: added a comment when the site-start generation
+	hints reveal nearly no output
 
-  12 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass:
-  Add more explanations to error message. Function elisp_pkg_setup moved down
-  to proper place.
+	* elisp-common.eclass: added hint why has_version is not needed in
+	connection with elisp-site-regen() and pkg_postrm
 
-  12 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  remove an uncessary test
+2007-06-20  Ulrich Mueller <ulm@gentoo.org>
 
-  11 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
-  set free the ghosts of the NEED_EMACS depending scheme, for the new-style
-  Emacs virtuals
+	* elisp.eclass, elisp-common.eclass: Generate output in
+	elisp-site-regen only if site-gentoo.el has changed.
 
-  04 Jun 2007; Ulrich Mueller <ulm@gentoo.org> elisp.eclass,
-  elisp-common.eclass:
-  New function elisp-emacs-version, works for all known Emacs versions.
-  Use versionator.eclass for comparison of versions.
+2007-06-20  Christian Faulhammer  <opfer@gentoo.org>
 
-  04 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass,
-  elisp-common.eclass:
-  added a comment about elisp-emacs-major-version() in the documentation;
-  documented NEED_EMACS a bit, added some more comments
+	* elisp.eclass: add --silent option to elisp_pkg_postrm()
+
+	* elisp-common.eclass: applied changes for a silent option for elisp-site-regen()
+
+2007-06-12  Ulrich Mueller <ulm@gentoo.org>
+
+	* elisp.eclass: Add more explanations to error message. Function
+	elisp_pkg_setup moved down to proper place.
+
+2007-06-12  Christian Faulhammer <opfer@gentoo.org>
+
+	* elisp.eclass: remove an uncessary test
+
+2007-06-11  Christian Faulhammer <opfer@gentoo.org>
+
+	* elisp.eclass: set free the ghosts of the NEED_EMACS depending
+	scheme, for the new-style Emacs virtuals
+
+2007-06-04  Ulrich Mueller <ulm@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: New function
+	elisp-emacs-version, works for all known Emacs versions.  Use
+	versionator.eclass for comparison of versions.
+
+2007-06-11  Christian Faulhammer <opfer@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: added a comment about
+	elisp-emacs-major-version() in the documentation
+	documented NEED_EMACS a bit, added some more comments
 
   04 Jun 2007; Christian Faulhammer <opfer@gentoo.org> elisp.eclass:
   export pkg_setup function; uncomment parts of it and add some checks and
