@@ -17,7 +17,7 @@ RDEPEND=">=app-editors/xemacs-21.4.20-r4"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	dodoc ChangeLog
+	newdoc ChangeLog ChangeLog-XEmacs
 
 	# Patch up problems for xemacs: font-lock-keywords functions,
 	# autoloads, delete-trailing-whitespace.
