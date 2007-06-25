@@ -19,4 +19,5 @@ src_install() {
 	insinto /usr/share/eselect/modules
 	doins *.eselect || die "doins failed"
 	doman *.eselect.5 || die "doman failed"
+	dodoc ChangeLog || die "dodoc failed"
 }
