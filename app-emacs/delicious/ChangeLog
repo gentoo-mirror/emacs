@@ -3,7 +3,7 @@
 # $Header: $
 
   25 Jun 2007; Ulrich Mueller <ulm@gentoo.org> delicious-0.3-r1.ebuild:
-  Taks advantage of DOCS variable.
+  Take advantage of DOCS variable.
 
   11 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +delicious-0.3-r1.ebuild, +files/50delicious-gentoo.el, +metadata.xml:
