@@ -6,6 +6,7 @@ inherit elisp
 
 DESCRIPTION="ReStructuredText support for Emacs"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/reStructuredText"
+# taken from http://docutils.sourceforge.net/tools/editors/emacs/rst.el
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 
 LICENSE="GPL-2"
