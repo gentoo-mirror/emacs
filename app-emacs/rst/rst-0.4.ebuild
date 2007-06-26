@@ -6,13 +6,23 @@ inherit elisp
 
 DESCRIPTION="ReStructuredText support for Emacs"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/reStructuredText"
-# taken from http://docutils.sourceforge.net/tools/editors/emacs/rst.el
-SRC_URI="mirror://gentoo/${P}.el.bz2"
+SRC_URI="mirror://sourceforge/docutils/docutils-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el
+DOCS="README.txt"
+
+S="${WORKDIR}/docutils-${PV}/tools/editors/emacs"
+
+# this can be removed once the new elisp.eclass is in the tree
+src_install() {
+	elisp-install ${PN} *.el *.elc
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	if [ -n "${DOCS}" ]; then
+		dodoc ${DOCS} || die "dodoc failed"
+	fi
+}
