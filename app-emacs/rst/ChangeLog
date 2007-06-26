@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/rst
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  26 Jun 2007; Ulrich Mueller <ulm@gentoo.org> +files/50rst-gentoo.el,
+  +metadata.xml, +rst-20070329.ebuild:
+  Initial import. Supersedes app-emacs/rst-mode.
+
