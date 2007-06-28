@@ -19,6 +19,7 @@ DEPEND="sys-libs/ncurses
 	)"
 
 RDEPEND="${DEPEND}"
+PROVIDE="virtual/editor"
 
 src_compile() {
 	econf $(use_with X x) || die "econf failed"
