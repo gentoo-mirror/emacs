@@ -3,6 +3,10 @@
 # $Header: $
 
   28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-goodies-0.1.ebuild:
+  fix typo in RDEPEND line, thanks Ulrich
+
+  28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +emacs-goodies-0.1.ebuild, +metadata.xml:
   meta ebuild for all the small packages from bug 180170, by MATSUYAMA
   Tomohiro <matsuyama@ariel-networks.com>

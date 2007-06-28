@@ -13,6 +13,6 @@ IUSE=""
 
 RDEPEND="app-emacs/browse-kill-ring
 	app-emacs/color-moccur
-	app-emacs/grep-edito
+	app-emacs/grep-edit
 	app-emacs/mcomplete
 	app-emacs/moccur-edit"
