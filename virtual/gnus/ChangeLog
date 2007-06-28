@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Jun 2007; Ulrich Mueller <ulm@gentoo.org> gnus-5.10.ebuild:
+  Include version in error message.
+
   15 Jun 2007; Ulrich Mueller <ulm@gentoo.org> gnus-5.10.ebuild:
   Unmask.
 

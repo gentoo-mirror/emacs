@@ -35,7 +35,7 @@ pkg_setup () {
 	if [ "${gvn}" ] && version_is_at_least ${PV} "${gvn}"; then
 		einfo "Gnus version ${gvn} detected."
 	else
-		eerror "virtual/gnus requires at least Gnus version ${PV}."
+		eerror "virtual/${P} requires at least Gnus version ${PV}."
 		eerror "You should either install package app-emacs/{gnus,gnus-cvs},"
 		eerror "or use \"eselect emacs\" to select an Emacs version >= 22."
 		die "Gnus version ${gvn} is too low."
