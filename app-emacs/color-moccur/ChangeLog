@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/color-moccur
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/50color-moccur-gentoo.el, +color-moccur-2.25.ebuild, +metadata.xml:
+  initial import from bug 180170, by MATSUYAMA Tomohiro
+  <matsuyama@ariel-networks.com>
+
