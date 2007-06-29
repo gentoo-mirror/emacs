@@ -3,6 +3,10 @@
 # $Header: $
 
   29 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  -doxymacs-1.7.0.ebuild:
+  removed ebuild, as not needed
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/50doxymacs-gentoo.el, +doxymacs-1.7.0.ebuild,
   +doxymacs-1.8.0.ebuild, +metadata.xml:
   initial commit for bug 110083; massaged ebuild a lot, based on work of
