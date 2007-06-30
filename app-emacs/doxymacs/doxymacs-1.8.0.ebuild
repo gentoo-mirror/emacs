@@ -42,5 +42,5 @@ src_install() {
 	elisp-install ${PN} ${PN}-autoloads.el
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 
-	dodoc ${DOCS}
+	dodoc ${DOCS} || die "dodoc failed"
 }
