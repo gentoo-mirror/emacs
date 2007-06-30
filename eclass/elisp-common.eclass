@@ -102,6 +102,7 @@
 #		pkg_postinst() {
 #			elisp-site-regen
 #		}
+#
 #		pkg_postrm() {
 #			elisp-site-regen
 #		}

@@ -24,11 +24,11 @@
 # upstream as a single .el file.
 #
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
-# files by dodoc in src_install()
+# files by dodoc in src_install().
 #
-# If you need anything different from Emacs 21, use the NEED_EMACS variable
-# before inheriting elisp.eclass.  Set it to the major version your package uses
-# and the dependency will be adjusted. (still experimental, not working!)
+# If you need anything different from Emacs 21, use the NEED_EMACS
+# variable before inheriting elisp.eclass.  Set it to the major version
+# your package uses and the dependency will be adjusted.
 
 inherit elisp-common versionator
 
