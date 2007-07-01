@@ -160,3 +160,88 @@
 	commands
 	straightened elisp-comp()
 	removed local Emacs variables
+
+2005-07-06  Aron Griffis  <agriffis@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Remove ECLASS= and INHERITED=
+	which haven't been necessary for a long time now.
+
+2005-05-03  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Added 'die'.
+	Thanks to Tobias C. Rittweiler <tcr@freebits.de>; bug #86704.
+
+2004-07-04  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Changed descrpifion of
+	what to do as suggested by John Altstadt <altstadt@telus.net> in
+	bug #53097.
+
+2004-06-25  Mike Frysinger  <vapier@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Update the copyright info.
+
+2004-04-10  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp.eclass: newdepend is deprecated; use DEPEND/RDEPEND
+	instead, see bug #25013.
+
+2004-03-16  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Applied a patch
+	from agriffis regardling the bug $44712. Thanks ;)
+
+2004-03-09  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Correct site-gentoo.el
+	to be much more specific about what files should be included.
+
+2004-01-19  Jeremy Maitin-Shepard  <jbms@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Use site-gentoo.el,
+	rather than site-start.el.
+
+2003-11-03  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Add an alternate compilation
+	function.
+
+2003-10-06  Jeremy Maitin-Shepard  <jbms@attbi.com>
+
+	* elisp.eclass: Removed unnecessary sourcing of
+	elisp-common.eclass. Define S="${WORKDIR}/" only if SIMPLE_ELISP
+	is set to t.
+	(elisp_src_unpack, elisp_src_compile, elisp_src_install)
+	(elisp_pkg_postinst, elisp_pkg_postrm): Renamed src_unpack,
+	src_compile, etc. to elisp_src_unpack and added a call to
+	EXPORT_FUNCTIONS so that it works better with the inheritance
+	system. Bug #29698.
+
+	* elisp-common.eclass (elisp-compile): Added function, bug #29698.
+
+2003-09-21  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Separated elisp into elisp
+	and elisp-common.
+
+	* elisp.eclass: Removed default depend.
+
+2003-07-22  George Shapovalov  <george@gentoo.org>
+
+	* elisp.eclass: Fixed DEPEND.
+
+2003-05-23  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass (src_unpack, src_compile, src_install)
+	(pkg_postinst, pkg_postrm): Improvements to make most app emacs
+	ebuilds mode succinct.
+
+2003-02-09  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass (elisp-site-regen): Made the file search more
+	robust as per Sascha Luedecke <sascha@meta-x.de> suggestion in
+	bug #13277.
+
+2002-10-29  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass: Initial.
