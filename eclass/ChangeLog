@@ -29,26 +29,24 @@
 
 2007-06-20  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass: Generate output in
-	elisp-site-regen only if site-gentoo.el has changed.
-
-	* elisp-common.eclass: Generate output in
-	elisp-site-regen only if site-gentoo.el has changed.
+	* elisp-common.eclass (elisp-site-regen): Generate output only if
+	site-gentoo.el has changed.
 
 2007-06-20  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp.eclass: add --silent option to elisp_pkg_postrm()
 
-	* elisp-common.eclass: applied changes for a silent option for elisp-site-regen()
+	* elisp-common.eclass: applied changes for a silent option for
+	elisp-site-regen()
 
 2007-06-12  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass: Add more explanations to error message. Function
-	elisp_pkg_setup moved down to proper place.
+	* elisp.eclass (elisp_pkg_setup): Add more explanations to error
+	message. Move down to proper place.
 
 2007-06-12  Christian Faulhammer  <opfer@gentoo.org>
 
-	* elisp.eclass: remove an uncessary test
+	* elisp.eclass (elisp_pkg_setup): remove an uncessary test
 
 2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
 
@@ -57,22 +55,19 @@
 
 2007-06-04  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass: New function elisp-emacs-version(), works for all
-	known Emacs versions.  Use versionator.eclass for comparison of versions.
+	* elisp.eclass (elisp_pkg_setup): Use versionator.eclass for
+	comparison of versions.
 
-	* elisp-common.eclass: New function elisp-emacs-version(), works for
-	all known Emacs versions.  Use versionator.eclass for comparison
-	of versions.
+	* elisp-common.eclass (elisp-emacs-version): New function, works
+	for all known Emacs versions.
 
 2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
 
-	* elisp.eclass: added a comment about elisp-emacs-major-version()
-	in the documentation
-	documented NEED_EMACS a bit, added some more comments
+	* elisp.eclass: documented NEED_EMACS a bit, added some more
+	comments
 
 	* elisp-common.eclass: added a comment about
 	elisp-emacs-major-version() in the documentation
-	documented NEED_EMACS a bit, added some more comments
 
 2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
 
@@ -86,29 +81,40 @@
 
 2007-06-01  Christian Faulhammer  <opfer@gentoo.org>
 
-	* elisp.eclass: provide elisp-emacs-major-version() in
-	-common.eclass and use it in in pkg_setup
+	* elisp.eclass (elisp_pkg_setup): Use elisp-emacs-major-version.
 
-	* elisp-common.eclass: provide elisp-emacs-major-version() in
-	-common.eclass and use it in in pkg_setup
+	* elisp-common.eclass (elisp-emacs-major-version): New function.
 
 2007-05-31  Christian Faulhammer  <opfer@gentoo.org>
 
-	* elisp.eclass: add inactive code for new style dependencies on virtual/emacs
+	* elisp.eclass: add inactive code for new style dependencies on
+	virtual/emacs
 
 2007-05-28  Hans de Graaff  <graaff@gentoo.org>
 
-	* xemacs-elisp.class: Add initial XEmacs elisp classes modelled
-	after the Emacs elisp classes.
+	* xemacs-elisp.class, xemacs-elisp-common.eclass: Add initial
+	XEmacs elisp classes modelled after the Emacs elisp classes.
 
-	* xemacs-elisp-common.eclass: Add initial XEmacs elisp classes
-	modelled after the Emacs elisp classes.
+2007-05-26  Ulrich Mueller  <ulm@gentoo.org>
 
-2007-04-16  Christian Faulhammer  <opfer@gentoo.org>
+	* elisp-common.eclass (elisp-make-autoload-file): Add some
+	comments and local variables to generated autoload file.
 
-	* elisp.eclass: removed as they are in Portage now
+2007-04-29  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp-common.eclass: removed as they are in Portage now
+	* elisp-common.eclass (elisp-site-regen): Handle the case that
+	there are no site-init files.
+
+2007-04-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Give more specific
+	example of "load" function in einfo message.
+
+2007-04-18  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (elisp-make-autoload-file): A missing colon
+	prevented a auxiliary variable to be predefined if no argument was
+	given.
 
 2007-04-14  Ulrich Mueller  <ulm@gentoo.org>
 
@@ -118,12 +124,12 @@
 
 	* elisp-common.eclass: Document arguments of
 	elisp-make-autoload-file().
-	
+
 2007-04-10  Ulrich Mueller  <ulm@kph.uni-mainz.de>
 
 	* elisp-common.eclass: Documentation change: use ${PN} in name of
 	SITEFILE.
-	New function elisp_make_autoload_file().
+	(elisp-make-autoload-file): New function.
 
 2007-04-10  Christian Faulhammer  <opfer@gentoo.org>
 
@@ -135,14 +141,14 @@
 
 2007-03-30  Ulrich Mueller  <ulm@kph.uni-mainz.de>
 
-	* elisp-common.eclass: Honour ${ROOT} in elisp-site-regen().
+	* elisp-common.eclass (elisp-site-regen): Honour ${ROOT}.
 
 2007-03-16  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp-common.eclass: Updated documentation on site-lisp dir.
 	rephrased the fact that it is no real eclass
 
-2007-04-15  Christian Faulhammer  <opfer@gentoo.org>
+2007-03-15  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp.eclass: documented
 	added some quotes to prevent variables with spaces to break
