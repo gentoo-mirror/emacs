@@ -30,3 +30,10 @@ src_install() {
 
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 }
+
+pkg_postinst() {
+	elisp-site-regen
+}
+pkg_postrm() {
+	elisp-site-regen
+}

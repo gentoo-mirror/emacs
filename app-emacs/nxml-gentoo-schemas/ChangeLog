@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  nxml-gentoo-schemas-20070130.ebuild:
+  add elisp-site-regen
+
   16 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/81nxml-gentoo-schemas-gentoo.el,
   +nxml-gentoo-schemas-20070130.ebuild, +files/glsa.rnc, +files/guide.rnc,
