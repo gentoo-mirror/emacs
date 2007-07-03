@@ -13,9 +13,9 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="!app-emacs/gnus
+DEPEND=""
+RDEPEND="!app-emacs/gnus
 		!app-emacs/gnus-cvs"
-RDEPEND="${DEPEND}"
 
 SITEFILE=70${PN}-gentoo.el
 
