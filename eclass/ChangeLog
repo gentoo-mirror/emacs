@@ -1,6 +1,8 @@
 2007-07-03  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass, elisp-common.eclass: Update copyright info.
+	* elisp.eclass: Update copyright info. Some comment changes.
+
+	* elisp-common.eclass: Update copyright info.
 
 2007-07-03  Christian Faulhammer  <opfer@gentoo.org>
 
