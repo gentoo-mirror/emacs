@@ -1,3 +1,7 @@
+2007-07-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Update copyright info.
+
 2007-07-03  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp.eclass: Add RDEPEND line
@@ -7,7 +11,6 @@
 	* elisp.eclass: Moved to Portage
 
 	* elisp-common.eclass: Moved to Portage
-
 
 2007-06-25  Ulrich Mueller  <ulm@gentoo.org>
 
