@@ -1,3 +1,7 @@
+2007-07-03  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: Add RDEPEND line
+
 2007-07-02  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp.eclass: Moved to Portage
