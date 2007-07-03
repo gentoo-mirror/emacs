@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/eclass/elisp.eclass,v 1.19 2007/07/02 06:19:18 opfer Exp $
 #
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
-# Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
+# Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
