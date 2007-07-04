@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/gentoo-syntax-svn
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/51gentoo-syntax-gentoo.el, +gentoo-syntax-svn-0.ebuild,
+  +metadata.xml:
+  Initial import. Live svn ebuild for gentoo-syntax.
+
