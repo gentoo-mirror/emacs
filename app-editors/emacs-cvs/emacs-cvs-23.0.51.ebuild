@@ -20,7 +20,7 @@ SRC_URI=""
 LICENSE="GPL-2 FDL-1.2"
 SLOT="23-multi-tty"
 KEYWORDS="~x86"
-IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
+IUSE="alsa gif gpm gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
 RESTRICT="strip"
 
 X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
@@ -31,6 +31,7 @@ RDEPEND="sys-libs/ncurses
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-sound/alsa-headers )
+	gpm? ( sys-libs/gpm )
 	X? (
 		$X_DEPEND
 		x11-misc/emacs-desktop
@@ -99,7 +100,6 @@ src_compile() {
 	strip-flags
 	unset LDFLAGS
 	replace-flags -O[3-9] -O2
-	sed -i -e "s/-lungif/-lgif/g" configure* src/Makefile* || die
 
 	local myconf
 
@@ -144,9 +144,8 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 
-	# $(use_with hesiod) is not possible, as "--without-hesiod" breaks
-	# the build system (has been reported upstream)
-	use hesiod && myconf="${myconf} --with-hesiod"
+	myconf="${myconf} $(use_with hesiod)"
+	myconf="${myconf} $(use_with gpm)"
 
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
@@ -187,11 +186,11 @@ src_install () {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
-		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<EOF
-(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-X    (setq find-function-C-source-directory
-X	  "/usr/share/emacs/${FULL_VERSION}/src"))
-EOF
+		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<-EOF
+		(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
+		X    (setq find-function-C-source-directory
+		X	  "/usr/share/emacs/${FULL_VERSION}/src"))
+		EOF
 		elisp-site-file-install 00${PN}-${SLOT}-gentoo.el
 	fi
 
