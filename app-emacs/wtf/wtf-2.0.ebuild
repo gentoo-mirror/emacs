@@ -12,11 +12,7 @@ SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.el.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="offensive"
+IUSE=""
 
 SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el
-
-pkg_setup() {
-	use offensive || die "You need USE=offensive to emerge"
-}
