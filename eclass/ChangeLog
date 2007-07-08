@@ -1,3 +1,8 @@
+2007-07-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Put proper header
+	information in site-gentoo.el. Consistent BE spelling.
+
 2007-07-03  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass: Update copyright info. Some comment changes.
