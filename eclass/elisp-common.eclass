@@ -33,9 +33,9 @@
 # elisp files, you can use the elisp-comp() function which makes sure all
 # files are loadable.
 #
-#		elisp-compile *.el || die "elisp-compile failed!"
+#		elisp-compile *.el || die "elisp-compile failed"
 # or
-#		elisp-comp *.el || die "elisp-comp failed!"
+#		elisp-comp *.el || die "elisp-comp failed"
 #
 #  Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
@@ -54,7 +54,7 @@
 # something else, but remember to tell elisp-site-file-install() (see below)
 # the change, as it defaults to ${PN}.
 #
-#		elisp-install ${PN} *.elc *.el || die "elisp-install failed!"
+#		elisp-install ${PN} *.el *.elc || die "elisp-install failed"
 #
 #  To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
