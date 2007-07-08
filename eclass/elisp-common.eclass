@@ -206,7 +206,7 @@ elisp-site-regen() {
 		cat "${sf}" >>"${T}"/site-gentoo.el
 	done
 
-	cat <<-EOF >"${T}"/site-gentoo.el
+	cat <<-EOF >>"${T}"/site-gentoo.el
 
 	;; End:
 	;;; site-gentoo.el ends here
