@@ -2,6 +2,7 @@
 
 	* elisp-common.eclass (elisp-site-regen): Put proper header
 	information in site-gentoo.el. Consistent BE spelling.
+	Remove -b option from mv since it does not work on BSD.
 
 2007-07-03  Ulrich Mueller  <ulm@gentoo.org>
 
