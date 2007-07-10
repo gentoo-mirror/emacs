@@ -8,44 +8,50 @@
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
-# This is not a real eclass, but it does provide Emacs-related installation
-# utilities.
-#
-# USAGE:
+# @ECLASS: elisp-common.eclass
+# @MAINTAINER:
+# Feel free to contact the Emacs team through emacs@gentoo.org if you have
+# problems, suggestions or questions.
+# @BLURB: Emacs-related installation utilities
+# @DESCRIPTION:
 #
 # Usually you want to use this eclass for (optional) GNU Emacs support of
 # your package.  This is NOT for XEmacs!
-#  Many of the steps here are sometimes done by the build system of your
+#
+# Many of the steps here are sometimes done by the build system of your
 # package (especially compilation), so this is mainly for standalone elisp
 # files you gathered from somewhere else.
-#  When relying on the emacs USE flag, you need to add
 #
-#		emacs? ( virtual/emacs )
+# When relying on the emacs USE flag, you need to add
+#
+#	emacs? ( virtual/emacs )
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to bring
 # the files to the correct locations.
 #
+# .SS
 # src_compile() usage:
-# --------------------
 #
 # An elisp file is compiled by the elisp-compile() function defined here and
 # simply takes the source files as arguments.  In the case of interdependent
 # elisp files, you can use the elisp-comp() function which makes sure all
 # files are loadable.
 #
-#		elisp-compile *.el || die "elisp-compile failed"
-# or
-#		elisp-comp *.el || die "elisp-comp failed"
+#	elisp-compile *.el || die "elisp-compile failed"
 #
-#  Function elisp-make-autoload-file() can be used to generate a file with
+# or
+#
+#	elisp-comp *.el || die "elisp-comp failed"
+#
+# Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
 # (default: "${PN}-autoloads.el") and a list of directories (default: working
 # directory) as its arguments.  Use of this function requires that the elisp
 # source files contain magic ";;;###autoload" comments. See the Emacs Lisp
 # Reference Manual (node "Autoload") for a detailed explanation.
 #
+# .SS
 # src_install() usage:
-# --------------------
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
 # /usr/share/emacs/site-lisp/ which is named after the first argument
@@ -54,88 +60,103 @@
 # something else, but remember to tell elisp-site-file-install() (see below)
 # the change, as it defaults to ${PN}.
 #
-#		elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+#	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
 #
-#  To let the Emacs support be activated by Emacs on startup, you need
+# To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
 # code (have a look in the documentation of your software).  Normally this
 # would look like this:
 #
+# .nf
 #	;;; csv-mode site-lisp configuration
 #
 #	(add-to-list 'load-path "@SITELISP@")
 #	(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
-#	(autoload 'csv-mode "csv-mode" "Major mode for editing csv files." t)
+#	(autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
+# .fi
 #
-#  If your Emacs support files are installed in a subdirectory of
+# If your Emacs support files are installed in a subdirectory of
 # /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
 # installed), you need to extend Emacs' load-path as shown in the first
 # non-comment.  The elisp-site-file-install() function of this eclass will
 # replace "@SITELISP@" by the actual path.
-#  The next line tells Emacs to load the mode opening a file ending with
+#
+# The next line tells Emacs to load the mode opening a file ending with
 # ".csv" and load functions depending on the context and needed features.
 # Be careful though.  Commands as "load-library" or "require" bloat the
 # editor as they are loaded on every startup.  When having a lot of Emacs
 # support files, users may be annoyed by the start-up time.  Also avoid
 # keybindings as they might interfere with the user's settings.  Give a hint
 # in pkg_postinst(), which should be enough.
-#  The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
+#
+# The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
 # two digits at the beginning define the loading order.  So if you depend on
 # another Emacs package, your site file's number must be higher!
-#  Best practice is to define a SITEFILE variable in the global scope of your
+#
+# Best practice is to define a SITEFILE variable in the global scope of your
 # ebuild (right after DEPEND e.g.):
 #
-#		SITEFILE=50${PN}-gentoo.el
+#	SITEFILE=50${PN}-gentoo.el
 #
-#  Which is then installed by
+# Which is then installed by
 #
-#		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+#	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 #
 # in src_install().  If your subdirectory is not named ${PN}, give the
 # differing name as second argument.
 #
+# .SS
 # pkg_postinst() / pkg_postrm() usage:
-# ------------------------------------
 #
 # After that you need to recreate the start-up file of Emacs after emerging
 # and unmerging by using
 #
-#		pkg_postinst() {
-#			elisp-site-regen
-#		}
+# .nf
+#	pkg_postinst() {
+#		elisp-site-regen
+#	}
 #
-#		pkg_postrm() {
-#			elisp-site-regen
-#		}
+#	pkg_postrm() {
+#		elisp-site-regen
+#	}
+# .fi
 #
-#  When having optional Emacs support, you should prepend "use emacs &&" to
+# When having optional Emacs support, you should prepend "use emacs &&" to
 # above calls of elisp-site-regen().  Don't use "has_version virtual/emacs"!
-# When unmerging the state of the USE flag emacs is taken from the package
+# When unmerging the state of the emacs USE flag is taken from the package
 # database and not from the environment, so it is no problem when you unset
-# USE=emacs between merge und unmerge of a package.
+# USE=emacs between merge and unmerge of a package.
 #
+# .SS
 # Miscellaneous functions:
-# ------------------------
 #
 # elisp-emacs-version() outputs the version of the currently active Emacs.
-#
-#  As always: Feel free to contact Emacs team through emacs@gentoo.org if you
-# have problems, suggestions or questions.
 
 SITELISP=/usr/share/emacs/site-lisp
 
+# @FUNCTION: elisp-compile
+# @USAGE: <list of elisp files>
+# @DESCRIPTION:
+# Byte-compile Emacs Lisp files.
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
 	/usr/bin/emacs -batch -q --no-site-file -f batch-byte-compile $*
 }
 
+# @FUNCTION: elisp-emacs-version
+# @USAGE:
+# @DESCRIPTION:
+# Output version of currently active Emacs.
 elisp-emacs-version() {
-	# Output version of currently active Emacs.
 	# The following will work for at least versions 18-22.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	/usr/bin/emacs -batch -q --no-site-file -l "${T}"/emacs-version.el
 }
 
+# @FUNCTION: elisp-make-autoload-file
+# @USAGE: [output file] [list of directories]
+# @DESCRIPTION:
+# Generate a file with autoload definitions for the lisp functions.
 elisp-make-autoload-file () {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
@@ -164,6 +185,10 @@ elisp-make-autoload-file () {
 		-f batch-update-autoloads "${@-.}"
 }
 
+# @FUNCTION: elisp-install
+# @USAGE: <subdirectory> <list of files>
+# @DESCRIPTION:
+# Install files in SITELISP directory.
 elisp-install() {
 	local subdir=$1
 	einfo "Installing Elisp files for GNU Emacs support ..."
@@ -173,6 +198,10 @@ elisp-install() {
 	doins $@
 }
 
+# @FUNCTION: elisp-site-file-install
+# @USAGE: <site-init file> [subdirectory]
+# @DESCRIPTION:
+# Install Emacs site-init file in SITELISP directory.
 elisp-site-file-install() {
 	local sitefile=$1 my_pn=${2:-${PN}}
 	einfo "Installing site initialisation file for GNU Emacs ..."
@@ -184,6 +213,10 @@ elisp-site-file-install() {
 	popd
 }
 
+# @FUNCTION: elisp-site-regen
+# @USAGE:
+# @DESCRIPTION:
+# Regenerate site-gentoo.el file.
 elisp-site-regen() {
 	local sflist sf line
 
@@ -242,9 +275,11 @@ EOF
 	fi
 }
 
-# The following Emacs Lisp compilation routine was originally taken from
-# GNU autotools.
-
+# @FUNCTION: elisp-comp
+# @USAGE: <list of elisp files>
+# @DESCRIPTION:
+# Byte-compile interdependent Emacs Lisp files.
+# Originally taken from GNU autotools.
 elisp-comp() {
 	# Copyright 1995 Free Software Foundation, Inc.
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
