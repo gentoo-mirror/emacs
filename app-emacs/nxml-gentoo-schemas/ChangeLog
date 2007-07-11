@@ -2,6 +2,20 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Jul 2007; Ulrich Mueller <ulm@gentoo.org> +files/20070130,
+  +files/20070130/glsa.rnc, +files/20070130/metadata.rnc, +files/20070710,
+  +files/20070710/book.rnc, nxml-gentoo-schemas-20070130.ebuild,
+  +files/20070130/guide.rnc, +files/20070130/schemas.xml,
+  +files/20070710/gleps.rnc, +files/20070710/glsa.rnc,
+  +nxml-gentoo-schemas-20070710.ebuild, +files/20070130/project.rnc,
+  +files/20070710/guide.rnc, +files/20070710/metadata.rnc,
+  +files/20070710/metadoc.rnc, +files/20070710/project.rnc,
+  +files/20070710/schemas.xml, +files/20070710/staffing-needs.rnc,
+  +files/20070710/userinfo.rnc, -files/glsa.rnc, -files/guide.rnc,
+  -files/metadata.rnc, -files/project.rnc, -files/schemas.xml:
+  Version bump, copied from flameeyes's overlay. Move files into
+  version-specific subdirectories.
+
   02 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
   nxml-gentoo-schemas-20070130.ebuild:
   add elisp-site-regen
