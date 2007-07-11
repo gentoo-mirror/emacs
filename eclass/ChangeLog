@@ -1,6 +1,7 @@
 2007-07-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass: Add magic comments for man page generation.
+	(SITEFILE): Default value.
 
 2007-07-08  Ulrich Mueller  <ulm@gentoo.org>
 

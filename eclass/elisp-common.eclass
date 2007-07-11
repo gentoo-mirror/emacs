@@ -133,6 +133,7 @@
 # elisp-emacs-version() outputs the version of the currently active Emacs.
 
 SITELISP=/usr/share/emacs/site-lisp
+SITEFILE=50${PN}-gentoo.el
 
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
