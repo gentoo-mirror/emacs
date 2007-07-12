@@ -138,15 +138,16 @@ SITEFILE=50${PN}-gentoo.el
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
 # Byte-compile Emacs Lisp files.
+
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
 	/usr/bin/emacs -batch -q --no-site-file -f batch-byte-compile $*
 }
 
 # @FUNCTION: elisp-emacs-version
-# @USAGE:
 # @DESCRIPTION:
 # Output version of currently active Emacs.
+
 elisp-emacs-version() {
 	# The following will work for at least versions 18-22.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
@@ -157,6 +158,7 @@ elisp-emacs-version() {
 # @USAGE: [output file] [list of directories]
 # @DESCRIPTION:
 # Generate a file with autoload definitions for the lisp functions.
+
 elisp-make-autoload-file () {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
@@ -189,6 +191,7 @@ elisp-make-autoload-file () {
 # @USAGE: <subdirectory> <list of files>
 # @DESCRIPTION:
 # Install files in SITELISP directory.
+
 elisp-install() {
 	local subdir=$1
 	einfo "Installing Elisp files for GNU Emacs support ..."
@@ -202,6 +205,7 @@ elisp-install() {
 # @USAGE: <site-init file> [subdirectory]
 # @DESCRIPTION:
 # Install Emacs site-init file in SITELISP directory.
+
 elisp-site-file-install() {
 	local sitefile=$1 my_pn=${2:-${PN}}
 	einfo "Installing site initialisation file for GNU Emacs ..."
@@ -214,9 +218,9 @@ elisp-site-file-install() {
 }
 
 # @FUNCTION: elisp-site-regen
-# @USAGE:
 # @DESCRIPTION:
 # Regenerate site-gentoo.el file.
+
 elisp-site-regen() {
 	local sflist sf line
 
@@ -280,6 +284,7 @@ EOF
 # @DESCRIPTION:
 # Byte-compile interdependent Emacs Lisp files.
 # Originally taken from GNU autotools.
+
 elisp-comp() {
 	# Copyright 1995 Free Software Foundation, Inc.
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
