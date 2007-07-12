@@ -224,7 +224,7 @@ elisp-site-file-install() {
 elisp-site-regen() {
 	local sflist sf line
 
-	einfo "Regenerating ${SITELISP}/site-gentoo.el ..."
+	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
 	cat <<-EOF >"${T}"/site-gentoo.el
 	;;; site-gentoo.el --- site initialisation for Gentoo-installed packages
 
@@ -251,10 +251,10 @@ elisp-site-regen() {
 		# This prevents outputting unnecessary text when there
 		# was actually no change
 		# A case is a remerge where we have doubled output
-		einfo "... no changes"
+		echo " no changes."
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
-		einfo ""
+		echo; einfo
 		for sf in ${sflist}; do
 			einfo "  Adding ${sf} ..."
 		done
