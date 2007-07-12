@@ -33,13 +33,12 @@
 # src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined here and
-# simply takes the source files as arguments.  In the case of interdependent
-# elisp files, you can use the elisp-comp() function which makes sure all
-# files are loadable.
+# simply takes the source files as arguments.
 #
 #	elisp-compile *.el || die "elisp-compile failed"
 #
-# or
+# In the case of interdependent elisp files, you can use the elisp-comp()
+# function which makes sure all files are loadable.
 #
 #	elisp-comp *.el || die "elisp-comp failed"
 #
