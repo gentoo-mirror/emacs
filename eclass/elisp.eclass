@@ -7,7 +7,13 @@
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
-# This eclass sets the site-lisp directory for emacs-related packages.
+# @ECLASS: elisp.eclass
+# @MAINTAINER:
+# emacs@gentoo.org
+# @BLURB: Eclass for Emacs Lisp packages
+# @DESCRIPTION:
+#
+# This eclass sets the site-lisp directory for Emacs-related packages.
 #
 # Emacs support for other than pure elisp packages is handled by
 # elisp-common.eclass where you won't have a dependency on Emacs itself.
@@ -15,10 +21,8 @@
 #
 # Setting SIMPLE_ELISP=t in an ebuild means, that the package's source
 # is a single (in whatever way) compressed elisp file with the file name
-# ${PN}-${PV}.  The consequences:
-#
-# 1.) ${S} is redefined,
-# 2.) ${PN}-${PV}.el is moved to ${PN}.el in src_unpack().
+# ${PN}-${PV}.  This eclass will then redefine ${S}, and move
+# ${PN}-${PV}.el to ${PN}.el in src_unpack().
 #
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
