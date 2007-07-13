@@ -260,13 +260,13 @@ elisp-site-regen() {
 		done
 		while read line; do einfo "${line}"; done <<EOF
 
-All site initialisation for Gentoo-installed packages is now added to
+All site initialisation for Gentoo-installed packages is added to
 /usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is no longer
 managed by Gentoo. You are responsible for all maintenance of
 site-start.el if there is such a file.
 
 In order for this site initialisation to be loaded for all users
-automatically, as was done previously, you can add a line like this:
+automatically, you can add a line like this:
 
 	(load "/usr/share/emacs/site-lisp/site-gentoo" nil t)
 

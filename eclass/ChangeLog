@@ -1,7 +1,8 @@
 2007-07-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Use einfon for the
-	initial message; suppress the newline in case of no changes.
+	initial message; suppress the newline in case of no changes;
+	update einfo message.
 
 2007-07-11  Ulrich Mueller  <ulm@gentoo.org>
 
