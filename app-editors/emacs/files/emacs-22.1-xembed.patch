@@ -1,6 +1,19 @@
 XEmbed support, patches by Timo Savola <timo.savola@iki.fi>
 http://timo.stc.cx/tmp/emacs/
 
+This combines the following patches:
+1. parent-id.patch
+   Adds --parent-id command-line option
+2. parent-fix.patch
+   Don't override the explicitly set parent window
+3. xembed.patch
+   XEmbed protocol support for Xlib, X-toolkit and GTK versions
+4. xembed-xsetoffset.patch
+   Don't attempt to move embedded X windows
+5. xembed-border.patch
+   Fixes issues with the Xlib and X-toolkit versions by disabling border
+   width option
+
 diff -Nur emacs-22.1-orig/lisp/startup.el emacs-22.1/lisp/startup.el
 --- emacs-22.1-orig/lisp/startup.el	2007-05-14 16:56:29.000000000 +0200
 +++ emacs-22.1/lisp/startup.el	2007-07-14 03:13:43.000000000 +0200
