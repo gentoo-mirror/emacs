@@ -1,3 +1,6 @@
+XEmbed support, patches by Timo Savola <timo.savola@iki.fi>
+http://timo.stc.cx/tmp/emacs/
+
 diff -Nur emacs-22.1-orig/lisp/startup.el emacs-22.1/lisp/startup.el
 --- emacs-22.1-orig/lisp/startup.el	2007-05-14 16:56:29.000000000 +0200
 +++ emacs-22.1/lisp/startup.el	2007-07-14 03:13:43.000000000 +0200
