@@ -4,9 +4,9 @@
 #
 # Copyright 2007 Hans de Graaff <graaff@gentoo.org>
 #
-# Based on elisp-common.eclass:
+# Based on elisp.eclass:
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
-# Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
+# Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 #
 # Emacs support for other than pure elisp packages is handled by

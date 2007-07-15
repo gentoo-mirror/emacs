@@ -6,7 +6,8 @@
 #
 # Based on elisp-common.eclass:
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
-# Copyright 2002-2007 Matthew Kennedy <mkennedy@gentoo.org>
+# Copyright 2002-2004 Matthew Kennedy <mkennedy@gentoo.org>
+# Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
@@ -32,8 +33,6 @@ xemacs-elisp-make-autoloads-file () {
 		-eval "(setq autoload-package-name \"${PN}\")" \
 		-eval "(setq generated-autoload-file \"${S}/auto-autoloads.el\")" \
 		-l autoload -f batch-update-autoloads $@
-		
-
 }
 
 # Install elisp source and byte-comiled files. All files are installed
