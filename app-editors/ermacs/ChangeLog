@@ -1,0 +1,8 @@
+# ChangeLog for app-editors/ermacs
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/ermacs-20070104-gcc4.patch, +metadata.xml, +ermacs-20070104.ebuild:
+  Initial import.
+
