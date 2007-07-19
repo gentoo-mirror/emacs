@@ -206,7 +206,7 @@
 
 2004-07-04  Mamoru Komachi  <usata@gentoo.org>
 
-	* elisp-common.eclass (elisp-site-regen): Changed descrpifion of
+	* elisp-common.eclass (elisp-site-regen): Changed description of
 	what to do as suggested by John Altstadt <altstadt@telus.net> in
 	bug #53097.
 
@@ -222,7 +222,7 @@
 2004-03-16  Mamoru Komachi  <usata@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-file-install): Applied a patch
-	from agriffis regardling the bug $44712. Thanks ;)
+	from agriffis regarding the bug #44712. Thanks ;)
 
 2004-03-09  Matthew Kennedy  <mkennedy@gentoo.org>
 
