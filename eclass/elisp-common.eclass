@@ -24,7 +24,7 @@
 #
 # When relying on the emacs USE flag, you need to add
 #
-#	emacs? ( virtual/emacs )
+#		emacs? ( virtual/emacs )
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to bring
 # the files to the correct locations.
@@ -35,12 +35,12 @@
 # An elisp file is compiled by the elisp-compile() function defined here and
 # simply takes the source files as arguments.
 #
-#	elisp-compile *.el || die "elisp-compile failed"
+#		elisp-compile *.el || die "elisp-compile failed"
 #
 # In the case of interdependent elisp files, you can use the elisp-comp()
 # function which makes sure all files are loadable.
 #
-#	elisp-comp *.el || die "elisp-comp failed"
+#		elisp-comp *.el || die "elisp-comp failed"
 #
 # Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
@@ -59,7 +59,7 @@
 # something else, but remember to tell elisp-site-file-install() (see below)
 # the change, as it defaults to ${PN}.
 #
-#	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+#		elisp-install ${PN} *.el *.elc || die "elisp-install failed"
 #
 # To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
@@ -67,11 +67,11 @@
 # would look like this:
 #
 # .nf
-#	;;; csv-mode site-lisp configuration
+#		;;; csv-mode site-lisp configuration
 #
-#	(add-to-list 'load-path "@SITELISP@")
-#	(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
-#	(autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
+#		(add-to-list 'load-path "@SITELISP@")
+#		(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
+#		(autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
 # .fi
 #
 # If your Emacs support files are installed in a subdirectory of
@@ -95,11 +95,11 @@
 # Best practice is to define a SITEFILE variable in the global scope of your
 # ebuild (right after DEPEND e.g.):
 #
-#	SITEFILE=50${PN}-gentoo.el
+#		SITEFILE=50${PN}-gentoo.el
 #
 # Which is then installed by
 #
-#	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+#		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 #
 # in src_install().  If your subdirectory is not named ${PN}, give the
 # differing name as second argument.
@@ -111,13 +111,13 @@
 # and unmerging by using
 #
 # .nf
-#	pkg_postinst() {
-#		elisp-site-regen
-#	}
+#		pkg_postinst() {
+#			elisp-site-regen
+#		}
 #
-#	pkg_postrm() {
-#		elisp-site-regen
-#	}
+#		pkg_postrm() {
+#			elisp-site-regen
+#		}
 # .fi
 #
 # When having optional Emacs support, you should prepend "use emacs &&" to
