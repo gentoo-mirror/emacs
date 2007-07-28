@@ -39,7 +39,7 @@ RDEPEND=">=virtual/emacs-${VERSION}"
 IUSE=""
 
 if [ "${SIMPLE_ELISP}" = 't' ]; then
-	S="${WORKDIR}/"
+	S="${WORKDIR}"
 fi
 
 elisp_pkg_setup() {
