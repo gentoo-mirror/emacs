@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Aug 2007; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.51.ebuild:
+  Update licence info to GPL-3.
+
   06 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
   -files/emacs-cvs-Xaw3d-headers.patch, emacs-cvs-23.0.51.ebuild:
   Sync with Portage versions: New gpm flag; hesiod conf fixed; giflib support.

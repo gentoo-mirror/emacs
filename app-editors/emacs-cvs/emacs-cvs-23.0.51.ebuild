@@ -17,7 +17,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI=""
 
-LICENSE="GPL-2 FDL-1.2"
+LICENSE="GPL-3 FDL-1.2"
 SLOT="23-multi-tty"
 KEYWORDS="~x86"
 IUSE="alsa gif gpm gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xpm"
