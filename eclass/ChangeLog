@@ -1,3 +1,8 @@
+2007-08-21  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (SITEFILE): add a trailing slash in comment
+	for regeneration to make clear it is a directory, not a single file
+
 2007-07-28  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (S): Remove trailing slant.
