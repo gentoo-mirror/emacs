@@ -269,7 +269,7 @@ automatically, you can add a line like this:
 to /usr/share/emacs/site-lisp/site-start.el.  Alternatively, that line
 can be added by individual users to their initialisation files, or for
 greater flexibility, users can select which of the package-specific
-initialisation files in /usr/share/emacs/site-lisp to load.
+initialisation files in /usr/share/emacs/site-lisp/ to load.
 EOF
 		echo
 	fi
