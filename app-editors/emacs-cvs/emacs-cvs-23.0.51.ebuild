@@ -216,6 +216,11 @@ pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 
+	local f
+	for f in ${ROOT}/var/lib/games/emacs/{snake,tetris}-scores; do
+		test -e ${f} || touch ${f}
+	done
+
 	elisp-site-regen
 	emacs-infodir-rebuild
 	eselect emacs update --if-unset
