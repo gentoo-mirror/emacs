@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/dvi-view
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  22 Aug 2007; Ulrich Mueller <ulm@gentoo.org> +files/50dvi-view-gentoo.el,
+  +metadata.xml, +dvi-view-20070820.ebuild:
+  Initial import. Ebuild contributed by me.
+
