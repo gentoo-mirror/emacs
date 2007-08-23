@@ -1,5 +1,5 @@
---- /local/home/ulm/dvi-view.el.orig	2007-08-23 15:13:10.000000000 +0200
-+++ /local/home/ulm/dvi-view.el	2007-08-23 15:12:49.000000000 +0200
+--- dvi-view.el.orig	2007-08-23 15:13:10.000000000 +0200
++++ dvi-view.el	2007-08-23 15:12:49.000000000 +0200
 @@ -114,7 +114,7 @@
  				dvi-view-image-options))
  		  (start (point)))
