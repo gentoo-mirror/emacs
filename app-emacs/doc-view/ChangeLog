@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Aug 2007; Ulrich Mueller <ulm@gentoo.org> +doc-view-20070823.ebuild:
+  Version bump.
+
   22 Aug 2007; Ulrich Mueller <ulm@gentoo.org> +files/50doc-view-gentoo.el,
   +metadata.xml, +doc-view-20070822.ebuild:
   Initial import. Ebuild contributed by me.
