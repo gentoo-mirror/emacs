@@ -11,7 +11,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.gz"
 
-LICENSE="GPL-2 FDL-1.2"
+LICENSE="GPL-2 FDL-1.2 BSD"
 SLOT="22"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xembed xpm"
@@ -70,6 +70,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-Xaw3d-headers.patch"
 	epatch "${FILESDIR}/${P}-freebsd-sparc.patch"
 	epatch "${FILESDIR}/${P}-oldxmenu-qa.patch"
+	epatch "${FILESDIR}/${P}-backup-buffer.patch"
 	# ALSA is detected and used even if not requested by the USE=alsa flag.
 	# So remove the automagic check
 	use alsa || epatch "${FILESDIR}/${P}-disable_alsa_detection.patch"
@@ -140,6 +141,11 @@ src_compile() {
 
 	emake CC="$(tc-getCC)" $(useq xembed && echo bootstrap) \
 		|| die "emake failed"
+
+	einfo "Recompiling patched lisp files..."
+	(cd lisp; emake recompile) || die "emake recompile failed"
+	(cd src; emake versionclean)
+	emake CC="$(tc-getCC)" || die "emake failed"
 }
 
 src_install () {
@@ -201,6 +207,11 @@ emacs-infodir-rebuild() {
 pkg_postinst() {
 	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
 		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
+
+	local f
+	for f in ${ROOT}/var/lib/games/emacs/{snake,tetris}-scores; do
+		test -e ${f} || touch ${f}
+	done
 
 	elisp-site-regen
 	emacs-infodir-rebuild
