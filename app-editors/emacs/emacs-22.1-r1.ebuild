@@ -142,10 +142,12 @@ src_compile() {
 	emake CC="$(tc-getCC)" $(useq xembed && echo bootstrap) \
 		|| die "emake failed"
 
-	einfo "Recompiling patched lisp files..."
-	(cd lisp; emake recompile) || die "emake recompile failed"
-	(cd src; emake versionclean)
-	emake CC="$(tc-getCC)" || die "emake failed"
+	if ! use xembed; then
+		einfo "Recompiling patched lisp files..."
+		(cd lisp; emake recompile) || die "emake recompile failed"
+		(cd src; emake versionclean)
+		emake CC="$(tc-getCC)" || die "emake failed"
+	fi
 }
 
 src_install () {
