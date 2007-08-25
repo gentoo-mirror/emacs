@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-cvs-23.0.51.ebuild:
+  add BSD license because of etags binary, which initial version has been
+  licensed thereunder
+
   21 Aug 2007; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.51.ebuild:
   Generate score files in pkg_postinst.
 
