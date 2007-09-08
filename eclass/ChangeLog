@@ -1,3 +1,11 @@
+2007-09-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (SIMPLE_ELISP, DOCS, NEED_EMACS): Add man comments.
+
+	* elisp-common.eclass (elisp-site-file-install): Remove redundant
+	cp and pushd/popd commands.
+	(EMACS_BATCH_CLEAN): New variable, analog to the XEmacs eclasses.
+
 2007-08-21  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp-common.eclass (SITEFILE): add a trailing slash in comment

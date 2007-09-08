@@ -129,6 +129,9 @@
 
 SITELISP=/usr/share/emacs/site-lisp
 SITEFILE=50${PN}-gentoo.el
+EMACS=/usr/bin/emacs
+# The following works for Emacs versions 18-23, don't change it.
+EMACS_BATCH_CLEAN="${EMACS} -batch -q --no-site-file"
 
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
@@ -137,7 +140,7 @@ SITEFILE=50${PN}-gentoo.el
 
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
-	/usr/bin/emacs -batch -q --no-site-file -f batch-byte-compile $*
+	${EMACS_BATCH_CLEAN} -f batch-byte-compile $*
 }
 
 # @FUNCTION: elisp-emacs-version
@@ -145,9 +148,9 @@ elisp-compile() {
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	# The following will work for at least versions 18-22.
+	# The following will work for at least versions 18-23.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
-	/usr/bin/emacs -batch -q --no-site-file -l "${T}"/emacs-version.el
+	${EMACS_BATCH_CLEAN} -l "${T}"/emacs-version.el
 }
 
 # @FUNCTION: elisp-make-autoload-file
@@ -177,7 +180,7 @@ elisp-make-autoload-file () {
 	;;; ${f##*/} ends here
 	EOF
 
-	/usr/bin/emacs -batch -q --no-site-file \
+	${EMACS_BATCH_CLEAN} \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
@@ -205,12 +208,10 @@ elisp-install() {
 elisp-site-file-install() {
 	local sitefile=$1 my_pn=${2:-${PN}}
 	einfo "Installing site initialisation file for GNU Emacs ..."
-	pushd "${S}"
-	cp ${sitefile} "${T}"
-	sed -i "s:@SITELISP@:${SITELISP}/${my_pn}:g" "${T}/$(basename ${sitefile})"
-	insinto ${SITELISP}
+	sed "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
+		${sitefile} >"${T}/$(basename ${sitefile})" || die "sed failed"
+	insinto "${SITELISP}"
 	doins "${T}/$(basename ${sitefile})" || die "failed to install site file"
-	popd
 }
 
 # @FUNCTION: elisp-site-regen
@@ -308,8 +309,7 @@ elisp-comp() {
 	pushd ${tempdir}
 
 	echo "(add-to-list 'load-path \"../\")" > script
-	${EMACS} -batch -q --no-site-file --no-init-file -l script \
-		-f batch-byte-compile *.el
+	${EMACS_BATCH_CLEAN} -l script -f batch-byte-compile *.el
 	local status=$?
 	mv *.elc ..
 
