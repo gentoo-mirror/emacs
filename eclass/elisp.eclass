@@ -19,19 +19,19 @@
 # elisp-common.eclass where you won't have a dependency on Emacs itself.
 # All elisp-* functions are documented there.
 
-# @VARIABLE: SIMPLE_ELISP
+# @ECLASS-VARIABLE: SIMPLE_ELISP
 # @DESCRIPTION:
 # Setting SIMPLE_ELISP=t in an ebuild means, that the package's source
 # is a single (in whatever way) compressed elisp file with the file name
 # ${PN}-${PV}.  This eclass will then redefine ${S}, and move
 # ${PN}-${PV}.el to ${PN}.el in src_unpack().
 
-# @VARIABLE: DOCS
+# @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
-# @VARIABLE: NEED_EMACS
+# @ECLASS-VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # If you need anything different from Emacs 21, use the NEED_EMACS
 # variable before inheriting elisp.eclass.  Set it to the major version
