@@ -9,6 +9,8 @@
 	Use singular autoload in function name to keep interface the same
 	as for GNU Emacs.
 	Add documentation so that man page can be generated.
+	Use a sub-shell for calls to doins and insinto to avoid potential
+	environment polution.
 
 2007-09-08  Ulrich Mueller  <ulm@gentoo.org>
 

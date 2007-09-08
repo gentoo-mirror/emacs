@@ -89,8 +89,10 @@ xemacs-elisp-make-autoload-file () {
 
 xemacs-elisp-install () {
 	local subdir="$1"
-	dodir "${SITEPACKAGE}"/lisp/"${subdir}"
-	insinto "${SITEPACKAGE}"/lisp/"${subdir}"
 	shift
-	doins "$@"
+	(  # use sub-shell to avoid possible environment polution
+		dodir "${SITEPACKAGE}"/lisp/"${subdir}"
+		insinto "${SITEPACKAGE}"/lisp/"${subdir}"
+		doins "$@"
+	) || die "Installing lisp files failed"
 }
