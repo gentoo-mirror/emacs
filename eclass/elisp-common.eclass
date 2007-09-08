@@ -140,7 +140,7 @@ EMACS_BATCH_CLEAN="${EMACS} -batch -q --no-site-file"
 
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
-	${EMACS_BATCH_CLEAN} -f batch-byte-compile $*
+	${EMACS_BATCH_CLEAN} -f batch-byte-compile "$@"
 }
 
 # @FUNCTION: elisp-emacs-version
@@ -197,7 +197,7 @@ elisp-install() {
 	dodir "${SITELISP}/${subdir}"
 	insinto "${SITELISP}/${subdir}"
 	shift
-	doins $@
+	doins "$@"
 }
 
 # @FUNCTION: elisp-site-file-install
@@ -305,15 +305,15 @@ elisp-comp() {
 
 	tempdir=elc.$$
 	mkdir ${tempdir}
-	cp $* ${tempdir}
+	cp "$@" ${tempdir}
 	pushd ${tempdir}
 
 	echo "(add-to-list 'load-path \"../\")" > script
 	${EMACS_BATCH_CLEAN} -l script -f batch-byte-compile *.el
-	local status=$?
+	local ret=$?
 	mv *.elc ..
 
 	popd
 	rm -fr ${tempdir}
-	return ${status}
+	return ${ret}
 }

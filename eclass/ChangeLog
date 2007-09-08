@@ -4,6 +4,8 @@
 
 	* elisp-common.eclass (elisp-site-file-install): Remove redundant
 	cp and pushd/popd commands.
+	(elisp-compile, elisp-comp, elisp-install): Quote all instances of
+	$@ and $*. Don't use ${status}; it is reserved in zsh.
 	(EMACS_BATCH_CLEAN): New variable, analog to the XEmacs eclasses.
 
 2007-08-21  Christian Faulhammer  <opfer@gentoo.org>
