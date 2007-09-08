@@ -69,8 +69,9 @@ elisp_src_compile() {
 }
 
 elisp_src_install() {
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
+		|| die "elisp-site-file-install failed"
 	if [ -n "${DOCS}" ]; then
 		dodoc ${DOCS} || die "dodoc failed"
 	fi

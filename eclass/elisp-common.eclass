@@ -193,11 +193,13 @@ elisp-make-autoload-file () {
 
 elisp-install() {
 	local subdir=$1
-	einfo "Installing Elisp files for GNU Emacs support ..."
-	dodir "${SITELISP}/${subdir}"
-	insinto "${SITELISP}/${subdir}"
 	shift
-	doins "$@"
+	einfo "Installing Elisp files for GNU Emacs support ..."
+	( # subshell to avoid pollution of calling environment
+		dodir "${SITELISP}/${subdir}"
+		insinto "${SITELISP}/${subdir}"
+		doins "$@"
+	)
 }
 
 # @FUNCTION: elisp-site-file-install
@@ -209,9 +211,11 @@ elisp-site-file-install() {
 	local sitefile=$1 my_pn=${2:-${PN}}
 	einfo "Installing site initialisation file for GNU Emacs ..."
 	sed "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		${sitefile} >"${T}/$(basename ${sitefile})" || die "sed failed"
-	insinto "${SITELISP}"
-	doins "${T}/$(basename ${sitefile})" || die "failed to install site file"
+		${sitefile} >"${T}/$(basename ${sitefile})"
+	( # subshell to avoid pollution of calling environment
+		insinto "${SITELISP}"
+		doins "${T}/$(basename ${sitefile})"
+	)
 }
 
 # @FUNCTION: elisp-site-regen
