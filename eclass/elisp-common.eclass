@@ -196,7 +196,6 @@ elisp-install() {
 	shift
 	einfo "Installing Elisp files for GNU Emacs support ..."
 	( # subshell to avoid pollution of calling environment
-		dodir "${SITELISP}/${subdir}"
 		insinto "${SITELISP}/${subdir}"
 		doins "$@"
 	)

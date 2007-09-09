@@ -1,3 +1,7 @@
+2007-09-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-install): Remove superfluous dodir.
+
 2007-09-08  Hans de Graaff  <hans@degraaff.org>
 
 	* xemacs-elisp.eclass: Add unpack code which can also deal with
