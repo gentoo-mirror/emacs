@@ -19,7 +19,7 @@
 	(SIMPLE_ELISP, DOCS, NEED_EMACS): Add man comments.
 
 	* elisp-common.eclass (elisp-site-file-install): Remove redundant
-	cp and pushd/popd commands. Don't die, return status instead.
+	pushd/popd commands. Don't die, return status instead.
 	(elisp-compile, elisp-comp, elisp-install): Quote all instances of
 	$@ and $*. Don't use ${status}; it is reserved in zsh.
 	(elisp-install, elisp-site-file-install): Call insinto and doins

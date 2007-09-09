@@ -192,7 +192,7 @@ elisp-make-autoload-file () {
 # Install files in SITELISP directory.
 
 elisp-install() {
-	local subdir=$1
+	local subdir="$1"
 	shift
 	einfo "Installing Elisp files for GNU Emacs support ..."
 	( # subshell to avoid pollution of calling environment
@@ -208,13 +208,13 @@ elisp-install() {
 # Install Emacs site-init file in SITELISP directory.
 
 elisp-site-file-install() {
-	local sitefile=$1 my_pn=${2:-${PN}}
+	local sf="$1" my_pn="${2:-${PN}}"
 	einfo "Installing site initialisation file for GNU Emacs ..."
-	sed "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		${sitefile} >"${T}/$(basename ${sitefile})"
+	cp "${sf}" "${T}"
+	sed -i "s:@SITELISP@:${SITELISP}/${my_pn}:g" "${T}/$(basename "${sf}")"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}"
-		doins "${T}/$(basename ${sitefile})"
+		doins "${T}/$(basename "${sf}")"
 	)
 }
 
