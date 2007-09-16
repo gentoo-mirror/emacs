@@ -1,0 +1,11 @@
+--- whine.el~	2007-09-16 04:31:58.000000000 +0200
++++ whine.el	2007-09-16 04:32:18.000000000 +0200
+@@ -310,8 +310,6 @@
+   (whine "v" whine-pain)
+   ))
+                 
+-(whinify)
+-
+ (defun unwhinify ()
+   "Hopefully, remove the whine-bindings on the whiny keys."
+   (interactive)
