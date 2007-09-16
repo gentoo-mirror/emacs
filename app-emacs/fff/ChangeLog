@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Sep 2007; Ulrich Mueller <ulm@gentoo.org> fff-20050517.ebuild:
+  This works with all flavours of locate, also add rlocate to RDEPEND.
+
   16 Sep 2007; Christian Faulhammer <opfer@gentoo.org> fff-20050517.ebuild:
   adding mlocate as RDEPEND, it works with that too
 

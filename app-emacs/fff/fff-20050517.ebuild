@@ -13,8 +13,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-RDEPEND="|| ( >=sys-apps/slocate-2.7-r8
-		sys-apps/mlocate )"
+RDEPEND="|| ( sys-apps/slocate sys-apps/mlocate sys-apps/rlocate )"
 
 SITEFILE=50${PN}-gentoo.el
 
