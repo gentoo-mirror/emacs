@@ -1,3 +1,7 @@
+2007-09-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Set no-byte-compile in site-gentoo.el.
+
 2007-09-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-install): Remove superfluous dodir.

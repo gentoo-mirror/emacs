@@ -244,6 +244,9 @@ elisp-site-regen() {
 
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
+	;; Local Variables:
+	;; no-byte-compile: t
+	;; End:
 	;;; site-gentoo.el ends here
 	EOF
 
