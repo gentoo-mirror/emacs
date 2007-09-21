@@ -224,6 +224,25 @@ elisp-site-file-install() {
 elisp-site-regen() {
 	local sflist sf line
 
+	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
+		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
+		einfo "Creating default ${SITELISP}/site-start.el ..."
+		cat <<-EOF >"${T}"/site-start.el
+		;;; site-start.el
+
+		;;; Commentary:
+		;; This default site startup file is installed by elisp-common.eclass.
+		;; You may replace this file by your own site initialisation, or even
+		;; remove it completely; it will not be recreated.
+
+		;;; Code:
+		;; Load site initialisation for Gentoo-installed packages.
+		(require 'site-gentoo)
+
+		;;; site-start.el ends here
+		EOF
+	fi
+
 	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
 	cat <<-EOF >"${T}"/site-gentoo.el
 	;;; site-gentoo.el --- site initialisation for Gentoo-installed packages
@@ -259,6 +278,8 @@ elisp-site-regen() {
 		echo " no changes."
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
+		[ -f "${T}"/site-start.el ] \
+			&& mv "${T}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
 		echo; einfo
 		for sf in ${sflist}; do
 			einfo "  Adding ${sf} ..."

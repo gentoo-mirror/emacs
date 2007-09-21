@@ -2,6 +2,7 @@
 
 	* elisp-common.eclass (elisp-site-regen): Provide site-gentoo.
 	Recommend require instead of load in einfo message.
+	Create default site-start.el when running for the first time.
 	(elisp-comp): Move comment so that it will appear in the man page.
 
 2007-09-20  Ulrich Mueller  <ulm@gentoo.org>
