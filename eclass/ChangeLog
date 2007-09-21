@@ -1,12 +1,19 @@
+2007-09-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Provide site-gentoo.
+	Recommend require instead of load in einfo message.
+	(elisp-comp): Move comment so that it will appear in the man page.
+
 2007-09-20  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp-common.eclass: Set no-byte-compile in site-gentoo.el.
+	* elisp-common.eclass (elisp-site-regen): Set no-byte-compile in
+	site-gentoo.el.
 
 2007-09-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-install): Remove superfluous dodir.
 
-2007-09-08  Hans de Graaff  <hans@degraaff.org>
+2007-09-08  Hans de Graaff  <graaff@gentoo.org>
 
 	* xemacs-elisp.eclass: Add unpack code which can also deal with
 	simple elisp files.

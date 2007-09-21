@@ -244,6 +244,8 @@ elisp-site-regen() {
 
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
+	(provide 'site-gentoo)
+
 	;; Local Variables:
 	;; no-byte-compile: t
 	;; End:
@@ -271,7 +273,7 @@ site-start.el if there is such a file.
 In order for this site initialisation to be loaded for all users
 automatically, you can add a line like this:
 
-	(load "/usr/share/emacs/site-lisp/site-gentoo" nil t)
+	(require 'site-gentoo)
 
 to /usr/share/emacs/site-lisp/site-start.el.  Alternatively, that line
 can be added by individual users to their initialisation files, or for
@@ -286,19 +288,20 @@ EOF
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
 # Byte-compile interdependent Emacs Lisp files.
-# Originally taken from GNU autotools.
+#
+# This function byte-compiles all ".el" files which are part of its
+# arguments, using GNU Emacs, and puts the resulting ".elc" files into the
+# current directory, so disregarding the original directories used in ".el"
+# arguments.
+#
+# This function manages in such a way that all Emacs Lisp files to be
+# compiled are made visible between themselves, in the event they require or
+# load one another.
 
 elisp-comp() {
 	# Copyright 1995 Free Software Foundation, Inc.
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
-	# This script byte-compiles all `.el' files which are part of its
-	# arguments, using GNU Emacs, and put the resulting `.elc' files into
-	# the current directory, so disregarding the original directories used
-	# in `.el' arguments.
-	#
-	# This script manages in such a way that all Emacs LISP files to
-	# be compiled are made visible between themselves, in the event
-	# they require or load-library one another.
+	# Originally taken from GNU autotools.
 
 	test $# -gt 0 || return 1
 
