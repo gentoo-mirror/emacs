@@ -279,6 +279,7 @@ elisp-site-regen() {
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
 		[ -f "${T}"/site-start.el ] \
+			&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ] \
 			&& mv "${T}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
 		echo; einfo
 		for sf in ${sflist}; do
