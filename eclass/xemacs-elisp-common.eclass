@@ -39,6 +39,12 @@
 #
 #   xemacs-elisp-compile *.el
 #
+# In the case of interdependent elisp files, you can use the
+# xemacs-elisp-comp() function which makes sure all files are
+# loadable.
+#
+#   xemacs-elisp-comp *.el
+#
 # Function xemacs-elisp-make-autoload-file() can be used to generate a
 # file with autoload definitions for the lisp functions.  It takes a
 # list of directories (default: working directory) as its argument.
@@ -98,4 +104,43 @@ xemacs-elisp-install () {
 		insinto "${SITEPACKAGE}"/lisp/"${subdir}"
 		doins "$@"
 	) || die "Installing lisp files failed"
+}
+
+# @FUNCTION: xemacs-elisp-comp
+# @USAGE: <list of elisp files>
+# @DESCRIPTION:
+# Byte-compile interdependent XEmacs lisp files.
+# Originally taken from GNU autotools, but some configuration options
+# removed as they don't make sense with the current status of XEmacs
+# in Gentoo.
+
+xemacs-elisp-comp() {
+	# Copyright 1995 Free Software Foundation, Inc.
+	# François Pinard <pinard@iro.umontreal.ca>, 1995.
+	# This script byte-compiles all `.el' files which are part of its
+	# arguments, using XEmacs, and put the resulting `.elc' files into
+	# the current directory, so disregarding the original directories used
+	# in `.el' arguments.
+	#
+	# This script manages in such a way that all XEmacs LISP files to
+	# be compiled are made visible between themselves, in the event
+	# they require or load-library one another.
+
+	test $# -gt 0 || return 1
+
+	einfo "Compiling XEmacs Elisp files ..."
+
+	tempdir=elc.$$
+	mkdir ${tempdir}
+	cp $* ${tempdir}
+	pushd ${tempdir}
+
+	echo "(add-to-list 'load-path \"../\")" > script
+	${XEMACS_BATCH_CLEAN} -q -l script -f batch-byte-compile *.el
+	local status=$?
+	mv *.elc ..
+
+	popd
+	rm -fr ${tempdir}
+	return ${status}
 }

@@ -1,5 +1,8 @@
 2007-09-22  Hans de Graaff  <graaff@gentoo.org>
 
+	* xemacs-elisp-common.eclass: Implement xemacs-elisp-comp that can
+	be used to compile interdependent elisp files.
+
 	* xemacs-elisp-common.eclass, xemacs-elisp.eclass: Use die
 	consistently in the functions in common, as commented on by Donny
 	Berkholz on gentoo-dev. Fix documentation.
