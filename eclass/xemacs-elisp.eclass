@@ -45,7 +45,7 @@ xemacs-elisp_src_unpack() {
 }
 
 xemacs-elisp_src_compile() {
-	xemacs-elisp-compile *.el || die "Compilation of lisp files failed"
+	xemacs-elisp-compile *.el
 }
 
 xemacs-elisp_src_install () {

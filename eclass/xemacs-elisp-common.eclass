@@ -37,7 +37,7 @@
 # An elisp file is compiled by the xemacs-elisp-compile() function
 # defined here and simply takes the source files as arguments.
 #
-#       xemacs-elisp-compile *.el || die "xemacs-elisp-compile failed"
+#   xemacs-elisp-compile *.el
 #
 # Function xemacs-elisp-make-autoload-file() can be used to generate a
 # file with autoload definitions for the lisp functions.  It takes a
@@ -49,14 +49,13 @@
 # .SS
 # src_install() usage:
 #
-# The resulting compiled files (.elc) should be put in a subdirectory of
-# /usr/lib/xemacs/site-lisp/ which is named after the first argument
-# of elisp-install().  The following parameters are the files to be put in
-# that directory.  Usually the subdirectory should be ${PN}, you can choose
-# something else, but remember to tell elisp-site-file-install() (see below)
-# the change, as it defaults to ${PN}.
+# The resulting compiled files (.elc) should be put in a subdirectory
+# of /usr/lib/xemacs/site-lisp/ which is named after the first
+# argument of xemacs-elisp-install().  The following parameters are
+# the files to be put in that directory.  Usually the subdirectory
+# should be ${PN}, but you can choose something else.
 #
-#       elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+#   xemacs-elisp-install ${PN} *.el *.elc
 #
 
 
@@ -67,10 +66,13 @@ XEMACS_BATCH_CLEAN="${XEMACS} --batch --no-site-file --no-init-file"
 # @FUNCTION: xemacs-elisp-compile
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
-# Byte-compile elisp files with xemacs
+# Byte-compile elisp files with xemacs. This function will die when
+# there is a problem compiling the lisp files.
 xemacs-elisp-compile () {
-	${XEMACS_BATCH_CLEAN} -f batch-byte-compile "$@"
-	xemacs-elisp-make-autoload-file "$@"
+	{
+		${XEMACS_BATCH_CLEAN} -f batch-byte-compile "$@"
+		xemacs-elisp-make-autoload-file "$@"
+	} || die "Compile lisp files failed"
 }
 
 xemacs-elisp-make-autoload-file () {
@@ -85,7 +87,8 @@ xemacs-elisp-make-autoload-file () {
 # @DESCRIPTION:
 # Install elisp source and byte-compiled files. All files are installed
 # in site-packages in their own directory, indicated by the first
-# argument to the function.
+# argument to the function. This function will die if there is a problem
+# installing the list files.
 
 xemacs-elisp-install () {
 	local subdir="$1"
