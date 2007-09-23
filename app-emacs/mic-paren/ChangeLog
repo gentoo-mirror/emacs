@@ -1,8 +1,0 @@
-# ChangeLog for app-emacs/mic-paren
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-  15 Sep 2007; Ulrich Mueller <ulm@gentoo.org> +files/50mic-paren-gentoo.el,
-  +metadata.xml, +mic-paren-3.7.ebuild:
-  Initial import. Ebuild contributed my me.
-
