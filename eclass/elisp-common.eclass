@@ -158,7 +158,7 @@ elisp-emacs-version() {
 # @DESCRIPTION:
 # Generate a file with autoload definitions for the lisp functions.
 
-elisp-make-autoload-file () {
+elisp-make-autoload-file() {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
 	einfo "Generating autoload file for GNU Emacs ..."
@@ -183,7 +183,7 @@ elisp-make-autoload-file () {
 	${EMACS_BATCH_CLEAN} \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
-		-f batch-update-autoloads "${@-.}"
+		-f batch-update-autoloads "${@:-.}"
 }
 
 # @FUNCTION: elisp-install
