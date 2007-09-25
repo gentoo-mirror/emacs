@@ -1,3 +1,8 @@
+2007-09-25  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: remove a spurious space
+	add a colon where it might be intended
+
 2007-09-22  Hans de Graaff  <graaff@gentoo.org>
 
 	* xemacs-elisp-common.eclass: Implement xemacs-elisp-comp that can
