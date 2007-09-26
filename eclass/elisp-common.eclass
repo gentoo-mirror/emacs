@@ -183,7 +183,7 @@ elisp-make-autoload-file() {
 	${EMACS_BATCH_CLEAN} \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
-		-f batch-update-autoloads "${@:-.}"
+		-f batch-update-autoloads "${@-.}"
 }
 
 # @FUNCTION: elisp-install
