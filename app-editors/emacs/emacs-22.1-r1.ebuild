@@ -1,8 +1,8 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.1.ebuild,v 1.11 2007/06/25 05:57:15 ulm Exp $
+# $Header: $
 
-WANT_AUTOCONF="2.61"
+WANT_AUTOCONF="2.5"
 WANT_AUTOMAKE="latest"
 
 inherit autotools elisp-common eutils flag-o-matic
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2 BSD"
 SLOT="22"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc ~sparc-fbsd x86 ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xembed xpm"
 RESTRICT="strip"
 
