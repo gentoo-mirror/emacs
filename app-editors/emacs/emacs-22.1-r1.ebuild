@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2 BSD"
 SLOT="22"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc ~sparc-fbsd x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xembed xpm"
 RESTRICT="strip"
 
