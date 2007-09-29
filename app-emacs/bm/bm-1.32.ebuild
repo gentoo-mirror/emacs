@@ -7,7 +7,8 @@ inherit elisp
 DESCRIPTION="Visible bookmarks in buffer"
 HOMEPAGE="http://www.nongnu.org/bm/"
 # taken from http://download.savannah.gnu.org/releases/bm/${P}.el
-SRC_URI="mirror://gentoo/${P}.el.bz2"
+#SRC_URI="mirror://gentoo/${P}.el.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
