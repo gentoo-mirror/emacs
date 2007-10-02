@@ -9,7 +9,8 @@
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
-# emacs@gentoo.org
+# Feel free to contact the Emacs team through <emacs@gentoo.org> if you
+# have problems, suggestions or questions.
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #

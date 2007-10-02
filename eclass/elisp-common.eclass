@@ -10,7 +10,7 @@
 #
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
-# Feel free to contact the Emacs team through emacs@gentoo.org if you have
+# Feel free to contact the Emacs team through <emacs@gentoo.org> if you have
 # problems, suggestions or questions.
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
