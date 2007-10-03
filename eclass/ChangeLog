@@ -1,3 +1,7 @@
+2007-10-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (SITELISP, SITEFILE): Document variables.
+
 2007-09-26  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp-common.eclass: remove colon from previous change
