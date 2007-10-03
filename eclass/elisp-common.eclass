@@ -97,7 +97,7 @@
 #
 # Which is then installed by
 #
-#   	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+#   	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 #
 # in src_install().  If your subdirectory is not named ${PN}, give the
 # differing name as second argument.
