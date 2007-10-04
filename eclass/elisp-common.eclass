@@ -138,7 +138,7 @@ SITELISP=/usr/share/emacs/site-lisp
 SITEFILE=50${PN}-gentoo.el
 
 EMACS=/usr/bin/emacs
-# The following works for Emacs versions 18-23, don't change it.
+# The following works for Emacs versions 18--23, don't change it.
 EMACS_BATCH_CLEAN="${EMACS} -batch -q --no-site-file"
 
 # @FUNCTION: elisp-compile
