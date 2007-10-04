@@ -1,3 +1,8 @@
+2007-10-04  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (EMACS): use an en dash instead of a hypen
+	in comment
+
 2007-10-03  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (SITELISP, SITEFILE): Document variables.
