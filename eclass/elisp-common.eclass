@@ -73,10 +73,10 @@
 #   	(autoload 'csv-mode "csv-mode" "Major mode for csv files." t)
 #
 # If your Emacs support files are installed in a subdirectory of
-# /usr/share/emacs/site-lisp/ (which is recommended if more than one file is
-# installed), you need to extend Emacs' load-path as shown in the first
-# non-comment.  The elisp-site-file-install() function of this eclass will
-# replace "@SITELISP@" by the actual path.
+# /usr/share/emacs/site-lisp/ (which is recommended), you need to extend
+# Emacs' load-path as shown in the first non-comment.
+# The elisp-site-file-install() function of this eclass will replace
+# "@SITELISP@" by the actual path.
 #
 # The next line tells Emacs to load the mode opening a file ending with
 # ".csv" and load functions depending on the context and needed features.
@@ -281,8 +281,8 @@ elisp-site-regen() {
 
 	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${T}"/site-gentoo.el; then
 		# This prevents outputting unnecessary text when there
-		# was actually no change
-		# A case is a remerge where we have doubled output
+		# was actually no change.
+		# A case is a remerge where we have doubled output.
 		echo " no changes."
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
