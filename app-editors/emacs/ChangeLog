@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Oct 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r1.ebuild:
+  Don't PROVIDE=virtual/editor as it is a new-style virtual now.
+
   26 Sep 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r1.ebuild:
   Sync with Portage: Change WANT_AUTOCONF to 2.5, add some keywords.
 

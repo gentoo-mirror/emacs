@@ -18,7 +18,6 @@ IUSE=""
 DEPEND=">=dev-lang/erlang-11.2.5
 	>=sys-libs/slang-1.4.9-r2"
 RDEPEND="${DEPEND}"
-PROVIDE="virtual/editor"
 
 src_unpack() {
 	unpack ${A}

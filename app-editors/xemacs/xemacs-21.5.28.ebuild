@@ -53,7 +53,7 @@ DEPEND="virtual/libc
 PDEPEND="app-xemacs/xemacs-base
 	mule? ( app-xemacs/mule-base )"
 
-PROVIDE="virtual/xemacs virtual/editor"
+PROVIDE="virtual/xemacs"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -112,7 +112,7 @@ src_compile() {
 			myconf="${myconf} --without-xface"
 
 		use xft && myconf="${myconf} --with-xft=emacs,tabs,menubars,gauges" ||
-		    myconf="${myconf} --with-xft=no"
+			myconf="${myconf} --with-xft=no"
 
 	else
 		myconf="${myconf}
@@ -155,7 +155,7 @@ src_compile() {
 	if use gdbm || use berkdb ; then
 		if use gdbm ; then
 			mydb="gdbm"
-	        # We have GDBM in a non-standard location
+			# We have GDBM in a non-standard location
 			append-flags "-I/usr/include/gdbm"
 		fi
 
@@ -173,7 +173,7 @@ src_compile() {
 	use ia64  && myconf="${myconf} --with-system-malloc"
 
 	use debug && myconf="${myconf} --with-optimization=no --with-debug" ||
-	    myconf="${myconf} --with-optimizations=yes"
+		myconf="${myconf} --with-optimizations=yes"
 
 	# Don't use econf because it uses options which this configure
 	# script does not understand (like --host).

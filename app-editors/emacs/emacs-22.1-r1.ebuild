@@ -46,8 +46,6 @@ RDEPEND="!<app-editors/emacs-cvs-22.1
 DEPEND="${RDEPEND}
 	gzip-el? ( app-arch/gzip )"
 
-PROVIDE="virtual/editor"
-
 # FULL_VERSION keeps the full version number, which is needed in order to
 # determine some path information correctly for copy/move operations later on
 FULL_VERSION="${PV}"
@@ -198,27 +196,27 @@ emacs-infodir-rebuild() {
 
 	local infodir=/usr/share/info/emacs-${SLOT} f
 	einfo "Regenerating Info directory index in ${infodir} ..."
-	rm -f ${ROOT}${infodir}/dir{,.*}
-	for f in ${ROOT}${infodir}/*.info*; do
+	rm -f "${ROOT}"${infodir}/dir{,.*}
+	for f in "${ROOT}"${infodir}/*.info*; do
 		[[ ${f##*/} == *[0-9].info* ]] \
-			|| install-info --info-dir=${ROOT}${infodir} ${f} &>/dev/null
+			|| install-info --info-dir="${ROOT}"${infodir} ${f} &>/dev/null
 	done
 	echo
 }
 
 pkg_postinst() {
-	test -f ${ROOT}/usr/share/emacs/site-lisp/subdirs.el ||
-		cp ${ROOT}/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
+	test -f "${ROOT}"/usr/share/emacs/site-lisp/subdirs.el ||
+		cp "${ROOT}"/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 
 	local f
-	for f in ${ROOT}/var/lib/games/emacs/{snake,tetris}-scores; do
+	for f in "${ROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		test -e ${f} || touch ${f}
 	done
 
 	elisp-site-regen
 	emacs-infodir-rebuild
 
-	if [[ "$(readlink ${ROOT}/usr/bin/emacs)" == emacs.emacs-${SLOT}* ]]; then
+	if [[ $(readlink "${ROOT}"/usr/bin/emacs) == emacs.emacs-${SLOT}* ]]; then
 		# transition from pre-eselect revision
 		eselect emacs set emacs-${SLOT}
 	else
