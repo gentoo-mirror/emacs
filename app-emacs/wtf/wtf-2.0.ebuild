@@ -7,7 +7,7 @@ inherit elisp
 DESCRIPTION="Look up conversational and computing acronyms"
 HOMEPAGE="http://mwolson.org/projects/"
 # taken from: http://mwolson.org/static/dist/wtf/wtf.el
-SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.el.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
