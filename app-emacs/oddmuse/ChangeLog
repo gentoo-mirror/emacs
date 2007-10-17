@@ -3,6 +3,9 @@
 # $Header: $
 
   17 Oct 2007; Ulrich Mueller <ulm@gentoo.org> oddmuse-20070712.ebuild:
+  Tested on amd64, add keyword.
+
+  17 Oct 2007; Ulrich Mueller <ulm@gentoo.org> oddmuse-20070712.ebuild:
   RDEPEND on net-misc/curl.
 
   16 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/50oddmuse-gentoo.el,
