@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Oct 2007; Ulrich Mueller <ulm@gentoo.org> oddmuse-20070712.ebuild:
+  RDEPEND on net-misc/curl.
+
   16 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/50oddmuse-gentoo.el,
   +metadata.xml, +oddmuse-20070712.ebuild:
   Initial import. Ebuild contributed by me.
