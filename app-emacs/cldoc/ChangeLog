@@ -8,5 +8,5 @@
 
   20 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/50cldoc-gentoo.el,
   +metadata.xml, +cldoc-1.16.ebuild:
-  Initial import. Ebuild contributed by me.
+  New package, suggested by Stelian Ionescu. Ebuild contributed by me.
 
