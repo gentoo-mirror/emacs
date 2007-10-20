@@ -14,5 +14,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
+RDEPEND="app-emacs/slime"
+
 SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el

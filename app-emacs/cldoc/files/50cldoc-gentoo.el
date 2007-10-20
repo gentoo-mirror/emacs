@@ -7,8 +7,8 @@
 (add-hook 'lisp-mode-hook 'turn-on-cldoc-mode)
 
 ;; ilisp users
-(add-hook 'ilisp-mode-hook 'turn-on-cldoc-mode)
-(setq ilisp-bindings-*bind-space-p* nil)
+;;(add-hook 'ilisp-mode-hook 'turn-on-cldoc-mode)
+;;(setq ilisp-bindings-*bind-space-p* nil)
 
 ;; slime users
 (add-hook 'slime-repl-mode-hook
