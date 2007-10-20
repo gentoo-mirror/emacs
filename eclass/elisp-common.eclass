@@ -333,13 +333,8 @@ elisp-comp() {
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
 	# Originally taken from GNU autotools.
 
-	test $# -gt 0 || return 1
+	[ $# -gt 0 ] || return 1
 
-	if test -z "${EMACS}" || test "${EMACS}" = "t"; then
-		# Value of "t" means we are running in a shell under Emacs.
-		# Just assume Emacs is called "emacs".
-		EMACS=/usr/bin/emacs
-	fi
 	einfo "Compiling GNU Emacs Elisp files ..."
 
 	tempdir=elc.$$

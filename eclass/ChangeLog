@@ -1,3 +1,8 @@
+2007-10-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Use square brackets for test.
+	Remove dysfunctional code.
+
 2007-10-04  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp-common.eclass (EMACS): use an en dash instead of a hypen
