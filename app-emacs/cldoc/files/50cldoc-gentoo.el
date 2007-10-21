@@ -6,11 +6,6 @@
 (autoload 'turn-on-cldoc-mode "cldoc" nil t)
 (add-hook 'lisp-mode-hook 'turn-on-cldoc-mode)
 
-;; ilisp users
-;;(add-hook 'ilisp-mode-hook 'turn-on-cldoc-mode)
-;;(setq ilisp-bindings-*bind-space-p* nil)
-
-;; slime users
 (add-hook 'slime-repl-mode-hook
           #'(lambda ()
               (turn-on-cldoc-mode)
