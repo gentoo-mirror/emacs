@@ -179,6 +179,9 @@ src_install () {
 		# C source you might find via find-function
 		doins src/*.[ch]
 		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<-EOF
+
+		;;; emacs-${SLOT} site-lisp configuration
+
 		(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 		X    (setq find-function-C-source-directory
 		X	  "/usr/share/emacs/${FULL_VERSION}/src"))
