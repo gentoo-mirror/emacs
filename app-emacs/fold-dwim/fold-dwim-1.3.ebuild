@@ -10,7 +10,7 @@ SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 SIMPLE_ELISP=t
