@@ -3,6 +3,7 @@
 	* elisp-common.eclass (EMACSFLAGS): New variable, replaces
 	EMACS_BATCH_CLEAN. Rationale: Keep program path separate from
 	flags, to allow its redefinition in ebuilds.
+	(elisp-compile, elisp-comp): Group compile functions together.
 
 2007-10-20  Ulrich Mueller  <ulm@gentoo.org>
 

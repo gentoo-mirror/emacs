@@ -151,6 +151,44 @@ elisp-compile() {
 	${EMACS} ${EMACSFLAGS} -f batch-byte-compile "$@"
 }
 
+# @FUNCTION: elisp-comp
+# @USAGE: <list of elisp files>
+# @DESCRIPTION:
+# Byte-compile interdependent Emacs Lisp files.
+#
+# This function byte-compiles all ".el" files which are part of its
+# arguments, using GNU Emacs, and puts the resulting ".elc" files into the
+# current directory, so disregarding the original directories used in ".el"
+# arguments.
+#
+# This function manages in such a way that all Emacs Lisp files to be
+# compiled are made visible between themselves, in the event they require or
+# load one another.
+
+elisp-comp() {
+	# Copyright 1995 Free Software Foundation, Inc.
+	# François Pinard <pinard@iro.umontreal.ca>, 1995.
+	# Originally taken from GNU autotools.
+
+	[ $# -gt 0 ] || return 1
+
+	einfo "Compiling GNU Emacs Elisp files ..."
+
+	tempdir=elc.$$
+	mkdir ${tempdir}
+	cp "$@" ${tempdir}
+	pushd ${tempdir}
+
+	echo "(add-to-list 'load-path \"../\")" > script
+	${EMACS} ${EMACSFLAGS} -l script -f batch-byte-compile *.el
+	local ret=$?
+	mv *.elc ..
+
+	popd
+	rm -fr ${tempdir}
+	return ${ret}
+}
+
 # @FUNCTION: elisp-emacs-version
 # @DESCRIPTION:
 # Output version of currently active Emacs.
@@ -312,42 +350,4 @@ initialisation files in /usr/share/emacs/site-lisp/ to load.
 EOF
 		echo
 	fi
-}
-
-# @FUNCTION: elisp-comp
-# @USAGE: <list of elisp files>
-# @DESCRIPTION:
-# Byte-compile interdependent Emacs Lisp files.
-#
-# This function byte-compiles all ".el" files which are part of its
-# arguments, using GNU Emacs, and puts the resulting ".elc" files into the
-# current directory, so disregarding the original directories used in ".el"
-# arguments.
-#
-# This function manages in such a way that all Emacs Lisp files to be
-# compiled are made visible between themselves, in the event they require or
-# load one another.
-
-elisp-comp() {
-	# Copyright 1995 Free Software Foundation, Inc.
-	# François Pinard <pinard@iro.umontreal.ca>, 1995.
-	# Originally taken from GNU autotools.
-
-	[ $# -gt 0 ] || return 1
-
-	einfo "Compiling GNU Emacs Elisp files ..."
-
-	tempdir=elc.$$
-	mkdir ${tempdir}
-	cp "$@" ${tempdir}
-	pushd ${tempdir}
-
-	echo "(add-to-list 'load-path \"../\")" > script
-	${EMACS} ${EMACSFLAGS} -l script -f batch-byte-compile *.el
-	local ret=$?
-	mv *.elc ..
-
-	popd
-	rm -fr ${tempdir}
-	return ${ret}
 }
