@@ -1,3 +1,9 @@
+2007-11-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (EMACSFLAGS): New variable, replaces
+	EMACS_BATCH_CLEAN. Rationale: Keep program path separate from
+	flags, to allow its redefinition in ebuilds.
+
 2007-10-20  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-comp): Use square brackets for test.

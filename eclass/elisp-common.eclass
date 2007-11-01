@@ -139,7 +139,7 @@ SITEFILE=50${PN}-gentoo.el
 
 EMACS=/usr/bin/emacs
 # The following works for Emacs versions 18--23, don't change it.
-EMACS_BATCH_CLEAN="${EMACS} -batch -q --no-site-file"
+EMACSFLAGS="-batch -q --no-site-file"
 
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
@@ -148,7 +148,7 @@ EMACS_BATCH_CLEAN="${EMACS} -batch -q --no-site-file"
 
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
-	${EMACS_BATCH_CLEAN} -f batch-byte-compile "$@"
+	${EMACS} ${EMACSFLAGS} -f batch-byte-compile "$@"
 }
 
 # @FUNCTION: elisp-emacs-version
@@ -158,7 +158,7 @@ elisp-compile() {
 elisp-emacs-version() {
 	# The following will work for at least versions 18-23.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
-	${EMACS_BATCH_CLEAN} -l "${T}"/emacs-version.el
+	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
 }
 
 # @FUNCTION: elisp-make-autoload-file
@@ -188,7 +188,7 @@ elisp-make-autoload-file() {
 	;;; ${f##*/} ends here
 	EOF
 
-	${EMACS_BATCH_CLEAN} \
+	${EMACS} ${EMACSFLAGS} \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
@@ -343,7 +343,7 @@ elisp-comp() {
 	pushd ${tempdir}
 
 	echo "(add-to-list 'load-path \"../\")" > script
-	${EMACS_BATCH_CLEAN} -l script -f batch-byte-compile *.el
+	${EMACS} ${EMACSFLAGS} -l script -f batch-byte-compile *.el
 	local ret=$?
 	mv *.elc ..
 
