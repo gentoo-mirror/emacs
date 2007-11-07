@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-22.1-hack-local-variables.patch, -emacs-22.1-r1.ebuild,
+  +emacs-22.1-r2.ebuild:
+  Sync with Portage, fixing bug #197958.
+
   10 Oct 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r1.ebuild:
   Don't PROVIDE=virtual/editor as it is a new-style virtual now.
 

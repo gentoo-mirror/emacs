@@ -69,6 +69,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-freebsd-sparc.patch"
 	epatch "${FILESDIR}/${P}-oldxmenu-qa.patch"
 	epatch "${FILESDIR}/${P}-backup-buffer.patch"
+	epatch "${FILESDIR}/${P}-hack-local-variables.patch"
 	# ALSA is detected and used even if not requested by the USE=alsa flag.
 	# So remove the automagic check
 	use alsa || epatch "${FILESDIR}/${P}-disable_alsa_detection.patch"
@@ -99,14 +100,15 @@ src_compile() {
 	fi
 
 	if use X; then
-		# GTK+ is the default toolkit if USE=gtk is chosen with other
-		# possibilities. Emacs upstream thinks this should be standard
-		# policy on all distributions
 		myconf="${myconf} --with-x"
-		myconf="${myconf} $(use_with xpm)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_with jpeg) $(use_with tiff)"
 		myconf="${myconf} $(use_with gif) $(use_with png)"
+		myconf="${myconf} $(use_with xpm)"
+
+		# GTK+ is the default toolkit if USE=gtk is chosen with other
+		# possibilities. Emacs upstream thinks this should be standard
+		# policy on all distributions
 		if use gtk; then
 			echo
 			einfo "Configuring to build with GTK support, disabling all other toolkits"
@@ -180,7 +182,7 @@ src_install () {
 		doins src/*.[ch]
 		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<-EOF
 
-		;;; emacs-${SLOT} site-lisp configuration
+		;;; ${PN}-${SLOT} site-lisp configuration
 
 		(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 		X    (setq find-function-C-source-directory
@@ -236,9 +238,9 @@ pkg_postinst() {
 
 	echo
 	elog "You can set the version to be started by /usr/bin/emacs through"
-	elog "the Emacs eselect module. Man and info pages are automatically"
-	elog "redirected, so you may have several installed Emacs versions at the"
-	elog "same time. \"man emacs.eselect\" for details."
+	elog "the Emacs eselect module, which also redirects man and info pages."
+	elog "Therefore, several Emacs versions can be installed at the same time."
+	elog "\"man emacs.eselect\" for details."
 }
 
 pkg_postrm() {
