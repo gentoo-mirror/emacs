@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  10 Nov 2007; Ulrich Mueller <ulm@gentoo.org> gentoo-syntax-svn-0.ebuild:
+  Add ~amd64 keyword for flameeyes.
+
   04 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/51gentoo-syntax-gentoo.el, +gentoo-syntax-svn-0.ebuild,
   +metadata.xml:
