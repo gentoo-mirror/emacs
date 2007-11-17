@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/quilt-el-0.45.4-tramp-recursion.patch:
+  Fix interaction with tramp, patch from flameeyes.
+
   17 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/51quilt-el-gentoo.el,
   +quilt-el-0.45.4.ebuild:
   Version bump. Use autoload mechanism in site-init file.
