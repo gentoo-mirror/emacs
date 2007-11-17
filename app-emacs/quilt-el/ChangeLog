@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  17 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +quilt-el-0.45.4.ebuild:
+  Version bump.
+
   07 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +quilt-el-0.4.20060425.2.ebuild, +files/50quilt-el-gentoo.el,
   +metadata.xml:
