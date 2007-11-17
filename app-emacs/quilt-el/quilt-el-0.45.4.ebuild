@@ -16,5 +16,5 @@ IUSE=""
 RDEPEND="dev-util/quilt"
 
 S="${WORKDIR}/${PN}"
-SITEFILE=50${PN}-gentoo.el
+SITEFILE=51${PN}-gentoo.el
 DOCS="README changelog"
