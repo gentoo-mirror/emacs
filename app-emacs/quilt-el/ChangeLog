@@ -3,8 +3,10 @@
 # $Header: $
 
   17 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/quilt-el-0.45.4-header-window.patch,
   +files/quilt-el-0.45.4-tramp-recursion.patch:
-  Fix interaction with tramp, patch from flameeyes.
+  Fix interaction with tramp; delete window after editing is complete;
+  patches from flameeyes.
 
   17 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/51quilt-el-gentoo.el,
   +quilt-el-0.45.4.ebuild:

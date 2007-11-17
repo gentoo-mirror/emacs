@@ -23,4 +23,5 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-tramp-recursion.patch"
+	epatch "${FILESDIR}/${P}-header-window.patch"
 }
