@@ -9,9 +9,11 @@ DESCRIPTION="Zippy the pinhead data base"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${MY_P}a.tar.gz"
 
+# A slightly different version of this file is also included with
+# games-misc/fortune-mod which is under a BSD licence.
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}/etc"

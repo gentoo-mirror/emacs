@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  yow-lines-21.4_p20020329.ebuild:
+  Add ~amd64 keyword.
+
   18 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/50yow-lines-gentoo.el,
   +files/yow-lines-fix-misspellings.patch, +metadata.xml,
   +yow-lines-21.4_p20020329.ebuild:
