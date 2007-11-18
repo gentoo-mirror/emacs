@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/yow-lines
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/50yow-lines-gentoo.el,
+  +files/yow-lines-fix-misspellings.patch, +metadata.xml,
+  +yow-lines-21.4_p20020329.ebuild:
+  Initial import. Restore etc/yow.lines from Emacs 21.4 and upstream CVS;
+  it is broken in Emacs 22.1. Ebuild contributed by me.
+
