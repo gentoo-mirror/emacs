@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/template
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  18 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/50template-gentoo.el,
+  +metadata.xml, +template-3.1c.ebuild:
+  Initial import. Ebuild contributed by MATSUYAMA Tomohiro
+  <matsuyama@ariel-networks.com>, bug #194212.
+
