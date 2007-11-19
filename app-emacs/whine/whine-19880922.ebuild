@@ -18,5 +18,6 @@ SITEFILE=50${PN}-gentoo.el
 
 src_unpack() {
 	elisp_src_unpack
-	epatch "${FILESDIR}/${P}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-repair-keysequences.patch"
+	epatch "${FILESDIR}/${PN}-gentoo.patch"
 }

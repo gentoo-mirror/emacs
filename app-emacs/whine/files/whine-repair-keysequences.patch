@@ -1,23 +1,24 @@
---- whine.el~	2007-09-16 04:31:58.000000000 +0200
-+++ whine.el	2007-09-16 04:32:18.000000000 +0200
-@@ -236,13 +236,13 @@
-                  (symbol-function 'whine-get-word)
+The originally posted whine.el obviously contained literal control characters;
+I was unable to find an undamaged source file. This patch tries to restore the
+broken key sequences, hopefully it is close to the original. - ulm
+
+--- whine.el~	2007-09-16 02:30:41.000000000 +0100
++++ whine.el	2007-11-19 10:03:47.000000000 +0100
+@@ -237,5 +237,5 @@
                   "'"
                   )))
 -  (whine "" (append whine-pain
 +  (whine "\C-p" (append whine-pain
                 '("Up, up, and away!"
                  "This sure is an exciting line!"
-                 "Gee!  Let's do that again!"
+@@ -243,5 +243,5 @@
                  "Beginning of buffer"
                  )))
 -  (whine "" (append whine-pain
 +  (whine "\C-n" (append whine-pain
                 '("Don't make me go that way"
                  "I don't want to go there!"
-                 "What an unpleasant line!"
-@@ -250,45 +250,45 @@
-                 "End of buffer"
+@@ -251,14 +251,14 @@
                  "File not found"
                  )))
 -  (whine "" (append whine-pain
@@ -38,8 +39,7 @@
 +  (whine "\C-b" (append whine-pain
                  '("Please, Mr. Human Person, don't make me go that way!"
                  "I am taken aback!"
-                 "Backwards ha!"
-                 "Catastrophic error -- world aborted."
+@@ -267,8 +267,8 @@
                  "Career aborted -- unable to restart."
                  )))
 -  (whine "" (append whine-pain '("kill! Kill! KILL!")))
@@ -51,8 +51,7 @@
 +  (whine "\C-l" '("You redrew the screen, you goon!"
                  "No, you can't have a clear message line."
                  "This is getting boring."
-                 "Give up and go play Rogue."
-                 "You just typed control-L to refresh the screen."
+@@ -277,17 +277,17 @@
                  ))
  
 -  (whine "%" '("Oh wow!  I couldn't have done it better myself!"))
@@ -63,7 +62,8 @@
                         '("It's off to the beginnings of the earth!")))
 -  (whine "$" insult-word)
 +  (whine "\M-$" insult-word)
-   (whine " " insult-word)
+-  (whine " " insult-word)
++  (whine "\M- " insult-word)
 -  (whine "" whine-insults)
 -  (whine "b" whine-insults)
 -  (whine "f" whine-insults)
@@ -78,17 +78,14 @@
 +  (whine "\M-x" '("You shouldn't have typed that command!"
                   "That's not a legal command."
                   ))
-   (whine "\C-x\C-s" '("Filesystem not writable."
-@@ -299,19 +299,17 @@
-                       "File saved.  Hallelujah!"
+@@ -300,5 +300,5 @@
                        "File accidentally deleted -- please retype."
                        ))
 -  (whine "" (append whine-pain '("If you touch that key again I shall explode!"
 +  (whine "\C-m" (append whine-pain '("If you touch that key again I shall explode!"
                  "If you touch that key again I shall freak out!"
                  "That's the space bar, not the return key!"
-                 "Press `c-c c-#' to abort."
-                 "I won't RETURN!"
+@@ -307,6 +307,6 @@
                  "You shouldn't have done that..."
                  "Now look what you've done!")))
 -  (whine "" whine-pain)
@@ -97,8 +94,3 @@
 +  (whine "\M-v" whine-pain)
    ))
                  
--(whinify)
--
- (defun unwhinify ()
-   "Hopefully, remove the whine-bindings on the whiny keys."
-   (interactive)

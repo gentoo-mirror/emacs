@@ -2,6 +2,12 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/whine-19880922-gentoo.patch, +files/whine-gentoo.patch,
+  +files/whine-repair-keysequences.patch, whine-19880922.ebuild:
+  Add patch to replace whine's command redefinitions by a hook function
+  in post-command-hook.
+
   18 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
   files/whine-19880922-gentoo.patch:
   Restore broken keybindings; hopefully this is close to the original.
