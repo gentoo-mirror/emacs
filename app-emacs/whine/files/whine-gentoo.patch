@@ -69,7 +69,7 @@ is looked up in whine-post-command-hook. - ulm
 +(defun whine-post-command-hook ()
 +  (let ((complaints (cdr (assq this-command whine-commands-alist))))
 +    (cond
-+     ((minibufferp)
++     ((window-minibuffer-p)
 +      ;; Save message for later display if we are in the minibuffer.
 +      ;; NB: M-x calls post-command-hook _before_ the function name is read.
 +      (or whine-last-complaints
