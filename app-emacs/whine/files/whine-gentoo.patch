@@ -41,7 +41,7 @@ is looked up in whine-post-command-hook. - ulm
 -              (do-whine (, whine-list)))))))
 -      (global-set-key key whine-fn)
 -      ))))
-+      (add-to-list 'whine-commands-alist (cons fn complaints))))))
++      (add-to-list 'whine-commands-alist (list fn key complaints))))))
  
  (defun whine-say (s)
    (cond
@@ -57,7 +57,16 @@ is looked up in whine-post-command-hook. - ulm
    (let* (
          (noun '("robot" "dweeb" "person" "child" "creep"
                  "sleaze creature" "colorizer" "dentist"
-@@ -309,11 +286,33 @@
+@@ -233,7 +210,7 @@
+                   )
+                  "What do you mean by `"
+                  "How can you say `")
+-                 (symbol-function 'whine-get-word)
++                 '(lambda () (whine-get-word))
+                  "'"
+                  )))
+   (whine "\C-p" (append whine-pain
+@@ -309,11 +286,37 @@
    (whine "\C-v" whine-pain)
    (whine "\M-v" whine-pain)
    ))
@@ -67,7 +76,11 @@ is looked up in whine-post-command-hook. - ulm
 +(defvar whine-last-complaints nil)
 +
 +(defun whine-post-command-hook ()
-+  (let ((complaints (cdr (assq this-command whine-commands-alist))))
++  (let* ((command (assq this-command whine-commands-alist))
++         (complaints
++          (and (or (not (eq (car command) 'self-insert-command))
++                   (equal (nth 1 command) (this-command-keys)))
++               (nth 2 command))))
 +    (cond
 +     ((> (minibuffer-depth) 0)
 +      ;; Save message for later display if we are in the minibuffer.
