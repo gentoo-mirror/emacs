@@ -20,4 +20,5 @@ src_unpack() {
 	elisp_src_unpack
 	epatch "${FILESDIR}/${PN}-repair-keysequences.patch"
 	epatch "${FILESDIR}/${PN}-gentoo.patch"
+	epatch "${FILESDIR}/${PN}-new-style-backquotes-gentoo.patch"
 }

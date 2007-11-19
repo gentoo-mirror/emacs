@@ -1,0 +1,72 @@
+--- whine.el~	2007-11-20 00:33:06.000000000 +0100
++++ whine.el	2007-11-20 00:31:36.000000000 +0100
+@@ -111,8 +111,7 @@
+                 "biologist" "politician" "demagogue" "programmer"
+                 "disk jockey" "infant" "lawyer" "computer"
+                  "limosine driver" "hamster" "rodent"))
+-        (adj   (`
+-                ("strange" "smelly" "Baltic" "masochistic"
++        (adj   `("strange" "smelly" "Baltic" "masochistic"
+                  "creepy" "illusory" "toxic" "idiotic"
+                  "charismatic" "godly" "pneumatic" "well-painted"
+                  "overweight" "underpaid" "overbearing" "underfed"
+@@ -127,12 +126,12 @@
+                  "vapid" "stressed-out" "blessed" "saintly"
+                  "heinous" "inedible" "droopy" "half-dead"
+                  "blissed-out" "grossed-out" "knocked-out" "out-and-out"
+-                 (CATNS (, noun) "-like")
+-                 (CATNS (, noun) "-loving")
+-                 (CATNS (, noun) "-hating")
+-                 (CATNS (, noun) "-worshipping")
+-                 (CATNS (, noun) "-fearing")
+-                 (CATNS (, noun) "-hunting")
++                 (CATNS ,noun "-like")
++                 (CATNS ,noun "-loving")
++                 (CATNS ,noun "-hating")
++                 (CATNS ,noun "-worshipping")
++                 (CATNS ,noun "-fearing")
++                 (CATNS ,noun "-hunting")
+                  "political" "non-political" "communist"
+                  "indecisive" "apathetic" "pathetic" "dyslexic"
+                  "dreaming" "anorexic" "rich" "painted"
+@@ -141,12 +140,11 @@
+                  "hygenic" "unhygenic" "intolerable" "grease-coated"
+                  "sluggish" "wimpy" "ponderous" "unlucky"
+                  "brilliant" "unclothed" "heretical" "ironclad"
+-                 "undergraduate" "melting" "green" "nosy")))
++                 "undergraduate" "melting" "green" "nosy"))
+         (whine-insults
+          (list 'CATNS "You " adj " " adj " " noun "!"))
+         (whine-pain
+-         (`
+-          (("Ouch!"
++         `(("Ouch!"
+             "Don't do that!"
+             "That hurts"
+             "Get off my foot, you goon!"
+@@ -166,8 +164,8 @@
+                   "Alas!  It is my ill fortune to be a"
+                   "Have pity on me, for I am a"
+                   )
+-                 (, adj)
+-                 (, noun))
++                 ,adj
++                 ,noun)
+             "Stop it!"
+             "Oh! the pain, the pain!"
+            (CAT
+@@ -189,10 +187,10 @@
+               ("love" "be" "know" "find" "worship" "have been")
+               "a")
+              "Don't press that key again, you")
+-            (, adj)
+-            (, adj)
+-            (, noun)
+-            )))))
++            ,adj
++            ,adj
++            ,noun
++            ))))
+         (insult-word
+           (list 'CATNS
+                 (list

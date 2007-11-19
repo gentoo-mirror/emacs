@@ -3,10 +3,11 @@
 # $Header: $
 
   19 Nov 2007; Ulrich Mueller <ulm@gentoo.org> files/whine-gentoo.patch,
+  +files/whine-new-style-backquotes-gentoo.patch,
   files/whine-repair-keysequences.patch, -whine-19880922.ebuild,
   +whine-19880922-r1.ebuild:
   Correct binding for space bar. Add special handling for self-insert keys.
-  Fix byte-compilation.
+  Fix byte-compilation. New backquotes syntax for Emacs 23.
 
   19 Nov 2007; Ulrich Mueller <ulm@gentoo.org> whine-19880922.ebuild:
   Add ~amd64 keyword.
