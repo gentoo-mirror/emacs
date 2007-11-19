@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/yow-compile-gentoo.patch, yow-21.4_p20020329.ebuild:
+  Undo previous change, since the yow binary uses strcpy and may suffer from
+  buffer overflows.
+
   18 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/yow-compile-gentoo.patch, yow-21.4_p20020329.ebuild:
   Also install the yow binary.
@@ -10,5 +15,5 @@
   +files/yow-fix-misspellings.patch, +metadata.xml,
   +yow-21.4_p20020329.ebuild:
   Initial import. Restore etc/yow.lines from Emacs 21.4 and upstream CVS;
-  it is broken in Emacs 22.1. Ebuild contributed by me.
+  it is broken in Emacs 22.1.
 

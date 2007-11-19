@@ -16,26 +16,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}/etc"
 SITEFILE=50${PN}-gentoo.el
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${PN}-fix-misspellings.patch"
-	epatch "${FILESDIR}/${PN}-compile-gentoo.patch"
 }
 
 src_compile() {
-	cd lib-src
-	$(tc-getCC) ${CFLAGS} -DPATH_DATA=\"/usr/share/emacs/etc\" \
-		yow.c -o yow || die "compile failed"
+	return
 }
 
 src_install() {
-	dobin lib-src/yow || die "dobin failed"
 	insinto /usr/share/emacs/etc
-	doins etc/yow.lines || die "doins failed"
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
-		|| die "elisp-site-file-install failed"
+	doins yow.lines || die
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 }
