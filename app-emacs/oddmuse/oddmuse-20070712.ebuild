@@ -7,7 +7,7 @@ inherit elisp
 DESCRIPTION="Edit pages on an Oddmuse wiki using curl"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/OddmuseMode"
 # taken from: http://www.emacswiki.org/cgi-bin/emacs/download/${PN}.el
-SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

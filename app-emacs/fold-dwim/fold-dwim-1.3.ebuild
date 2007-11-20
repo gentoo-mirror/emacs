@@ -6,7 +6,7 @@ inherit elisp
 
 DESCRIPTION="Unified user interface for Emacs folding modes"
 HOMEPAGE="http://www.dur.ac.uk/p.j.heslin/Software/Emacs/"
-SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit elisp eutils
 
 DESCRIPTION="View a DVI file in an Emacs buffer"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/DviViewMode"
-SRC_URI="http://dev.gentoo.org/~ulm/${P}.el.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

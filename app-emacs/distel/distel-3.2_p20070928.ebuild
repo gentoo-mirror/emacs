@@ -7,7 +7,7 @@ inherit elisp
 DESCRIPTION="Distributed Emacs Lisp for Erlang"
 HOMEPAGE="http://fresh.homeunix.net/~luke/distel/"
 # svn snapshot from http://distel.googlecode.com/svn/trunk/
-SRC_URI="http://dev.gentoo.org/~ulm/${P}.tar.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 # "New BSD License" according to http://code.google.com/p/distel/
 LICENSE="BSD"

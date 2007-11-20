@@ -8,7 +8,7 @@ DESCRIPTION="An Emacs clone in Erlang"
 HOMEPAGE="http://fresh.homeunix.net/~luke/ermacs/"
 # snapshot of jungerl.cvs.sourceforge.net:/cvsroot/jungerl,
 # directories: bin, config, lib/ermacs, lib/msc, lib/slang, support
-SRC_URI="http://dev.gentoo.org/~ulm/${P}.tar.bz2"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
