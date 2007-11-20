@@ -5,8 +5,9 @@
 inherit elisp eutils
 
 DESCRIPTION="Complaint generator for GNU Emacs"
-HOMEPAGE="http://groups.google.de/group/comp.emacs/msg/00352d73fff71dca"
-SRC_URI="http://wwwa1.kph.uni-mainz.de/users/ulm/distfiles/${P}.el.bz2"
+HOMEPAGE="http://groups.google.com/group/comp.emacs/msg/00352d73fff71dca"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2
+	http://dev.gentoo.org/~ulm/distfiles/${P}-patches.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -18,7 +19,5 @@ SITEFILE=50${PN}-gentoo.el
 
 src_unpack() {
 	elisp_src_unpack
-	epatch "${FILESDIR}/${PN}-repair-keysequences.patch"
-	epatch "${FILESDIR}/${PN}-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-new-style-backquotes-gentoo.patch"
+	EPATCH_SUFFIX=patch epatch
 }
