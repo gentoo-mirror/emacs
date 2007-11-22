@@ -25,7 +25,7 @@ RDEPEND="!<app-editors/emacs-cvs-22.1
 	sys-libs/zlib
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
-	alsa? ( media-sound/alsa-headers )
+	alsa? ( media-libs/alsa-lib )
 	X? (
 		$X_DEPEND
 		x11-misc/emacs-desktop
