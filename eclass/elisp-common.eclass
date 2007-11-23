@@ -259,7 +259,7 @@ elisp-site-file-install() {
 	local sf="$1" my_pn="${2:-${PN}}"
 	einfo "Installing site initialisation file for GNU Emacs ..."
 	cp "${sf}" "${T}"
-	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g"
+	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/$(basename "${sf}")"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}"
