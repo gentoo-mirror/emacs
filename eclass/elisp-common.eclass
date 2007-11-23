@@ -129,8 +129,11 @@
 
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
-# Directory where Emacs Lisp files are installed.
+# Directory where packages install Emacs Lisp files.
 SITELISP=/usr/share/emacs/site-lisp
+
+# Directory where packages install miscellaneous (not Lisp) files.
+SITEETC=/usr/share/emacs/etc
 
 # @ECLASS-VARIABLE: SITEFILE
 # @DESCRIPTION:
@@ -256,7 +259,8 @@ elisp-site-file-install() {
 	local sf="$1" my_pn="${2:-${PN}}"
 	einfo "Installing site initialisation file for GNU Emacs ..."
 	cp "${sf}" "${T}"
-	sed -i "s:@SITELISP@:${SITELISP}/${my_pn}:g" "${T}/$(basename "${sf}")"
+	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g"
+		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/$(basename "${sf}")"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}"
 		doins "${T}/$(basename "${sf}")"

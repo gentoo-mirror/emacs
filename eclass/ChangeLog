@@ -1,3 +1,8 @@
+2007-11-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (SITEETC): New variable.
+	(elisp-site-file-install): Handle @SITEETC@ in site-init file.
+
 2007-11-01  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (EMACSFLAGS): New variable, replaces
