@@ -4,7 +4,8 @@
 
   24 Nov 2007; Ulrich Mueller <ulm@gentoo.org> gentoo-syntax-svn-0.ebuild:
   Install all elisp files. No more backwards compatibility symlinks.
-  Don't rename ChangeLog since there are no collisions.
+  Don't rename ChangeLog since there are no collisions. Add message to
+  pkg_postinst.
 
   10 Nov 2007; Ulrich Mueller <ulm@gentoo.org> gentoo-syntax-svn-0.ebuild:
   Add ~amd64 keyword for flameeyes.

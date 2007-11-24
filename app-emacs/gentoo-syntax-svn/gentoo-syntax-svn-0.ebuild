@@ -25,3 +25,10 @@ src_install() {
 		|| die "elisp-site-file-install failed"
 	dodoc ChangeLog
 }
+
+pkg_postinst() {
+	elisp-site-regen
+
+	elog "Some optional features may require installation of additional"
+	elog "packages, like app-portage/gentoolkit-dev for echangelog."
+}
