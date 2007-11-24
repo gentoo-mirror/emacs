@@ -262,7 +262,7 @@ elisp-site-file-install() {
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
 	( # subshell to avoid pollution of calling environment
-		insinto "${SITELISP}"
+		insinto "${SITELISP}/site-gentoo.d"
 		doins "${T}/${sf##*/}"
 	)
 }
@@ -272,7 +272,7 @@ elisp-site-file-install() {
 # Regenerate site-gentoo.el file.
 
 elisp-site-regen() {
-	local sflist sf line
+	local sflist sf sfn line
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
@@ -304,10 +304,13 @@ elisp-site-regen() {
 	;;; Code:
 	EOF
 
-	for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
+	for sf in "${ROOT}${SITELISP}"{/site-gentoo.d,}/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		sflist="${sflist} ${sf##*/}"
+		echo "${sf##*/} ${sf}"
+	done | sort | while read sfn sf
+	do
+		sflist="${sflist} ${sfn}"
 		cat "${sf}" >>"${T}"/site-gentoo.el
 	done
 

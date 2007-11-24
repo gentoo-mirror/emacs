@@ -2,6 +2,7 @@
 
 	* elisp-common.eclass (elisp-site-file-install, elisp-site-regen):
 	Replace basename by bash parameter expansion.
+	Install packages' site-init files in site-gentoo.d subdirectory.
 
 2007-11-23  Ulrich Mueller  <ulm@gentoo.org>
 
