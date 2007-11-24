@@ -20,11 +20,8 @@ RDEPEND="!app-emacs/gentoo-syntax"
 SITEFILE=51gentoo-syntax-gentoo.el
 
 src_install() {
-	elisp-install gentoo-syntax gentoo-syntax.{el,elc}
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" gentoo-syntax
-	newdoc ChangeLog ChangeLog-Emacs
-
-	# the following is for backwards compatibility
-	dosym gentoo-syntax.el "${SITELISP}/gentoo-syntax/ebuild-mode.el"
-	dosym gentoo-syntax.elc "${SITELISP}/gentoo-syntax/ebuild-mode.elc"
+	elisp-install gentoo-syntax *.el *.elc || die "elisp-install failed"
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" gentoo-syntax \
+		|| die "elisp-site-file-install failed"
+	dodoc ChangeLog
 }
