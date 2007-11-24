@@ -1,3 +1,8 @@
+2007-11-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install, elisp-site-regen):
+	Replace basename by bash parameter expansion.
+
 2007-11-23  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (SITEETC): New variable.

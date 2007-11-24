@@ -260,10 +260,10 @@ elisp-site-file-install() {
 	einfo "Installing site initialisation file for GNU Emacs ..."
 	cp "${sf}" "${T}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/$(basename "${sf}")"
+		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}"
-		doins "${T}/$(basename "${sf}")"
+		doins "${T}/${sf##*/}"
 	)
 }
 
@@ -307,7 +307,7 @@ elisp-site-regen() {
 	for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		sflist="${sflist} $(basename "${sf}")"
+		sflist="${sflist} ${sf##*/}"
 		cat "${sf}" >>"${T}"/site-gentoo.el
 	done
 
