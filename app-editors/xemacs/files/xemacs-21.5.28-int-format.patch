@@ -1,0 +1,43 @@
+
+diff -r 33f6ee3a6e75 src/doprnt.c
+--- a/src/doprnt.c	Thu Sep 06 21:51:29 2007 +0000
++++ b/src/doprnt.c	Mon Nov 26 03:46:16 2007 +0100
+@@ -776,9 +776,21 @@ emacs_doprnt_1 (Lisp_Object stream, cons
+ #endif /* HAVE_BIGFLOAT */
+ 	  else
+ 	    {
+-	      Ascbyte *text_to_print = alloca_array (char, 350);
++	      Ascbyte *text_to_print;
+ 	      Ascbyte constructed_spec[100];
+ 	      Ascbyte *p = constructed_spec;
++              int alloca_sz = 350;
++              int min = spec->minwidth, prec = spec->precision;
++
++              if (prec < 0)
++                prec = 0;
++              if (min < 0)
++                min = 0;
++
++              if (32+min+prec > alloca_sz)
++                alloca_sz = 32 + min + prec;
++
++              text_to_print = alloca_array(char, alloca_sz);
+ 
+ 	      /* Mostly reconstruct the spec and use sprintf() to
+ 		 format the string. */
+diff -r 33f6ee3a6e75 tests/automated/lisp-tests.el
+--- a/tests/automated/lisp-tests.el	Thu Sep 06 21:51:29 2007 +0000
++++ b/tests/automated/lisp-tests.el	Mon Nov 26 03:46:16 2007 +0100
+@@ -1279,6 +1279,10 @@
+ (Assert (= (read (format "%d"  most-negative-fixnum)) most-negative-fixnum))
+ (Assert (= (read (format "%ld" most-negative-fixnum)) most-negative-fixnum))
+ 
++;; These used to crash. 
++(Assert (eql (read (format "%f" 1.2e+302)) 1.2e+302))
++(Assert (eql (read (format "%.1000d" 1)) 1))
++
+ ;;; "%u" is undocumented, and Emacs Lisp has no unsigned type.
+ ;;; What to do if "%u" is used with a negative number?
+ ;;; For non-bignum XEmacsen, the most reasonable thing seems to be to print an
+
+
