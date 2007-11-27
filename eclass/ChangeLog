@@ -1,3 +1,8 @@
+2007-11-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Emit warning message
+	(still commented out) if files are found in the old location.
+
 2007-11-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-file-install, elisp-site-regen):

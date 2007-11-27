@@ -276,7 +276,7 @@ elisp-site-file-install() {
 # generating start-up file.
 
 elisp-site-regen() {
-	local sflist sf sfn line
+	local sflist sf sfn line oldloc
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
@@ -312,6 +312,8 @@ elisp-site-regen() {
 	do
 		[ -r "${sf}" ] || continue
 		echo "${sf##*/} ${sf}"
+		# set a flag if there are still files in the old location
+		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && oldloc=t
 	done | sort | while read sfn sf
 	do
 		sflist="${sflist} ${sfn}"
@@ -346,7 +348,7 @@ elisp-site-regen() {
 
 All site initialisation for Gentoo-installed packages is added to
 /usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is no longer
-managed by Gentoo. You are responsible for all maintenance of
+managed by Gentoo.  You are responsible for all maintenance of
 site-start.el if there is such a file.
 
 In order for this site initialisation to be loaded for all users
@@ -355,10 +357,18 @@ automatically, you can add a line like this:
 	(require 'site-gentoo)
 
 to /usr/share/emacs/site-lisp/site-start.el.  Alternatively, that line
-can be added by individual users to their initialisation files, or for
-greater flexibility, users can select which of the package-specific
-initialisation files in /usr/share/emacs/site-lisp/ to load.
+can be added by individual users to their initialisation files, or,
+for greater flexibility, users can load individual package-specific
+initialisation files in /usr/share/emacs/site-lisp/site-gentoo.d/.
 EOF
 		echo
 	fi
+
+#	if [ "${oldloc}" ]; then
+#		ewarn "Site-initialisation files of Emacs packages are now installed"
+#		ewarn "in /usr/share/emacs/site-lisp/site-gentoo.d/. You may consider"
+#		ewarn "using emacs-updater.sh to rebuild the installed Emacs packages."
+#		ewarn "However, the old location is still supported."
+#		echo
+#	fi
 }
