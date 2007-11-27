@@ -269,11 +269,10 @@ elisp-site-file-install() {
 
 # @FUNCTION: elisp-site-regen
 # @DESCRIPTION:
-# Regenerate site-gentoo.el file.  Old location for site initiation
-# files of packages has been /usr/share/emacs/site-lisp/.  In November
-# 2007 this has been changed to
-# /usr/share/emacs/site-lisp/site-gentoo.d/.  Remerge of packages with
-# Emacs support is enough, old location is supported still when
+# Regenerate site-gentoo.el file.  Old location for site initialisation
+# files of packages was /usr/share/emacs/site-lisp/.  In November 2007 this
+# has been changed to /usr/share/emacs/site-lisp/site-gentoo.d/.  Remerge of
+# packages with Emacs support is enough, old location is supported still when
 # generating start-up file.
 
 elisp-site-regen() {
