@@ -2,6 +2,11 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  27 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-22.1-format-int.patch, -emacs-22.1-r2.ebuild,
+  +emacs-22.1-r3.ebuild:
+  Sync with Portage.
+
   22 Nov 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r2.ebuild:
   Fix alsa dependency, thanks Flameeyes for pointing this out.
 

@@ -70,6 +70,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-oldxmenu-qa.patch"
 	epatch "${FILESDIR}/${P}-backup-buffer.patch"
 	epatch "${FILESDIR}/${P}-hack-local-variables.patch"
+	epatch "${FILESDIR}/${P}-format-int.patch"
 	# ALSA is detected and used even if not requested by the USE=alsa flag.
 	# So remove the automagic check
 	use alsa || epatch "${FILESDIR}/${P}-disable_alsa_detection.patch"
