@@ -276,7 +276,8 @@ elisp-site-file-install() {
 # generating start-up file.
 
 elisp-site-regen() {
-	local sflist sf sfn line obsolete
+	local i sf line obsolete
+	local -a sflist
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
@@ -311,15 +312,18 @@ elisp-site-regen() {
 	for sf in "${ROOT}${SITELISP}"{/site-gentoo.d,}/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		echo "${sf##*/} ${sf}"
-	done | sort | cut -d' ' -f2- >"${T}"/site-gentoo.list
-
-	while read sf; do
-		sflist="${sflist} ${sf##*/}"
-		cat "${sf}" >>"${T}"/site-gentoo.el
+		echo "n = ${#sflist[@]}"
+		# sort files by their basename. straight insertion sort.
+		for ((i=${#sflist[@]}; i>0; i--)); do
+			[[ ${sf##*/} < ${sflist[i-1]##*/} ]] || break
+			sflist[i]=${sflist[i-1]}
+		done
+		sflist[i]=${sf}
 		# set a flag if there are obsolete files
 		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && obsolete=t
-	done <"${T}"/site-gentoo.list
+	done
+
+	cat "${sflist[@]}" >>"${T}"/site-gentoo.el
 
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
@@ -342,7 +346,7 @@ elisp-site-regen() {
 			&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ] \
 			&& mv "${T}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
 		echo; einfo
-		for sf in ${sflist}; do
+		for sf in "${sflist[@]##*/}"; do
 			einfo "  Adding ${sf} ..."
 		done
 		while read line; do einfo "${line}"; done <<EOF
