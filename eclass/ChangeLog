@@ -1,3 +1,9 @@
+2007-11-28  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Do not use a pipeline,
+	otherwise the loop is executed in a subshell and we cannot set
+	variables from there.
+
 2007-11-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Emit warning message

@@ -276,7 +276,7 @@ elisp-site-file-install() {
 # generating start-up file.
 
 elisp-site-regen() {
-	local sflist sf sfn line oldloc
+	local sflist sf sfn line obsolete
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
@@ -312,13 +312,14 @@ elisp-site-regen() {
 	do
 		[ -r "${sf}" ] || continue
 		echo "${sf##*/} ${sf}"
-		# set a flag if there are still files in the old location
-		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && oldloc=t
-	done | sort | while read sfn sf
-	do
-		sflist="${sflist} ${sfn}"
+	done | sort | cut -d' ' -f2- >"${T}"/site-gentoo.list
+
+	while read sf; do
+		sflist="${sflist} ${sf##*/}"
 		cat "${sf}" >>"${T}"/site-gentoo.el
-	done
+		# set a flag if there are obsolete files
+		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && obsolete=t
+	done <"${T}"/site-gentoo.list
 
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
@@ -359,12 +360,12 @@ automatically, you can add a line like this:
 to /usr/share/emacs/site-lisp/site-start.el.  Alternatively, that line
 can be added by individual users to their initialisation files, or,
 for greater flexibility, users can load individual package-specific
-initialisation files in /usr/share/emacs/site-lisp/site-gentoo.d/.
+initialisation files from /usr/share/emacs/site-lisp/site-gentoo.d/.
 EOF
 		echo
 	fi
 
-#	if [ "${oldloc}" ]; then
+#	if [ "${obsolete}" ]; then
 #		ewarn "Site-initialisation files of Emacs packages are now installed"
 #		ewarn "in /usr/share/emacs/site-lisp/site-gentoo.d/. You may consider"
 #		ewarn "using emacs-updater.sh to rebuild the installed Emacs packages."
