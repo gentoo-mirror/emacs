@@ -1,3 +1,9 @@
+2007-11-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Install files in
+	site-lisp again, since otherwise things break during unmerge when
+	an old version of the eclass is used.
+
 2007-11-28  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Do not use a pipeline,
@@ -7,8 +13,8 @@
 
 2007-11-27  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp-common.eclass (elisp-site-regen): Emit warning message
-	(still commented out) if files are found in the old location.
+	* elisp-common.eclass (elisp-site-regen): Emit warning message if
+	files are found in the old location; this is still commented out.
 
 2007-11-24  Ulrich Mueller  <ulm@gentoo.org>
 

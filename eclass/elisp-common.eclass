@@ -262,7 +262,7 @@ elisp-site-file-install() {
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
 	( # subshell to avoid pollution of calling environment
-		insinto "${SITELISP}/site-gentoo.d"
+		insinto "${SITELISP}"
 		doins "${T}/${sf##*/}"
 	)
 }
