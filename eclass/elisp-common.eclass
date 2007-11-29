@@ -312,7 +312,6 @@ elisp-site-regen() {
 	for sf in "${ROOT}${SITELISP}"{/site-gentoo.d,}/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
-		echo "n = ${#sflist[@]}"
 		# sort files by their basename. straight insertion sort.
 		for ((i=${#sflist[@]}; i>0; i--)); do
 			[[ ${sf##*/} < ${sflist[i-1]##*/} ]] || break
