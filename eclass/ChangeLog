@@ -2,6 +2,8 @@
 
 	* elisp-common.eclass (elisp-site-regen): Set nullglob option,
 	because there may be a directory without matching files.
+	(elisp-compile, elisp-comp, elisp-make-autoload-file)
+	(elisp-install, elisp-site-file-install): Use ebegin/eend.
 
 2007-11-30  Christian Faulhammer  <opfer@gentoo.org>
 

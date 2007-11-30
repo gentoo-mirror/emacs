@@ -150,9 +150,9 @@ EMACSFLAGS="-batch -q --no-site-file"
 # Byte-compile Emacs Lisp files.
 
 elisp-compile() {
-	einfo "Compiling GNU Emacs Elisp files ..."
+	ebegin "Compiling GNU Emacs Elisp files"
 	${EMACS} ${EMACSFLAGS} -f batch-byte-compile "$@"
-	einfo "GNU Emacs Elisp files compiled."
+	eend $? "batch-byte-compile failed"
 }
 
 # @FUNCTION: elisp-comp
@@ -176,7 +176,7 @@ elisp-comp() {
 
 	[ $# -gt 0 ] || return 1
 
-	einfo "Compiling GNU Emacs Elisp files ..."
+	ebegin "Compiling GNU Emacs Elisp files"
 
 	tempdir=elc.$$
 	mkdir ${tempdir}
@@ -190,7 +190,8 @@ elisp-comp() {
 
 	popd
 	rm -fr ${tempdir}
-	einfo "GNU Emacs Elisp files compiled."
+
+	eend ${ret} "batch-byte-compile failed"
 	return ${ret}
 }
 
@@ -212,7 +213,7 @@ elisp-emacs-version() {
 elisp-make-autoload-file() {
 	local f="${1:-${PN}-autoloads.el}"
 	shift
-	einfo "Generating autoload file for GNU Emacs ..."
+	ebegin "Generating autoload file for GNU Emacs"
 
 	sed 's/^FF/\f/' >"${f}" <<-EOF
 	;;; ${f##*/} --- autoloads for ${P}
@@ -235,7 +236,8 @@ elisp-make-autoload-file() {
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
-	einfo "Autoload file for GNU Emacs generated."
+
+	eend $? "batch-update-autoloads failed"
 }
 
 # @FUNCTION: elisp-install
@@ -246,12 +248,12 @@ elisp-make-autoload-file() {
 elisp-install() {
 	local subdir="$1"
 	shift
-	einfo "Installing Elisp files for GNU Emacs support ..."
+	ebegin "Installing Elisp files for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/${subdir}"
 		doins "$@"
 	)
-	einfo "Elisp files for GNU Emacs support installed."
+	eend $? "doins failed"
 }
 
 # @FUNCTION: elisp-site-file-install
@@ -261,7 +263,7 @@ elisp-install() {
 
 elisp-site-file-install() {
 	local sf="$1" my_pn="${2:-${PN}}"
-	einfo "Installing site initialisation file for GNU Emacs ..."
+	ebegin "Installing site initialisation file for GNU Emacs"
 	cp "${sf}" "${T}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
@@ -269,7 +271,7 @@ elisp-site-file-install() {
 		insinto "${SITELISP}"
 		doins "${T}/${sf##*/}"
 	)
-	einfo "Site initialisation file for GNU Emacs installed."
+	eend $? "doins failed"
 }
 
 # @FUNCTION: elisp-site-regen
@@ -358,6 +360,8 @@ elisp-site-regen() {
 		for sf in "${sflist[@]##*/}"; do
 			einfo "  Adding ${sf} ..."
 		done
+		einfo "Regenerated ${SITELISP}/site-gentoo.el."
+
 		while read line; do einfo "${line}"; done <<EOF
 
 All site initialisation for Gentoo-installed packages is added to
@@ -376,7 +380,6 @@ for greater flexibility, users can load individual package-specific
 initialisation files from /usr/share/emacs/site-lisp/.
 EOF
 		echo
-		einfo "Regenerated ${SITELISP}/site-gentoo.el."
 	fi
 
 #	if [ "${obsolete}" ]; then
