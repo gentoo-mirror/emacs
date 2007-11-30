@@ -1,3 +1,7 @@
+2007-11-30  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: Added messages when operations finish
+
 2007-11-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-file-install): Install files in
