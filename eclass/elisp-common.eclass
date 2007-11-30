@@ -305,6 +305,10 @@ elisp-site-regen() {
 
 	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
 
+	# set nullglob option, there may be a directory without matching files
+	local old_shopts=$(shopt -p nullglob)
+	shopt -s nullglob
+
 	for sf in "${ROOT}${SITELISP}"{/site-gentoo.d,}/[0-9][0-9]*-gentoo.el
 	do
 		[ -r "${sf}" ] || continue
@@ -317,6 +321,8 @@ elisp-site-regen() {
 		# set a flag if there are obsolete files
 		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && obsolete=t
 	done
+
+	eval "${old_shopts}"
 
 	cat <<-EOF >"${T}"/site-gentoo.el
 	;;; site-gentoo.el --- site initialisation for Gentoo-installed packages
