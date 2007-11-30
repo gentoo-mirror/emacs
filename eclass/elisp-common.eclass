@@ -152,6 +152,7 @@ EMACSFLAGS="-batch -q --no-site-file"
 elisp-compile() {
 	einfo "Compiling GNU Emacs Elisp files ..."
 	${EMACS} ${EMACSFLAGS} -f batch-byte-compile "$@"
+	einfo "GNU Emacs Elisp files compiled."
 }
 
 # @FUNCTION: elisp-comp
@@ -189,6 +190,7 @@ elisp-comp() {
 
 	popd
 	rm -fr ${tempdir}
+	einfo "GNU Emacs Elisp files compiled."
 	return ${ret}
 }
 
@@ -233,6 +235,7 @@ elisp-make-autoload-file() {
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"
+	einfo "Autoload file for GNU Emacs generated."
 }
 
 # @FUNCTION: elisp-install
@@ -248,6 +251,7 @@ elisp-install() {
 		insinto "${SITELISP}/${subdir}"
 		doins "$@"
 	)
+	einfo "Elisp files for GNU Emacs support installed."
 }
 
 # @FUNCTION: elisp-site-file-install
@@ -265,6 +269,7 @@ elisp-site-file-install() {
 		insinto "${SITELISP}"
 		doins "${T}/${sf##*/}"
 	)
+	einfo "Site initialisation file for GNU Emacs installed."
 }
 
 # @FUNCTION: elisp-site-regen
@@ -365,6 +370,7 @@ for greater flexibility, users can load individual package-specific
 initialisation files from /usr/share/emacs/site-lisp/site-gentoo.d/.
 EOF
 		echo
+		einfo "Regenerated ${SITELISP}/site-gentoo.el."
 	fi
 
 #	if [ "${obsolete}" ]; then
