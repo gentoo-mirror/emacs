@@ -268,7 +268,7 @@ elisp-site-file-install() {
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
 	( # subshell to avoid pollution of calling environment
-		insinto "${SITELISP}"
+		insinto "${SITELISP}/site-gentoo.d"
 		doins "${T}/${sf##*/}"
 	)
 	eend $? "doins failed"
@@ -306,6 +306,9 @@ elisp-site-regen() {
 	fi
 
 	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
+
+	# remove auxiliary file
+	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
 
 	# set nullglob option, there may be a directory without matching files
 	local old_shopts=$(shopt -p nullglob)
@@ -381,6 +384,15 @@ initialisation files from /usr/share/emacs/site-lisp/.
 EOF
 		echo
 	fi
+
+	# Kludge for backwards compatibility: During pkg_postrm, old versions
+	# of this eclass (saved in the PDB) won't find packages' site-init files
+	# in the new location. So we copy them to an auxiliary file that is
+	# visible to old eclass versions.
+	for sf in "${sflist[@]}"; do
+		[ "${sf%/*}" = "${ROOT}${SITELISP}/site-gentoo.d" ] \
+			&& cat "${sf}" >>"${ROOT}${SITELISP}"/00site-gentoo.el
+	done
 
 #	if [ "${obsolete}" ]; then
 #		ewarn "Site-initialisation files of Emacs packages are now installed"
