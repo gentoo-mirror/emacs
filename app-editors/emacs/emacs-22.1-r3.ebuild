@@ -181,7 +181,7 @@ src_install () {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
-		sed 's/^X//' >00${PN}-${SLOT}-gentoo.el <<-EOF
+		sed 's/^X//' >10${PN}-${SLOT}-gentoo.el <<-EOF
 
 		;;; ${PN}-${SLOT} site-lisp configuration
 
@@ -189,7 +189,7 @@ src_install () {
 		X    (setq find-function-C-source-directory
 		X	  "/usr/share/emacs/${FULL_VERSION}/src"))
 		EOF
-		elisp-site-file-install 00${PN}-${SLOT}-gentoo.el
+		elisp-site-file-install 10${PN}-${SLOT}-gentoo.el
 	fi
 
 	dodoc AUTHORS BUGS CONTRIBUTE README || die "dodoc failed"
