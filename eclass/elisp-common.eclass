@@ -365,8 +365,8 @@ elisp-site-regen() {
 		done
 		einfo "Regenerated ${SITELISP}/site-gentoo.el."
 
+		echo
 		while read line; do einfo "${line}"; done <<EOF
-
 All site initialisation for Gentoo-installed packages is added to
 /usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is no longer
 managed by Gentoo.  You are responsible for all maintenance of
