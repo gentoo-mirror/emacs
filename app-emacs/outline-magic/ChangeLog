@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/outline-magic
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  02 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/50outline-magic-gentoo.el, +metadata.xml,
+  +outline-magic-0.9.ebuild:
+  Initial import; from flameeyes-overlay.
+
