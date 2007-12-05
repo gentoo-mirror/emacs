@@ -1,5 +1,5 @@
 
-;; oddmuse site-lisp configuration
+;;; oddmuse site-lisp configuration
 
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'oddmuse-toggle-minor "oddmuse" "Toggle minor mode state." t)

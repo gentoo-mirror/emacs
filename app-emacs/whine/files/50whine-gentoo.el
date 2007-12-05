@@ -1,5 +1,5 @@
 
-;; whine site-lisp configuration
+;;; whine site-lisp configuration
 
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'whinify "whine"

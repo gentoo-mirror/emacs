@@ -1,5 +1,5 @@
 
-;; wtf site-lisp configuration
+;;; wtf site-lisp configuration
 
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'wtf-add "wtf"

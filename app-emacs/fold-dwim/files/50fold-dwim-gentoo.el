@@ -1,5 +1,5 @@
 
-;; fold-dwim site-lisp configuration
+;;; fold-dwim site-lisp configuration
 
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'fold-dwim-hide-all "fold-dwim"

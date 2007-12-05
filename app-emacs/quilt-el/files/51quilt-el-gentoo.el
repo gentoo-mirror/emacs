@@ -1,5 +1,5 @@
 
-;; quilt-el site-lisp configuration
+;;; quilt-el site-lisp configuration
 
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'quilt-mode "quilt"
