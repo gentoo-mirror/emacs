@@ -402,8 +402,3 @@ EOF
 #		echo
 #	fi
 }
-
-
-# Local Variables:
-# fill-column: 77
-# End:
