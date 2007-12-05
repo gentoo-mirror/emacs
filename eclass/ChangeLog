@@ -1,3 +1,8 @@
+2007-12-05  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Add a local variables block, mainly to
+	disable the local variables embedded in the generated files.
+
 2007-12-04  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_pkg_setup): Move handling of SIMPLE_ELISP
