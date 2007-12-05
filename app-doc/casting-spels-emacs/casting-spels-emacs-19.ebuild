@@ -26,5 +26,6 @@ src_install() {
 		|| die "elisp-site-file-install failed"
 	dohtml -r html/. images || die "dohtml failed"
 	dosym html/images /usr/share/doc/${PF}/images
+	dosym ${SITELISP}/${PN} /usr/share/doc/${PF}/lisp
 	dodoc README.txt test/walk-through-commands.el
 }
