@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit elisp
+inherit elisp-common
 
 DESCRIPTION="Casting SPELs in Lisp -- A Comic Book (Emacs Lisp Edition)"
 HOMEPAGE="http://code.google.com/p/casting-spels-emacs/"
@@ -18,12 +18,8 @@ RDEPEND=""
 
 S="${WORKDIR}/${PN}"
 
-src_compile() { :; }
-
 src_install() {
 	elisp-install ${PN} lisp/*.el || die "elisp-install failed"
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
-		|| die "elisp-site-file-install failed"
 	dohtml -r html/. images || die "dohtml failed"
 	dosym html/images /usr/share/doc/${PF}/images
 	dosym ${SITELISP}/${PN} /usr/share/doc/${PF}/lisp

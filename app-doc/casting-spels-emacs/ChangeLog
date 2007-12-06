@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/50casting-spels-emacs-gentoo.el, casting-spels-emacs-19.ebuild:
+  No need for a site-init file.
+
   06 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
   casting-spels-emacs-19.ebuild:
   mimic ndash instead of normal dash in DESCRIPTION
