@@ -4,7 +4,7 @@
 
 inherit elisp
 
-DESCRIPTION="Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)"
+DESCRIPTION="Casting SPELs in Lisp -- A Comic Book (Emacs Lisp Edition)"
 HOMEPAGE="http://code.google.com/p/casting-spels-emacs/"
 SRC_URI="http://casting-spels-emacs.googlecode.com/files/${PN}-v${PV}.zip"
 
