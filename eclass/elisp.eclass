@@ -45,6 +45,10 @@ DEPEND=">=virtual/emacs-${VERSION}"
 RDEPEND=">=virtual/emacs-${VERSION}"
 IUSE=""
 
+if [ "${SIMPLE_ELISP}" = 't' ]; then
+	S="${WORKDIR}"
+fi
+
 elisp_pkg_setup() {
 	local emacs_version="$(elisp-emacs-version)"
 	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
@@ -52,17 +56,12 @@ elisp_pkg_setup() {
 		eerror "Use \"eselect emacs\" to select the active version."
 		die "Emacs version ${emacs_version} is too low."
 	fi
-
-	if [ "${SIMPLE_ELISP}" = 't' ]; then
-		S="${WORKDIR}"
-	fi
 }
 
 elisp_src_unpack() {
 	unpack ${A}
 	if [ "${SIMPLE_ELISP}" = 't' ]; then
-		cd "${S}" && mv ${P}.el ${PN}.el \
-			|| die "mv ${P}.el ${PN}.el failed"
+		mv ${P}.el ${PN}.el || die "mv ${P}.el ${PN}.el failed"
 	fi
 }
 

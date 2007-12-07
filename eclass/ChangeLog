@@ -1,6 +1,11 @@
+2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (S, elisp_pkg_setup): Moved back to global scope.
+	(elisp_src_unpack): Do not change dir, we are in WORKDIR already.
+
 2007-12-04  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass (elisp_pkg_setup): Move handling of SIMPLE_ELISP
+	* elisp.eclass (S, elisp_pkg_setup): Move handling of SIMPLE_ELISP
 	into pkg_setup function, otherwise it fails with portage-2.1.4.
 	(elisp_src_unpack): Die if mv fails.
 
