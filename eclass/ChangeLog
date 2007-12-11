@@ -1,3 +1,8 @@
+2007-12-11  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Don't require -gentoo
+	extension for files in site-gentoo.d.
+
 2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (S, elisp_pkg_setup): Moved back to global scope.

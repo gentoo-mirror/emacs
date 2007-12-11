@@ -314,7 +314,8 @@ elisp-site-regen() {
 	local old_shopts=$(shopt -p nullglob)
 	shopt -s nullglob
 
-	for sf in "${ROOT}${SITELISP}"{/site-gentoo.d,}/[0-9][0-9]*-gentoo.el
+	for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el \
+		"${ROOT}${SITELISP}"/site-gentoo.d/[0-9][0-9]*.el
 	do
 		[ -r "${sf}" ] || continue
 		# sort files by their basename. straight insertion sort.
