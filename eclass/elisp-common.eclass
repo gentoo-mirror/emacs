@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 #
-# Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
 # Copyright 2002-2004 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
+# Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
 #
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
@@ -200,7 +200,7 @@ elisp-comp() {
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	# The following will work for at least versions 18-23.
+	# The following will work for at least versions 18--23.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
 }
