@@ -51,6 +51,8 @@ fi
 
 elisp_pkg_setup() {
 	local emacs_version="$(elisp-emacs-version)"
+	ewarn "You are using an eclass from the Emacs overlay which may contain"
+	ewarn "experimental features!"
 	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
 		eerror "This package needs at least Emacs ${VERSION}."
 		eerror "Use \"eselect emacs\" to select the active version."

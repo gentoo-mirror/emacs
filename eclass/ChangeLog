@@ -1,3 +1,8 @@
+2007-12-12  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Give a warning about the source
+	of the eclass so users know that they are using an experimental eclass
+
 2007-12-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Don't require -gentoo
