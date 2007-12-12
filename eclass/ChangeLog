@@ -2,6 +2,7 @@
 
 	* elisp-common.eclass (elisp-site-regen): Don't require -gentoo
 	extension for files in site-gentoo.d.
+	(elisp-site-file-install): Assign only base name to sf variable.
 
 2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
 

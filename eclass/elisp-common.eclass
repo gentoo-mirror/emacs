@@ -262,14 +262,14 @@ elisp-install() {
 # Install Emacs site-init file in SITELISP directory.
 
 elisp-site-file-install() {
-	local sf="$1" my_pn="${2:-${PN}}"
+	local sf="${1##*/}" my_pn="${2:-${PN}}"
 	ebegin "Installing site initialisation file for GNU Emacs"
-	cp "${sf}" "${T}"
+	cp "$1" "${T}/${sf}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf##*/}"
+		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
-		doins "${T}/${sf##*/}"
+		doins "${T}/${sf}"
 	)
 	eend $? "doins failed"
 }
