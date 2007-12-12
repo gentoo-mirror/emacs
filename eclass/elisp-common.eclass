@@ -387,7 +387,7 @@ EOF
 	fi
 
 	# Kludge for backwards compatibility: During pkg_postrm, old versions
-	# of this eclass (saved in the PDB) won't find packages' site-init files
+	# of this eclass (saved in the VDB) won't find packages' site-init files
 	# in the new location. So we copy them to an auxiliary file that is
 	# visible to old eclass versions.
 	for sf in "${sflist[@]}"; do
