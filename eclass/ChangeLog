@@ -1,3 +1,10 @@
+2007-12-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Redirect input of cat
+	command to /dev/null, otherwise it will hang if the list of files
+	is empty. Thanks to Sebastien Fabbro <bicatali@gentoo.org> for
+	pointing this out.
+
 2007-12-11  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Don't require -gentoo

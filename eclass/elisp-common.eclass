@@ -339,7 +339,7 @@ elisp-site-regen() {
 
 	;;; Code:
 	EOF
-	cat "${sflist[@]}" >>"${T}"/site-gentoo.el
+	cat "${sflist[@]}" </dev/null >>"${T}"/site-gentoo.el
 	cat <<-EOF >>"${T}"/site-gentoo.el
 
 	(provide 'site-gentoo)
