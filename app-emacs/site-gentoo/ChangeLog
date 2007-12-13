@@ -2,6 +2,10 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/emacs-updater.sh,
+  -site-gentoo-0.1.ebuild, +site-gentoo-0.2.ebuild:
+  Install emacs-updater.sh.
+
   13 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
   +site-gentoo-0.1.ebuild:
   Initial import. Ebuild contributed by me.

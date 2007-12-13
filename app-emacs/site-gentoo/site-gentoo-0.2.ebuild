@@ -23,7 +23,8 @@ pkg_setup() {
 
 src_install() {
 	dodir "${SITELISP}"
-	touch "${D}${SITELISP}/site-gentoo.el"
+	touch "${D}${SITELISP}/site-gentoo.el" || die
+	dosbin "${FILESDIR}/emacs-updater.sh" || die
 }
 
 pkg_postinst() {
