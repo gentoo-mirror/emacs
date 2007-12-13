@@ -355,6 +355,10 @@ elisp-site-regen() {
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		echo " no changes."
+#	elif [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
+#		&& ! has_version app-emacs/site-gentoo; then
+#		ewarn "site-gentoo.el not created since package"
+#		ewarn "app-emacs/site-gentoo is not installed."
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
 		[ -f "${T}"/site-start.el ] \
