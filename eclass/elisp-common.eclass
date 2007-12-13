@@ -286,7 +286,7 @@ elisp-site-regen() {
 	local i sf line obsolete
 	local -a sflist
 
-	if [ ! -s "${ROOT}${SITELISP}"/site-gentoo.el ] \
+	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
 		einfo "Creating default ${SITELISP}/site-start.el ..."
 		cat <<-EOF >"${T}"/site-start.el
