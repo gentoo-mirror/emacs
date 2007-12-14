@@ -17,6 +17,6 @@ IUSE=""
 RDEPEND="app-portage/portage-utils"
 
 src_install() {
-	dobin emacs-updater
+	dosbin emacs-updater
 	dodoc ChangeLog
 }
