@@ -81,7 +81,6 @@ src_unpack() {
 }
 
 src_compile() {
-	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
 	ALLOWED_FLAGS=""
 	strip-flags
 	unset LDFLAGS
@@ -143,6 +142,8 @@ src_compile() {
 		--infodir=/usr/share/info/emacs-${SLOT} \
 		--without-carbon \
 		${myconf} || die "econf emacs failed"
+
+	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
 
 	emake CC="$(tc-getCC)" $(useq xembed && echo bootstrap) \
 		|| die "emake failed"
