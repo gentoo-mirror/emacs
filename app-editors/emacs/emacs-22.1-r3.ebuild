@@ -85,7 +85,11 @@ src_compile() {
 	ALLOWED_FLAGS=""
 	strip-flags
 	unset LDFLAGS
-	replace-flags -O[3-9] -O2
+	if use hppa; then # bug #193703
+		replace-flags -O[2-9] -O
+	else
+		replace-flags -O[3-9] -O2
+	fi
 	sed -i -e "s/-lungif/-lgif/g" configure* src/Makefile* || die
 
 	local myconf
@@ -153,6 +157,7 @@ src_compile() {
 
 src_install () {
 	local i m
+
 	emake install DESTDIR="${D}" || die "make install failed"
 
 	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-emacs-${SLOT} \
@@ -212,8 +217,6 @@ emacs-infodir-rebuild() {
 }
 
 pkg_postinst() {
-	local f
-
 	test -f "${ROOT}"/usr/share/emacs/site-lisp/subdirs.el ||
 		cp "${ROOT}"/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
 

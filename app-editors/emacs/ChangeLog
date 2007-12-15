@@ -2,6 +2,9 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Dec 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r3.ebuild:
+  Sync with Portage. Remove duplicate local declaration in pkg_postinst.
+
   02 Dec 2007; Christian Faulhammer <opfer@gentoo.org> emacs-22.1-r3.ebuild:
   sync with Portage: make some variables local and add quotes
 
