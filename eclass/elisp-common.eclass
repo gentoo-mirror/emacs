@@ -281,8 +281,6 @@ elisp-site-file-install() {
 # has been changed to /usr/share/emacs/site-lisp/site-gentoo.d/.  Remerge of
 # packages with Emacs support is enough, old location is supported still when
 # generating start-up file.
-#  The Emacs eselect module has a command to automatically find
-# packages that are installed in the wrong place
 
 elisp-site-regen() {
 	local i sf line obsolete
@@ -398,10 +396,12 @@ EOF
 	done
 
 #	if [ "${obsolete}" ]; then
-#		ewarn "Site-initialisation files of Emacs packages are now installed"
-#		ewarn "in /usr/share/emacs/site-lisp/site-gentoo.d/. You may consider"
-#		ewarn "using /usr/sbin/emacs-updater to rebuild the installed Emacs packages."
-#		ewarn "However, the old location is still supported."
+#		while read line; do ewarn "${line}"; done <<-EOF
+#		Site-initialisation files of Emacs packages are now installed in
+#		/usr/share/emacs/site-lisp/site-gentoo.d/. You may consider using
+#		/usr/sbin/emacs-updater to rebuild the installed Emacs packages.
+#		However, the old location is still supported.
+#		EOF
 #		echo
 #	fi
 }
