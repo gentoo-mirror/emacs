@@ -383,7 +383,7 @@ automatically, you can add a line like this:
 to /usr/share/emacs/site-lisp/site-start.el.  Alternatively, that line
 can be added by individual users to their initialisation files, or,
 for greater flexibility, users can load individual package-specific
-initialisation files from /usr/share/emacs/site-lisp/.
+initialisation files from /usr/share/emacs/site-lisp/site-gentoo.d/.
 EOF
 		echo
 	fi
