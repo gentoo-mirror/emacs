@@ -281,6 +281,8 @@ elisp-site-file-install() {
 # has been changed to /usr/share/emacs/site-lisp/site-gentoo.d/.  Remerge of
 # packages with Emacs support is enough, old location is supported still when
 # generating start-up file.
+#  The Emacs eselect module has a command to automatically find
+# packages that are installed in the wrong place
 
 elisp-site-regen() {
 	local i sf line obsolete

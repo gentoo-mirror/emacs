@@ -1,3 +1,8 @@
+2007-12-17  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: Add a note about emacs-updater in
+	connection with the eselect module.
+
 2007-12-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Redirect input of cat
