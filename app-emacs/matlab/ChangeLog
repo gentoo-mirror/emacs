@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/matlab
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  17 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/51matlab-gentoo.el,
+  +metadata.xml, +matlab-3.1.0_pre20070306.ebuild:
+  CVS snapshot, needs testing.
+
