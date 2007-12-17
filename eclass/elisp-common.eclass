@@ -400,7 +400,7 @@ EOF
 #	if [ "${obsolete}" ]; then
 #		ewarn "Site-initialisation files of Emacs packages are now installed"
 #		ewarn "in /usr/share/emacs/site-lisp/site-gentoo.d/. You may consider"
-#		ewarn "using emacs-updater.sh to rebuild the installed Emacs packages."
+#		ewarn "using /usr/sbin/emacs-updater to rebuild the installed Emacs packages."
 #		ewarn "However, the old location is still supported."
 #		echo
 #	fi
