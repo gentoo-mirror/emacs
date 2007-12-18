@@ -4,6 +4,10 @@
 
   18 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
   files/51matlab-gentoo.el:
+  kill eeio
+
+  18 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/51matlab-gentoo.el:
   add another autoload for eei-connect
 
   17 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/51matlab-gentoo.el,

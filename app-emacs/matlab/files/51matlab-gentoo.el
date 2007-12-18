@@ -4,8 +4,6 @@
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
-(autoload 'matlab-eei-connect "matlab-eei"
-  "Connects Emacs to Matlab's external editor interface.")
 (add-to-list 'auto-mode-alist '("\\.m\\'" . matlab-mode))
 (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
 
