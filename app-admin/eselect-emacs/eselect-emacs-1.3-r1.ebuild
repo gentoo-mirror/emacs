@@ -15,7 +15,7 @@ DEPEND=""
 RDEPEND=">=app-admin/eselect-1.0.10"
 # Now this should really be RDEPEND, but it would result in blockers when
 # updating from <=eselect-emacs-1.3. Leave it as PDEPEND for the time being.
-PDEPEND="~app-admin/eselect-ctags-${PV}"
+PDEPEND="app-admin/eselect-ctags"
 
 src_install() {
 	insinto /usr/share/eselect/modules
