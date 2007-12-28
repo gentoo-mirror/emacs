@@ -3,10 +3,10 @@
 # $Header: $
 #
 # Copyright 2002-2004 Matthew Kennedy <mkennedy@gentoo.org>
-# Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
-# Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
+# Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
 # Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
+# Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
 #
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
@@ -276,11 +276,11 @@ elisp-site-file-install() {
 
 # @FUNCTION: elisp-site-regen
 # @DESCRIPTION:
-# Regenerate site-gentoo.el file.  Old location for site initialisation
-# files of packages was /usr/share/emacs/site-lisp/.  In November 2007 this
+# Regenerate site-gentoo.el file.  The old location for site initialisation
+# files of packages was /usr/share/emacs/site-lisp/.  In December 2007 this
 # has been changed to /usr/share/emacs/site-lisp/site-gentoo.d/.  Remerge of
-# packages with Emacs support is enough, old location is supported still when
-# generating start-up file.
+# packages with Emacs support is enough, the old location is supported still
+# when generating start-up file.
 
 elisp-site-regen() {
 	local i sf line obsolete
