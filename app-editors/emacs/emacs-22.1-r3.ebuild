@@ -23,6 +23,7 @@ RDEPEND="!<app-editors/emacs-cvs-22.1
 	sys-libs/ncurses
 	>=app-admin/eselect-emacs-0.7-r1
 	sys-libs/zlib
+	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-libs/alsa-lib )
