@@ -395,13 +395,13 @@ EOF
 			&& cat "${sf}" >>"${ROOT}${SITELISP}"/00site-gentoo.el
 	done
 
-#	if [ "${obsolete}" ]; then
-#		while read line; do ewarn "${line}"; done <<-EOF
-#		Site-initialisation files of Emacs packages are now installed in
-#		/usr/share/emacs/site-lisp/site-gentoo.d/. You may consider using
-#		/usr/sbin/emacs-updater to rebuild the installed Emacs packages.
-#		However, the old location is still supported.
-#		EOF
-#		echo
-#	fi
+	if [ "${obsolete}" ]; then
+		while read line; do ewarn "${line}"; done <<-EOF
+		Site-initialisation files of Emacs packages are now installed in
+		/usr/share/emacs/site-lisp/site-gentoo.d/. You may consider using
+		/usr/sbin/emacs-updater to rebuild the installed Emacs packages.
+		However, the old location is still supported.
+		EOF
+		echo
+	fi
 }
