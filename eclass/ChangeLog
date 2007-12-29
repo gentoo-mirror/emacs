@@ -1,0 +1,27 @@
+2007-09-22  Hans de Graaff  <graaff@gentoo.org>
+
+	* xemacs-elisp-common.eclass: Implement xemacs-elisp-comp that can
+	be used to compile interdependent elisp files.
+
+	* xemacs-elisp-common.eclass, xemacs-elisp.eclass: Use die
+	consistently in the functions in common, as commented on by Donny
+	Berkholz on gentoo-dev. Fix documentation.
+
+2007-09-08  Hans de Graaff  <graaff@gentoo.org>
+
+	* xemacs-elisp.eclass: Add unpack code which can also deal with
+	simple elisp files.
+	Add explanation to die when compiling lisp files fails.
+	Add documentation so that man page can be generated.
+
+	* xemacs-elisp-common.eclass: Quote all instances of $@ and $*.
+	Use singular autoload in function name to keep interface the same
+	as for GNU Emacs.
+	Add documentation so that man page can be generated.
+	Use a sub-shell for calls to doins and insinto to avoid potential
+	environment polution.
+
+2007-05-28  Hans de Graaff  <graaff@gentoo.org>
+
+	* xemacs-elisp.class, xemacs-elisp-common.eclass: Add initial
+	XEmacs elisp classes modelled after the Emacs elisp classes.
