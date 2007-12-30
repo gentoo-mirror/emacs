@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/cgi+
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  30 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/50cgi+-gentoo.el,
+  +metadata.xml, +cgi+-0.01.ebuild:
+  From Flameeyes' overlay. httpd and cgi are also needed in DEPEND.
+  Autoload cgi-init function in site file.
+
