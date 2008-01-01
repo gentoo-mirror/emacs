@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/wtf
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  01 Jan 2008; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
+  Add ~amd64 keyword.
 
   07 Jul 2007; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
   Remove offensive flag.
