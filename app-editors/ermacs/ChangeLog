@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/ermacs
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  23 Jan 2008; Ulrich Mueller <ulm@gentoo.org> ermacs-20070104.ebuild:
+  Explicitely depend on slang-1.4*.
 
   10 Oct 2007; Ulrich Mueller <ulm@gentoo.org> ermacs-20070104.ebuild:
   Don't PROVIDE=virtual/editor as it is a new-style virtual now.

@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=">=dev-lang/erlang-11.2.5
-	>=sys-libs/slang-1.4.9-r2"
+	=sys-libs/slang-1.4*"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
