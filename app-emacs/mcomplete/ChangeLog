@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/mcomplete
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  24 Jan 2008; Ulrich Mueller <ulm@gentoo.org> mcomplete-1.5.ebuild:
+  Update HOMEPAGE.
 
   28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/50mcomplete-gentoo.el, +mcomplete-1.5.ebuild, +metadata.xml:
