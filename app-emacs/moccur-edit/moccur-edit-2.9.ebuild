@@ -5,7 +5,8 @@
 inherit elisp
 
 DESCRIPTION="An improved interface to color-moccur for editing"
-HOMEPAGE="http://www.bookshelf.jp/"
+HOMEPAGE="http://www.bookshelf.jp/
+	http://www.emacswiki.org/cgi-bin/wiki/SearchBuffers"
 # taken from http://www.bookshelf.jp/elc/moccur-edit.el
 SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
