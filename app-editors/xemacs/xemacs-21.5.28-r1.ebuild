@@ -247,6 +247,12 @@ src_install() {
 
 pkg_postinst() {
 	eselect emacs update --if-unset
+
+	einfo "If you are upgrading from XEmacs 21.4 you should not the following"
+	einfo "incompatibilities:"
+	einfo "- Mule-UCS is no longer supported due to proper UTF-8 support in XEmacs 21.5"
+	einfo "- The X resource class has changed from Emacs to XEmacs,"
+	einfo "  settings in your .Xdefaults file should be updated accordingly."
 }
 
 pkg_postrm() {
