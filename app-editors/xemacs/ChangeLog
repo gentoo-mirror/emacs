@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/xemacs
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  26 Jan 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Add information about incompatibilities with XEmacs 21.4
 
   10 Oct 2007; Ulrich Mueller <ulm@gentoo.org> xemacs-21.5.28.ebuild:
   Don't PROVIDE=virtual/editor as it is a new-style virtual now.
