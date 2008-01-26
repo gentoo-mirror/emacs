@@ -1,6 +1,10 @@
 # ChangeLog for app-editors/emacs
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  26 Jan 2008; Ulrich Mueller <ulm@gentoo.org>
+  -files/emacs-22.1-disable_alsa_detection.patch, emacs-22.1-r3.ebuild:
+  Sync with emacs-cvs in Portage: Replace ALSA disable patch by sed magic.
 
   29 Dec 2007; Ulrich Mueller <ulm@gentoo.org> emacs-22.1-r3.ebuild:
   Sync with Portage: Include net-libs/liblockfile in dependencies.
