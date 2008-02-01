@@ -13,22 +13,21 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2 BSD"
 SLOT="22"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="alsa gif gtk gzip-el hesiod jpeg motif png spell sound source tiff toolkit-scroll-bars X Xaw3d xembed xpm"
 RESTRICT="strip"
 
-X_DEPEND="x11-libs/libXmu x11-libs/libXt x11-misc/xbitmaps"
-
 RDEPEND="!<app-editors/emacs-cvs-22.1
 	sys-libs/ncurses
-	>=app-admin/eselect-emacs-0.7-r1
-	sys-libs/zlib
+	>=app-admin/eselect-emacs-1.2
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	alsa? ( media-libs/alsa-lib )
 	X? (
-		$X_DEPEND
+		x11-libs/libXmu
+		x11-libs/libXt
+		x11-misc/xbitmaps
 		x11-misc/emacs-desktop
 		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
@@ -45,6 +44,8 @@ RDEPEND="!<app-editors/emacs-cvs-22.1
 	)"
 
 DEPEND="${RDEPEND}
+	alsa? ( dev-util/pkgconfig )
+	X? ( gtk? ( dev-util/pkgconfig ) )
 	gzip-el? ( app-arch/gzip )"
 
 # FULL_VERSION keeps the full version number, which is needed in order to
@@ -61,6 +62,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-backup-buffer.patch"
 	epatch "${FILESDIR}/${P}-hack-local-variables.patch"
 	epatch "${FILESDIR}/${P}-format-int.patch"
+	epatch "${FILESDIR}/${P}-s390x-non-multilib.patch"
 	# XEmbed support, see #185064
 	use xembed && epatch "${FILESDIR}/${P}-xembed.patch"
 
@@ -124,7 +126,7 @@ src_compile() {
 			echo
 			myconf="${myconf} --with-x-toolkit=gtk"
 		elif use Xaw3d; then
-			einfo "Configuring to build with Xaw3d(athena) support"
+			einfo "Configuring to build with Xaw3d (athena) support"
 			myconf="${myconf} --with-x-toolkit=athena"
 			myconf="${myconf} --without-gtk"
 		elif use motif; then
@@ -238,7 +240,7 @@ pkg_postinst() {
 		# transition from pre-eselect revision
 		eselect emacs set emacs-${SLOT}
 	else
-		eselect emacs update --if-unset
+		eselect emacs update ifunset
 	fi
 
 	if use X; then
@@ -259,5 +261,5 @@ pkg_postinst() {
 pkg_postrm() {
 	elisp-site-regen
 	emacs-infodir-rebuild
-	eselect emacs update --if-unset
+	eselect emacs update ifunset
 }
