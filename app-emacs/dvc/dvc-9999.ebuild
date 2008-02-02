@@ -2,11 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit elisp autotools
+EBZR_REPO_URI="http://bzr.xsteve.at/dvc/"
+EBZR_BRANCH="."
+
+inherit elisp autotools bzr
 
 DESCRIPTION="New version control backend for distributed systems (like bzr, git)"
 HOMEPAGE="http://download.gna.org/dvc/"
-SRC_URI="http://download.gna.org/dvc/download/dvc-snapshot.tar.gz"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,10 +21,8 @@ RDEPEND=""
 
 SITEFILE=50${PN}-gentoo.el
 
-S=${WORKDIR}/dvc-snapshot
-
 src_unpack() {
-	unpack ${A}
+	bzr_src_unpack
 	cd "${S}"
 	eautoreconf
 }

@@ -1,0 +1,7 @@
+# ChangeLog for app-emacs/dvc
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org> dvc-9999.ebuild:
+  do a live ebuild
+
