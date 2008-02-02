@@ -19,9 +19,9 @@ SRC_URI=""
 
 LICENSE="GPL-3 FDL-1.2 BSD"
 SLOT="23"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 
-IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos libotf motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft xpm"
+IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos libotf m17n-lib motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft xpm"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -48,7 +48,10 @@ RDEPEND="sys-libs/ncurses
 			media-libs/fontconfig
 			media-libs/freetype
 			virtual/xft
-			libotf? ( >=dev-libs/libotf-0.9.4 )
+			libotf? (
+				>=dev-libs/libotf-0.9.4
+				m17n-lib? ( >=dev-libs/m17n-lib-1.5.0 )
+			)
 		)
 		gtk? ( =x11-libs/gtk+-2* )
 		!gtk? (
@@ -132,9 +135,9 @@ src_compile() {
 		myconf="${myconf} $(use_enable xft font-backend)"
 		myconf="${myconf} $(use_with xft freetype) $(use_with xft)"
 		if use xft && use libotf; then
-			myconf="${myconf} --with-libotf"
+			myconf="${myconf} --with-libotf $(use_with m17n-lib m17n-flt)"
 		else
-			myconf="${myconf} --without-libotf"
+			myconf="${myconf} --without-libotf --without-m17n-flt"
 		fi
 		myconf="${myconf} $(use_with jpeg) $(use_with tiff)"
 		myconf="${myconf} $(use_with gif) $(use_with png)"
