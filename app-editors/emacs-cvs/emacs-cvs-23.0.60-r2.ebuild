@@ -40,9 +40,9 @@ RDEPEND="sys-libs/ncurses
 		x11-misc/emacs-desktop
 		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
-		tiff? ( media-libs/tiff )
 		png? ( media-libs/libpng )
 		svg? ( >=gnome-base/librsvg-2.0 )
+		tiff? ( media-libs/tiff )
 		xpm? ( x11-libs/libXpm )
 		xft? (
 			media-libs/fontconfig
@@ -132,6 +132,10 @@ src_compile() {
 	if use X; then
 		myconf="${myconf} --with-x"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
+		myconf="${myconf} $(use_with gif) $(use_with jpeg)"
+		myconf="${myconf} $(use_with png) $(use_with svg rsvg)"
+		myconf="${myconf} $(use_with tiff) $(use_with xpm)"
+
 		myconf="${myconf} $(use_enable xft font-backend)"
 		myconf="${myconf} $(use_with xft freetype) $(use_with xft)"
 		if use xft && use libotf; then
@@ -139,9 +143,6 @@ src_compile() {
 		else
 			myconf="${myconf} --without-libotf --without-m17n-flt"
 		fi
-		myconf="${myconf} $(use_with jpeg) $(use_with tiff)"
-		myconf="${myconf} $(use_with gif) $(use_with png)"
-		myconf="${myconf} $(use_with xpm) $(use_with svg rsvg)"
 
 		# GTK+ is the default toolkit if USE=gtk is chosen with other
 		# possibilities. Emacs upstream thinks this should be standard
