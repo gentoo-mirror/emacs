@@ -10,7 +10,7 @@ SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="app-emacs/httpd
