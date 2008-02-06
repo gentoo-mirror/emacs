@@ -148,22 +148,17 @@ src_compile() {
 		# possibilities. Emacs upstream thinks this should be standard
 		# policy on all distributions
 		if use gtk; then
-			echo
-			einfo "Configuring to build with GTK support, disabling all other toolkits"
-			echo
+			einfo "Configuring to build with GTK+ support, disabling all other toolkits"
 			myconf="${myconf} --with-x-toolkit=gtk"
 		elif use Xaw3d; then
 			einfo "Configuring to build with Xaw3d (athena) support"
 			myconf="${myconf} --with-x-toolkit=athena"
-			myconf="${myconf} --without-gtk"
 		elif use motif; then
 			einfo "Configuring to build with motif toolkit support"
 			myconf="${myconf} --with-x-toolkit=motif"
-			myconf="${myconf} --without-gtk"
 		else
 			einfo "Configuring to build with no toolkit"
 			myconf="${myconf} --with-x-toolkit=no"
-			myconf="${myconf} --without-gtk"
 		fi
 	else
 		myconf="${myconf} --without-x"
