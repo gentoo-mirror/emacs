@@ -34,12 +34,6 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	# internal-flt.h is missing in distfile, taken from upstream CVS
-	cp "${FILESDIR}/internal-flt.h" "${S}/src/"
-}
-
 src_compile() {
 	append-flags -fPIC
 	econf $(use_with gd) || die
