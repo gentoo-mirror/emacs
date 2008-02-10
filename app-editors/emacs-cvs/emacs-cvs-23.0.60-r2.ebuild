@@ -142,6 +142,10 @@ src_compile() {
 			myconf="${myconf} --with-libotf $(use_with m17n-lib m17n-flt)"
 		else
 			myconf="${myconf} --without-libotf --without-m17n-flt"
+			use libotf && ewarn 'Flag "libotf" has no effect' \
+				'because "xft" is not set.'
+			use m17n-lib && ewarn 'Flag "m17n-lib" has no effect' \
+				'because "xft" and "libotf" are not both set.'
 		fi
 
 		# GTK+ is the default toolkit if USE=gtk is chosen with other
