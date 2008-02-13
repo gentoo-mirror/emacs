@@ -1,0 +1,6 @@
+
+;;; scheme-complete site-lisp configuration
+
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'scheme-smart-complete "scheme-complete" nil t)
+(autoload 'scheme-get-current-symbol-info "scheme-complete")
