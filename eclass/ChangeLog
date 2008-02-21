@@ -1,3 +1,8 @@
+2008-02-21  Ulrich Mueller  <ulm@kph.uni-mainz.de>
+
+	* elisp-common.eclass (elisp-site-regen): Don't output warning if
+	site-gentoo.el file is unchanged.
+
 2007-12-17  Christian Faulhammer  <opfer@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Note new installation
