@@ -1,4 +1,4 @@
-2008-02-21  Ulrich Mueller  <ulm@kph.uni-mainz.de>
+2008-02-21  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Don't output warning if
 	site-gentoo.el file is unchanged.
