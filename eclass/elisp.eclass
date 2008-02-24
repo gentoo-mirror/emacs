@@ -3,9 +3,9 @@
 # $Header: $
 #
 # Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
-# Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
-# Copyright 2007 Christian Faulhammer <opfer@gentoo.org>
-# Copyright 2007 Ulrich Mueller <ulm@gentoo.org>
+# Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
+# Copyright 2007      Christian Faulhammer <opfer@gentoo.org>
+# Copyright 2007      Ulrich Müller <ulm@gentoo.org>
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
