@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/auto-lang
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  26 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +files/50auto-lang-gentoo.el,
+  +metadata.xml, +auto-lang-0.02_beta.ebuild:
+  Initial import. Ebuild contributed by me.
+
