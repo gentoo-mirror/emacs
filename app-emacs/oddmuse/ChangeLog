@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/oddmuse
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  29 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +oddmuse-20071115.ebuild:
+  Version bump.
 
   17 Oct 2007; Ulrich Mueller <ulm@gentoo.org> oddmuse-20070712.ebuild:
   Tested on amd64, add keyword.
