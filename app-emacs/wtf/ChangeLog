@@ -8,6 +8,8 @@
   07 Jul 2007; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
   Remove offensive flag.
 
+*wtf-2.0 (17 May 2007)
+
   17 May 2007; Ulrich Mueller <ulm@gentoo.org> +wtf-2.0.ebuild,
   +files/50wtf-gentoo.el, +metadata.xml:
   Initial import.
