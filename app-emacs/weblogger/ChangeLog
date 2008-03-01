@@ -2,6 +2,8 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*weblogger-1.2 (29 Nov 2007)
+
   29 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/50weblogger-gentoo.el,
   +metadata.xml, +weblogger-1.2.ebuild:
   Initial import.
