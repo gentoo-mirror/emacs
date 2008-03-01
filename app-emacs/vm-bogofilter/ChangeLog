@@ -2,6 +2,8 @@
 # Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*vm-bogofilter-1.1.4 (28 Jul 2007)
+
   28 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/50vm-bogofilter-gentoo.el, +metadata.xml,
   +vm-bogofilter-1.1.4.ebuild:
