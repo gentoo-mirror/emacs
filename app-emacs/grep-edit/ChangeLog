@@ -7,6 +7,8 @@
   Fix site-init file. grep-edit replaces standard Emacs functions by adviced
   versions, so we cannot load it unconditionally.
 
+*grep-edit-2.5 (28 Jun 2007)
+
   28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
   +files/50grep-edit-gentoo.el, +grep-edit-2.5.ebuild, +metadata.xml:
   initial import from bug 180170, by MATSUYAMA Tomohiro
