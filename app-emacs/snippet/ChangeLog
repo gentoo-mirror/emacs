@@ -2,6 +2,8 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*snippet-0.2 (29 Jan 2008)
+
   29 Jan 2008; Ulrich Mueller <ulm@gentoo.org> +files/50snippet-gentoo.el,
   +metadata.xml, +snippet-0.2.ebuild:
   From Flameeyes' overlay. Add some autoloads to site-init file.
