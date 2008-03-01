@@ -2,6 +2,8 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emhacks-20070920 (26 Jan 2008)
+
   26 Jan 2008; Ulrich Mueller <ulm@gentoo.org> +files/50emhacks-gentoo.el,
   +metadata.xml, +emhacks-20070920.ebuild:
   Initial import. Ebuild contributed by me.
