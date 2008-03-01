@@ -10,6 +10,8 @@
   casting-spels-emacs-19.ebuild:
   mimic ndash instead of normal dash in DESCRIPTION
 
+*casting-spels-emacs-19 (05 Dec 2007)
+
   05 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/50casting-spels-emacs-gentoo.el, +metadata.xml,
   +casting-spels-emacs-19.ebuild:
