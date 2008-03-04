@@ -288,11 +288,12 @@ elisp-site-file-install() {
 elisp-site-regen() {
 	local i sf line obsolete
 	local -a sflist
+	local tmpdir=${T:-/tmp}
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
 		einfo "Creating default ${SITELISP}/site-start.el ..."
-		cat <<-EOF >"${T}"/site-start.el
+		cat <<-EOF >"${tmpdir}"/site-start.el
 		;;; site-start.el
 
 		;;; Commentary:
@@ -333,7 +334,7 @@ elisp-site-regen() {
 
 	eval "${old_shopts}"
 
-	cat <<-EOF >"${T}"/site-gentoo.el
+	cat <<-EOF >"${tmpdir}"/site-gentoo.el
 	;;; site-gentoo.el --- site initialisation for Gentoo-installed packages
 
 	;;; Commentary:
@@ -342,8 +343,8 @@ elisp-site-regen() {
 
 	;;; Code:
 	EOF
-	cat "${sflist[@]}" </dev/null >>"${T}"/site-gentoo.el
-	cat <<-EOF >>"${T}"/site-gentoo.el
+	cat "${sflist[@]}" </dev/null >>"${tmpdir}"/site-gentoo.el
+	cat <<-EOF >>"${tmpdir}"/site-gentoo.el
 
 	(provide 'site-gentoo)
 
@@ -353,16 +354,17 @@ elisp-site-regen() {
 	;;; site-gentoo.el ends here
 	EOF
 
-	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${T}"/site-gentoo.el; then
+	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${tmpdir}"/site-gentoo.el
+	then
 		# This prevents outputting unnecessary text when there
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		echo " no changes."
 	else
-		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
-		[ -f "${T}"/site-start.el ] \
+		mv "${tmpdir}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
+		[ -f "${tmpdir}"/site-start.el ] \
 			&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ] \
-			&& mv "${T}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
+			&& mv "${tmpdir}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
 		echo; einfo
 		for sf in "${sflist[@]##*/}"; do
 			einfo "  Adding ${sf} ..."
@@ -409,5 +411,5 @@ EOF
 	done
 
 	# cleanup
-	rm -f "${T}"/site-{gentoo,start}.el
+	rm -f "${tmpdir}"/site-{gentoo,start}.el
 }
