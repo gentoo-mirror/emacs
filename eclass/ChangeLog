@@ -1,3 +1,9 @@
+2008-03-04  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Work around Paludis
+	borkage, where variable T is empty in pkg_postrm. Thanks to
+	Stelian Ionescu for pointing this out.
+
 2008-03-03  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-file-install)
