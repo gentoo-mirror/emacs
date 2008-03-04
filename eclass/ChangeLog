@@ -1,5 +1,8 @@
 2008-03-03  Ulrich Mueller  <ulm@gentoo.org>
 
+	* elisp-common.eclass (elisp-site-file-install)
+	(elisp-site-regen, elisp-emacs-version): Clean up temporary files.
+
 	* elisp.eclass (EXPORT_FUNCTIONS): Call only once, according to
 	section 7.3 of the PMS draft.
 

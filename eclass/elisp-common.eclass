@@ -203,6 +203,7 @@ elisp-emacs-version() {
 	# The following will work for at least versions 18--23.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
+	rm -f "${T}"/emacs-version.el
 }
 
 # @FUNCTION: elisp-make-autoload-file
@@ -262,16 +263,18 @@ elisp-install() {
 # Install Emacs site-init file in SITELISP directory.
 
 elisp-site-file-install() {
-	local sf="${1##*/}" my_pn="${2:-${PN}}"
+	local sf="${T}/${1##*/}" my_pn="${2:-${PN}}" ret
 	ebegin "Installing site initialisation file for GNU Emacs"
-	cp "$1" "${T}/${sf}"
+	cp "$1" "${sf}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${T}/${sf}"
+		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g" "${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
-		doins "${T}/${sf}"
+		doins "${sf}"
 	)
-	eend $? "doins failed"
+	ret=$?
+	rm -f "${sf}"
+	eend ${ret} "doins failed"
 }
 
 # @FUNCTION: elisp-site-regen
@@ -404,4 +407,7 @@ EOF
 		[ "${sf%/*}" = "${ROOT}${SITELISP}/site-gentoo.d" ] \
 			&& cat "${sf}" >>"${ROOT}${SITELISP}"/00site-gentoo.el
 	done
+
+	# cleanup
+	rm -f "${T}"/site-{gentoo,start}.el
 }
