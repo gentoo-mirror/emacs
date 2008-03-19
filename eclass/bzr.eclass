@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 #
@@ -14,11 +14,11 @@ EBZR="bzr.eclass"
 EXPORT_FUNCTIONS src_unpack
 
 HOMEPAGE="http://bazaar-vcs.org/"
-DESCRIPTION="Based on the ${GIT} eclass"
+DESCRIPTION="Based on the ${EBZR} eclass"
 
 ## -- add bzr in DEPEND
 #
-DEPEND="dev-util/bzr"
+DEPEND=">=dev-util/bzr-0.92"
 
 
 ## -- EBZR_STORE_DIR:  bzr sources store directory
@@ -28,11 +28,11 @@ EBZR_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/bzr-src"
 
 ## -- EBZR_FETCH_CMD:  bzr fetch command
 #
-EBZR_FETCH_CMD="bzr checkout"
+EBZR_FETCH_CMD="bzr branch"
 
 ## -- EBZR_UPDATE_CMD:  bzr update command
 #
-EBZR_UPDATE_CMD="bzr update"
+EBZR_UPDATE_CMD="bzr pull"
 
 ## -- EBZR_DIFFSTAT_CMD: Command to get diffstat output
 #
@@ -62,6 +62,7 @@ EBZR_REVNO_CMD="bzr revno"
 #   https://
 #   sftp://
 #   rsync://
+#   lp://
 #
 : ${EBZR_REPO_URI:=}
 
@@ -121,7 +122,7 @@ bzr_fetch() {
 	# check for the protocol or pull from a local repo.
 	if [[ -z ${EBZR_REPO_URI%%:*} ]] ; then
 		case ${EBZR_REPO_URI%%:*} in
-			http|https|rsync|sftp)
+			http|https|rsync|sftp|lp)
 				;;
 			*)
 				die "${EBZR}: fetch from ${EBZR_REPO_URI%:*} is not yet implemented."
@@ -152,22 +153,30 @@ bzr_fetch() {
 
 	debug-print "${FUNCNAME}: EBZR_OPTIONS = ${EBZR_OPTIONS}"
 
-	if [[ ! -d ${EBZR_BRANCH_DIR} || ${EBZR_REVISION} ]] ; then
+	local repository
+
+	if [[ ${EBZR_REPO_URI} == */* ]]; then
+		repository="${EBZR_REPO_URI}${EBZR_BRANCH}"
+	else
+		repository="${EBZR_REPO_URI}"
+	fi
+
+	if [[ ! -d ${EBZR_BRANCH_DIR} ]] ; then
 		# fetch branch
 		einfo "bzr branch start -->"
-		einfo "   repository: ${EBZR_REPO_URI}${EBZR_BRANCH}"
+		einfo "   repository: ${repository} => ${EBZR_BRANCH_DIR}"
 
-		${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${EBZR_REPO_URI}${EBZR_BRANCH}" ${EBZR_BRANCH_DIR} \
-			|| die "${EBZR}: can't branch from ${EBZR_REPO_URI}${EBZR_BRANCH}."
+		${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${repository}" "${EBZR_BRANCH_DIR}" \
+			|| die "${EBZR}: can't branch from ${repository}."
 
 	else
 		# update branch
 		einfo "bzr merge start -->"
-		einfo "   repository: ${EBZR_REPO_URI}${EBZR_BRANCH}"
+		einfo "   repository: ${repository}"
 
 		cd "${EBZR_BRANCH_DIR}"
-		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} \
-			|| die "${EBZR}: can't merge from ${EBZR_REPO_URI}${EBZR_BRANCH}."
+		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repository}" \
+			|| die "${EBZR}: can't merge from ${repository}."
 		${EBZR_DIFFSTAT_CMD}
 	fi
 
@@ -177,7 +186,14 @@ bzr_fetch() {
 	${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} "${WORKDIR}/${P}" \
 			|| die "${EBZR}: export failed"
 
-	einfo "Revision ${EBZR_REVNO_COMMAND} is now in ${WORKDIR}/${P}"
+	local revision
+	if test -n "${EBZR_REVISION}" ; then
+		revision="${EBZR_REVISION}"
+	else
+		revision=$( ${EBZR_REVNO_CMD} "${EBZR_BRANCH_DIR}" )
+	fi
+
+	einfo "Revision ${revision} is now in ${WORKDIR}/${P}"
 
 	cd "${WORKDIR}"
 }
