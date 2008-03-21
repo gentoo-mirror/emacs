@@ -1,9 +1,8 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EBZR_REPO_URI="http://www.robf.de/Hacking/bazaar/vm-repo/"
-EBZR_BRANCH="vm-trunk"
+EBZR_REPO_URI="http://launchpad.net/viewmail/"
 
 inherit elisp eutils bzr autotools
 

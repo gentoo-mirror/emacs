@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/vm
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  21 Mar 2008; Ulrich Mueller <ulm@gentoo.org> vm-9999.ebuild:
+  Update location of BZR repository.
 
 *vm-9999 (30 Dec 2007)
 
