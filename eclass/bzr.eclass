@@ -181,7 +181,7 @@ bzr_fetch() {
 			|| die "${EBZR}: export failed"
 
 	local revision
-	if [[ -n "${EBZR_REVISION}"]]; then
+	if [[ -n "${EBZR_REVISION}" ]]; then
 		revision="${EBZR_REVISION}"
 	else
 		revision=$(${EBZR_REVNO_CMD} "${EBZR_BRANCH_DIR}")
