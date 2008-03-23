@@ -95,7 +95,7 @@ EBZR_PATCHES="${EBZR_PATCHES:-}"
 # The branch to fetch in bzr_fetch().
 #
 # default: trunk
-EBZR_BRANCH="{EBZR_BRANCH:-trunk}"
+EBZR_BRANCH="${EBZR_BRANCH:-trunk}"
 
 # @ECLASS-VARIABLE: EBZR_REVISION
 # @DESCRIPTION:
