@@ -72,7 +72,7 @@ EBZR_OPTIONS="${EBZR_OPTIONS:-}"
 # 		- lp://
 # @CODE
 #
-# Note: lp = http://launchpad.net
+# Note: lp = https://launchpad.net
 EBZR_REPO_URI="${EBZR_REPO_URI:-}"
 
 # @ECLASS-VARIABLE: EBZR_BOOTSTRAP
@@ -122,7 +122,7 @@ bzr_fetch() {
 	# check for the protocol or pull from a local repo.
 	if [[ -z ${EBZR_REPO_URI%%:*} ]] ; then
 		case ${EBZR_REPO_URI%%:*} in
-			# lp:// is http://launchpad.net
+			# lp:// is https://launchpad.net
 			http|https|rsync|sftp|lp)
 				;;
 			*)
