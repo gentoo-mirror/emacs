@@ -96,7 +96,6 @@ EBZR_PATCHES="${EBZR_PATCHES:-}"
 #
 # default: trunk
 EBZR_BRANCH="{EBZR_BRANCH:-trunk}"
-: ${EBZR_BRANCH:=trunk}
 
 # @ECLASS-VARIABLE: EBZR_REVISION
 # @DESCRIPTION:
@@ -106,7 +105,9 @@ EBZR_REVISION="${EBZR_REVISION:-}"
 # @ECLASS-VARIABLE: EBZR_CACHE_DIR
 # @DESCRIPTION:
 # The dir to store the source for the package, relative to EBZR_STORE_DIR.
-EBZR_CACHE_DIR="${EBZR_CACHE_DIR:-}"
+#
+# default: ${PN}
+EBZR_CACHE_DIR="${EBZR_CACHE_DIR:-${PN}}"
 
 # @FUNCTION: bzr_fetch
 # @DESCRIPTION:
