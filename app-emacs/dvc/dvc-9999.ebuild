@@ -4,6 +4,7 @@
 
 EBZR_REPO_URI="http://bzr.xsteve.at/dvc/"
 EBZR_BRANCH="."
+NEED_EMACS=22
 
 inherit elisp autotools bzr
 
