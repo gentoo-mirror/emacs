@@ -1,0 +1,439 @@
+2008-03-04  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Work around Paludis
+	borkage, where variable T is empty in pkg_postrm. Thanks to
+	Stelian Ionescu for pointing this out.
+
+2008-03-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install)
+	(elisp-site-regen, elisp-emacs-version): Clean up temporary files.
+
+	* elisp.eclass (EXPORT_FUNCTIONS): Call only once, according to
+	section 7.3 of the PMS draft.
+
+2008-02-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Don't output warning if
+	site-gentoo.el file is unchanged.
+
+2007-12-17  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Note new installation
+	directory in the output intended for the user and refer to
+	emacs-updater
+
+2007-12-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Redirect input of cat
+	command to /dev/null, otherwise it will hang if the list of files
+	is empty. Thanks to Sebastien Fabbro <bicatali@gentoo.org> for
+	pointing this out.
+
+2007-12-11  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Don't require -gentoo
+	extension for files in site-gentoo.d.
+	(elisp-site-file-install): Assign only base name to sf variable.
+
+2007-12-07  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (S, elisp_pkg_setup): Moved back to global scope.
+	(elisp_src_unpack): Do not change dir, we are in WORKDIR already.
+
+2007-12-04  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (S, elisp_pkg_setup): Move handling of SIMPLE_ELISP
+	into pkg_setup function, otherwise it fails with portage-2.1.4.
+	(elisp_src_unpack): Die if mv fails.
+
+2007-12-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Redo change
+	of 2007-11-24 which was undone at 2007-11-29.
+	(elisp-site-regen): Kludge for backwards compatibility.
+
+2007-11-30  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Set nullglob option,
+	because there may be a directory without matching files.
+	(elisp-compile, elisp-comp, elisp-make-autoload-file)
+	(elisp-install, elisp-site-file-install): Use ebegin/eend.
+
+2007-11-30  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: Added messages when operations finish
+
+2007-11-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Install files in
+	site-lisp again, since otherwise things break during unmerge when
+	an old version of the eclass is used.
+
+2007-11-28  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Do not use a pipeline,
+	otherwise the loop is executed in a subshell and we cannot set
+	variables from there. Use bash arrays and our own sort routine
+	instead.
+
+2007-11-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Emit warning message if
+	files are found in the old location; this is still commented out.
+
+2007-11-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install, elisp-site-regen):
+	Replace basename by bash parameter expansion.
+	Install packages' site-init files in site-gentoo.d subdirectory.
+
+2007-11-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (SITEETC): New variable.
+	(elisp-site-file-install): Handle @SITEETC@ in site-init file.
+
+2007-11-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (EMACSFLAGS): New variable, replaces
+	EMACS_BATCH_CLEAN. Rationale: Keep program path separate from
+	flags, to allow its redefinition in ebuilds.
+	(elisp-compile, elisp-comp): Group compile functions together.
+
+2007-10-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Use square brackets for test.
+	Remove dysfunctional code.
+
+2007-10-04  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (EMACS): use an en dash instead of a hypen
+	in comment
+
+2007-10-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (SITELISP, SITEFILE): Document variables.
+
+2007-09-26  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: remove colon from previous change
+
+2007-09-25  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: remove a spurious space
+	add a colon where it might be intended
+
+2007-09-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Provide site-gentoo.
+	Recommend require instead of load in einfo message.
+	Create default site-start.el when running for the first time.
+	(elisp-comp): Move comment so that it will appear in the man page.
+
+2007-09-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Set no-byte-compile in
+	site-gentoo.el.
+
+2007-09-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-install): Remove superfluous dodir.
+
+2007-09-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_install): Die if elisp-install or
+	elisp-site-file-install fails.
+	(SIMPLE_ELISP, DOCS, NEED_EMACS): Add man comments.
+
+	* elisp-common.eclass (elisp-site-file-install): Remove redundant
+	pushd/popd commands. Don't die, return status instead.
+	(elisp-compile, elisp-comp, elisp-install): Quote all instances of
+	$@ and $*. Don't use ${status}; it is reserved in zsh.
+	(elisp-install, elisp-site-file-install): Call insinto and doins
+	in a subshell to avoid pollution of calling environment.
+	(EMACS_BATCH_CLEAN): New variable, analog to the XEmacs eclasses.
+
+2007-08-21  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (SITEFILE): add a trailing slash in comment
+	for regeneration to make clear it is a directory, not a single file
+
+2007-07-28  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (S): Remove trailing slant.
+
+2007-07-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Use einfon for the
+	initial message; suppress the newline in case of no changes;
+	update einfo message.
+
+2007-07-11  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Add magic comments for man page generation.
+	(SITEFILE): Default value.
+
+2007-07-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Put proper header
+	information in site-gentoo.el. Consistent BE spelling.
+	Remove -b option from mv since it does not work on BSD.
+
+2007-07-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass: Update copyright info. Some comment changes.
+
+	* elisp-common.eclass: Update copyright info.
+
+2007-07-03  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: Add RDEPEND line
+
+2007-07-02  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: Moved to Portage
+
+	* elisp-common.eclass: Moved to Portage
+
+2007-06-25  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass: Remove debugging code. Add some messages to die
+	commands.
+
+	* elisp-common.eclass (elisp-comp): Use pushd and popd.
+
+2007-06-25  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: Add einfo output for all functions
+
+2007-06-24  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: added DOCS variable for src_install
+
+2007-06-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Check for Emacs return status.
+	Test numerical condition and return instead of exit.
+	Call Emacs with arguments in their canonical form.
+
+2007-06-21  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: added a comment when the site-start generation
+	hints reveal nearly no output
+
+	* elisp-common.eclass: added hint why has_version is not needed in
+	connection with elisp-site-regen() and pkg_postrm
+
+2007-06-20  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Generate output only if
+	site-gentoo.el has changed.
+
+2007-06-20  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: add --silent option to elisp_pkg_postrm()
+
+	* elisp-common.eclass: applied changes for a silent option for
+	elisp-site-regen()
+
+2007-06-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Add more explanations to error
+	message. Move down to proper place.
+
+2007-06-12  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): remove an uncessary test
+
+2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: set free the ghosts of the NEED_EMACS depending
+	scheme, for the new-style Emacs virtuals
+
+2007-06-04  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Use versionator.eclass for
+	comparison of versions.
+
+	* elisp-common.eclass (elisp-emacs-version): New function, works
+	for all known Emacs versions.
+
+2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: documented NEED_EMACS a bit, added some more
+	comments
+
+	* elisp-common.eclass: added a comment about
+	elisp-emacs-major-version() in the documentation
+
+2007-06-11  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: export pkg_setup function; uncomment parts of it
+	and add some checks and output for testing
+
+2007-06-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass: Depend on >=virtual/emacs-${VERSION} since this is
+	what we later ask for.
+
+2007-06-01  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Use elisp-emacs-major-version.
+
+	* elisp-common.eclass (elisp-emacs-major-version): New function.
+
+2007-05-31  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: add inactive code for new style dependencies on
+	virtual/emacs
+
+2007-05-26  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-make-autoload-file): Add some
+	comments and local variables to generated autoload file.
+
+2007-04-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Handle the case that
+	there are no site-init files.
+
+2007-04-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Give more specific
+	example of "load" function in einfo message.
+
+2007-04-18  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (elisp-make-autoload-file): A missing colon
+	prevented a auxiliary variable to be predefined if no argument was
+	given.
+
+2007-04-14  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: E-mail address updated.
+
+2007-04-11  Ulrich Mueller <ulm@kph.uni-mainz.de>
+
+	* elisp-common.eclass: Document arguments of
+	elisp-make-autoload-file().
+
+2007-04-10  Ulrich Mueller  <ulm@kph.uni-mainz.de>
+
+	* elisp-common.eclass: Documentation change: use ${PN} in name of
+	SITEFILE.
+	(elisp-make-autoload-file): New function.
+
+2007-04-10  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: document SIMPLE_ELISP
+
+2007-04-08  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: remove SRC_URI pointing to mkennedy's devspace
+
+2007-03-30  Ulrich Mueller  <ulm@kph.uni-mainz.de>
+
+	* elisp-common.eclass (elisp-site-regen): Honour ${ROOT}.
+
+2007-03-16  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass: Updated documentation on site-lisp dir.
+	rephrased the fact that it is no real eclass
+
+2007-03-15  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: documented
+	added some quotes to prevent variables with spaces to break
+	commands
+	removed local Emacs variables
+
+	* elisp-common.eclass: documented
+	added some quotes to prevent variables with spaces to break
+	commands
+	straightened elisp-comp()
+	removed local Emacs variables
+
+2005-07-06  Aron Griffis  <agriffis@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Remove ECLASS= and INHERITED=
+	which haven't been necessary for a long time now.
+
+2005-05-03  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Added 'die'.
+	Thanks to Tobias C. Rittweiler <tcr@freebits.de>; bug #86704.
+
+2004-07-04  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Changed description of
+	what to do as suggested by John Altstadt <altstadt@telus.net> in
+	bug #53097.
+
+2004-06-25  Mike Frysinger  <vapier@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Update the copyright info.
+
+2004-04-10  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp.eclass: newdepend is deprecated; use DEPEND/RDEPEND
+	instead, see bug #25013.
+
+2004-03-16  Mamoru Komachi  <usata@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Applied a patch
+	from agriffis regarding the bug #44712. Thanks ;)
+
+2004-03-09  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Correct site-gentoo.el
+	to be much more specific about what files should be included.
+
+2004-01-19  Jeremy Maitin-Shepard  <jbms@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Use site-gentoo.el,
+	rather than site-start.el.
+
+2003-11-03  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Add an alternate compilation
+	function.
+
+2003-10-06  Jeremy Maitin-Shepard  <jbms@attbi.com>
+
+	* elisp.eclass: Removed unnecessary sourcing of
+	elisp-common.eclass. Define S="${WORKDIR}/" only if SIMPLE_ELISP
+	is set to t.
+	(elisp_src_unpack, elisp_src_compile, elisp_src_install)
+	(elisp_pkg_postinst, elisp_pkg_postrm): Renamed src_unpack,
+	src_compile, etc. to elisp_src_unpack and added a call to
+	EXPORT_FUNCTIONS so that it works better with the inheritance
+	system. Bug #29698.
+
+	* elisp-common.eclass (elisp-compile): Added function, bug #29698.
+
+2003-09-21  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass, elisp-common.eclass: Separated elisp into elisp
+	and elisp-common.
+
+	* elisp.eclass: Removed default depend.
+
+2003-07-22  George Shapovalov  <george@gentoo.org>
+
+	* elisp.eclass: Fixed DEPEND.
+
+2003-05-23  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass (src_unpack, src_compile, src_install)
+	(pkg_postinst, pkg_postrm): Improvements to make most app emacs
+	ebuilds mode succinct.
+
+2003-02-09  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass (elisp-site-regen): Made the file search more
+	robust as per Sascha Luedecke <sascha@meta-x.de> suggestion in
+	bug #13277.
+
+2002-10-29  Matthew Kennedy  <mkennedy@gentoo.org>
+
+	* elisp.eclass: Initial.
