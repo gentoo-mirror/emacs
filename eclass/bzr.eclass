@@ -3,10 +3,11 @@
 # $Header: $
 #
 # @ECLASS: bzr.eclass
-# @MAINTAINER: <>@gentoo.org
-# @BLURB: This eclass provides support to use the Bazaar dscm
+# @MAINTAINER:
+# Jorge Manuel B. S. Vicetto <jmbsvicetto>@gentoo.org
+# @BLURB: This eclass provides support to use the Bazaar DSCM
 # @DESCRIPTION:
-# The bzr.eclass provides support for apps using the bazaar dscm.
+# The bzr.eclass provides support for apps using the bazaar DSCM (distributed source control management system).
 # The eclass was originally derived from the git eclass.
 #
 # Note: Just set EBZR_REPO_URI to the url of the branch and the src_unpack
@@ -23,42 +24,42 @@ DESCRIPTION="Based on the ${EBZR} eclass"
 
 DEPEND=">=dev-util/bzr-0.92"
 
-# @ECLASS_VARIABLE: EBZR_STORE_DIR
+# @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
 # The dir to store the bzr sources.
 EBZR_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/bzr-src"
 
-# @ECLASS_VARIABLE: EBZR_FETCH_CMD
+# @ECLASS-VARIABLE: EBZR_FETCH_CMD
 # @DESCRIPTION:
 # The bzr command to fetch the sources.
 EBZR_FETCH_CMD="bzr branch"
 
-# @ECLASS_VARIABLE: EBZR_UDPATE_CMD
+# @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The bzr command to update the sources.
 EBZR_UPDATE_CMD="bzr pull"
 
-# @ECLASS_VARIABLE: EBZR_DIFFSTAT_CMD
+# @ECLASS-VARIABLE: EBZR_DIFFSTAT_CMD
 # @DESCRIPTION:
 # The bzr command to get the diffstat output.
 EBZR_DIFFSTAT_CMD="bzr diff"
 
-# @ECLASS_VARIABLE: EBZR_EXPORT_CMD
+# @ECLASS-VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
 # The bzr command to export a branch.
 EBZR_EXPORT_CMD="bzr export"
 
-# @ECLASS_VARIABLE: EBZR_REVNO_CMD
+# @ECLASS-VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
 # The bzr command to list revision number of the branch.
 EBZR_REVNO_CMD="bzr revno"
 
-# @ECLASS_VARIABLE: EBZR_OPTIONS
+# @ECLASS-VARIABLE: EBZR_OPTIONS
 # @DESCRIPTION:
 # The options passed to the fetch and update commands.
-: ${EBZR_OPTIONS:=}
+EBZR_OPTIONS="${EBZR_OPTIONS:-}"
 
-# @ECLASS_VARIABLE: EBZR_REPO_URI
+# @ECLASS-VARIABLE: EBZR_REPO_URI
 # @DESCRIPTION:
 # The repository uri for the source package.
 #
@@ -72,14 +73,14 @@ EBZR_REVNO_CMD="bzr revno"
 # @CODE
 #
 # Note: lp = http://launchpad.net
-: ${EBZR_REPO_URI:=}
+EBZR_REPO_URI="${EBZR_REPO_URI:-}"
 
-# @ECLASS_VARIABLE: EBZR_BOOTSTRAP
+# @ECLASS-VARIABLE: EBZR_BOOTSTRAP
 # @DESCRIPTION:
 # Bootstrap script or command like autogen.sh or etc.
-: ${EBZR_BOOTSTRAP:=}
+EBZR_BOOTSTRAP="${EBZR_BOOTSTRAP:-}"
 
-# @ECLASS_VARIABLE: EBZR_PATCHES
+# @ECLASS-VARIABLE: EBZR_PATCHES
 # @DESCRIPTION:
 # bzr eclass can apply patches in bzr_bootstrap().
 # you can use regexp in this valiable like *.diff or *.patch or etc.
@@ -87,24 +88,25 @@ EBZR_REVNO_CMD="bzr revno"
 #
 # Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
 # location, the installation dies.
-: ${EBZR_PATCHES:=}
+EBZR_PATCHES="${EBZR_PATCHES:-}"
 
-# @ECLASS_VARIABLE: EBZR_BRANCH
+# @ECLASS-VARIABLE: EBZR_BRANCH
 # @DESCRIPTION:
 # The branch to fetch in bzr_fetch().
 #
-# Note: The branch defaults to 'trunk'
+# default: trunk
+EBZR_BRANCH="{EBZR_BRANCH:-trunk}"
 : ${EBZR_BRANCH:=trunk}
 
-# @ECLASS_VARIABLE: EBZR_REVISION
+# @ECLASS-VARIABLE: EBZR_REVISION
 # @DESCRIPTION:
 # Revision to get, if not latest (see http://bazaar-vcs.org/BzrRevisionSpec)
-: ${EBZR_REVISION:=}
+EBZR_REVISION="${EBZR_REVISION:-}"
 
-# @ECLASS_VARIABLE: EBZR_CACHE_DIR
+# @ECLASS-VARIABLE: EBZR_CACHE_DIR
 # @DESCRIPTION:
 # The dir to store the source for the package, relative to EBZR_STORE_DIR.
-: ${EBZR_CACHE_DIR:=${PN}}
+EBZR_CACHE_DIR="${EBZR_CACHE_DIR:-}"
 
 # @FUNCTION: bzr_fetch
 # @DESCRIPTION:
