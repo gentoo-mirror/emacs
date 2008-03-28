@@ -288,6 +288,7 @@ elisp-site-file-install() {
 elisp-site-regen() {
 	local i sf line obsolete
 	local -a sflist
+	# Work around Paludis borkage: variable T is empty in pkg_postrm
 	local tmpdir=${T:-/tmp}
 
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
