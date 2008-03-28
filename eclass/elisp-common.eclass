@@ -291,6 +291,11 @@ elisp-site-regen() {
 	# Work around Paludis borkage: variable T is empty in pkg_postrm
 	local tmpdir=${T:-/tmp}
 
+	if [ ! -d "${ROOT}${SITELISP}" ]; then
+		eerror "Directory ${SITELISP} does not exist"
+		return 1
+	fi
+
 	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
 		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
 		einfo "Creating default ${SITELISP}/site-start.el ..."

@@ -1,3 +1,8 @@
+2008-03-28  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Check if the SITELISP
+	directory exists.
+
 2008-03-04  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Work around Paludis
