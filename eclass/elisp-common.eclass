@@ -290,6 +290,7 @@ elisp-site-regen() {
 	local -a sflist
 	# Work around Paludis borkage: variable T is empty in pkg_postrm
 	local tmpdir=${T:-/tmp}
+
 	if [ ! -d "${ROOT}${SITELISP}" ]; then
 		eerror "Directory ${SITELISP} does not exist"
 		return 1
