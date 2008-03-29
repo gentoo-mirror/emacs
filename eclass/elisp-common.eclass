@@ -141,7 +141,7 @@ SITEETC=/usr/share/emacs/etc
 SITEFILE=50${PN}-gentoo.el
 
 EMACS=/usr/bin/emacs
-# The following works for Emacs versions 18--23, don't change it.
+# The following works for Emacs versions 18-23, don't change it.
 EMACSFLAGS="-batch -q --no-site-file"
 
 # @FUNCTION: elisp-compile
@@ -200,7 +200,7 @@ elisp-comp() {
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	# The following will work for at least versions 18--23.
+	# The following will work for at least versions 18-23.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
 	rm -f "${T}"/emacs-version.el
@@ -290,7 +290,6 @@ elisp-site-regen() {
 	local -a sflist
 	# Work around Paludis borkage: variable T is empty in pkg_postrm
 	local tmpdir=${T:-/tmp}
-
 	if [ ! -d "${ROOT}${SITELISP}" ]; then
 		eerror "Directory ${SITELISP} does not exist"
 		return 1
