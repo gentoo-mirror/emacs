@@ -1,0 +1,8 @@
+# ChangeLog for app-emacs/edit-list
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Apr 2008; Ulrich Mueller <ulm@gentoo.org> +files/50edit-list-gentoo.el,
+  +metadata.xml, +edit-list-0.3.ebuild:
+  Initial import. Ebuild contributed by me.
+
