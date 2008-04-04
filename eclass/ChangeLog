@@ -442,3 +442,6 @@
 2002-10-29  Matthew Kennedy  <mkennedy@gentoo.org>
 
 	* elisp.eclass: Initial.
+
+Copyright 2002-2008 Gentoo Foundation
+Distributed under the terms of the GNU General Public License v2
