@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Apr 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Add security fix for insecure temporary file handling.
+
   26 Jan 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
   Add information about incompatibilities with XEmacs 21.4
 
