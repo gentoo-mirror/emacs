@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Remove older versions without the vcdiff security patch.
+
   13 Apr 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
   Add security fix for insecure temporary file handling.
 
