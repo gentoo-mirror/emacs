@@ -9,6 +9,7 @@ DESCRIPTION="Manages ctags implementations"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${MY_PN}"
+ESVN_PROJECT="${MY_PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
