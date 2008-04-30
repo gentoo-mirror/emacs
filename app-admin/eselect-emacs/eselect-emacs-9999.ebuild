@@ -27,8 +27,13 @@ src_unpack() {
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins {emacs,etags}.eselect || die "doins failed"
-	doman {emacs,etags}.eselect.5 || die "doman failed"
+	doins emacs.eselect || die "doins failed"
+	newins {c,e}tags.eselect || die "newins failed"
+	dosed "/^CTAGS=/s/ctags/etags/" ${INSDESTTREE}/etags.eselect
+
+	doman emacs.eselect.5 || die "doman failed"
+	newman {c,e}tags.eselect.5 || die "newman failed"
+
 	dodoc ChangeLog || die "dodoc failed"
 	dosbin emacs-updater || die "dosbin failed"
 }
