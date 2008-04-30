@@ -1,0 +1,10 @@
+# ChangeLog for app-admin/eselect-ctags
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*eselect-ctags-1.3 (30 Apr 2008)
+
+  30 Apr 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +eselect-ctags-9999.ebuild:
+  Live SVN ebuild.
+
