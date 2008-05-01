@@ -25,11 +25,6 @@ src_unpack() {
 	subversion_fetch "${ESVN_REPO_URI%/*}/emacs-updater" || die
 }
 
-src_compile() {
-	sed -e "/^CTAGS=/s/ctags/etags/" ctags.eselect >etags.eselect || die
-	cp ctags.eselect.5 etags.eselect.5
-}
-
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins {emacs,etags}.eselect || die "doins failed"

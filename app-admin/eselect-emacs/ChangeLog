@@ -3,7 +3,7 @@
 # $Header: $
 
   01 May 2008; Ulrich Mueller <ulm@gentoo.org> eselect-emacs-9999.ebuild:
-  Move creation of etags.eselect to src_compile.
+  etags.eselect is created from Makefile.
 
 *eselect-emacs-9999 (30 Apr 2008)
 
