@@ -25,15 +25,15 @@ src_unpack() {
 	subversion_fetch "${ESVN_REPO_URI%/*}/emacs-updater" || die
 }
 
+src_compile() {
+	sed -e "/^CTAGS=/s/ctags/etags/" ctags.eselect >etags.eselect || die
+	cp ctags.eselect.5 etags.eselect.5
+}
+
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins emacs.eselect || die "doins failed"
-	newins {c,e}tags.eselect || die "newins failed"
-	dosed "/^CTAGS=/s/ctags/etags/" ${INSDESTTREE}/etags.eselect
-
-	doman emacs.eselect.5 || die "doman failed"
-	newman {c,e}tags.eselect.5 || die "newman failed"
-
+	doins {emacs,etags}.eselect || die "doins failed"
+	doman {emacs,etags}.eselect.5 || die "doman failed"
 	dodoc ChangeLog || die "dodoc failed"
 	dosbin emacs-updater || die "dosbin failed"
 }
