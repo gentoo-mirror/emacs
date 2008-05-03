@@ -2,12 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit subversion
-
 DESCRIPTION="Manages Emacs versions"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
-ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,17 +16,10 @@ DEPEND=""
 RDEPEND=">=app-admin/eselect-1.0.10
 	~app-admin/eselect-ctags-${PV}"
 
-S="${WORKDIR}/${PN}"
-
-src_unpack() {
-	subversion_fetch || die
-	subversion_fetch "${ESVN_REPO_URI%/*}/emacs-updater" || die
-}
-
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins {emacs,etags}.eselect || die "doins failed"
 	doman {emacs,etags}.eselect.5 || die "doman failed"
 	dodoc ChangeLog || die "dodoc failed"
-	dosbin emacs-updater || die "dosbin failed"
+	dosbin "${FILESDIR}/emacs-updater" || die "dosbin failed"
 }
