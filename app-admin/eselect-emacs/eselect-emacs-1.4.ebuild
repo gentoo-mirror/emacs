@@ -4,8 +4,7 @@
 
 DESCRIPTION="Manages Emacs versions"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-#SRC_URI="mirror://gentoo/${P}.tar.bz2"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
