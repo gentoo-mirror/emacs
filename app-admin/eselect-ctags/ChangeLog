@@ -2,6 +2,12 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eselect-ctags-1.4 (13 May 2008)
+
+  13 May 2008; Ulrich Mueller <ulm@gentoo.org> +eselect-ctags-1.4.ebuild,
+  -eselect-ctags-1.4_pre1.ebuild:
+  Version 1.4 released, identical with _pre1.
+
 *eselect-ctags-1.4_pre1 (03 May 2008)
 
   03 May 2008; Ulrich Mueller <ulm@gentoo.org>
