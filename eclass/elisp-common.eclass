@@ -395,27 +395,26 @@ for greater flexibility, users can load individual package-specific
 initialisation files from /usr/share/emacs/site-lisp/site-gentoo.d/.
 EOF
 		echo
+
+		if [ "${obsolete}" ]; then
+			while read line; do ewarn "${line}"; done <<-EOF
+			Site-initialisation files of Emacs packages are now installed in
+			/usr/share/emacs/site-lisp/site-gentoo.d/. You may consider using
+			/usr/sbin/emacs-updater to rebuild the installed Emacs packages.
+			However, the old location is still supported.
+			EOF
+			echo
+		fi
 	fi
 
-
-	if [ "${obsolete}" ]; then
-		while read line; do ewarn "${line}"; done <<-EOF
-		Site-initialisation files of Emacs packages are now installed in
-		/usr/share/emacs/site-lisp/site-gentoo.d/. We strongly recommend
-		that you use /usr/sbin/emacs-updater to rebuild the installed
-		Emacs packages.
-		EOF
-		echo
-
-		# Kludge for backwards compatibility: During pkg_postrm, old versions
-		# of this eclass (saved in the VDB) won't find packages' site-init
-		# files in the new location. So we copy them to an auxiliary file
-		# that is visible to old eclass versions.
-		for sf in "${sflist[@]}"; do
-			[ "${sf%/*}" = "${ROOT}${SITELISP}/site-gentoo.d" ] \
-				&& cat "${sf}" >>"${ROOT}${SITELISP}"/00site-gentoo.el
-		done
-	fi
+	# Kludge for backwards compatibility: During pkg_postrm, old versions
+	# of this eclass (saved in the VDB) won't find packages' site-init files
+	# in the new location. So we copy them to an auxiliary file that is
+	# visible to old eclass versions.
+	for sf in "${sflist[@]}"; do
+		[ "${sf%/*}" = "${ROOT}${SITELISP}/site-gentoo.d" ] \
+			&& cat "${sf}" >>"${ROOT}${SITELISP}"/00site-gentoo.el
+	done
 
 	# cleanup
 	rm -f "${tmpdir}"/site-{gentoo,start}.el
