@@ -397,7 +397,6 @@ EOF
 		echo
 	fi
 
-
 	if [ "${obsolete}" ]; then
 		while read line; do ewarn "${line}"; done <<-EOF
 		Site-initialisation files of Emacs packages are now installed in
