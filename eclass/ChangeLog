@@ -1,3 +1,9 @@
+2008-05-25  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (SIMPLE_ELISP): Remove variable.
+	(elisp_src_unpack): Always move ${P}.el to ${PN}.el if the former
+	exists.
+
 2008-05-18  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Create file for
