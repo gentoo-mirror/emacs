@@ -2,6 +2,8 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*elip-0.803 (29 May 2008)
+
   29 May 2008; Ulrich Mueller <ulm@gentoo.org> +elip-0.803.ebuild:
   Version bump.
 
