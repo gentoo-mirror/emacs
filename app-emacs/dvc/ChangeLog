@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Jun 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml:
+  Add metadata.
+
   23 Mar 2008; Christian Faulhammer <opfer@gentoo.org> dvc-9999.ebuild:
   GNU Emacs 22 is at least needed, reflect this in NEED_EMACS
 
