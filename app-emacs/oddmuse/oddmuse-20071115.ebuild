@@ -16,5 +16,4 @@ IUSE=""
 
 RDEPEND="net-misc/curl"
 
-SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el

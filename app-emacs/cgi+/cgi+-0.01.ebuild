@@ -17,5 +17,4 @@ DEPEND="app-emacs/httpd
 	app-emacs/cgi"
 RDEPEND="${DEPEND}"
 
-SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el

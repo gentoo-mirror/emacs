@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,10 +14,8 @@ KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND=">=app-text/dvipng-1.8"
-SIMPLE_ELISP=t
 
 src_unpack() {
 	elisp_src_unpack
-	cd "${S}"
 	epatch "${FILESDIR}/${P}-evenp.patch"
 }

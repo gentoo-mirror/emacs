@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Jun 2008; Ulrich Mueller <ulm@gentoo.org>
+  dropdown-list-20080316.ebuild:
+  SIMPLE_ELISP is no longer necessary with new elisp.eclass.
+
 *dropdown-list-20080316 (26 Apr 2008)
 
   26 Apr 2008; Ulrich Mueller <ulm@gentoo.org>

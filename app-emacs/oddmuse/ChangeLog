@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  03 Jun 2008; Ulrich Mueller <ulm@gentoo.org> oddmuse-20070712.ebuild,
+  oddmuse-20071115.ebuild:
+  SIMPLE_ELISP is no longer necessary with new elisp.eclass.
+
 *oddmuse-20071115 (29 Feb 2008)
 
   29 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +oddmuse-20071115.ebuild:

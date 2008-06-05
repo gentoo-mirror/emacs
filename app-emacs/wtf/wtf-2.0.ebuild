@@ -14,5 +14,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-SIMPLE_ELISP=t
 SITEFILE=50${PN}-gentoo.el

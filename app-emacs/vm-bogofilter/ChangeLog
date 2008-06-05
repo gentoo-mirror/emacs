@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/vm-bogofilter
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  03 Jun 2008; Ulrich Mueller <ulm@gentoo.org> vm-bogofilter-1.1.4.ebuild:
+  SIMPLE_ELISP is no longer necessary with new elisp.eclass.
 
 *vm-bogofilter-1.1.4 (28 Jul 2007)
 

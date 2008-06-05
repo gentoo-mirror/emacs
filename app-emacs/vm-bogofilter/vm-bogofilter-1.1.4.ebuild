@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,10 +17,8 @@ DEPEND=">=app-emacs/vm-7.19-r3"
 RDEPEND="${DEPEND}
 	mail-filter/bogofilter"
 
-SIMPLE_ELISP=t
-
 src_unpack() {
-	cp "${DISTDIR}/${PN}.el-${PV}" "${S}/${PN}.el" || die
+	cp "${DISTDIR}/${PN}.el-${PV}" ${PN}.el || die
 }
 
 pkg_postinst() {
