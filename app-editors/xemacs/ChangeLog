@@ -2,6 +2,16 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Jun 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Cleanup of ebuild partly based on jmglov's now-removed 21.5.28 ebuild:
+  - enable freewnn also on amd64
+  - use use_with for more compact use flag handling
+  - actually support the alsa use flag
+  - remove 21.4-specific workarounds
+  - use proper configure flag for optimizations
+  - remove obsolete comments and add proper die messages
+  - use emake
+
   03 May 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
   Fix a problem caused by GCC 4.1.2 optimization.
 
