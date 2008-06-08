@@ -29,7 +29,7 @@ DEPEND="virtual/libc
 	>=dev-libs/openssl-0.9.6
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
-	postgres? ( >=dev-db/postgresql-7.2 )
+	postgres? ( >=virtual/postgresql-base-7.2 )
 	ldap? ( net-nds/openldap )
 	alsa? ( media-libs/alsa-lib )
 	esd? ( media-sound/esound )
