@@ -17,10 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 MAKEOPTS="-j1"
 
-IUSE="X alsa jack pulseaudio oss nas arts ao esd gif png jpeg xface tiff ffmpeg mad bdwgc
-	  sndfile sox ssl tls ipv6 pop kerberos hesiod postgresql ffi gmp mpfr magic xpm
-	  athena neXt Xaw3d motif xim canna freewnn gdbm berkdb tty gpm ncurses mule socks
-	  omgoptimize warnfull"
+IUSE="X alsa jack pulseaudio oss nas arts ao esd gif png jpeg xface tiff ffmpeg
+	mad bdwgc sndfile sox ssl tls ipv6 pop kerberos hesiod postgresql ffi gmp
+	mpfr magic xpm athena neXt Xaw3d motif xim canna freewnn gdbm berkdb tty
+	gpm ncurses mule socks omgoptimize warnfull"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -66,7 +66,7 @@ DEPEND="virtual/libc
 	magic? ( sys-apps/file )"
 
 PDEPEND="app-xemacs/xemacs-base
-	 mule? ( app-xemacs/mule-base )"
+	mule? ( app-xemacs/mule-base )"
 
 PROVIDE="virtual/sxemacs"
 
@@ -119,185 +119,185 @@ src_compile() {
 	#################
 	local myconf=""
 
-		#######################
-		# Configuration for X #
-		#######################
-		if use X ; then
+	#######################
+	# Configuration for X #
+	#######################
+	if use X ; then
 		myconf="${myconf} --with-widgets=athena"
 		myconf="${myconf} --with-dialogs=athena"
 		myconf="${myconf} --with-menubars=lucid"
 		myconf="${myconf} --with-scrollbars=lucid"
 		if use motif ; then
-		myconf="--with-widgets=motif"
-		myconf="${myconf} --with-dialogs=motif"
-		myconf="${myconf} --with-scrollbars=motif"
-		myconf="${myconf} --with-menubars=lucid"
+			myconf="--with-widgets=motif"
+			myconf="${myconf} --with-dialogs=motif"
+			myconf="${myconf} --with-scrollbars=motif"
+			myconf="${myconf} --with-menubars=lucid"
 		fi
 		if use athena ; then
-		myconf="--with-scrollbars=athena"
+			myconf="--with-scrollbars=athena"
 		fi
 		if use Xaw3d ; then
-		myconf="${myconf} --with-athena=3d"
+			myconf="${myconf} --with-athena=3d"
 		elif use neXt ; then
-		myconf="${myconf} --with-athena=next"
+			myconf="${myconf} --with-athena=next"
 		else
-		myconf="${myconf} --with-athena=xaw"
+			myconf="${myconf} --with-athena=xaw"
 		fi
 
-		else
+	else
 		myconf="${myconf} --without-x"
-		fi
+	fi
 
-		#########################
-		# Configuration for TTY #
-		#########################
-		local ttyconf=""
-		if use tty ; then
+	#########################
+	# Configuration for TTY #
+	#########################
+	local ttyconf=""
+	if use tty ; then
 		ttyconf="${ttyconf} --with-tty"
 		if use tty ; then
-		if use ncurses ; then
-			ttyconf="${ttyconf} --with-ncurses"
-		else
-			ttyconf="${ttyconf} --without-ncurses"
+			if use ncurses ; then
+				ttyconf="${ttyconf} --with-ncurses"
+			else
+				ttyconf="${ttyconf} --without-ncurses"
+			fi
+			if use gpm ; then
+				ttyconf="${ttyconf} --with-gpm"
+			else
+				ttyconf="${ttyconf} --without-gpm"
+			fi
 		fi
-		if use gpm ; then
-			ttyconf="${ttyconf} --with-gpm"
-		else
-			ttyconf="${ttyconf} --without-gpm"
-		fi
-		fi
-		else
+	else
 		ttyconf="${ttyconf} --without-tty"
-		fi
-		myconf="${myconf} ${ttyconf}"
+	fi
+	myconf="${myconf} ${ttyconf}"
 
 
-		######################
-		# MULE Configuration #
-		######################
-		if use mule ; then
+	######################
+	# MULE Configuration #
+	######################
+	if use mule ; then
 		myconf="${myconf} --with-mule"
 		if use xim ; then
-		if use motif ; then
-			myconf="${myconf} --with-xim=motif"
+			if use motif ; then
+				myconf="${myconf} --with-xim=motif"
+			else
+				myconf="${myconf} --with-xim=xlib"
+			fi
 		else
-			myconf="${myconf} --with-xim=xlib"
-		fi
-		else
-		myconf="${myconf} --with-xim=no"
+			myconf="${myconf} --with-xim=no"
 		fi
 		use canna && myconf="${myconf} --with-canna"
 		use freewnn && myconf="${myconf} --with-wnn"
-		else
+	else
 		myconf="${myconf} --without-mule"
-		fi
+	fi
 
-		#######################
-		# Sound Configuration #
-		#######################
-		local soundconf="none"
-		# Define what sound outputs we use
-		use alsa && soundconf="${soundconf},alsa"
-		use jack && soundconf="${soundconf},jack"
-		use pulseaudio && soundconf="${soundconf},pulse"
-		use oss && soundconf="${soundconf},oss"
-		use nas && soundconf="${soundconf},nas"
-		use arts && soundconf="${soundconf},arts"
-		use ao && soundconf="${soundconf},ao"
-		use esd && soundconf="${soundconf},esd"
-		# And make them work
-		myconf="${myconf} --with-sound=${soundconf}"
+	#######################
+	# Sound Configuration #
+	#######################
+	local soundconf="none"
+	# Define what sound outputs we use
+	use alsa && soundconf="${soundconf},alsa"
+	use jack && soundconf="${soundconf},jack"
+	use pulseaudio && soundconf="${soundconf},pulse"
+	use oss && soundconf="${soundconf},oss"
+	use nas && soundconf="${soundconf},nas"
+	use arts && soundconf="${soundconf},arts"
+	use ao && soundconf="${soundconf},ao"
+	use esd && soundconf="${soundconf},esd"
+	# And make them work
+	myconf="${myconf} --with-sound=${soundconf}"
 
-		########################
-		# Images Configuration #
-		########################
-		local imageconf="none"
-		# Define Image Types to support
-		use gif && imageconf="${imageconf},gif"
-		use png && imageconf="${imageconf},png"
-		use jpeg && imageconf="${imageconf},jpeg"
-		use xface && imageconf="${imageconf},xface"
-		use tiff && imageconf="${imageconf},tiff"
-		use xpm && imageconf="${imageconf},xpm"
-		# And make them work
-		myconf="${myconf} --with-image=${imageconf}"
-		# Note - If FFI useflag is set, and ImageMagick is installed, SXEmacs
-		# will make use of libWand and can thus display many more types of
-		# image.
+	########################
+	# Images Configuration #
+	########################
+	local imageconf="none"
+	# Define Image Types to support
+	use gif && imageconf="${imageconf},gif"
+	use png && imageconf="${imageconf},png"
+	use jpeg && imageconf="${imageconf},jpeg"
+	use xface && imageconf="${imageconf},xface"
+	use tiff && imageconf="${imageconf},tiff"
+	use xpm && imageconf="${imageconf},xpm"
+	# And make them work
+	myconf="${myconf} --with-image=${imageconf}"
+	# Note - If FFI useflag is set, and ImageMagick is installed, SXEmacs
+	# will make use of libWand and can thus display many more types of
+	# image.
 
-		##########################
-		# Database Configuration #
-		##########################
-		local mydb="none"
-		use gdbm && mydb="${mydb},gdbm"
-		use berkdb && mydb="${mydb},berkdb"
-		myconf="${myconf} --with-database=${mydb}"
-		# and add support for postgre here
-		use postgresql && myconf="${myconf} --with-postgresql" || myconf="${myconf} --without-postgresql"
+	##########################
+	# Database Configuration #
+	##########################
+	local mydb="none"
+	use gdbm && mydb="${mydb},gdbm"
+	use berkdb && mydb="${mydb},berkdb"
+	myconf="${myconf} --with-database=${mydb}"
+	# and add support for postgre here
+	use postgresql && myconf="${myconf} --with-postgresql" || myconf="${myconf} --without-postgresql"
 
-		#######################
-		# Media Configuration #
-		#######################
-		local mediaconf="none,internal"
-		# Define Media Types to support
-		use ffmpeg && mediaconf="${mediaconf},ffmpeg"
-		use mad && mediaconf="${mediaconf},mad"
-		use sndfile && mediaconf="${mediaconf},sndfile"
-		use magic && mediaconf="${mediaconf},magic"
-		use sox && mediaconf="${mediaconf},sox"
-		# And make them work
-		myconf="${myconf} --with-media=${mediaconf}"
+	#######################
+	# Media Configuration #
+	#######################
+	local mediaconf="none,internal"
+	# Define Media Types to support
+	use ffmpeg && mediaconf="${mediaconf},ffmpeg"
+	use mad && mediaconf="${mediaconf},mad"
+	use sndfile && mediaconf="${mediaconf},sndfile"
+	use magic && mediaconf="${mediaconf},magic"
+	use sox && mediaconf="${mediaconf},sox"
+	# And make them work
+	myconf="${myconf} --with-media=${mediaconf}"
 
-		########################
-		# Cryptography Options #
-		########################
-		local crypto=""
-		use ssl && crypto="${crypto} --with-openssl"
-		use tls && crypto="${crypto} --with-gnutls"
-		myconf="${myconf} ${crypto}"
+	########################
+	# Cryptography Options #
+	########################
+	local crypto=""
+	use ssl && crypto="${crypto} --with-openssl"
+	use tls && crypto="${crypto} --with-gnutls"
+	myconf="${myconf} ${crypto}"
 
-		############################
-		# Networking Configuration #
-		############################
-		local netconf=""
-		use pop && netconf="${netconf} --with-pop" || netconf="${netconf} --without-pop"
-		use kerberos && netconf="${netconf} --with-kerberos" || netconf="${netconf} --without-kerberos"
-		use hesiod && netconf="${netconf} --with-hesiod"
-		use socks && netconf="${netconf} --with-socks"
-		myconf="${myconf} ${netconf}"
+	############################
+	# Networking Configuration #
+	############################
+	local netconf=""
+	use pop && netconf="${netconf} --with-pop" || netconf="${netconf} --without-pop"
+	use kerberos && netconf="${netconf} --with-kerberos" || netconf="${netconf} --without-kerberos"
+	use hesiod && netconf="${netconf} --with-hesiod"
+	use socks && netconf="${netconf} --with-socks"
+	myconf="${myconf} ${netconf}"
 
-		#######
-		# FFI #
-		#######
-		use ffi && myconf="${myconf} --with-ffi"
+	#######
+	# FFI #
+	#######
+	use ffi && myconf="${myconf} --with-ffi"
 
-		#########################################
-		# Boehm-Demers-Weiser Garbage Collector #
-		#########################################
-		use bdwgc && myconf="${myconf} --with-experimental-features=all"
+	#########################################
+	# Boehm-Demers-Weiser Garbage Collector #
+	#########################################
+	use bdwgc && myconf="${myconf} --with-experimental-features=all"
 
-		############################
-		# Aggressive Optimisations #
-		############################
-		use omgoptimize && myconf="${myconf} --with-ridiculously-aggressive-optimisations"
+	############################
+	# Aggressive Optimisations #
+	############################
+	use omgoptimize && myconf="${myconf} --with-ridiculously-aggressive-optimisations"
 
-		##########################
-		# Maximum Warning Output #
-		##########################
-		use warnfull && myconf="${myconf} --with-maximum-warning-output"
+	##########################
+	# Maximum Warning Output #
+	##########################
+	use warnfull && myconf="${myconf} --with-maximum-warning-output"
 
-		####################
-		# Neat Math Tricks #
-		####################
-		# I'm going to let SXEmacs do the deciding here.
-		# The useflags will simply be for dependencies.
-		myconf="${myconf} --with-ent=all --with-ase=all"
+	####################
+	# Neat Math Tricks #
+	####################
+	# I'm going to let SXEmacs do the deciding here.
+	# The useflags will simply be for dependencies.
+	myconf="${myconf} --with-ent=all --with-ase=all"
 
-		##################
-		# Module Support #
-		##################
-		myconf="${myconf} --with-module-support"
-		myconf="${myconf} --with-modules=all"
+	##################
+	# Module Support #
+	##################
+	myconf="${myconf} --with-module-support"
+	myconf="${myconf} --with-modules=all"
 
 	########################
 	# End of Configuration #
@@ -315,7 +315,6 @@ src_compile() {
 	#################
 
 	emake beta check || die "The SXEmacs Build Process (compilation) failed."
-
 }
 
 src_install() {
@@ -335,7 +334,7 @@ src_install() {
 
 	if use mule;
 	then
-	dodir /usr/share/sxemacs/mule-packages
+		dodir /usr/share/sxemacs/mule-packages
 	fi
 
 	insinto /usr/share/pixmaps
@@ -343,9 +342,7 @@ src_install() {
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${PN}.desktop
-
 }
-
 
 pkg_postinst() {
 	eselect emacs update ifunset
