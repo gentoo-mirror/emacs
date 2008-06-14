@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> xemacs-21.5.28-r2.ebuild,
+  xemacs-21.5.28-r3.ebuild, xemacs-21.5.28-r4.ebuild:
+  Change to new syntax of eselect-emacs and update dependency.
+
   08 Jun 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
   Cleanup of ebuild partly based on jmglov's now-removed 21.5.28 ebuild:
   - enable freewnn also on amd64

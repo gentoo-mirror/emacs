@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.4.20-r3.ebuild,v 1.4 2007/04/30 23:04:57 ulm Exp $
 
@@ -48,7 +48,7 @@ DEPEND="virtual/libc
 	canna? ( app-i18n/canna )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
 	>=sys-libs/ncurses-5.2
-	>=app-admin/eselect-emacs-0.7-r1"
+	>=app-admin/eselect-emacs-1.2"
 
 PDEPEND="app-xemacs/xemacs-base
 	mule? ( app-xemacs/mule-base )"
@@ -255,7 +255,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	eselect emacs update --if-unset
+	eselect emacs update ifunset
 
 	einfo "If you are upgrading from XEmacs 21.4 you should note the following"
 	einfo "incompatibilities:"
@@ -265,5 +265,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	eselect emacs update --if-unset
+	eselect emacs update ifunset
 }
