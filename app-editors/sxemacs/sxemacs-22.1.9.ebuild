@@ -348,9 +348,9 @@ src_install() {
 
 
 pkg_postinst() {
-	eselect emacs update if-unset
+	eselect emacs update ifunset
 }
 
 pkg_postrm() {
-	eselect emacs update if-unset
+	eselect emacs update ifunset
 }
