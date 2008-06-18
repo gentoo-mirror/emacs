@@ -6,7 +6,7 @@ inherit elisp
 
 DESCRIPTION="Edit a single list"
 HOMEPAGE="http://mwolson.org/projects/"
-# taken from: http://mwolson.org/static/dist/wtf/wtf.el
+# taken from http://mwolson.org/static/dist/elisp/edit-list.el
 SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2"
