@@ -15,7 +15,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
+DEPEND=">=app-emacs/dropdown-list-20080316"
+RDEPEND="${DEPEND}"
+
 SITEFILE=50${PN}-gentoo.el
+
+src_unpack() {
+	elisp_src_unpack
+
+	cd "${S}"
+	# remove inlined copy of dropdown-list
+	sed -i -e '/^;;/N;/Contents of dropdown-list\.el/,$d' yasnippet.el || die
+}
 
 src_install() {
 	elisp_src_install
