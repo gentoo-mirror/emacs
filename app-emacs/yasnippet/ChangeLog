@@ -2,6 +2,8 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*yasnippet-0.5.5 (18 Jun 2008)
+
   18 Jun 2008; Ulrich Mueller <ulm@gentoo.org> -yasnippet-0.4.4.ebuild,
   +yasnippet-0.5.5.ebuild:
   Version bump. Remove old.
