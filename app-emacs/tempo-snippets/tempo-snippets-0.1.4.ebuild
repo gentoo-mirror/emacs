@@ -4,7 +4,7 @@
 
 NEED_EMACS=22.2
 
-inherit elisp versionator
+inherit elisp
 
 DESCRIPTION="Visual insertion of tempo templates"
 HOMEPAGE="http://nschum.de/src/emacs/tempo-snippets/
