@@ -49,6 +49,7 @@ elisp_pkg_setup() {
 		eerror "Use \"eselect emacs\" to select the active version."
 		die "Emacs version ${emacs_version} is too low."
 	fi
+	einfo "Emacs version: ${emacs_version}"
 }
 
 elisp_src_unpack() {
