@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-NEED_EMACS=22
+NEED_EMACS=22.2
 
-inherit elisp
+inherit elisp versionator
 
 DESCRIPTION="Visual insertion of tempo templates"
 HOMEPAGE="http://nschum.de/src/emacs/tempo-snippets/
