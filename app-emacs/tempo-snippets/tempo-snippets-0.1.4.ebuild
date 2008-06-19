@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-NEED_EMACS=22.2
+NEED_EMACS=22
 
 inherit elisp
 
