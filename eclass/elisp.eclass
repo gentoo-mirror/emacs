@@ -21,8 +21,8 @@
 # All elisp-* functions are documented there.
 #
 # If the package's source is a single (in whatever way) compressed elisp
-# file with the file name ${PN}-${PV}.el, then this eclass will move
-# ${PN}-${PV}.el to ${PN}.el in src_unpack().
+# file with the file name ${P}.el, then this eclass will move ${P}.el to
+# ${PN}.el in src_unpack().
 
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
@@ -38,8 +38,8 @@
 inherit elisp-common versionator
 
 VERSION=${NEED_EMACS:-21}
-DEPEND=">=virtual/emacs-${VERSION%%.*}"
-RDEPEND=">=virtual/emacs-${VERSION%%.*}"
+DEPEND=">=virtual/emacs-${VERSION}"
+RDEPEND=">=virtual/emacs-${VERSION}"
 IUSE=""
 
 elisp_pkg_setup() {
