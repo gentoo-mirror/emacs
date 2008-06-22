@@ -16,6 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+DEPEND="app-emacs/volume"
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}"
 SITEFILE=50${PN}-gentoo.el
 DOCS="NEWS README"
