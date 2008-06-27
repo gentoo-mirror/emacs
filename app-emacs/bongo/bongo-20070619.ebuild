@@ -16,12 +16,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# NOTE: Bongo can use almost anything for playing media files, therefore
+# the dependency possibilities are so broad that we refrain from including
+# any media players explicitly in DEPEND/RDEPEND.
+
 DEPEND="app-emacs/volume"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 SITEFILE=50${PN}-gentoo.el
-DOCS="NEWS README"
+DOCS="NEWS README tree-from-tags.rb"
 
 src_unpack() {
 	unpack ${A}
@@ -44,7 +48,7 @@ src_install() {
 	insinto "${SITEETC}/${PN}"
 	doins *.pbm *.png || die "doins failed"
 
-	# needs additional dependencies Ruby-taglib and Mahoro
+	# Requires additional dependency ruby-taglib; install in doc for now.
 	#dobin tree-from-tags.rb || die "dobin failed"
 
 	doinfo bongo.info || die "doinfo failed"
