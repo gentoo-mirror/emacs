@@ -317,7 +317,7 @@ elisp-site-regen() {
 
 	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
 
-	# remove auxiliary file
+	# remove any auxiliary file (from previous run)
 	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
 
 	# set nullglob option, there may be a directory without matching files
