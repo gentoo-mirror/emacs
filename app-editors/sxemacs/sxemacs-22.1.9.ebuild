@@ -50,7 +50,7 @@ DEPEND="virtual/libc
 	tls? ( >=net-libs/gnutls-2.0.4 )
 	kerberos? ( app-crypt/mit-krb5 )
 	hesiod? ( net-dns/hesiod )
-	postgresql? ( dev-db/postgresql )
+	postgresql? ( virtual/postgresql-base )
 	gmp? ( dev-libs/gmp )
 	mpfr? ( dev-libs/mpfr )
 	athena? ( x11-libs/libXaw )
