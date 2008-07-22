@@ -74,6 +74,9 @@ src_unpack() {
 	# Fix security issue in vcdiff script
 	epatch "${FILESDIR}"/${P}-vcdiff.patch
 
+	# Fix compatibility with autoconf 2.62 (taken from upstream)
+	epatch "${FILESDIR}"/${P}-autoconf-2.62.patch
+
 	# Fix problem caused by improper optimization with GCC 4.1.2 on x86
 	# (and possibly other arches, but only confirmed on x86). See
 	# http://tracker.xemacs.org/XEmacs/its/issue354 for the upstream

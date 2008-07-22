@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Jul 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Add patch for compatibility with autoconf 2.62.
+
   14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> xemacs-21.5.28-r2.ebuild,
   xemacs-21.5.28-r3.ebuild, xemacs-21.5.28-r4.ebuild:
   Change to new syntax of eselect-emacs and update dependency.
