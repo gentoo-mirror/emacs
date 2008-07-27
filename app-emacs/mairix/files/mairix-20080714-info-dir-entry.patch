@@ -1,0 +1,14 @@
+--- mairix-el.info~	2008-07-14 22:12:12.000000000 +0200
++++ mairix-el.info	2008-07-27 07:17:55.000000000 +0200
+@@ -13,6 +13,11 @@
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+      02111-1307, USA.
+ 
++INFO-DIR-SECTION Emacs
++START-INFO-DIR-ENTRY
++* mairix.el: (mairix-el).	Mairix interface for Emacs.
++END-INFO-DIR-ENTRY
++
+ 
+ File: mairix-el.info,  Node: Top,  Next: About mairix and mairix.el,  Up: (dir)
+ 

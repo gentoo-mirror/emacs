@@ -1,0 +1,9 @@
+# ChangeLog for app-emacs/mairix
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Jul 2008; Ulrich Mueller <ulm@gentoo.org> +files/50mairix-gentoo.el,
+  +files/mairix-20080714-info-dir-entry.patch, +metadata.xml,
+  +mairix-20080714.ebuild:
+  Initial import. Ebuild contributed by me.
+
