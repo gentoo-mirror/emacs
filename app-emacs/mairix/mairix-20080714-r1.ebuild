@@ -22,6 +22,12 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}/${P}-info-dir-entry.patch"
+	epatch "${FILESDIR}/${P}-vm-gentoo.patch"
+}
+
+src_compile() {
+	elisp_src_compile
+	makeinfo mairix-el.texi
 }
 
 src_install() {

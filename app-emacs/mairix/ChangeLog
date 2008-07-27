@@ -2,6 +2,16 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*mairix-20080714-r1 (27 Jun 2008)
+
+  27 Jul 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/mairix-20080714-info-dir-entry.patch,
+  +files/mairix-20080714-vm-gentoo.patch, -mairix-20080714.ebuild,
+  +mairix-20080714-r1.ebuild:
+  Add support for app-emacs/vm.
+
+*mairix-20080714 (27 Jun 2008)
+
   27 Jul 2008; Ulrich Mueller <ulm@gentoo.org> +files/50mairix-gentoo.el,
   +files/mairix-20080714-info-dir-entry.patch, +metadata.xml,
   +mairix-20080714.ebuild:
