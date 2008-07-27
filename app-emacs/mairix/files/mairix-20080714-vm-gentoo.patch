@@ -56,7 +56,7 @@
    "Specifies function for obtaining a header field from the current mail.
  This is an alist where each entry consists of a symbol from
  `mairix-mail-program' and the corresponding function for
-@@ -286,6 +290,36 @@
+@@ -286,6 +290,39 @@
      (gnus-summary-toggle-header 1)
      (message-field-value field)))
  
@@ -78,8 +78,11 @@
 +    (when buf
 +      (set-buffer buf)
 +      (set-buffer-modified-p nil)
-+      (kill-buffer nil)))
-+  (vm-visit-folder folder 'read-only))
++      (condition-case nil
++	  (vm-quit t)
++	(error nil))
++      (kill-buffer buf)))
++  (vm-visit-folder folder t))
 +
 +;; Fetching mail header field
 +(defun mairix-vm-fetch-field (field)
