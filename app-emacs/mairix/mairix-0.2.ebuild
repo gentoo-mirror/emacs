@@ -4,10 +4,10 @@
 
 inherit elisp eutils
 
+MY_P=${PN}-el_${PV}
 DESCRIPTION="Mairix interface for Emacs"
 HOMEPAGE="http://randomsample.de/mairix-el-doc/"
-# taken from: http://randomsample.de/mairix.el
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
+SRC_URI="http://randomsample.de/${MY_P}.tar.gz"
 
 LICENSE="GPL-3 FDL-1.2"
 SLOT="0"
@@ -16,19 +16,8 @@ IUSE=""
 
 RDEPEND="net-mail/mairix"
 
+S="${WORKDIR}/${MY_P}"
 SITEFILE=50${PN}-gentoo.el
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-info-dir-entry.patch"
-	epatch "${FILESDIR}/${P}-vm-gentoo.patch"
-}
-
-src_compile() {
-	elisp_src_compile
-	makeinfo mairix-el.texi
-}
 
 src_install() {
 	elisp_src_install
