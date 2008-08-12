@@ -37,7 +37,7 @@ src_compile() {
 
 src_install() {
 	ecvs_clean
-	find "${S}" -type f -print | grep -v www | while read target; do
+	find "${S}" -name www -prune -o -type f -print | while read target; do
 		local directory=$(dirname ${target}) file=$(basename ${target})
 		local sub_directory=$(echo ${directory} | sed "s%^${S}/*%%;s/^$/./")
 		case $file in
