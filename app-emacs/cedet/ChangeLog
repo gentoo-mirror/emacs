@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/cedet
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*cedet-9999 (12 Aug 2008)
+
+  12 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +files/60cedet-gentoo.el,
+  +metadata.xml, +cedet-9999.ebuild:
+  Live CVS ebuild by Dmitry Dzhus <dima@sphinx.net.ru> in bug 234536.
+
