@@ -4,7 +4,7 @@
 
 inherit subversion
 
-DESCRIPTION="Manages Emacs versions"
+DESCRIPTION="Rebuild Emacs packages"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
 ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
@@ -15,20 +15,13 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbs
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=app-admin/eselect-1.0.10
-	~app-admin/eselect-ctags-${PV}"
+RDEPEND="!<=app-admin/eselect-emacs-1.5
+	!=app-admin/eselect-emacs-9999
+	app-portage/portage-utils
+	virtual/emacs"
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	subversion_fetch || die
-	subversion_fetch "${ESVN_REPO_URI%/*}/emacs-updater" || die
-}
-
 src_install() {
-	insinto /usr/share/eselect/modules
-	doins {emacs,etags}.eselect || die "doins failed"
-	doman {emacs,etags}.eselect.5 || die "doman failed"
-	dodoc ChangeLog || die "dodoc failed"
 	dosbin emacs-updater || die "dosbin failed"
 }

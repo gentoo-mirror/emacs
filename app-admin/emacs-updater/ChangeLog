@@ -1,0 +1,11 @@
+# ChangeLog for app-admin/emacs-updater
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-updater-9999 (15 Aug 2008)
+
+  15 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +emacs-updater-9999.ebuild:
+  Initial import of stand-alone emacs-updater, package split off from
+  app-admin/eselect-emacs.
+
