@@ -33,14 +33,14 @@
 # src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined here and
-# simply takes the source files as arguments.
+# simply takes the source files as arguments. The case of interdependent
+# elisp files is also supported, since the current directory is added to the
+# load-path which makes sure that all files are loadable.
 #
 #   	elisp-compile *.el || die "elisp-compile failed"
 #
-# In the case of interdependent elisp files, you can use the elisp-comp()
-# function which makes sure all files are loadable.
-#
-#   	elisp-comp *.el || die "elisp-comp failed"
+# Formerly, function elisp-comp() was used for compilation of interdependent
+# elisp files. This usage is considered as obsolete.
 #
 # Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
@@ -148,10 +148,18 @@ EMACSFLAGS="-batch -q --no-site-file"
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
 # Byte-compile Emacs Lisp files.
+#
+# This function uses GNU Emacs to byte-compile all ".el" specified by its
+# arguments. The resulting byte-code (".elc") files are placed in the same
+# directory as their corresponding source file.
+#
+# The current directory is added to the load-path. This will ensure that
+# interdependent Emacs Lisp files are visible between themselves, in case they
+# require or load one another.
 
 elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
-	${EMACS} ${EMACSFLAGS} -f batch-byte-compile "$@"
+	${EMACS} ${EMACSFLAGS} -L . -f batch-byte-compile "$@"
 	eend $? "batch-byte-compile failed"
 }
 
