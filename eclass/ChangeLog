@@ -1,3 +1,10 @@
+2008-08-10  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Fix issue with empty
+	einfo lines. Indent here-document. Change wording of message,
+	"no longer" -> "not", since the underlying change from
+	site-start.el to site-gentoo.el was in 2004.
+
 2008-05-25  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (SIMPLE_ELISP): Remove variable.
