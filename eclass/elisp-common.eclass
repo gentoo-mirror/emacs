@@ -33,20 +33,20 @@
 # src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined here and
-# simply takes the source files as arguments. The case of interdependent
+# simply takes the source files as arguments.  The case of interdependent
 # elisp files is also supported, since the current directory is added to the
 # load-path which makes sure that all files are loadable.
 #
 #   	elisp-compile *.el || die "elisp-compile failed"
 #
 # Formerly, function elisp-comp() was used for compilation of interdependent
-# elisp files. This usage is considered as obsolete.
+# elisp files.  This usage is considered as obsolete.
 #
 # Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
 # (default: "${PN}-autoloads.el") and a list of directories (default: working
 # directory) as its arguments.  Use of this function requires that the elisp
-# source files contain magic ";;;###autoload" comments. See the Emacs Lisp
+# source files contain magic ";;;###autoload" comments.  See the Emacs Lisp
 # Reference Manual (node "Autoload") for a detailed explanation.
 #
 # .SS
@@ -150,12 +150,12 @@ EMACSFLAGS="-batch -q --no-site-file"
 # Byte-compile Emacs Lisp files.
 #
 # This function uses GNU Emacs to byte-compile all ".el" specified by its
-# arguments. The resulting byte-code (".elc") files are placed in the same
+# arguments.  The resulting byte-code (".elc") files are placed in the same
 # directory as their corresponding source file.
 #
-# The current directory is added to the load-path. This will ensure that
-# interdependent Emacs Lisp files are visible between themselves, in case they
-# require or load one another.
+# The current directory is added to the load-path.  This will ensure that
+# interdependent Emacs Lisp files are visible between themselves, in case
+# they require or load one another.
 
 elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
