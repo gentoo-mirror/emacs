@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,7 +14,3 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 SITEFILE=50${PN}-gentoo.el
-
-src_compile() {
-	elisp-comp *.el || die "elisp-comp failed"
-}
