@@ -11,6 +11,15 @@
 	"no longer" -> "not", since the underlying change from
 	site-start.el to site-gentoo.el was in 2004.
 
+2008-06-23  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp.eclass: Update copyright information.
+	(elisp_pkg_setup): Be more verbose on output information.
+
+2008-06-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Output Emacs version.
+
 2008-05-25  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (SIMPLE_ELISP): Remove variable.
