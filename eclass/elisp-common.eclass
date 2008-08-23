@@ -140,9 +140,21 @@ SITEETC=/usr/share/emacs/etc
 # Name of package's site-init file.
 SITEFILE=50${PN}-gentoo.el
 
+# @ECLASS-VARIABLE: EMACS
+# @DESCRIPTION:
+# Path of Emacs executable.
 EMACS=/usr/bin/emacs
-# The following works for Emacs versions 18-23, don't change it.
+
+# @ECLASS-VARIABLE: EMACSFLAGS
+# @DESCRIPTION:
+# Flags for executing Emacs in batch mode.
+# These work for Emacs versions 18-23, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
+
+# @ECLASS-VARIABLE: BYTECOMPFLAGS
+# @DESCRIPTION:
+# Emacs flags used for byte-compilation in elisp-compile().
+BYTECOMPFLAGS="-L ."
 
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
@@ -159,7 +171,7 @@ EMACSFLAGS="-batch -q --no-site-file"
 
 elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
-	${EMACS} ${EMACSFLAGS} -L . -f batch-byte-compile "$@"
+	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-byte-compile "$@"
 	eend $? "batch-byte-compile failed"
 }
 

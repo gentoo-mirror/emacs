@@ -37,19 +37,19 @@
 
 inherit elisp-common versionator
 
-VERSION=${NEED_EMACS:-21}
-DEPEND=">=virtual/emacs-${VERSION}"
-RDEPEND=">=virtual/emacs-${VERSION}"
+DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
+RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
 IUSE=""
 
 elisp_pkg_setup() {
-	local emacs_version="$(elisp-emacs-version)"
-	if ! version_is_at_least "${VERSION}" "${emacs_version}"; then
-		eerror "This package needs at least Emacs ${VERSION}."
+	local need_emacs=${NEED_EMACS:-21}
+	local have_emacs=$(elisp-emacs-version)
+	if ! version_is_at_least "${need_emacs}" "${have_emacs}"; then
+		eerror "This package needs at least Emacs ${need_emacs}."
 		eerror "Use \"eselect emacs\" to select the active version."
-		die "Emacs version ${emacs_version} is too low."
+		die "Emacs version ${have_emacs} is too low."
 	fi
-	einfo "Currently selected GNU Emacs version: ${emacs_version}"
+	einfo "Currently selected GNU Emacs version: ${have_emacs}"
 }
 
 elisp_src_unpack() {
