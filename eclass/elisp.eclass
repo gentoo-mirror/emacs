@@ -53,7 +53,7 @@ elisp_pkg_setup() {
 }
 
 elisp_src_unpack() {
-	unpack ${A}
+	[ -n "${A}" ] && unpack ${A}
 	if [ -f ${P}.el ]; then
 		mv ${P}.el ${PN}.el || die "mv ${P}.el ${PN}.el failed"
 	fi

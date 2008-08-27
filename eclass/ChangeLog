@@ -1,3 +1,7 @@
+2008-08-27  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_unpack): Handle the case of empty ${A}.
+
 2008-08-23  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (VERSION): Remove unnecessary global variable to
