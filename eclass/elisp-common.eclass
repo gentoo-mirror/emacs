@@ -175,9 +175,9 @@ elisp-compile() {
 	eend $? "batch-byte-compile failed"
 }
 
-# @FUNCTION: elisp-comp
-# @USAGE: <list of elisp files>
-# @DESCRIPTION:
+# #FUNCTION: elisp-comp
+# #USAGE: <list of elisp files>
+# #DESCRIPTION:
 # Byte-compile interdependent Emacs Lisp files.
 #
 # This function byte-compiles all ".el" files which are part of its
