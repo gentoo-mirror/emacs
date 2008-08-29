@@ -2,6 +2,11 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-updater-1.0_rc1 (29 Aug 2008)
+
+  29 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +emacs-updater-1.0_rc1.ebuild:
+  Prepare for stand-alone release of emacs-updater.
+
 *emacs-updater-9999 (15 Aug 2008)
 
   15 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,

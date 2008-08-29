@@ -2,6 +2,11 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eselect-emacs-1.5-r1 (29 Aug 2008)
+
+  29 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +eselect-emacs-1.5-r1.ebuild:
+  Don't install the emacs-updater script since it's in its own package now.
+
 *eselect-emacs-9999-r1 (15 Aug 2008)
 
   15 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -eselect-emacs-9999.ebuild,
