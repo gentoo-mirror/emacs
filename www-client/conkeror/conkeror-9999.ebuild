@@ -25,7 +25,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r branding chrome components content defaults locale modules \
 		search-engines application.ini Info.plist || die
-	insinto /usr/share/${PN}/contrib
+	exeinto /usr/share/${PN}/contrib
 	doexe contrib/run-conkeror || die
 	dosym /usr/share/${PN}/contrib/run-conkeror /usr/bin/conkeror || die
 	dobin conkeror-spawn-helper || die
