@@ -4,7 +4,7 @@
 
 inherit git
 
-DESCRIPTION="Webbrowser based on Gecko enginge, inspired by Emacs"
+DESCRIPTION="Webbrowser based on Gecko engine, inspired by Emacs"
 HOMEPAGE="http://conkeror.org"
 SRC_URI=""
 EGIT_REPO_URI="git://repo.or.cz/conkeror.git"
