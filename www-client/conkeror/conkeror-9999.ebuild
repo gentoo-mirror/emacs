@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=">=net-libs/xulrunner-1.9"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=">=net-libs/xulrunner-1.9"
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" || die
