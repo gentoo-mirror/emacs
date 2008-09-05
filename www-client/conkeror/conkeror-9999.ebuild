@@ -22,12 +22,15 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/share/${PN}
+	insinto /usr/lib/${PN}
 	doins -r branding chrome components content defaults locale modules \
 		search-engines application.ini Info.plist || die
-	exeinto /usr/share/${PN}/contrib
+
+	exeinto /usr/lib/${PN}
+	doexe conkeror-spawn-helper || die
+	exeinto /usr/lib/${PN}/contrib
 	doexe contrib/run-conkeror || die
-	dosym /usr/share/${PN}/contrib/run-conkeror /usr/bin/conkeror || die
-	dobin conkeror-spawn-helper || die
+	dosym /usr/lib/${PN}/contrib/run-conkeror /usr/bin/conkeror || die
+
 	dodoc CREDITS || die
 }
