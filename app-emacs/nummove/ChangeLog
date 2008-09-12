@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/nummove
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*nummove-20070312 (12 Sep 2008)
+
+  12 Sep 2008; Ulrich Mueller <ulm@gentoo.org> +files/50nummove-gentoo.el,
+  +nummove-20070312.ebuild, +files/nummove-20070312-image-path.patch,
+  +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
