@@ -391,11 +391,12 @@ elisp-site-regen() {
 		[ -f "${tmpdir}"/site-start.el ] \
 			&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ] \
 			&& mv "${tmpdir}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
-		echo; einfo
-		for sf in "${sflist[@]##*/}"; do
-			einfo "  Adding ${sf} ..."
-		done
-		einfo "Regenerated ${SITELISP}/site-gentoo.el."
+		echo
+		#for sf in "${sflist[@]##*/}"; do
+		#	einfo "  Adding ${sf} ..."
+		#done
+		#einfo "Regenerated ${SITELISP}/site-gentoo.el."
+		einfo "... ${#sflist[@]} site initialisation file(s) included."
 
 		echo
 		while read line; do einfo "${line:- }"; done <<-EOF
@@ -421,8 +422,7 @@ elisp-site-regen() {
 		while read line; do ewarn "${line}"; done <<-EOF
 		Site-initialisation files of Emacs packages are now installed in
 		/usr/share/emacs/site-lisp/site-gentoo.d/. We strongly recommend
-		that you use /usr/sbin/emacs-updater to rebuild the installed
-		Emacs packages.
+		that you use emacs-updater to rebuild the installed Emacs packages.
 		EOF
 		echo
 

@@ -1,3 +1,9 @@
+2008-09-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Be less verbose, bug 237546.
+	* elisp-common.eclass (elisp-site-regen): Likewise.
+	Thanks to Marijn Schouten <hkbst@gentoo.org> for complaining.
+
 2008-09-01  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Return definite status.
