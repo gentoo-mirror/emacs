@@ -398,10 +398,10 @@ elisp-site-regen() {
 		#done
 		#einfo "Regenerated ${SITELISP}/site-gentoo.el."
 		einfo "... ${#sflist[@]} site initialisation file(s) included."
-		echo
 	fi
 
 	if [ "${firstrun}" ]; then
+		echo
 		while read line; do einfo "${line:- }"; done <<-EOF
 		All site initialisation for Gentoo-installed packages is added to
 		/usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is not
@@ -422,12 +422,12 @@ elisp-site-regen() {
 	fi
 
 	if [ "${obsolete}" ]; then
+		echo
 		while read line; do ewarn "${line}"; done <<-EOF
 		Site-initialisation files of Emacs packages are now installed in
 		/usr/share/emacs/site-lisp/site-gentoo.d/. We strongly recommend
 		that you use emacs-updater to rebuild the installed Emacs packages.
 		EOF
-		echo
 
 		# Kludge for backwards compatibility: During pkg_postrm, old versions
 		# of this eclass (saved in the VDB) won't find packages' site-init
