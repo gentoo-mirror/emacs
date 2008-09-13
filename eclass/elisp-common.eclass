@@ -306,7 +306,7 @@ elisp-site-file-install() {
 # when generating the start-up file.
 
 elisp-site-regen() {
-	local i sf line obsolete
+	local i sf line firstrun obsolete
 	local -a sflist
 	# Work around Paludis borkage: variable T is empty in pkg_postrm
 	local tmpdir=${T:-$(mktemp -d)}
@@ -316,8 +316,9 @@ elisp-site-regen() {
 		return 1
 	fi
 
-	if [ ! -e "${ROOT}${SITELISP}"/site-gentoo.el ] \
-		&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
+	[ -e "${ROOT}${SITELISP}"/site-gentoo.el ] || firstrun=t
+
+	if [ "${firstrun}" ] && [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
 		einfo "Creating default ${SITELISP}/site-start.el ..."
 		cat <<-EOF >"${tmpdir}"/site-start.el
 		;;; site-start.el
@@ -397,8 +398,10 @@ elisp-site-regen() {
 		#done
 		#einfo "Regenerated ${SITELISP}/site-gentoo.el."
 		einfo "... ${#sflist[@]} site initialisation file(s) included."
-
 		echo
+	fi
+
+	if [ "${firstrun}" ]; then
 		while read line; do einfo "${line:- }"; done <<-EOF
 		All site initialisation for Gentoo-installed packages is added to
 		/usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is not
