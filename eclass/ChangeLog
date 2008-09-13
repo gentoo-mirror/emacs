@@ -1,3 +1,7 @@
+2008-09-01  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Return definite status.
+
 2008-08-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_unpack): Handle the case of empty ${A}.
