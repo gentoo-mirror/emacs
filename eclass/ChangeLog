@@ -1,3 +1,7 @@
+2008-09-16  Christian Faulhammer  <opfer@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Add category for emacs-updater
+
 2008-09-13  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_pkg_setup): Be less verbose, bug 237546.
