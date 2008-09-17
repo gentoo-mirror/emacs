@@ -195,9 +195,10 @@ elisp-comp() {
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
 	# Originally taken from GNU autotools.
 
-	ewarn "Function elisp-comp is deprecated and should not be used anymore."
-	ewarn "Please report a bug about ${CATEGORY}/${PF}"
-	ewarn "at <http://bugs.gentoo.org/>."
+	ewarn "Function elisp-comp is deprecated and may be removed in future."
+	ewarn "Please use function elisp-compile instead, or report a bug about"
+	ewarn "${CATEGORY}/${PF} at <http://bugs.gentoo.org/>."
+	echo
 
 	[ $# -gt 0 ] || return 1
 
