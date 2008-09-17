@@ -179,6 +179,7 @@ elisp-compile() {
 # #USAGE: <list of elisp files>
 # #DESCRIPTION:
 # Byte-compile interdependent Emacs Lisp files.
+# THIS FUNCTION IS DEPRECATED.
 #
 # This function byte-compiles all ".el" files which are part of its
 # arguments, using GNU Emacs, and puts the resulting ".elc" files into the
@@ -193,6 +194,10 @@ elisp-comp() {
 	# Copyright 1995 Free Software Foundation, Inc.
 	# François Pinard <pinard@iro.umontreal.ca>, 1995.
 	# Originally taken from GNU autotools.
+
+	ewarn "Function elisp-comp is deprecated and should not be used anymore."
+	ewarn "Please report a bug about ${CATEGORY}/${PF}"
+	ewarn "at <http://bugs.gentoo.org/>."
 
 	[ $# -gt 0 ] || return 1
 
