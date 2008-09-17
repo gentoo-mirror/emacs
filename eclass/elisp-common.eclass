@@ -426,7 +426,8 @@ elisp-site-regen() {
 		while read line; do ewarn "${line}"; done <<-EOF
 		Site-initialisation files of Emacs packages are now installed in
 		/usr/share/emacs/site-lisp/site-gentoo.d/. We strongly recommend
-		that you use app-admin/emacs-updater to rebuild the installed Emacs packages.
+		that you use app-admin/emacs-updater to rebuild the installed Emacs
+		packages.
 		EOF
 
 		# Kludge for backwards compatibility: During pkg_postrm, old versions
