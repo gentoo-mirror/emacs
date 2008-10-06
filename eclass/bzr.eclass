@@ -136,8 +136,6 @@ bzr_fetch() {
 		addwrite /
 		mkdir -p "${EBZR_STORE_DIR}" \
 			|| die "${EBZR}: can't mkdir ${EBZR_STORE_DIR}."
-		chmod -f o+rw "${EBZR_STORE_DIR}" \
-			|| die "${EBZR}: can't chmod ${EBZR_STORE_DIR}."
 		export SANDBOX_WRITE="${SANDBOX_WRITE%%:/}"
 	fi
 
