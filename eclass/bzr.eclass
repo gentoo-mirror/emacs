@@ -22,7 +22,7 @@ EXPORT_FUNCTIONS src_unpack
 HOMEPAGE="http://bazaar-vcs.org/"
 DESCRIPTION="Based on the ${EBZR} eclass"
 
-DEPEND=">=dev-util/bzr-0.92"
+DEPEND=">=dev-util/bzr-1.5"
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
