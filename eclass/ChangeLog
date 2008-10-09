@@ -1,3 +1,9 @@
+2008-10-09  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (SITEETC): Document as eclass variable.
+	(elisp-site-regen): Use sed instead of cat for concatenation of
+	site-init files, since they may not have a trailing newline.
+
 2008-09-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-comp): Output a deprecation warning.
