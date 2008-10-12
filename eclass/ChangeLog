@@ -1,3 +1,7 @@
+2008-10-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Add function names to error messages.
+
 2008-10-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (SITEETC): Document as eclass variable.
