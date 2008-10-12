@@ -15,6 +15,8 @@ IUSE=""
 
 RDEPEND=">=app-text/dvipng-1.8"
 
+SITEFILE=50${PN}-gentoo.el
+
 src_unpack() {
 	elisp_src_unpack
 	epatch "${FILESDIR}/${P}-evenp.patch"
