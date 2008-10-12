@@ -59,7 +59,7 @@
 # something else, but remember to tell elisp-site-file-install() (see below)
 # the change, as it defaults to ${PN}.
 #
-#   	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+#   	elisp-install ${PN} *.el *.elc || die
 #
 # To let the Emacs support be activated by Emacs on startup, you need
 # to provide a site file (shipped in ${FILESDIR}) which contains the startup
