@@ -37,7 +37,7 @@
 # elisp files is also supported, since the current directory is added to the
 # load-path which makes sure that all files are loadable.
 #
-#   	elisp-compile *.el || die "elisp-compile failed"
+#   	elisp-compile *.el || die
 #
 # Formerly, function elisp-comp() was used for compilation of interdependent
 # elisp files.  This usage is considered as obsolete.
