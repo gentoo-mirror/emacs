@@ -17,6 +17,8 @@ DEPEND=">=app-emacs/vm-7.19-r3"
 RDEPEND="${DEPEND}
 	mail-filter/bogofilter"
 
+SITEFILE=50${PN}-gentoo.el
+
 src_unpack() {
 	cp "${DISTDIR}/${PN}.el-${PV}" ${PN}.el || die
 }

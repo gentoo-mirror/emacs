@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Oct 2008; Ulrich Mueller <ulm@gentoo.org> vm-bogofilter-1.1.4.ebuild:
+  Add missing SITEFILE definition.
+
   03 Jun 2008; Ulrich Mueller <ulm@gentoo.org> vm-bogofilter-1.1.4.ebuild:
   SIMPLE_ELISP is no longer necessary with new elisp.eclass.
 
