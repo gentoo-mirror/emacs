@@ -24,6 +24,10 @@
 # file with the file name ${P}.el, then this eclass will move ${P}.el to
 # ${PN}.el in src_unpack().
 
+# @ECLASS-VARIABLE: SITEFILE
+# @DESCRIPTION:
+# Name of package's site-init file.
+
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
@@ -64,8 +68,10 @@ elisp_src_compile() {
 
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
-		|| die "elisp-site-file-install failed"
+	if [ -n "${SITEFILE}" ]; then
+		elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
+			|| die "elisp-site-file-install failed"
+	fi
 	if [ -n "${DOCS}" ]; then
 		dodoc ${DOCS} || die "dodoc failed"
 	fi

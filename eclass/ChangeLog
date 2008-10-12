@@ -2,6 +2,10 @@
 
 	* elisp-common.eclass: Add function names to error messages.
 
+	* elisp.eclass (SITEFILE): Move from elisp-common.eclass to here
+	and don't assign a default value.
+	(elisp_src_install): Allow for packages without	site-init file.
+
 2008-10-09  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (SITEETC): Document as eclass variable.

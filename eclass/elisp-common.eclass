@@ -137,11 +137,6 @@ SITELISP=/usr/share/emacs/site-lisp
 # Directory where packages install miscellaneous (not Lisp) files.
 SITEETC=/usr/share/emacs/etc
 
-# @ECLASS-VARIABLE: SITEFILE
-# @DESCRIPTION:
-# Name of package's site-init file.
-SITEFILE=50${PN}-gentoo.el
-
 # @ECLASS-VARIABLE: EMACS
 # @DESCRIPTION:
 # Path of Emacs executable.
