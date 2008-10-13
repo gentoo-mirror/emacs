@@ -117,7 +117,7 @@ bzr_fetch() {
 	local EBZR_BRANCH_DIR
 
 	# EBZR_REPO_URI is empty.
-	[[ -z ${EBZR_REPO_URI} ]] && die "${EBZR}: EBZR_REPO_URI is empty."
+	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty."
 
 	# check for the protocol or pull from a local repo.
 	if [[ -z ${EBZR_REPO_URI%%:*} ]] ; then
