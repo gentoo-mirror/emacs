@@ -86,12 +86,14 @@
 # keybindings as they might interfere with the user's settings.  Give a hint
 # in pkg_postinst(), which should be enough.
 #
-# The naming scheme for this site file is "[0-9][0-9]*-gentoo.el", where the
-# two digits at the beginning define the loading order.  So if you depend on
-# another Emacs package, your site file's number must be higher!
+# The naming scheme for this site-init file matches the shell pattern
+# "[1-8][0-9]*-gentoo.el", where the two digits at the beginning define the
+# loading order (numbers below 10 or above 89 are reserved for internal use).
+# So if you depend on another Emacs package, your site file's number must be
+# higher!
 #
 # Best practice is to define a SITEFILE variable in the global scope of your
-# ebuild (right after DEPEND e.g.):
+# ebuild (e.g., right after DEPEND):
 #
 #   	SITEFILE=50${PN}-gentoo.el
 #

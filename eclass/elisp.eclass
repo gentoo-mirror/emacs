@@ -26,7 +26,10 @@
 
 # @ECLASS-VARIABLE: SITEFILE
 # @DESCRIPTION:
-# Name of package's site-init file.
+# Name of package's site-init file.  The filename must match the shell
+# pattern "[1-8][0-9]*-gentoo.el"; numbers below 10 and above 89 are
+# reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
+# in most cases.
 
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
@@ -63,14 +66,13 @@ elisp_src_unpack() {
 }
 
 elisp_src_compile() {
-	elisp-compile *.el || die "elisp-compile failed"
+	elisp-compile *.el || die
 }
 
 elisp_src_install() {
-	elisp-install ${PN} *.el *.elc || die "elisp-install failed"
+	elisp-install ${PN} *.el *.elc || die
 	if [ -n "${SITEFILE}" ]; then
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
-			|| die "elisp-site-file-install failed"
+		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
 	if [ -n "${DOCS}" ]; then
 		dodoc ${DOCS} || die "dodoc failed"
