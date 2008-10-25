@@ -4,10 +4,13 @@
 #
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
-# Jorge Manuel B. S. Vicetto <jmbsvicetto>@gentoo.org
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>,
+# Ulrich Mueller <ulm@gentoo.org>,
+# and anyone who wants to help
 # @BLURB: This eclass provides support to use the Bazaar DSCM
 # @DESCRIPTION:
-# The bzr.eclass provides support for apps using the bazaar DSCM (distributed source control management system).
+# The bzr.eclass provides support for apps using the bazaar DSCM
+# (distributed source control management system).
 # The eclass was originally derived from the git eclass.
 #
 # Note: Just set EBZR_REPO_URI to the url of the branch and the src_unpack
