@@ -35,12 +35,13 @@ start() {
     ebegin "Starting Emacs daemon for ${USER}"
     eval home=~${USER}
     start-stop-daemon --start --user "${USER}" --chdir "${home}" \
-	--name "emacs-daemon-${USER}" --exec "${EMACS}" -- --daemon &>/dev/null
+	--name emacs-daemon --exec "${EMACS}" -- --daemon &>/dev/null
     eend $?
 }
 
 stop() {
     ebegin "Stopping Emacs daemon for ${USER}"
-    start-stop-daemon --stop --name "emacs-daemon-${USER}" --exec "${EMACS}"
+    start-stop-daemon --stop --user "${USER}" \
+	--name emacs-daemon --exec "${EMACS}"
     eend $?
 }
