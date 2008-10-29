@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/emacs-daemon
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-daemon-0.1 (29 Oct 2008)
+
+  29 Oct 2008; Ulrich Mueller <ulm@gentoo.org> +files/emacs-daemon.conf,
+  +files/emacs-daemon.rc, +metadata.xml, +emacs-daemon-0.1.ebuild:
+  Initial import.
+

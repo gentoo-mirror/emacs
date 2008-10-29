@@ -1,0 +1,43 @@
+#!/sbin/runscript
+# $Header: $
+# Copyright 2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EMACS="/usr/bin/emacs"
+
+checkconfig() {
+    if [ -z "${EMACSUSERS}" ]; then
+	eerror "You must setup EMACSUSERS in /etc/conf.d/emacs-daemon first"
+	return 1
+    fi
+
+    local has_daemon=$(${EMACS} -batch -q --no-site-file \
+	--eval "(princ (fboundp 'daemonp))")
+    if [ "${has_daemon}" != t ]; then
+	eerror "${EMACS} does not support running as a daemon"
+	return 1
+    fi
+
+    return 0
+}
+
+start() {
+    local user dir fail=0
+    checkconfig || return 1
+
+    for user in ${EMACSUSERS}; do
+	ebegin "Starting Emacs daemon for ${user}"
+	eval dir="~${user}"
+	start-stop-daemon --start --user "${user}" --chdir "${dir}" \
+	    --name emacs-daemon --exec "${EMACS}" -- --daemon &>/dev/null
+	eend $? || fail=1
+    done
+
+    return ${fail}
+}
+
+stop() {
+    ebegin "Stopping all Emacs daemons"
+    start-stop-daemon --stop --name emacs-daemon --exec "${EMACS}"
+    eend $?
+}
