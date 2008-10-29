@@ -20,6 +20,8 @@
      available separately.
 </longdescription>
 <use>
+  <flag name='daemon'>Install support files for running an Emacs daemon
+    as rc service</flag>
   <flag name='gzip-el'>Compress bundled Emacs Lisp source</flag>
   <flag name='hesiod'>Enable support for <pkg>net-dns/hesiod</pkg></flag>
   <flag name='sound'>Enable sound</flag>
