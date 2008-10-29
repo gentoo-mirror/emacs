@@ -1,21 +1,8 @@
-####################################################################
-# $Header: $
-#
-# When you add an entry to the top of this file, add your name, the date, and
-# an explanation of why something is getting masked
-#
-## Example:
-##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
-## # Masking  these versions until we can get the
-## # v4l stuff to work properly again
-## =media-video/mplayer-0.90_pre5
-## =media-video/mplayer-0.90_pre5-r1
-#
-#--- END OF EXAMPLES ---
-
 # live ebuilds directly from the repository
 ~app-admin/eselect-emacs-9999
 ~app-admin/eselect-ctags-9999
 ~app-admin/emacs-updater-9999
 ~app-emacs/cedet-9999
+
+# depends on virtual/emacs-23 which is masked, too
+app-emacs/emacs-daemon
