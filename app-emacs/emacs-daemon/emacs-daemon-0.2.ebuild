@@ -29,5 +29,4 @@ pkg_setup() {
 
 src_install() {
 	newinitd "${FILESDIR}/emacs-daemon.rc" emacs-daemon || die
-	newconfd "${FILESDIR}/emacs-daemon.conf" emacs-daemon || die
 }
