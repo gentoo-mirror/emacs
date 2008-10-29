@@ -2,6 +2,14 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-daemon-0.2 (29 Oct 2008)
+
+  29 Oct 2008; Ulrich Mueller <ulm@gentoo.org> -files/emacs-daemon.conf,
+  files/emacs-daemon.rc, -emacs-daemon-0.1.ebuild, +emacs-daemon-0.2.ebuild:
+  Support symlinked multiple instances of the rc script, so that an
+  individual user can have his Emacs daemon restarted, without affecting
+  others. Thanks to Flameeyes for the suggestion.
+
 *emacs-daemon-0.1 (29 Oct 2008)
 
   29 Oct 2008; Ulrich Mueller <ulm@gentoo.org> +files/emacs-daemon.conf,

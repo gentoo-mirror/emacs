@@ -4,10 +4,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EMACS="/usr/bin/emacs"
+USER=${RC_SVCNAME#*.}
 
 checkconfig() {
-    if [ -z "${EMACSUSERS}" ]; then
-	eerror "You must setup EMACSUSERS in /etc/conf.d/emacs-daemon first"
+    if [ "${USER}" = "${RC_SVCNAME}" ]; then
+	eerror "You have to create an init script for each user:"
+	eerror "ln -s emacs-daemon /etc/init.d/emacs-daemon.<user>"
+	return 1
+    fi
+
+    if ! id -u "${USER}" >/dev/null; then
+	eerror "${USER}: No such user"
 	return 1
     fi
 
@@ -22,22 +29,18 @@ checkconfig() {
 }
 
 start() {
-    local user dir fail=0
+    local home
     checkconfig || return 1
 
-    for user in ${EMACSUSERS}; do
-	ebegin "Starting Emacs daemon for ${user}"
-	eval dir="~${user}"
-	start-stop-daemon --start --user "${user}" --chdir "${dir}" \
-	    --name emacs-daemon --exec "${EMACS}" -- --daemon &>/dev/null
-	eend $? || fail=1
-    done
-
-    return ${fail}
+    ebegin "Starting Emacs daemon for ${USER}"
+    eval home=~${USER}
+    start-stop-daemon --start --user "${USER}" --chdir "${home}" \
+	--name "emacs-daemon-${USER}" --exec "${EMACS}" -- --daemon &>/dev/null
+    eend $?
 }
 
 stop() {
-    ebegin "Stopping all Emacs daemons"
-    start-stop-daemon --stop --name emacs-daemon --exec "${EMACS}"
+    ebegin "Stopping Emacs daemon for ${USER}"
+    start-stop-daemon --stop --name "emacs-daemon-${USER}" --exec "${EMACS}"
     eend $?
 }
