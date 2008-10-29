@@ -22,7 +22,7 @@ pkg_setup() {
 		--eval "(princ (fboundp 'daemonp))")
 	if [ "${has_daemon}" != t ]; then
 		ewarn "The current Emacs version does not support running as a daemon"
-		ewarn "which is required for ${CATEGORY}/${P}."
+		ewarn "which is required for ${CATEGORY}/${PN}."
 		ewarn "Use \"eselect emacs\" to select an Emacs version >= 23."
 	fi
 }
