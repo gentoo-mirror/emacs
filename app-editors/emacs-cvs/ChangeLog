@@ -1,0 +1,11 @@
+# ChangeLog for app-editors/emacs-cvs
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-cvs-23.0.9999 (29 Oct 2008)
+
+  29 Oct 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-cvs-freebsd-sparc-1.patch, +emacs-cvs-23.0.9999.ebuild,
+  metadata.xml:
+  Copied from Portage tree.
+
