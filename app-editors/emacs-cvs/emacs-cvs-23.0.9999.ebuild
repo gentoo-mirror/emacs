@@ -21,7 +21,7 @@ LICENSE="GPL-3 FDL-1.2 BSD"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 
-IUSE="alsa daemon dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft xpm"
+IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft xpm"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -228,11 +228,6 @@ src_install () {
 		X	  "/usr/share/emacs/${FULL_VERSION}/src"))
 		EOF
 		elisp-site-file-install 10${PN}-${SLOT}-gentoo.el
-	fi
-
-	if use daemon; then
-		newinitd "${FILESDIR}/emacs-daemon.rc" emacs-daemon || die
-		newconfd "${FILESDIR}/emacs-daemon.conf" emacs-daemon || die
 	fi
 
 	dodoc README BUGS || die "dodoc failed"
