@@ -33,9 +33,9 @@ start() {
     checkconfig || return 1
 
     ebegin "Starting Emacs daemon for ${USER}"
-    eval home=~${USER}
+    eval home="~${USER}"
     start-stop-daemon --start --user "${USER}" --chdir "${home}" \
-	--name emacs-daemon --exec "${EMACS}" -- --daemon &>/dev/null
+	--quiet --name emacs-daemon --exec "${EMACS}" -- --daemon
     eend $?
 }
 
