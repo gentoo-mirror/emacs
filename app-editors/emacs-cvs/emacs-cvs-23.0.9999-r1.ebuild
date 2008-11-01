@@ -87,6 +87,9 @@ src_unpack() {
 
 	epatch "${FILESDIR}/${PN}-freebsd-sparc-1.patch"
 
+	# support creating a pid file when running as a daemon
+	epatch "${FILESDIR}/${PN}-pidfile.patch"
+
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
 		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"

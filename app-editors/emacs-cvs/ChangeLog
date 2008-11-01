@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Nov 2008; Ulrich Mueller <ulm@gentoo.org> +files/emacs-cvs-pidfile.patch,
+  -emacs-cvs-23.0.9999.ebuild, +emacs-cvs-23.0.9999-r1.ebuild:
+  Pidfile support.
+
   29 Oct 2008; Ulrich Mueller <ulm@gentoo.org> -files/emacs-daemon.conf,
   -files/emacs-daemon.rc, metadata.xml, emacs-cvs-23.0.9999.ebuild:
   Move daemon support to app-emacs/emacs-daemon to avoid SLOT collisions.
