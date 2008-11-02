@@ -4,7 +4,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EMACS="/usr/bin/emacs"
-USER=${RC_SVCNAME#*.}
+USER="${RC_SVCNAME#*.}"
+PIDFILE_DIR="/var/run/emacs-daemon/${USER}"
+PIDFILE="${PIDFILE_DIR}/emacs.pid"
 
 checkconfig() {
     if [ "${USER}" = "${RC_SVCNAME}" ]; then
@@ -18,11 +20,19 @@ checkconfig() {
 	return 1
     fi
 
+    # Executing Emacs here also ensures a warm cache, which later helps
+    # to create the pid file in a timely manner (within 0.5 seconds).
     local has_daemon=$(${EMACS} -batch -q --no-site-file \
 	--eval "(princ (fboundp 'daemonp))")
     if [ "${has_daemon}" != t ]; then
 	eerror "${EMACS} does not support running as a daemon"
 	return 1
+    fi
+
+    if [ ! -d "${PIDFILE_DIR}" ]; then
+	ewarn "${PIDFILE_DIR} does not exist - creating it"
+	mkdir -p "${PIDFILE_DIR}"
+	chown "${USER}" "${PIDFILE_DIR}"
     fi
 
     return 0
@@ -35,13 +45,13 @@ start() {
     ebegin "Starting Emacs daemon for ${USER}"
     eval home="~${USER}"
     start-stop-daemon --start --user "${USER}" --chdir "${home}" \
-	--quiet --name emacs-daemon --exec "${EMACS}" -- --daemon
+	--quiet --pidfile "${PIDFILE}" --exec "${EMACS}" -- --daemon
     eend $?
 }
 
 stop() {
     ebegin "Stopping Emacs daemon for ${USER}"
     start-stop-daemon --stop --user "${USER}" \
-	--name emacs-daemon --exec "${EMACS}"
+	--pidfile "${PIDFILE}" --exec "${EMACS}"
     eend $?
 }

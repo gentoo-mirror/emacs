@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+inherit elisp-common
+
 DESCRIPTION="Support files for Emacs daemon started as rc service"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 SRC_URI=""
@@ -15,10 +17,10 @@ DEPEND=">=virtual/emacs-23"
 RDEPEND="${DEPEND}
 	>=sys-apps/openrc-0.3.0-r1"
 
-EMACS="/usr/bin/emacs"
+SITEFILE=10${PN}-gentoo.el
 
 pkg_setup() {
-	local has_daemon=$(${EMACS} -batch -q --no-site-file \
+	local has_daemon=$(${EMACS} ${EMACSFLAGS} \
 		--eval "(princ (fboundp 'daemonp))")
 	if [ "${has_daemon}" != t ]; then
 		ewarn "The current Emacs version does not support running as a daemon"
@@ -28,5 +30,6 @@ pkg_setup() {
 }
 
 src_install() {
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	newinitd "${FILESDIR}/emacs-daemon.rc" emacs-daemon || die
 }

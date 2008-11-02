@@ -2,6 +2,13 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-daemon-0.3 (02 Nov 2008)
+
+  02 Nov 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/10emacs-daemon-gentoo.el, files/emacs-daemon.rc,
+  -emacs-daemon-0.2.ebuild, +emacs-daemon-0.3.ebuild:
+  Write process id to file.
+
 *emacs-daemon-0.2 (29 Oct 2008)
 
   29 Oct 2008; Ulrich Mueller <ulm@gentoo.org> -files/emacs-daemon.conf,
