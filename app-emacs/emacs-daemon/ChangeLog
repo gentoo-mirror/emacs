@@ -2,6 +2,14 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-daemon-0.4 (02 Nov 2008)
+
+  02 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -emacs-daemon-0.3.ebuild,
+  +emacs-daemon-0.4.ebuild:
+  Version bump. Rename rc file and /var/run directory from emacs-daemon to
+  emacs, after discussing it with opfer. Add keepdir for /var/run/emacs.
+  Inherit elisp instead of elisp-common and add empty src_compile.
+
 *emacs-daemon-0.3 (02 Nov 2008)
 
   02 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -files/emacs-daemon.rc,
