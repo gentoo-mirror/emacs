@@ -6,7 +6,7 @@ inherit elisp-common
 
 DESCRIPTION="Support files for Emacs daemon started as rc service"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-SRC_URI=""
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,6 +30,6 @@ pkg_setup() {
 }
 
 src_install() {
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
-	newinitd "${FILESDIR}/emacs-daemon.rc" emacs-daemon || die
+	elisp-site-file-install "${SITEFILE}" || die
+	newinitd emacs-daemon.rc emacs-daemon || die
 }
