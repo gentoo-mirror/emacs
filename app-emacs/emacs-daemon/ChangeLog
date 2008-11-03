@@ -2,6 +2,11 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-daemon-9999 (03 Nov 2008)
+
+  03 Nov 2008; Ulrich Mueller <ulm@gentoo.org> +emacs-daemon-9999.ebuild:
+  Add live SVN version.
+
 *emacs-daemon-0.4 (02 Nov 2008)
 
   02 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -emacs-daemon-0.3.ebuild,
