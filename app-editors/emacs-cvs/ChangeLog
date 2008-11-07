@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
+  Sync from Portage.
+
   05 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
   Convert to EAPI 2.
 
