@@ -19,7 +19,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI=""
 
-LICENSE="GPL-3 FDL-1.2 BSD as-is X11"
+LICENSE="GPL-3 FDL-1.2 BSD as-is X11 W3C RELAX-NG"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 

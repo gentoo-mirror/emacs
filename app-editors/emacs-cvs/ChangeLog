@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
+  We need "as-is W3C RELAX-NG" in LICENSE, see etc/schema/README.
+
   07 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
   Sync from Portage.
 
