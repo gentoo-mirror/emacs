@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit elisp subversion
+inherit elisp
 
-ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-SRC_URI=""
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
