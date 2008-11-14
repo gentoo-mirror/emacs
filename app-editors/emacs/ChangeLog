@@ -6,5 +6,5 @@
 
   14 Nov 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
   +emacs-18.59-r5.ebuild:
-  Copy from Portage tree.
+  Copy from Portage tree. Convert to EAPI=2 for USE dependencies.
 
