@@ -33,6 +33,9 @@ src_compile() { :; }
 
 src_install() {
 	newinitd emacs.rc emacs || die
+	newconfd emacs.conf emacs || die
+	exeinto /usr/libexec/emacs
+	doexe emacs-wrapper.sh || die
 	elisp-site-file-install "${SITEFILE}" || die
 	keepdir /var/run/emacs || die
 }
