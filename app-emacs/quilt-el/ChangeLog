@@ -2,7 +2,7 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  18 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -+,
+  18 Nov 2008; Ulrich Mueller <ulm@gentoo.org> files/50quilt-el-gentoo.el,
   -files/51quilt-el-gentoo.el, -quilt-el-0.4.20060425.2.ebuild,
   quilt-el-0.45.4.ebuild:
   Remove old. Move site-init file to canonical name.
