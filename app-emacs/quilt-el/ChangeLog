@@ -1,6 +1,11 @@
 # ChangeLog for app-emacs/quilt-el
-# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  18 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -+,
+  -files/51quilt-el-gentoo.el, -quilt-el-0.4.20060425.2.ebuild,
+  quilt-el-0.45.4.ebuild:
+  Remove old. Move site-init file to canonical name.
 
   17 Nov 2007; Ulrich Mueller <ulm@gentoo.org>
   +files/quilt-el-0.45.4-header-window.patch,
