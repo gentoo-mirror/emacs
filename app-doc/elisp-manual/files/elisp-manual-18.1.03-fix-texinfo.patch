@@ -1,0 +1,301 @@
+--- elisp-orig/commands.texi	1990-11-29 23:03:21.000000000 +0000
++++ elisp/commands.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -533,5 +533,5 @@
+ 
+ @noindent
+-The value is 5 because that is the @sc{ASCII} code for @kbd{C-e}.
++The value is 5 because that is the @sc{ascii} code for @kbd{C-e}.
+ @end defvar
+ 
+@@ -569,5 +569,5 @@
+ cursor does not move.  @xref{The Echo Area}.
+ 
+-In the first example, the user types @kbd{1} (which is @sc{ASCII} code
++In the first example, the user types @kbd{1} (which is @sc{ascii} code
+ 49).  The second example shows a keyboard macro definition that calls
+ @code{read-char} from the minibuffer.  @code{read-char} reads the
+@@ -685,5 +685,5 @@
+ 
+   In the example below, a character is read (the character @kbd{1},
+-@sc{ASCII} code 49).  It becomes the value of @code{last-input-char},
++@sc{ascii} code 49).  It becomes the value of @code{last-input-char},
+ while @kbd{C-e} (from the @kbd{C-x C-e} command used to evaluate this
+ expression) remains the value of @code{last-command-char}.
+--- elisp-orig/display.texi	1990-10-11 00:14:05.000000000 +0000
++++ elisp/display.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -484,5 +484,5 @@
+ 
+ @quotation
+-@strong{Note:} in version 18, this function is named
++@strong{Please note:} in version 18, this function is named
+ @code{blink-paren-hook}, but since it is not called with the standard
+ convention for hooks, it is being renamed to @code{blink-paren-function}
+--- elisp-orig/elisp.texi	1990-12-05 20:49:07.000000000 +0000
++++ elisp/elisp.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -112,5 +112,5 @@
+ @page
+ 
+-@node Top, Introduction, (dir), (dir)
++@node Top, License, (dir), (dir)
+ 
+ @ifinfo
+--- elisp-orig/files.texi	1990-06-26 13:54:44.000000000 +0000
++++ elisp/files.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -189,6 +189,6 @@
+ appended to get an unused name.  See also @ref{Creating Buffers}.
+ 
+-@strong{Note:} @code{create-file-buffer} does @emph{not} associate the
+-new buffer with a file and does not make it the current buffer.
++@strong{Please note:} @code{create-file-buffer} does @emph{not} associate
++the new buffer with a file and does not make it the current buffer.
+ 
+ @example
+--- elisp-orig/functions.texi	1991-01-16 00:03:56.000000000 +0000
++++ elisp/functions.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -613,5 +613,5 @@
+ Return the list of results."
+   (if (not (memq 'nil args))              ; @r{If no list is exhausted,}
+-      (cons (apply f (mapcar 'car args))  ; @r{Apply function to @sc{CAR}s.}
++      (cons (apply f (mapcar 'car args))  ; @r{Apply function to @sc{car}s.}
+             (apply 'mapcar* f             ; @r{Recurse for rest of elements.}
+                    (mapcar 'cdr args)))))
+--- elisp-orig/help.texi	1990-05-31 18:50:37.000000000 +0000
++++ elisp/help.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -252,6 +252,6 @@
+ @end table
+ 
+-@strong{Note:} each @samp{\} must be doubled when written in a string in
+-Emacs Lisp.
++@strong{Please note:} each @samp{\} must be doubled when written in a
++string in Emacs Lisp.
+ 
+   Here are examples of the special substrings:
+--- elisp-orig/hooks.texi	1990-05-16 15:39:45.000000000 +0000
++++ elisp/hooks.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -12,5 +12,5 @@
+ 
+ @quotation
+-@strong{Note:} in version 19, @code{blink-paren-hook} and
++@strong{Please note:} in version 19, @code{blink-paren-hook} and
+ @code{auto-fill-hook} are renamed to @code{blink-paren-function} and
+ @code{auto-fill-function} respectively, since they are not called by the
+--- elisp-orig/keymaps.texi	1990-05-16 15:40:19.000000000 +0000
++++ elisp/keymaps.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -357,5 +357,5 @@
+ looked up in a keymap.  For useful results, the value should be a prefix
+ character (@pxref{Prefix Keys}).  The default value is 27, which is the
+-@sc{ASCII} code for @key{ESC}.
++@sc{ascii} code for @key{ESC}.
+ 
+   As long as the value of @code{meta-prefix-char} remains 27, key
+@@ -538,5 +538,5 @@
+ if it has none.  In the following example, the keymap for the
+ @samp{*scratch*} buffer (using Lisp Interaction mode) is a sparse keymap
+-in which the entry for @key{ESC}, @sc{ASCII} code 27, is another sparse
++in which the entry for @key{ESC}, @sc{ascii} code 27, is another sparse
+ keymap.
+ 
+@@ -912,8 +912,8 @@
+   When several consecutive characters have the same definition, they are
+ shown together, as @samp{@var{firstchar}..@var{lastchar}}.  In this
+-instance, you need to know the @sc{ASCII} codes to understand which
++instance, you need to know the @sc{ascii} codes to understand which
+ characters this means.  For example, in the default global map, the
+ characters @samp{@key{SPC} ..@: ~} are described by a single line.
+-@key{SPC} is @sc{ASCII} 32, @kbd{~} is @sc{ASCII} 126, and the
++@key{SPC} is @sc{ascii} 32, @kbd{~} is @sc{ascii} 126, and the
+ characters between them include all the normal printing characters,
+ (e.g., letters, digits, punctuation, etc.@:); all these characters are
+--- elisp-orig/markers.texi	1990-05-31 19:10:17.000000000 +0000
++++ elisp/markers.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -364,6 +364,6 @@
+ The old value of the mark is @emph{not} pushed onto the mark ring.
+ 
+-  @strong{Note:} use this function only if you want the user to see that
+-the mark has moved, and you want the previous mark position to be lost.
++  @strong{Please note:} use this function only if you want the user to see
++that the mark has moved, and you want the previous mark position to be lost.
+ Normally, when a new mark is set, the old one should go on the
+ @code{mark-ring}, which is why most applications should use
+--- elisp-orig/objects.texi	1990-08-25 20:46:08.000000000 +0000
++++ elisp/objects.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -261,5 +261,5 @@
+ 
+   A @dfn{character} in Emacs Lisp is nothing more than an integer.  In
+-other words, characters are represented by their eight-bit @sc{ASCII}
++other words, characters are represented by their eight-bit @sc{ascii}
+ values.  For example, the character @kbd{A} is represented as the
+ @w{integer 65}.  If an arbitrary integer is used as a character, only
+@@ -387,10 +387,10 @@
+ @cindex escape sequence
+   Finally, the most general read syntax consists of a question mark
+-followed by a backslash and the @sc{ASCII} code for the character in
++followed by a backslash and the @sc{ascii} code for the character in
+ octal (up to three octal digits); thus, @samp{?\101} for the character
+ @kbd{A}, @samp{?\001} for the character @kbd{C-a}, and @code{?\002} for
+ the character @kbd{C-b}.  Although this syntax can represent any
+ character, it is preferred only when the precise octal value is more
+-important than the @sc{ASCII} representation.  (These sequences which
++important than the @sc{ascii} representation.  (These sequences which
+ start with backslash are also known as @dfn{escape sequences}, because
+ backslash plays the role of an escape character, but they have nothing
+--- elisp-orig/os.texi	1990-11-29 23:02:02.000000000 +0000
++++ elisp/os.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -90,5 +90,5 @@
+ @end defopt
+ 
+-@node Init File, Terminal-Specific, Start-Up Summary, Starting Up
++@node Init File, Terminal-Specific, Start-up Summary, Starting Up
+ @subsection The Init File: @file{.emacs}
+ @cindex init file
+@@ -688,5 +688,5 @@
+ are swapped and the characters @kbd{C-q} and @kbd{C-^} are swapped.
+ After executing this function, typing @kbd{C-\} has all the usual
+-effects of typing @kbd{C-s}, and vice versa.  (@xref{Flow Control} for
++effects of typing @kbd{C-s}, and vice versa.  (@xref{Flow Control}, for
+ more information on this subject.)
+ 
+@@ -743,6 +743,6 @@
+ you will have to start Emacs afresh to make this take effect.
+ 
+-@strong{Note:} In version 19, @code{baud-rate} is a variable so that you
+-can change it conveniently within Emacs.
++@strong{Please note:} In version 19, @code{baud-rate} is a variable so
++that you can change it conveniently within Emacs.
+ @end defun
+ 
+@@ -797,5 +797,5 @@
+ that the choice of @kbd{C-s} and @kbd{C-q} as command characters was
+ reasonable.  Emacs, for economy of keystrokes and portability, chose to
+-use the control characters in the @sc{ASCII} character set, and tried to
++use the control characters in the @sc{ascii} character set, and tried to
+ make the assignments mnemonic (thus, @kbd{C-s} for search and @kbd{C-q}
+ for quote).
+--- elisp-orig/positions.texi	1990-05-31 19:07:46.000000000 +0000
++++ elisp/positions.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -75,5 +75,5 @@
+ current buffer.  This is @code{(1+ (buffer-size))}, unless narrowing is
+ in effect, in which case it is the position of the end of the region
+-that you narrowed to.  (@xref{Narrowing}).
++that you narrowed to.  (@xref{Narrowing}.)
+ @end defun
+ 
+@@ -745,5 +745,5 @@
+ last of @var{forms}, or @code{nil} if no forms were given.
+ 
+-@strong{Note:} it is easy to make a mistake when using
++@strong{Caution:} it is easy to make a mistake when using
+ @code{save-restriction}.  Read the entire description here before you
+ try it.
+--- elisp-orig/processes.texi	1990-12-01 21:17:14.000000000 +0000
++++ elisp/processes.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -90,8 +90,8 @@
+ supplied to @var{program} as separate command line arguments.  Wildcard
+ characters and other shell constructs are not allowed in these strings,
+-since they are passed directly to the specified program.  @strong{Note:}
+-the argument @var{program} contains only the name of the program; it may
+-not contain any command-line arguments.  Such arguments must be provided
+-via @var{args}.
++since they are passed directly to the specified program.
++@strong{Please note:} the argument @var{program} contains only the name
++of the program; it may not contain any command-line arguments.  Such
++arguments must be provided via @var{args}.
+ 
+   The subprocess gets its current directory from the value of
+--- elisp-orig/searching.texi	1990-08-29 03:21:46.000000000 +0000
++++ elisp/searching.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -292,10 +292,10 @@
+ @end table
+ 
+-@strong{Note:} for historical compatibility, special characters are treated as
+-ordinary ones if they are in contexts where their special meanings make no
+-sense.  For example, @samp{*foo} treats @samp{*} as ordinary since there is
+-no preceding expression on which the @samp{*} can act.  It is poor practice
+-to depend on this behavior; better to quote the special character anyway,
+-regardless of where it appears.@refill
++@strong{Please note:} for historical compatibility, special characters
++are treated as ordinary ones if they are in contexts where their special
++meanings make no sense.  For example, @samp{*foo} treats @samp{*} as
++ordinary since there is no preceding expression on which the @samp{*}
++can act.  It is poor practice to depend on this behavior; better to quote
++the special character anyway, regardless of where it appears.@refill
+ 
+ For the most part, @samp{\} followed by any character matches only
+--- elisp-orig/sequences.texi	1990-06-07 00:17:50.000000000 +0000
++++ elisp/sequences.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -235,5 +235,5 @@
+ 
+ (aref "abcdefg" 1)
+-     @result{} 98           ; @r{@samp{b} is @sc{ASCII} code 98.}
++     @result{} 98           ; @r{@samp{b} is @sc{ascii} code 98.}
+ @end example
+ 
+--- elisp-orig/strings.texi	1990-06-07 00:12:23.000000000 +0000
++++ elisp/strings.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -37,6 +37,6 @@
+ the string contents, and cannot be altered.  Strings in Lisp are
+ @emph{not} terminated by a distinguished character code.  (By contrast,
+-strings in C are terminated by a character with @sc{ASCII} code 0.)
+-This means that any character, including the null character (@sc{ASCII}
++strings in C are terminated by a character with @sc{ascii} code 0.)
++This means that any character, including the null character (@sc{ascii}
+ code 0), is a valid element of a string.@refill
+ 
+@@ -261,7 +261,7 @@
+ @code{nil}.  If the two strings match entirely, the value is @code{nil}.
+ 
+-  Pairs of characters are compared by their @sc{ASCII} codes.  Keep in
++  Pairs of characters are compared by their @sc{ascii} codes.  Keep in
+ mind that lower case letters have higher numeric values in the
+-@sc{ASCII} character set than their upper case counterparts; numbers and
++@sc{ascii} character set than their upper case counterparts; numbers and
+ many punctuation characters have a lower numeric value than upper case
+ letters.
+@@ -345,5 +345,5 @@
+   This function returns the first character in @var{string}.  If the
+ string is empty, the function returns 0.  The value is also 0 when the
+-first character of @var{string} is the null character, @sc{ASCII} code
++first character of @var{string} is the null character, @sc{ascii} code
+ 0.
+ 
+@@ -567,5 +567,5 @@
+ 
+   The examples below use the characters @samp{X} and @samp{x} which have
+-@sc{ASCII} codes 88 and 120 respectively.
++@sc{ascii} codes 88 and 120 respectively.
+ 
+ @defun downcase string-or-char
+@@ -621,5 +621,5 @@
+   The definition of a word is any sequence of consecutive characters
+ that are assigned to the word constituent category in the current syntax
+-table (@xref{Syntax Class Table}).
++table (@pxref{Syntax Class Table}).
+ 
+   When the argument to @code{capitalize} is a character, @code{capitalize}
+--- elisp-orig/syntax.texi	1990-05-16 15:43:55.000000000 +0000
++++ elisp/syntax.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -19,5 +19,5 @@
+ 
+   A syntax table is a vector of 256 elements; it contains one entry for
+-each of the 256 @sc{ASCII} characters of an 8-bit byte.  Each element is
++each of the 256 @sc{ascii} characters of an 8-bit byte.  Each element is
+ an integer that encodes the syntax of the character in question.
+ 
+--- elisp-orig/text.texi	1990-05-31 19:17:44.000000000 +0000
++++ elisp/text.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -1016,5 +1016,5 @@
+ unequal; the sort key whose character is less at the point of first
+ mismatch is the lesser sort key.  The individual characters are compared
+-according to their numerical values.  Since Emacs uses the @sc{ASCII}
++according to their numerical values.  Since Emacs uses the @sc{ascii}
+ character set, the ordering in that set determines alphabetical order.
+ @c version 19 change
+--- elisp-orig/variables.texi	1990-12-02 18:51:32.000000000 +0000
++++ elisp/variables.texi	2008-11-25 23:01:58.000000000 +0000
+@@ -425,5 +425,5 @@
+ of @var{symbol} to the result, provided @var{value} is given.
+ 
+-@strong{Note:} don't use @code{defconst} for user option variables in
++Don't use @code{defconst} for user option variables in
+ libraries that are not normally loaded.  The user should be able to
+ specify a value for such a variable in the @file{.emacs} file, so that

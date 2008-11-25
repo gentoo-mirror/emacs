@@ -1,0 +1,18 @@
+--- elisp-manual-21-2.8-orig/elisp.texi	2002-01-17 10:02:47.000000000 +0100
++++ elisp-manual-21-2.8/elisp.texi	2008-11-25 11:37:35.000000000 +0100
+@@ -1,12 +1,12 @@
+ \input texinfo  @c -*-texinfo-*-
+ @c %**start of header
+-@setfilename elisp
++@setfilename elisp21.info
+ @settitle GNU Emacs Lisp Reference Manual
+ @c %**end of header
+ 
+-@dircategory Editors
++@dircategory Emacs
+ @direntry
+-* Elisp: (elisp).	The Emacs Lisp Reference Manual.
++* Elisp 21: (elisp21).	The Emacs Lisp Reference Manual for Emacs 21.
+ @end direntry
+ 
+ @smallbook
