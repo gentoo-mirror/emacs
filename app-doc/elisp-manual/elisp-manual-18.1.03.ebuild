@@ -20,6 +20,8 @@ S="${WORKDIR}/elisp"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+	# remove pre-made info files
+	rm -f elisp elisp-[0-9]*
 	epatch "${FILESDIR}/${P}-fix-texinfo.patch"
 	epatch "${FILESDIR}/${P}-direntry.patch"
 }
