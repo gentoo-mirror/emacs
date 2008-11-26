@@ -189,7 +189,7 @@ src_compile() {
 }
 
 src_install () {
-	local i m
+	local i ii m
 
 	emake install DESTDIR="${D}" || die "make install failed"
 
@@ -200,7 +200,8 @@ src_install () {
 
 	# move info documentation to the correct place
 	for i in "${D}"/usr/share/info/${EMACS_SUFFIX}/*; do
-		mv "${i}" "${i}.info" || die "mv info failed"
+		ii=$(echo "${i}" | sed 's/\(-[0-9]\+\)\?$/.info&/')
+		mv "${i}" "${ii}" || die "mv info failed"
 	done
 
 	# move man pages to the correct place
@@ -243,7 +244,7 @@ emacs-infodir-rebuild() {
 	einfo "Regenerating Info directory index in ${infodir} ..."
 	rm -f "${ROOT}"${infodir}/dir{,.*}
 	for f in "${ROOT}"${infodir}/*.info*; do
-		[[ ${f##*/} == *[0-9].info* ]] \
+		[[ ${f##*/} == *.info-[0-9]* ]] \
 			|| install-info --info-dir="${ROOT}"${infodir} "${f}" &>/dev/null
 	done
 	rmdir "${ROOT}"${infodir} 2>/dev/null # remove dir if it is empty
