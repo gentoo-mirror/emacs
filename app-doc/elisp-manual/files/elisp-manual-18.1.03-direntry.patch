@@ -4,13 +4,13 @@
  \input texinfo  @c -*-texinfo-*-
  @c %**start of header
 -@setfilename elisp
-+@setfilename elisp18.info
++@setfilename elisp-18.info
  @settitle GNU Emacs Lisp Reference Manual
  @c %**end of header
  
 +@dircategory Emacs
 +@direntry
-+* Elisp 18: (elisp18).	The Emacs Lisp Reference Manual for Emacs 18.
++* Elisp 18: (elisp-18).	The Emacs Lisp Reference Manual for Emacs 18.
 +@end direntry
 +
  @c ================================================================

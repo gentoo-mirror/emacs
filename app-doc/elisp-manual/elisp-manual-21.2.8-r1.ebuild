@@ -31,5 +31,5 @@ src_compile() {
 }
 
 src_install() {
-	doinfo elisp21.info* || die "doinfo failed"
+	doinfo elisp-21.info* || die "doinfo failed"
 }

@@ -4,7 +4,7 @@
  \input texinfo  @c -*-texinfo-*-
  @c %**start of header
 -@setfilename elisp
-+@setfilename elisp21.info
++@setfilename elisp-21.info
  @settitle GNU Emacs Lisp Reference Manual
  @c %**end of header
  
@@ -12,7 +12,7 @@
 +@dircategory Emacs
  @direntry
 -* Elisp: (elisp).	The Emacs Lisp Reference Manual.
-+* Elisp 21: (elisp21).	The Emacs Lisp Reference Manual for Emacs 21.
++* Elisp 21: (elisp-21).	The Emacs Lisp Reference Manual for Emacs 21.
  @end direntry
  
  @smallbook
