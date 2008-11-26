@@ -243,13 +243,14 @@ emacs-infodir-rebuild() {
 	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
 
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
+	[ -d "${ROOT}"${infodir} ] || return	# may occur with FEATURES=noinfo
 	einfo "Regenerating Info directory index in ${infodir} ..."
 	rm -f "${ROOT}"${infodir}/dir{,.*}
 	for f in "${ROOT}"${infodir}/*.info*; do
-		[[ ${f##*/} == *.info-[0-9]* ]] \
-			|| install-info --info-dir="${ROOT}"${infodir} "${f}" &>/dev/null
+		[[ ${f##*/} != *.info-[0-9]* && -e ${f} ]] \
+			&& install-info --info-dir="${ROOT}"${infodir} "${f}" &>/dev/null
 	done
-	rmdir "${ROOT}"${infodir} 2>/dev/null # remove dir if it is empty
+	rmdir "${ROOT}"${infodir} 2>/dev/null	# remove dir if it is empty
 	echo
 }
 

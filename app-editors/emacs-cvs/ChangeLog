@@ -3,7 +3,9 @@
 # $Header: $
 
   26 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
-  Correct name for split Info files.
+  Correct name for split Info files. Handle the FEATURES=noinfo case in
+  emacs-infodir-rebuild; don't create a spurious Info dir file when called
+  with no files in postrm phase.
 
   19 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
   Upstream relicenced the documentation under FDL-1.3.
