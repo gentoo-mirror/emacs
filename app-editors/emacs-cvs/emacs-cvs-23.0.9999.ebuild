@@ -198,10 +198,12 @@ src_install () {
 	mv "${D}"/usr/bin/emacs-${EMACS_SUFFIX} "${D}"/usr/bin/${EMACS_SUFFIX} \
 		|| die "moving Emacs executable failed"
 
-	# move info documentation to the correct place
+	# move info documentation to the correct place and fix indirect list
 	for i in "${D}"/usr/share/info/${EMACS_SUFFIX}/*; do
 		ii=$(echo "${i}" | sed 's/\(-[0-9]\+\)\?$/.info&/')
 		mv "${i}" "${ii}" || die "mv info failed"
+		[[ ${ii} == *.info ]] \
+			&& sed -i -e '/^Indirect:$/,/^Tag/s/-[0-9]\+:/.info&/' "${ii}"
 	done
 
 	# move man pages to the correct place
