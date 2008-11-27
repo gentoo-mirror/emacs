@@ -69,6 +69,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${ECVS_LOCALNAME}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
+SITEFILE=20${PN}-${SLOT}-gentoo.el
 
 src_prepare() {
 	# FULL_VERSION keeps the full version number, which is needed in
@@ -189,6 +190,7 @@ src_compile() {
 }
 
 src_install () {
+	local infodir=/usr/share/info/${EMACS_SUFFIX}
 	local i ii m
 
 	emake install DESTDIR="${D}" || die "make install failed"
@@ -199,7 +201,7 @@ src_install () {
 		|| die "moving Emacs executable failed"
 
 	# move info documentation to the correct place and fix indirect list
-	for i in "${D}"/usr/share/info/${EMACS_SUFFIX}/*; do
+	for i in "${D}"${infodir}/*; do
 		ii=$(echo "${i}" | sed 's/\(-[0-9]\+\)\?$/.info&/')
 		mv "${i}" "${ii}" || die "mv info failed"
 		[[ ${ii} == *.info ]] \
@@ -223,16 +225,30 @@ src_install () {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
-		sed 's/^X//' >10${PN}-${SLOT}-gentoo.el <<-EOF
-
-		;;; ${PN}-${SLOT} site-lisp configuration
-
-		(if (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-		X    (setq find-function-C-source-directory
-		X	  "/usr/share/emacs/${FULL_VERSION}/src"))
-		EOF
-		elisp-site-file-install 10${PN}-${SLOT}-gentoo.el
 	fi
+
+	sed 's/^X//' >"${SITEFILE}" <<-EOF
+	X
+	;;; ${PN}-${SLOT} site-lisp configuration
+	X
+	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
+	EOF
+	if use source; then
+		sed 's/^X//' >>"${SITEFILE}" <<-EOF
+		X  (setq find-function-C-source-directory
+		X	"/usr/share/emacs/${FULL_VERSION}/src")
+		EOF
+	fi
+	sed 's/^X//' >>"${SITEFILE}" <<-EOF
+	X  (let ((infopath (getenv "INFOPATH"))
+	X	(infodir "${infodir}"))
+	X    (and infopath
+	X	 ;; move Emacs Info dir to beginning of list
+	X	 (setq Info-directory-list
+	X	       (cons infodir
+	X		     (delete infodir (split-string infopath ":" t)))))))
+	EOF
+	elisp-site-file-install "${SITEFILE}" || die
 
 	dodoc README BUGS || die "dodoc failed"
 }
