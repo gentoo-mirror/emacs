@@ -190,7 +190,6 @@ src_compile() {
 }
 
 src_install () {
-	local infodir=/usr/share/info/${EMACS_SUFFIX}
 	local i m
 
 	emake install DESTDIR="${D}" || die "make install failed"
@@ -201,7 +200,7 @@ src_install () {
 		|| die "moving Emacs executable failed"
 
 	# move info documentation to the correct place
-	for i in "${D}"${infodir}/*; do
+	for i in "${D}"/usr/share/info/${EMACS_SUFFIX}/*; do
 		mv "${i}" "${i}.info" || die "mv info failed"
 	done
 
@@ -237,13 +236,12 @@ src_install () {
 		EOF
 	fi
 	sed 's/^X//' >>"${SITEFILE}" <<-EOF
-	X  (let ((infopath (getenv "INFOPATH"))
-	X	(infodir "${infodir}"))
-	X    (and infopath
+	X  (let ((path (getenv "INFOPATH"))
+	X	(dir "/usr/share/info/${EMACS_SUFFIX}"))
+	X    (and path
 	X	 ;; move Emacs Info dir to beginning of list
 	X	 (setq Info-directory-list
-	X	       (cons infodir
-	X		     (delete infodir (split-string infopath ":" t)))))))
+	X	       (cons dir (delete dir (split-string path ":" t)))))))
 	EOF
 	elisp-site-file-install "${SITEFILE}" || die
 
