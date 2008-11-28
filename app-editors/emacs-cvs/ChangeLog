@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
+  Simplify code for site file creation.
+
   27 Nov 2008; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
   Add site initialisation for Info, so that Emacs' own Info dir is always
   first in the list. This also helps to get the right documentation if Emacs

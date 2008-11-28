@@ -69,7 +69,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${ECVS_LOCALNAME}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
-SITEFILE=20${PN}-${SLOT}-gentoo.el
+SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	# FULL_VERSION keeps the full version number, which is needed in
@@ -190,7 +190,7 @@ src_compile() {
 }
 
 src_install () {
-	local i m
+	local i m c=";;"
 
 	emake install DESTDIR="${D}" || die "make install failed"
 
@@ -221,6 +221,7 @@ src_install () {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.[ch]
+		c=""
 	fi
 
 	sed 's/^X//' >"${SITEFILE}" <<-EOF
@@ -228,14 +229,8 @@ src_install () {
 	;;; ${PN}-${SLOT} site-lisp configuration
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-	EOF
-	if use source; then
-		sed 's/^X//' >>"${SITEFILE}" <<-EOF
-		X  (setq find-function-C-source-directory
-		X	"/usr/share/emacs/${FULL_VERSION}/src")
-		EOF
-	fi
-	sed 's/^X//' >>"${SITEFILE}" <<-EOF
+	X  ${c}(setq find-function-C-source-directory
+	X  ${c}      "/usr/share/emacs/${FULL_VERSION}/src")
 	X  (let ((path (getenv "INFOPATH"))
 	X	(dir "/usr/share/info/${EMACS_SUFFIX}"))
 	X    (and path
