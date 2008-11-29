@@ -190,7 +190,7 @@ src_compile() {
 }
 
 src_install () {
-	local i m c=";;"
+	local i m
 
 	emake install DESTDIR="${D}" || die "make install failed"
 
@@ -216,6 +216,7 @@ src_install () {
 	keepdir /usr/share/emacs/site-lisp
 	keepdir /var/lib/games/emacs
 
+	local c=";;"
 	if use source; then
 		insinto /usr/share/emacs/${FULL_VERSION}/src
 		# This is not meant to install all the source -- just the
