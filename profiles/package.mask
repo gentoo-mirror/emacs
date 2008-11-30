@@ -3,6 +3,4 @@
 ~app-admin/eselect-ctags-9999
 ~app-admin/emacs-updater-9999
 ~app-emacs/cedet-9999
-
-# depends on virtual/emacs-23 which is masked, too
-app-emacs/emacs-daemon
+~app-emacs/emacs-daemon-9999
