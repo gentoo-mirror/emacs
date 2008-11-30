@@ -18,7 +18,7 @@ DEPEND=">=virtual/emacs-23"
 RDEPEND="${DEPEND}
 	>=sys-apps/openrc-0.3.0-r1"
 
-SITEFILE=10${PN}-gentoo.el
+SITEFILE="10${PN}-gentoo.el"
 
 pkg_setup() {
 	local has_daemon=$(${EMACS} ${EMACSFLAGS} \
