@@ -42,6 +42,8 @@ src_compile() {
 		-advi ${advi} -xdvi ${xdvi} -gv ${gv} \
 		-emacs emacs -xemacs "" -elc \
 		|| die "configure failed"
+	# disable XEmacs support (not completely possible in configure)
+	sed -i -e "/^XEMACSDIR/s/=.*/=/" Makefile.config || die
 
 	# config.force is needed, otherwise checkconfig will try to call xdvi etc
 	emake config.force || die
@@ -51,7 +53,6 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,GPL}
-	rm -rf "${D}"/usr/share/${PN}
 
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	dodoc CHANGES || die "dodoc failed"
