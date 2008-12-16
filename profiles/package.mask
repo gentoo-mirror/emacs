@@ -1,4 +1,8 @@
-# live ebuilds directly from the repository
+# package.mask
+
+# Christian Faulhammer <fauli@gentoo.org>
+# Ulrich Mueller <ulm@gentoo.org> (30 Nov 2008)
+# Live ebuilds directly from the repository
 ~app-admin/eselect-emacs-9999
 ~app-admin/eselect-ctags-9999
 ~app-admin/emacs-updater-9999
