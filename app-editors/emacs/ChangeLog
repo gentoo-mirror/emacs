@@ -2,6 +2,15 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-22.3-r1 (30 Dec 2008)
+
+  30 Dec 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-22.1-Xaw3d-headers.patch, +files/emacs-22.2-sh.patch,
+  +files/emacs-22.3-freebsd-sparc.patch,
+  +files/emacs-22.3-linux-random-heap.patch, +emacs-22.3-r1.ebuild:
+  Copy from Portage tree. Convert to EAPI 2 for SLOT dependenies and IUSE
+  defaults.
+
 *emacs-18.59-r5 (14 Nov 2008)
 
   14 Nov 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
