@@ -3,6 +3,9 @@
 # $Header: $
 
   30 Dec 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Add metadata.xml to document USE flags and thus make repoman happy.
+
+  30 Dec 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
   Fix breakage with newer versions of fontconfig.
 
   22 Jul 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
