@@ -39,7 +39,7 @@ DEPEND="virtual/libc
 	motif? ( >=x11-libs/openmotif-2.1.30 )
 	athena? ( x11-libs/libXaw )
 	Xaw3d? ( x11-libs/Xaw3d )
-	xft? ( media-libs/freetype x11-libs/libXrender media-libs/fontconfig )
+	xft? ( media-libs/freetype x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
 	tiff? ( media-libs/tiff )
@@ -82,6 +82,10 @@ src_unpack() {
 	# http://tracker.xemacs.org/XEmacs/its/issue354 for the upstream
 	# bug.
 	epatch "${FILESDIR}"/${P}-optimization-bug.patch
+
+	# Fix recent misspelling correction in fontconfig versions 2.5.0
+	# and better.
+	epatch "${FILESDIR}"/${P}-fontconfig.patch
 
 	eautoconf
 
@@ -234,7 +238,6 @@ src_install() {
 
 	cd "${S}"
 	dodoc CHANGES-* ChangeLog INSTALL Installation PROBLEMS README*
-	dodoc "${FILESDIR}"/README.Gentoo
 
 	insinto /usr/share/pixmaps
 	newins "${S}"/etc/${PN}-icon.xpm ${PN}.xpm
