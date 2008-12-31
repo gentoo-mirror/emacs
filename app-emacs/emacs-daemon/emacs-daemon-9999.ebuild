@@ -38,5 +38,6 @@ src_install() {
 	exeinto /usr/libexec/emacs
 	doexe emacs-wrapper.sh || die
 	elisp-site-file-install "${SITEFILE}" || die
+	dodoc README || die
 	keepdir /var/run/emacs || die
 }

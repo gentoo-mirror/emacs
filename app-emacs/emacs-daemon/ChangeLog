@@ -2,6 +2,10 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  emacs-daemon-9999.ebuild:
+  install README file
+
   30 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -emacs-daemon-0.5.ebuild,
   -emacs-daemon-0.6.ebuild:
   Leave only live svn version, since the package is in Portage tree now.
