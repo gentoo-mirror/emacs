@@ -2,6 +2,9 @@
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Dec 2008; Ulrich Mueller <ulm@gentoo.org> emacs-daemon-9999.ebuild:
+  Install the upstream ChangeLog, too.
+
   31 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
   emacs-daemon-9999.ebuild:
   install README file
