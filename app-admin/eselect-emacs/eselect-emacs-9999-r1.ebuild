@@ -4,7 +4,7 @@
 
 inherit subversion
 
-DESCRIPTION="Manages Emacs versions"
+DESCRIPTION="Manage multiple Emacs versions on one system"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
 ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
