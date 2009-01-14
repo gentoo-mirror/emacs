@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -38,6 +38,6 @@ src_install() {
 	exeinto /usr/libexec/emacs
 	doexe emacs-wrapper.sh || die
 	elisp-site-file-install "${SITEFILE}" || die
-	dodoc README ChangeLog || die
 	keepdir /var/run/emacs || die
+	dodoc README ChangeLog || die
 }
