@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/find-recursive
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*find-recursive-20010326 (16 Jan 2009)
+
+  16 Jan 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/50find-recursive-gentoo.el, +metadata.xml,
+  +find-recursive-20010326.ebuild:
+  Initial import, from flameeyes-overlay.
+
