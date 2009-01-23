@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/emacs
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  23 Jan 2009; Ulrich Mueller <ulm@gentoo.org> -emacs-18.59-r5.ebuild:
+  Moved to Portage tree.
 
 *emacs-22.3-r1 (30 Dec 2008)
 
