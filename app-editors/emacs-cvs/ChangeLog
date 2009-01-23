@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Jan 2009; Ulrich Mueller <ulm@gentoo.org>
+  -files/emacs-cvs-freebsd-sparc-1.patch, metadata.xml,
+  emacs-cvs-23.0.9999.ebuild:
+  Sync from Portage tree.
+
+  05 Jan 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Drop description for local xft USE flag, as it's global now.
+
   04 Jan 2009; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.9999.ebuild:
   Partial sync from Portage tree.
 
