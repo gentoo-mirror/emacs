@@ -5,7 +5,7 @@
   23 Jan 2009; Ulrich Mueller <ulm@gentoo.org>
   -files/emacs-cvs-freebsd-sparc-1.patch, metadata.xml,
   emacs-cvs-23.0.9999.ebuild:
-  Sync from Portage tree.
+  Sync from Portage tree. Unify ebuild for both live CVS and snapshots.
 
   05 Jan 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
   Drop description for local xft USE flag, as it's global now.

@@ -4,25 +4,37 @@
 
 EAPI=2
 
-ECVS_AUTH="pserver"
-ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
-ECVS_MODULE="emacs"
-ECVS_BRANCH="HEAD"
-ECVS_LOCALNAME="emacs"
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 
-inherit autotools cvs elisp-common eutils flag-o-matic
+inherit autotools elisp-common eutils flag-o-matic
+
+if [ "${PV##*.}" = "9999" ]; then
+	ECVS_AUTH="pserver"
+	ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
+	ECVS_MODULE="emacs"
+	ECVS_BRANCH="HEAD"
+	ECVS_LOCALNAME="emacs"
+	inherit cvs
+	SRC_URI=""
+	FULL_VERSION=""
+	S="${WORKDIR}/${ECVS_LOCALNAME}"
+else
+	SRC_URI="ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz
+		mirror://gentoo/emacs-${PV}.tar.gz"
+	# FULL_VERSION keeps the full version number, which is needed in
+	# order to determine some path information correctly for copy/move
+	# operations later on
+	FULL_VERSION="${PV%_*}"
+	S="${WORKDIR}/emacs-${FULL_VERSION}"
+fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
-SRC_URI=""
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-
 IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -66,24 +78,21 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-S="${WORKDIR}/${ECVS_LOCALNAME}"
-
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
-	# FULL_VERSION keeps the full version number, which is needed in
-	# order to determine some path information correctly for copy/move
-	# operations later on
-	FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
-		| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
-	[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
-	echo
-	einfo "Emacs CVS branch: ${ECVS_BRANCH}"
-	einfo "Emacs version number: ${FULL_VERSION}"
-	[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
-		|| die "Upstream version number changed to ${FULL_VERSION}"
-	echo
+	if [ -z "${FULL_VERSION}" ]; then
+		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
+			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
+		echo
+		einfo "Emacs CVS branch: ${ECVS_BRANCH}"
+		einfo "Emacs version number: ${FULL_VERSION}"
+		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
+			|| die "Upstream version number changed to ${FULL_VERSION}"
+		echo
+	fi
 
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
 		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
@@ -181,9 +190,11 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
-	# cleanup, otherwise emacs will be dumped again in src_install
-	(cd src; emake versionclean)
+	if [ "${PV##*.}" = "9999" ]; then
+		emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
+		# cleanup, otherwise emacs will be dumped again in src_install
+		(cd src; emake versionclean)
+	fi
 	emake CC="$(tc-getCC)" || die "emake failed"
 }
 
