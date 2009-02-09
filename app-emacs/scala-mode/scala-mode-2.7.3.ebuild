@@ -23,8 +23,6 @@ S="${WORKDIR}/misc/scala-tool-support/emacs/"
 SITEFILE="50${PN}-gentoo.el"
 DOCS="AUTHORS FUTURE README"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-fix-bytecompile.patch"
 }
