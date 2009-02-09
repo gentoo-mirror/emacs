@@ -1,0 +1,10 @@
+# ChangeLog for app-editors/emacs-cvs
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-cvs-23.0.9998 (08 Feb 2009)
+
+  08 Feb 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +emacs-cvs-23.0.9998.ebuild:
+  Emacs lexical-binding branch.
+
