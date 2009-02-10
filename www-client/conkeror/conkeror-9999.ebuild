@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -23,8 +23,8 @@ src_compile() {
 
 src_install() {
 	insinto /usr/lib/${PN}
-	doins -r branding chrome components content defaults locale modules \
-		search-engines application.ini Info.plist || die
+	doins -r branding chrome components content defaults help locale modules \
+		search-engines style tests application.ini Info.plist || die
 
 	exeinto /usr/lib/${PN}
 	doexe conkeror-spawn-helper || die
