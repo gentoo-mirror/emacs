@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit git
+inherit fdo-mime git
 
 DESCRIPTION="Webbrowser based on Gecko engine, inspired by Emacs"
 HOMEPAGE="http://conkeror.org"
@@ -31,6 +31,15 @@ src_install() {
 	exeinto /usr/lib/${PN}/contrib
 	doexe contrib/run-conkeror || die
 	dosym /usr/lib/${PN}/contrib/run-conkeror /usr/bin/conkeror || die
+	domenu "${FILESDIR}/conkeror.desktop" || die
 
 	dodoc CREDITS || die
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
 }
