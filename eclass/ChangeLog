@@ -1,3 +1,25 @@
+2009-02-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Remove workaround for
+	empty T variable in Paludis, after one year of transition time.
+	Add test for existence of temporary directory.
+
+2009-01-31  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Remove backwards
+	compatibility kludge related to old versions of this eclass.
+
+2008-11-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Make sure that
+	the last line of the installed init file is properly terminated.
+
+2008-11-16  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): Revert removal of the einfo
+	message with the Emacs version (change of 2008-09-13), since this
+	information is useful in bug reports.
+
 2008-10-12  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass: Add function names to error messages.
@@ -20,7 +42,8 @@
 
 2008-09-16  Christian Faulhammer  <opfer@gentoo.org>
 
-	* elisp-common.eclass (elisp-site-regen): Add category for emacs-updater
+	* elisp-common.eclass (elisp-site-regen): Add category for
+	emacs-updater.
 
 2008-09-13  Ulrich Mueller  <ulm@gentoo.org>
 
@@ -524,5 +547,5 @@
 
 	* elisp.eclass: Initial.
 
-Copyright 2002-2008 Gentoo Foundation
+Copyright 2002-2009 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
