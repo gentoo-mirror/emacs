@@ -1,6 +1,6 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r1.ebuild,v 1.1 2008/11/29 20:38:52 ulm Exp $
+# $Header: $
 
 EAPI=2
 
@@ -22,7 +22,7 @@ RDEPEND="!<app-editors/emacs-cvs-22.1
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
-	spell? ( || ( app-text/ispell app-text/aspell ) )
+	spell? ( || ( app-text/aspell app-text/ispell ) )
 	alsa? ( media-libs/alsa-lib )
 	X? (
 		x11-libs/libXmu
