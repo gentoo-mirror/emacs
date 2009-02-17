@@ -43,7 +43,7 @@ RDEPEND="sys-libs/ncurses
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
-	spell? ( || ( app-text/ispell app-text/aspell ) )
+	spell? ( || ( app-text/aspell app-text/ispell ) )
 	alsa? ( media-libs/alsa-lib )
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
