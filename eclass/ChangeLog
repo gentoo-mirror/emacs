@@ -1,3 +1,11 @@
+2009-02-18  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass: Inherit eutils.eclass.
+	(elisp_src_prepare): New function, apply any patches listed in the
+	PATCHES variable.
+	(elisp_src_unpack): Call it for EAPI 0 or 1.
+	(elisp_src_configure): New empty default function for EAPI 2.
+
 2009-02-13  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Remove workaround for
