@@ -5,7 +5,7 @@
 # Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007-2008 Christian Faulhammer <opfer@gentoo.org>
-# Copyright 2007-2008 Ulrich Müller <ulm@gentoo.org>
+# Copyright 2007-2009 Ulrich Müller <ulm@gentoo.org>
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
@@ -42,7 +42,7 @@
 # variable before inheriting elisp.eclass.  Set it to the major version
 # your package uses and the dependency will be adjusted.
 
-inherit elisp-common versionator
+inherit elisp-common eutils versionator
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
 RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
@@ -64,7 +64,22 @@ elisp_src_unpack() {
 	if [ -f ${P}.el ]; then
 		mv ${P}.el ${PN}.el || die
 	fi
+
+	# for backwards compatibility
+	case "${EAPI:-0}" in
+		0|1) elisp_src_prepare ;;
+	esac
 }
+
+elisp_src_prepare() {
+	local p
+	[ -d "${S}" ] && cd "${S}"
+	for p in ${PATCHES}; do
+		epatch ${p}
+	done
+}
+
+elisp_src_configure() { :; }
 
 elisp_src_compile() {
 	elisp-compile *.el || die
@@ -88,6 +103,11 @@ elisp_pkg_postrm() {
 	elisp-site-regen
 }
 
-EXPORT_FUNCTIONS \
-	src_unpack src_compile src_install \
-	pkg_setup pkg_postinst pkg_postrm
+case "${EAPI:-0}" in
+	0|1) EXPORT_FUNCTIONS \
+		src_unpack src_compile src_install \
+		pkg_setup pkg_postinst pkg_postrm ;;
+	*) EXPORT_FUNCTIONS \
+		src_unpack src_prepare src_configure src_compile src_install \
+		pkg_setup pkg_postinst pkg_postrm ;;
+esac
