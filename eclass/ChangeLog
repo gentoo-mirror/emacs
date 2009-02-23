@@ -1,3 +1,8 @@
+2009-02-23  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Output ebuild phase
+	in einfo messages. Omit full directory path.
+
 2009-02-19  Christian Faulhammer  <fauli@gentoo.org>
 
 	* elisp.eclass: We cannot rely upon the fact, that further EAPI

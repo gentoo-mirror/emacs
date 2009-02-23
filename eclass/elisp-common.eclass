@@ -327,7 +327,7 @@ elisp-site-regen() {
 	[ -e "${ROOT}${SITELISP}"/site-gentoo.el ] || firstrun=t
 
 	if [ "${firstrun}" ] && [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
-		einfo "Creating default ${SITELISP}/site-start.el ..."
+		einfo "Creating default site-start.el ..."
 		cat <<-EOF >"${T}"/site-start.el
 		;;; site-start.el
 
@@ -344,7 +344,7 @@ elisp-site-regen() {
 		EOF
 	fi
 
-	einfon "Regenerating ${SITELISP}/site-gentoo.el ..."
+	einfon "Regenerating site-gentoo.el (${EBUILD_PHASE}) ..."
 
 	# remove any auxiliary file (from previous run)
 	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
