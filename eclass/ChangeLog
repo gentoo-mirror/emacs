@@ -3,12 +3,6 @@
 	* elisp-common.eclass (elisp-site-regen): Output ebuild phase
 	in einfo messages. Omit full directory path.
 
-2009-02-19  Christian Faulhammer  <fauli@gentoo.org>
-
-	* elisp.eclass: We cannot rely upon the fact, that further EAPI
-	will provide the same functionality as 2.  Functions can differ in
-	any way.  This is not perfect either (and redundant).
-
 2009-02-18  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass: Inherit eutils.eclass.
