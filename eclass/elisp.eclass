@@ -4,7 +4,7 @@
 #
 # Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
-# Copyright 2007-2009 Christian Faulhammer <opfer@gentoo.org>
+# Copyright 2007-2009 Christian Faulhammer <fauli@gentoo.org>
 # Copyright 2007-2009 Ulrich Müller <ulm@gentoo.org>
 #
 # @ECLASS: elisp.eclass
@@ -23,6 +23,9 @@
 # If the package's source is a single (in whatever way) compressed elisp
 # file with the file name ${P}.el, then this eclass will move ${P}.el to
 # ${PN}.el in src_unpack().
+#
+# This eclass inherits base, in order to support its autopatch feature
+# and the PATCHES variable.
 
 # @ECLASS-VARIABLE: SITEFILE
 # @DESCRIPTION:
@@ -42,7 +45,16 @@
 # variable before inheriting elisp.eclass.  Set it to the major version
 # your package uses and the dependency will be adjusted.
 
-inherit elisp-common versionator
+inherit base elisp-common versionator
+
+case "${EAPI:-0}" in
+	0|1) EXPORT_FUNCTIONS \
+		src_unpack src_compile src_install \
+		pkg_setup pkg_postinst pkg_postrm ;;
+	*) EXPORT_FUNCTIONS \
+		src_unpack src_prepare src_configure src_compile src_install \
+		pkg_setup pkg_postinst pkg_postrm ;;
+esac
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
 RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
@@ -64,7 +76,17 @@ elisp_src_unpack() {
 	if [ -f ${P}.el ]; then
 		mv ${P}.el ${PN}.el || die
 	fi
+
+	case "${EAPI:-0}" in
+		0|1) base_src_util autopatch ;;
+	esac
 }
+
+elisp_src_prepare() {
+	base_src_util autopatch
+}
+
+elisp_src_configure() { :; }
 
 elisp_src_compile() {
 	elisp-compile *.el || die
@@ -87,7 +109,3 @@ elisp_pkg_postinst() {
 elisp_pkg_postrm() {
 	elisp-site-regen
 }
-
-EXPORT_FUNCTIONS \
-	src_unpack src_compile src_install \
-	pkg_setup pkg_postinst pkg_postrm

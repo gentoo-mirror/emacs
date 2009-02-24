@@ -1,3 +1,12 @@
+2009-02-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (inherit): Inherit base.eclass.
+	(EXPORT_FUNCTIONS): Add case statement for EAPI.
+	(elisp_src_prepare): New function, calls autopatch feature from
+	base.eclass.
+	(elisp_src_unpack): Ditto for EAPI 0 or 1.
+	(elisp_src_configure): New function, does nothing.
+
 2009-02-23  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Output ebuild phase
