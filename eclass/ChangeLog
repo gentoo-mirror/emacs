@@ -17,6 +17,11 @@
 	empty T variable in Paludis, after one year of transition time.
 	Add test for existence of temporary directory.
 
+2009-02-07  Christian Faulhammer  <fauli@gentoo.org>
+
+	* elisp.eclass (elisp_src_unpack, elisp_src_install): Remove die
+	messages.
+
 2009-01-31  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Remove backwards
