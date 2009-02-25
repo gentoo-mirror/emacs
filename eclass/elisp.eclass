@@ -14,7 +14,10 @@
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
-# This eclass sets the site-lisp directory for Emacs-related packages.
+# This eclass is designed to install elisp files of Emacs related
+# packages into the site-lisp directory. The majority of elisp packages
+# will only need to define the standard ebuild variables (like SRC_URI)
+# and optionally SITEFILE for successful installation.
 #
 # Emacs support for other than pure elisp packages is handled by
 # elisp-common.eclass where you won't have a dependency on Emacs itself.
