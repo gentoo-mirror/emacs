@@ -1,8 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit elisp eutils
+NEED_EMACS=22
+
+inherit elisp
 
 DESCRIPTION="Interface to web translation services such as Babelfish"
 HOMEPAGE="http://www.hoetzel.info/Hacking/emacs/"
@@ -14,9 +16,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-SITEFILE=50${PN}-gentoo.el
-
-src_unpack() {
-	elisp_src_unpack
-	epatch "${FILESDIR}/${P}-junk.patch"
-}
+SITEFILE="50${PN}-gentoo.el"
