@@ -1,10 +1,10 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 NEED_EMACS=22
 
-inherit elisp eutils
+inherit elisp
 
 DESCRIPTION="A graphical game of fifteen"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/Nummove"
@@ -17,13 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}"
-SITEFILE=50${PN}-gentoo.el
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${P}-image-path.patch"
-}
+SITEFILE="50${PN}-gentoo.el"
+PATCHES=("${FILESDIR}/${P}-image-path.patch")
 
 src_install() {
 	elisp_src_install
