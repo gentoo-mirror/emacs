@@ -30,23 +30,23 @@
 # This eclass inherits base, in order to support its autopatch feature
 # and the PATCHES variable.
 
-# @ECLASS-VARIABLE: SITEFILE
+# @ECLASS-VARIABLE: NEED_EMACS
 # @DESCRIPTION:
-# Name of package's site-init file.  The filename must match the shell
-# pattern "[1-8][0-9]*-gentoo.el"; numbers below 10 and above 89 are
-# reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
-# in most cases.
+# If you need anything different from Emacs 21, use the NEED_EMACS
+# variable before inheriting elisp.eclass.  Set it to the major version
+# your package uses and the dependency will be adjusted.
 
 # @ECLASS-VARIABLE: DOCS
 # @DESCRIPTION:
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
-# @ECLASS-VARIABLE: NEED_EMACS
+# @ECLASS-VARIABLE: SITEFILE
 # @DESCRIPTION:
-# If you need anything different from Emacs 21, use the NEED_EMACS
-# variable before inheriting elisp.eclass.  Set it to the major version
-# your package uses and the dependency will be adjusted.
+# Name of package's site-init file.  The filename must match the shell
+# pattern "[1-8][0-9]*-gentoo.el"; numbers below 10 and above 89 are
+# reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
+# in most cases.
 
 inherit base elisp-common versionator
 

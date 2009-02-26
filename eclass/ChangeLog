@@ -1,3 +1,7 @@
+2009-02-26  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (NEED_EMACS, DOCS, SITEFILE): Reorder.
+
 2009-02-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (inherit): Inherit base.eclass.
