@@ -1,0 +1,11 @@
+# ChangeLog for app-doc/elisp-manual
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*elisp-manual-22.3 (17 Feb 2009)
+
+  17 Feb 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/elisp-manual-22.3-direntry.patch, +metadata.xml,
+  +elisp-manual-22.3.ebuild:
+  Stand-alone Elisp manual for Emacs 22.
+
