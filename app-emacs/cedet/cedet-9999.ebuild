@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -21,53 +21,61 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND="!app-emacs/semantic
+DEPEND=""
+RDEPEND="!app-emacs/semantic
 	!app-emacs/eieio
 	!app-emacs/speedbar"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${ECVS_LOCALNAME}"
+SITEFILE="50${PN}-gentoo.el"
 
-SITEFILE=60${PN}-gentoo.el
-
-src_compile() {
-	touch $(find . -name Makefile)
-	emake EMACS=/usr/bin/emacs || die "emake failed"
+src_unpack() {
+	cvs_src_unpack
+	cd "${S}"
+	ecvs_clean
+	find . -name Makefile | xargs touch
 }
 
+src_compile() {
+	emake -j1 EMACS="${EMACS}" || die "emake failed"
+}
+
+#src_test() {
+#	make utest || die "make utest failed"
+#}
+
 src_install() {
-	ecvs_clean
-	find "${S}" -name www -prune -o -type f -print | while read target; do
-		local directory=$(dirname ${target}) file=$(basename ${target})
-		local sub_directory=$(echo ${directory} | sed "s%^${S}/*%%;s/^$/./")
-		case $file in
+	local target file dir
+	find . -type d \( -name tests -o -name www \) -prune -o -type f -print \
+		| while read target
+	do
+		file=${target##*/}
+		dir=${target%/*}; dir=${dir#./}
+		case "${file}" in
 			*~ | Makefile* | *.texi | *-script | PRERELEASE_CHECKLIST \
-				| Project.ede | IMPLICIT_TARGETS | USING_CEDET_FROM_CVS)
+				| Project.ede | USING_CEDET_FROM_CVS | gettodos.sh \
+				| test.dot | grammar-fw-ov.txt | grammar-fw-ov.dia)
 				;;
-			ChangeLog | README | AUTHORS | *NEWS | INSTALL)
-				docinto ${sub_directory}
-				dodoc ${target}
-				;;
-			# Only one file: grammar-fw-ov.png, referenced by grammar-fw.info
-			# Should be installed along with *.info or not at all
-			#*.png)
-			#	insinto /usr/share/doc/${PF}/${sub_directory}
-			#	doins ${target}
-			#	;;
-			*.el | *.elc)
-				insinto ${SITELISP}/${PN}/${sub_directory}
-				doins ${target}
-				;;
-			*.info*)
-				doinfo ${target}
-				;;
+			ChangeLog | README | AUTHORS | *NEWS | INSTALL | *.txt \
+				| semanticdb.sh)
+				docinto "${dir}"
+				dodoc "${target}" || die ;;
+			*.el | *.elc | *.by | *.wy)
+				# install grammar sources along with the elisp files, since
+				# the location where semantic expects them is not configurable
+				insinto "${SITELISP}/${PN}/${dir}"
+				doins "${target}" || die ;;
+			*.srt | *.xpm)
+				insinto "${SITEETC}/${PN}/${dir}"
+				doins "${target}" || die ;;
+			*.info* | grammar-fw-ov.png)
+				doinfo "${target}" || die ;;
 			*)
-				insinto ${SITELISP}/${PN}/${sub_directory}
-				doins ${target}
-				echo ${target} >>"${S}/IMPLICIT_TARGETS"
-				;;
+				# don't die in the live ebuild since upstream may add files
+				# die "Unrecognised file ${target}" ;;
+				ewarn "Unrecognised file ${target}" ;;
 		esac
 	done
 
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 }

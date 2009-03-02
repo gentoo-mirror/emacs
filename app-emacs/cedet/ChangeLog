@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/cedet
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/50cedet-gentoo.el,
+  -files/60cedet-gentoo.el, cedet-9999.ebuild:
+  Sync ebuild from main tree.
 
 *cedet-9999 (12 Aug 2008)
 
