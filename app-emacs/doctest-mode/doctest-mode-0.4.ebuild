@@ -12,7 +12,7 @@ SRC_URI="http://python-mode.svn.sourceforge.net/viewvc/*checkout*/python-mode/tr
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=""
