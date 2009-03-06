@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=2
 WANT_AUTOCONF="2.1"
 
 inherit flag-o-matic eutils toolchain-funcs autotools
@@ -38,10 +39,7 @@ RDEPEND="sys-libs/ncurses
 DEPEND="${RDEPEND}
 	X? ( x11-misc/xbitmaps )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	EPATCH_SUFFIX=patch epatch
 
 	sed -i \
@@ -59,9 +57,7 @@ src_unpack() {
 	eautoconf
 }
 
-src_compile() {
-	export SANDBOX_ON=0
-
+src_configure() {
 	# -fstack-protector gets internal compiler error at xterm.c (bug 33265)
 	filter-flags -fstack-protector
 
@@ -102,6 +98,10 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 	econf ${myconf} || die "econf failed"
+}
+
+src_compile() {
+	export SANDBOX_ON=0
 	emake CC="$(tc-getCC)" || die "emake failed"
 
 	einfo "Recompiling patched lisp files..."

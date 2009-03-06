@@ -2,6 +2,9 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Mar 2009; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r17.ebuild:
+  Ebuild for EAPI 2, in order to prepare for later USE dependencies.
+
 *emacs-21.4-r17 (06 Mar 2009)
 
   06 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
