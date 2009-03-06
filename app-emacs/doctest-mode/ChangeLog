@@ -4,6 +4,10 @@
 
   06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
   doctest-mode-0.4.ebuild:
+  Define S, so Portage is less noisy
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  doctest-mode-0.4.ebuild:
   import KEYWORDS from tree
 
   07 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
