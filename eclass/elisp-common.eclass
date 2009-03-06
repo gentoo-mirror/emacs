@@ -329,7 +329,7 @@ elisp-site-regen() {
 	if [ "${firstrun}" ] && [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
 		einfo "Creating default site-start.el ..."
 		cat <<-EOF >"${T}"/site-start.el
-		;;; site-start.el
+		;;; site-start.el			-*- no-byte-compile: t -*-
 
 		;;; Commentary:
 		;; This default site startup file is installed by elisp-common.eclass.
