@@ -1,0 +1,10 @@
+# ChangeLog for app-editors/emacs
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-21.4-r17 (06 Mar 2009)
+
+  06 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +emacs-21.4-r17.ebuild:
+  Sync from Portage tree.
+
