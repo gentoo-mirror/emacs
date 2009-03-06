@@ -3,6 +3,10 @@
 # $Header: $
 
   06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  python-mode-5.1.0.ebuild:
+  introduce src_unpack() in a proper way, so the package actually installs
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
   files/61python-mode-gentoo.el, python-mode-5.1.0.ebuild:
   import KEYWORDS from tree and remove doctest-mode from SITEFILE
 

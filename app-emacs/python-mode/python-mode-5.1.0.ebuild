@@ -17,5 +17,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+S=${WORKDIR}
 
 SITEFILE=61${PN}-gentoo.el
+
+src_unpack() {
+	cp "${DISTDIR}"/${P}.el "${WORKDIR}"
+}
