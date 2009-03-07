@@ -58,11 +58,11 @@ make-site-start() {
 pkg_config() {
 	if [ ! -e "${ROOT}${SITELISP}/site-start.el" ]; then
 		einfo "Press ENTER to create a default site-start.el file"
-		einfo "for Emacs, or Control-C to abort now ..."
+		einfo "for GNU Emacs, or Control-C to abort now ..."
 		read
 		make-site-start
 	else
-		einfo "site-start.el for Emacs already exists."
+		einfo "site-start.el for GNU Emacs already exists."
 	fi
 }
 
