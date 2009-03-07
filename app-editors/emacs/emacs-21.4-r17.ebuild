@@ -19,22 +19,22 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-
 IUSE="X Xaw3d leim motif nls sendmail"
 
 RDEPEND="sys-libs/ncurses
+	>=app-admin/eselect-emacs-1.2
+	>=app-emacs/emacs-common-gentoo-1[X?]
+	sendmail? ( virtual/mta )
 	X? (
 		x11-libs/libXext
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libXmu
 		x11-libs/libXpm
-		x11-misc/emacs-desktop
 		>=media-libs/giflib-4.1.0.1b
 		>=media-libs/jpeg-6b-r2
 		>=media-libs/tiff-3.5.5-r3
 		>=media-libs/libpng-1.2.1
 		Xaw3d? ( x11-libs/Xaw3d )
 		!Xaw3d? ( motif? ( x11-libs/openmotif ) )
-	)
-	sendmail? ( virtual/mta )
-	>=app-admin/eselect-emacs-1.2"
+	)"
 
 DEPEND="${RDEPEND}
 	X? ( x11-misc/xbitmaps )"
@@ -143,7 +143,6 @@ src_install() {
 	find "${D}" -type d |xargs chmod -f 755 2>/dev/null
 
 	keepdir /usr/share/emacs/${PV}/leim
-	keepdir /usr/share/emacs/site-lisp
 
 	dodoc BUGS ChangeLog README
 }
@@ -166,9 +165,6 @@ emacs-infodir-rebuild() {
 }
 
 pkg_postinst() {
-	test -f "${ROOT}"/usr/share/emacs/site-lisp/subdirs.el ||
-		cp "${ROOT}"/usr/share/emacs{/${PV},}/site-lisp/subdirs.el
-
 	emacs-infodir-rebuild
 
 	if [[ $(readlink "${ROOT}"/usr/bin/emacs) == emacs.emacs-${SLOT}* ]]; then
