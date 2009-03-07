@@ -393,7 +393,7 @@ elisp-site-regen() {
 	fi
 
 	# cleanup
-	rm -f "${T}"/site-{gentoo,start}.el
+	rm -f "${T}"/site-gentoo.el
 
 	return 0
 }
