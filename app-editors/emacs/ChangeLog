@@ -2,6 +2,15 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-22.3-r2 (07 Mar 2009)
+
+  07 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/emacs-22.1-Xaw3d-headers.patch, +files/emacs-22.2-sh.patch,
+  +files/emacs-22.3-freebsd-sparc.patch,
+  +files/emacs-22.3-linux-random-heap.patch, metadata.xml,
+  +emacs-22.3-r2.ebuild:
+  Import from Portage tree.
+
   06 Mar 2009; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r17.ebuild:
   Ebuild for EAPI 2, in order to prepare for later USE dependencies.
 
