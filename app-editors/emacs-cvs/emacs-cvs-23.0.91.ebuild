@@ -39,6 +39,7 @@ RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
+	>=app-emacs/emacs-common-gentoo-1[X?]
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
@@ -50,7 +51,6 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libXmu
 		x11-libs/libXt
 		x11-misc/xbitmaps
-		x11-misc/emacs-desktop
 		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
 		png? ( media-libs/libpng )
@@ -221,7 +221,6 @@ src_install () {
 	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
 	rm -rf "${D}"/usr/share/{applications,icons}
 	rm "${D}"/var/lib/games/emacs/{snake,tetris}-scores
-	keepdir /usr/share/emacs/site-lisp
 	keepdir /var/lib/games/emacs
 
 	local c=";;"
@@ -270,9 +269,6 @@ emacs-infodir-rebuild() {
 }
 
 pkg_postinst() {
-	[ -f "${ROOT}"/usr/share/emacs/site-lisp/subdirs.el ] \
-		|| cp "${ROOT}"/usr/share/emacs{/${FULL_VERSION},}/site-lisp/subdirs.el
-
 	local f
 	for f in "${ROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
