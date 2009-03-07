@@ -311,7 +311,7 @@ elisp-site-file-install() {
 # still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
-	local i sf line firstrun obsolete
+	local i sf line obsolete
 	local -a sflist
 
 	if [ ! -d "${ROOT}${SITELISP}" ]; then
@@ -322,26 +322,6 @@ elisp-site-regen() {
 	if [ ! -d "${T}" ]; then
 		eerror "elisp-site-regen: Temporary directory ${T} does not exist"
 		return 1
-	fi
-
-	[ -e "${ROOT}${SITELISP}"/site-gentoo.el ] || firstrun=t
-
-	if [ "${firstrun}" ] && [ ! -e "${ROOT}${SITELISP}"/site-start.el ]; then
-		einfo "Creating default site-start.el ..."
-		cat <<-EOF >"${T}"/site-start.el
-		;;; site-start.el			-*- no-byte-compile: t -*-
-
-		;;; Commentary:
-		;; This default site startup file is installed by elisp-common.eclass.
-		;; You may replace this file by your own site initialisation, or even
-		;; remove it completely; it will not be recreated.
-
-		;;; Code:
-		;; Load site initialisation for Gentoo-installed packages.
-		(require 'site-gentoo)
-
-		;;; site-start.el ends here
-		EOF
 	fi
 
 	einfon "Regenerating site-gentoo.el (${EBUILD_PHASE}) ..."
@@ -398,32 +378,8 @@ elisp-site-regen() {
 		echo " no changes."
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
-		[ -f "${T}"/site-start.el ] \
-			&& [ ! -e "${ROOT}${SITELISP}"/site-start.el ] \
-			&& mv "${T}"/site-start.el "${ROOT}${SITELISP}"/site-start.el
 		echo
 		einfo "... ${#sflist[@]} site initialisation file(s) included."
-	fi
-
-	if [ "${firstrun}" ]; then
-		echo
-		while read line; do einfo "${line:- }"; done <<-EOF
-		All site initialisation for Gentoo-installed packages is added to
-		/usr/share/emacs/site-lisp/site-gentoo.el; site-start.el is not
-		managed by Gentoo. You are responsible for all maintenance of
-		site-start.el if there is such a file.
-
-		In order for this site initialisation to be loaded for all users
-		automatically, you can add a line like this:
-
-		(require 'site-gentoo)
-
-		to /usr/share/emacs/site-lisp/site-start.el. Alternatively, that line
-		can be added by individual users to their initialisation files, or,
-		for greater flexibility, users can load individual package-specific
-		initialisation files from /usr/share/emacs/site-lisp/site-gentoo.d/.
-		EOF
-		echo
 	fi
 
 	if [ "${obsolete}" ]; then
