@@ -39,11 +39,9 @@ RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
-	>=app-emacs/emacs-common-gentoo-1[X?]
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
-	spell? ( || ( app-text/aspell app-text/ispell ) )
 	alsa? ( media-libs/alsa-lib )
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
@@ -76,6 +74,10 @@ RDEPEND="sys-libs/ncurses
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	gzip-el? ( app-arch/gzip )"
+
+RDEPEND="${RDEPEND}
+	>=app-emacs/emacs-common-gentoo-1[X?]
+	spell? ( || ( app-text/aspell app-text/ispell ) )"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"

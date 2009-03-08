@@ -18,16 +18,15 @@ SLOT="21"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="X Xaw3d leim motif nls sendmail"
 
-RDEPEND="sys-libs/ncurses
+DEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
-	>=app-emacs/emacs-common-gentoo-1[X?]
-	sendmail? ( virtual/mta )
 	X? (
 		x11-libs/libXext
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libXmu
 		x11-libs/libXpm
+		x11-misc/xbitmaps
 		>=media-libs/giflib-4.1.0.1b
 		>=media-libs/jpeg-6b-r2
 		>=media-libs/tiff-3.5.5-r3
@@ -36,8 +35,9 @@ RDEPEND="sys-libs/ncurses
 		!Xaw3d? ( motif? ( x11-libs/openmotif ) )
 	)"
 
-DEPEND="${RDEPEND}
-	X? ( x11-misc/xbitmaps )"
+RDEPEND="${DEPEND}
+	>=app-emacs/emacs-common-gentoo-1[X?]
+	sendmail? ( virtual/mta )"
 
 src_prepare() {
 	EPATCH_SUFFIX=patch epatch

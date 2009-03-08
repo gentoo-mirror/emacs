@@ -16,14 +16,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbs
 IUSE="alsa gif gtk gzip-el hesiod jpeg kerberos motif png spell sound source tiff toolkit-scroll-bars X Xaw3d +xpm"
 RESTRICT="strip"
 
-RDEPEND="!<app-editors/emacs-cvs-22.1
-	sys-libs/ncurses
+RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
-	>=app-emacs/emacs-common-gentoo-1[X?]
 	net-libs/liblockfile
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
-	spell? ( || ( app-text/aspell app-text/ispell ) )
 	alsa? ( media-libs/alsa-lib )
 	X? (
 		x11-libs/libXmu
@@ -45,6 +42,11 @@ DEPEND="${RDEPEND}
 	alsa? ( dev-util/pkgconfig )
 	X? ( gtk? ( dev-util/pkgconfig ) )
 	gzip-el? ( app-arch/gzip )"
+
+RDEPEND="${RDEPEND}
+	!<app-editors/emacs-cvs-22.1
+	>=app-emacs/emacs-common-gentoo-1[X?]
+	spell? ( || ( app-text/aspell app-text/ispell ) )"
 
 # FULL_VERSION keeps the full version number, which is needed in order to
 # determine some path information correctly for copy/move operations later on
