@@ -50,19 +50,18 @@
 
 inherit base elisp-common versionator
 
-DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
-RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
-IUSE=""
-
 case "${EAPI:-0}" in
 	0|1) EXPORT_FUNCTIONS \
 		src_unpack src_compile src_install \
 		pkg_setup pkg_postinst pkg_postrm ;;
-	2) EXPORT_FUNCTIONS \
+	*) EXPORT_FUNCTIONS \
 		src_unpack src_prepare src_configure src_compile src_install \
 		pkg_setup pkg_postinst pkg_postrm ;;
-	*) DEPEND="${DEPEND} EAPI-not-supported-by-${ECLASS}.eclass" ;;
 esac
+
+DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
+RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
+IUSE=""
 
 elisp_pkg_setup() {
 	local need_emacs=${NEED_EMACS:-21}

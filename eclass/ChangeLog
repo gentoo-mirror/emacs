@@ -1,7 +1,5 @@
 2009-03-07  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass: Explicitely fail on unknown EAPI.
-
 	* elisp-common.eclass (elisp-site-regen): Remove all code related
 	to site-start.el; it is now installed by emacs-common-gentoo.
 
