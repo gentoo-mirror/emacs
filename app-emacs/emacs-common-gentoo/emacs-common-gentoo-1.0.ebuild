@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbs
 IUSE="X"
 
 RDEPEND="!x11-misc/emacs-desktop"
+PDEPEND="virtual/emacs"
 
 pkg_setup() {
 	# clean up orphan file installed by old Emacs ebuilds
