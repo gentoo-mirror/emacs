@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Mar 2009; Ulrich Mueller <ulm@gentoo.org> -emacs-cvs-23.0.91.ebuild,
+  -emacs-cvs-23.0.9999-r1.ebuild:
+  Moved to Portage tree.
+
   08 Mar 2009; Ulrich Mueller <ulm@gentoo.org> emacs-cvs-23.0.91.ebuild,
   emacs-cvs-23.0.9998.ebuild, emacs-cvs-23.0.9999-r1.ebuild:
   Fix dependencies: emacs-common-gentoo and aspell/ispell are not needed at
