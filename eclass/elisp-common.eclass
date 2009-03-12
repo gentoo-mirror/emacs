@@ -326,7 +326,8 @@ elisp-site-regen() {
 
 	einfon "Regenerating site-gentoo.el (${EBUILD_PHASE}) ..."
 
-	# remove any auxiliary file (from previous run)
+	# Until January 2009, elisp-common.eclass sometimes created an auxiliary
+	# file for backwards compatibility. Remove any such file.
 	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
 
 	# set nullglob option, there may be a directory without matching files
