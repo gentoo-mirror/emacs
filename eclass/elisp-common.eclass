@@ -93,9 +93,9 @@
 # higher!
 #
 # Best practice is to define a SITEFILE variable in the global scope of your
-# ebuild (e.g., right after DEPEND):
+# ebuild (e.g., right after S or RDEPEND):
 #
-#   	SITEFILE=50${PN}-gentoo.el
+#   	SITEFILE="50${PN}-gentoo.el"
 #
 # Which is then installed by
 #
