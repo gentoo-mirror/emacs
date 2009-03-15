@@ -26,9 +26,6 @@
 # If the package's source is a single (in whatever way) compressed elisp
 # file with the file name ${P}.el, then this eclass will move ${P}.el to
 # ${PN}.el in src_unpack().
-#
-# This eclass inherits base, in order to support its autopatch feature
-# and the PATCHES variable.
 
 # @ECLASS-VARIABLE: NEED_EMACS
 # @DESCRIPTION:
@@ -41,6 +38,11 @@
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
+# @ECLASS-VARIABLE: ELISP_PATCHES
+# @DESCRIPTION:
+# Any patches to apply after unpacking the sources. Patches are searched
+# both in ${PWD} and ${FILESDIR}.
+
 # @ECLASS-VARIABLE: SITEFILE
 # @DESCRIPTION:
 # Name of package's site-init file.  The filename must match the shell
@@ -48,7 +50,7 @@
 # reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
 # in most cases.
 
-inherit base elisp-common versionator
+inherit elisp-common eutils versionator
 
 case "${EAPI:-0}" in
 	0|1) EXPORT_FUNCTIONS \
@@ -81,12 +83,21 @@ elisp_src_unpack() {
 	fi
 
 	case "${EAPI:-0}" in
-		0|1) base_src_util autopatch ;;
+		0|1) elisp_src_prepare ;;
 	esac
 }
 
 elisp_src_prepare() {
-	base_src_util autopatch
+	local patch
+	for patch in ${ELISP_PATCHES}; do
+		if [ -f "${patch}" ]; then
+			epatch "${patch}"
+		elif [ -f "${FILESDIR}/${patch}" ]; then
+			epatch "${FILESDIR}/${patch}"
+		else
+			die "Cannot find ${patch}"
+		fi
+	done
 }
 
 elisp_src_configure() { :; }
