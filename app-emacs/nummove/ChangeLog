@@ -2,6 +2,9 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  15 Mar 2009; Ulrich Mueller <ulm@gentoo.org> nummove-20070312.ebuild:
+  Adapt to new version of elisp.eclass.
+
   25 Feb 2009; Ulrich Mueller <ulm@gentoo.org> nummove-20070312.ebuild:
   Use autopatching, in order to test new elisp.eclass.
 

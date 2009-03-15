@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}"
+ELISP_PATCHES="${P}-image-path.patch"
 SITEFILE="50${PN}-gentoo.el"
-PATCHES=("${FILESDIR}/${P}-image-path.patch")
 
 src_install() {
 	elisp_src_install
