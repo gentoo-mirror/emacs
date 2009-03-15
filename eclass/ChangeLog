@@ -3,10 +3,6 @@
 	* elisp-common.eclass (elisp-site-regen): Remove all code related
 	to site-start.el; it is now installed by emacs-common-gentoo.
 
-2009-02-26  Ulrich Mueller  <ulm@gentoo.org>
-
-	* elisp.eclass (NEED_EMACS, DOCS, SITEFILE): Reorder.
-
 2009-02-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (inherit): Inherit base.eclass.
