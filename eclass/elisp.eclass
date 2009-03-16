@@ -38,7 +38,7 @@
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
-# @ECLASS-VARIABLE: PATCHES
+# @ECLASS-VARIABLE: ELISP_PATCHES
 # @DESCRIPTION:
 # Any patches to apply after unpacking the sources. Patches are searched
 # both in ${PWD} and ${FILESDIR}.
@@ -89,7 +89,7 @@ elisp_src_unpack() {
 
 elisp_src_prepare() {
 	local patch
-	for patch in ${PATCHES}; do
+	for patch in ${ELISP_PATCHES}; do
 		if [ -f "${patch}" ]; then
 			epatch "${patch}"
 		elif [ -f "${FILESDIR}/${patch}" ]; then
