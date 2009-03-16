@@ -1,7 +1,7 @@
 2009-03-15  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (inherit): Inherit eutils. Don't inherit base.
-	(elisp_src_prepare): Automatically apply patches in ELISP_PATCHES.
+	(elisp_src_prepare): Automatically apply patches in PATCHES.
 
 2009-03-07  Ulrich Mueller  <ulm@gentoo.org>
 
