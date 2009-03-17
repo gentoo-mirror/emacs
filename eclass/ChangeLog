@@ -1,6 +1,6 @@
 2009-03-17  Ulrich Mueller  <ulm@gentoo.org>
 
-	* elisp.eclass (elisp_src_unpack): Explicitely assign S=${WORKDIR}
+	* elisp.eclass (elisp_src_unpack): Explicitly assign S=${WORKDIR}
 	in the "simple elisp" case.
 
 2009-03-15  Ulrich Mueller  <ulm@gentoo.org>
