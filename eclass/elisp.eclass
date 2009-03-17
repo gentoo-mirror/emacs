@@ -79,7 +79,9 @@ elisp_pkg_setup() {
 elisp_src_unpack() {
 	[ -n "${A}" ] && unpack ${A}
 	if [ -f ${P}.el ]; then
+		# the "simple elisp" case with a single *.el file in WORKDIR
 		mv ${P}.el ${PN}.el || die
+		[ -d "${S}" ] || S=${WORKDIR}
 	fi
 
 	case "${EAPI:-0}" in
