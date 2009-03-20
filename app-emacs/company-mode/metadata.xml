@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>emacs</herd>
-
 <use>
   <flag name='oddmuse'>Install backend for <pkg>app-emacs/oddmuse</pkg></flag>
   <flag name='semantic'>Install backend for semantic
