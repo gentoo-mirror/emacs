@@ -1,0 +1,22 @@
+# ChangeLog for app-emacs/company-mode
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*company-mode-0.1 (20 Mar 2009)
+
+  20 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
+  -company-mode-20070626.ebuild, +company-mode-0.1.ebuild:
+  Bump to released version, bug 226031. New USE flags for backend selection.
+
+  18 Jun 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/50company-mode-gentoo.el:
+  Execute company-install-bundled-completions-rules after company-mode is
+  loaded, as suggested by opfer in bug 226031 comment 5.
+
+*company-mode-20070626 (16 Jun 2008)
+
+  16 Jun 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/50company-mode-gentoo.el, +metadata.xml,
+  +company-mode-20070626.ebuild:
+  Initial import, bug 226031. Ebuild contributed by me.
+
