@@ -1,3 +1,4 @@
+Fix error with jde-import-kill-extra-imports in Emacs 22.
 http://patch-tracking.debian.net/patch/series/view/jde/2.3.5.1-5/0008-lisp-jde-import.el-Fix-error-with-jde-import-kill-e.patch
 
 --- jde-2.3.5.1-orig/lisp/jde-import.el	2006-02-19 15:22:36.000000000 +0100
