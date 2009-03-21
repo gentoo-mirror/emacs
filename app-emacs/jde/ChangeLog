@@ -3,9 +3,10 @@
 # $Header: $
 
   21 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
-  +files/jde-2.3.5.1-import.patch, -files/jde-2.3.6_pre20081208-import.patch,
-  jde-2.3.6_pre20081208.ebuild:
-  Rename patch file, in order to match main tree.
+  files/70jde-gentoo.el, +files/jde-2.3.5.1-import.patch,
+  -files/jde-2.3.6_pre20081208-import.patch, jde-2.3.6_pre20081208.ebuild:
+  Rename patch file, in order to match main tree. Add path of checkstyle
+  style file.
 
   19 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/70jde-gentoo.el,
   +files/jde-2.3.6_pre20081208-fix-paths-gentoo.patch,
