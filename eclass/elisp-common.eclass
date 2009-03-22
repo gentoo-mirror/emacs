@@ -171,7 +171,6 @@ elisp-compile() {
 	eend $? "elisp-compile: batch-byte-compile failed"
 }
 
-# Not supported any more
 elisp-comp() {
 	die "Function elisp-comp is not supported any more, see bug 235442"
 }
