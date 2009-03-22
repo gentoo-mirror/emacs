@@ -174,49 +174,9 @@ elisp-compile() {
 	eend $? "elisp-compile: batch-byte-compile failed"
 }
 
-# #FUNCTION: elisp-comp
-# #USAGE: <list of elisp files>
-# #DESCRIPTION:
-# Byte-compile interdependent Emacs Lisp files.
-# THIS FUNCTION IS DEPRECATED.
-#
-# This function byte-compiles all ".el" files which are part of its
-# arguments, using GNU Emacs, and puts the resulting ".elc" files into the
-# current directory, so disregarding the original directories used in ".el"
-# arguments.
-#
-# This function manages in such a way that all Emacs Lisp files to be
-# compiled are made visible between themselves, in the event they require or
-# load one another.
-
+# Not supported any more
 elisp-comp() {
-	# Copyright 1995 Free Software Foundation, Inc.
-	# François Pinard <pinard@iro.umontreal.ca>, 1995.
-	# Originally taken from GNU autotools.
-
-	ewarn "Function elisp-comp is deprecated and may be removed in future."
-	ewarn "Please use function elisp-compile instead, or report a bug about"
-	ewarn "${CATEGORY}/${PF} at <http://bugs.gentoo.org/>."
-	echo
-
-	[ $# -gt 0 ] || return 1
-
-	ebegin "Compiling GNU Emacs Elisp files"
-
-	local tempdir=elc.$$
-	mkdir ${tempdir}
-	cp "$@" ${tempdir}
-	pushd ${tempdir}
-
-	echo "(add-to-list 'load-path \"../\")" > script
-	${EMACS} ${EMACSFLAGS} -l script -f batch-byte-compile *.el
-	local ret=$?
-	mv *.elc ..
-
-	popd
-	rm -fr ${tempdir}
-
-	eend ${ret} "elisp-comp: batch-byte-compile failed"
+	die "Function elisp-comp is not supported any more, see bug 235442"
 }
 
 # @FUNCTION: elisp-emacs-version

@@ -1,3 +1,7 @@
+2009-03-22  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-comp): Die.
+
 2009-03-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_unpack): Explicitly assign S=${WORKDIR}
