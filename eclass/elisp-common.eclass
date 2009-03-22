@@ -39,9 +39,6 @@
 #
 #   	elisp-compile *.el || die
 #
-# Formerly, function elisp-comp() was used for compilation of interdependent
-# elisp files.  This usage is considered as obsolete.
-#
 # Function elisp-make-autoload-file() can be used to generate a file with
 # autoload definitions for the lisp functions.  It takes the output file name
 # (default: "${PN}-autoloads.el") and a list of directories (default: working
