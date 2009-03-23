@@ -1,6 +1,9 @@
 2009-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-comp): Die.
+	(elisp-site-file-install): Allow for extra version identifier in
+	the name of the source file, i.e. install 50${PN}-gentoo-${PV}.el
+	as 50${PN}-gentoo.el.
 
 2009-03-17  Ulrich Mueller  <ulm@gentoo.org>
 

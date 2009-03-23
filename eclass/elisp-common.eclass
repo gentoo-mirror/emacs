@@ -73,7 +73,7 @@
 # /usr/share/emacs/site-lisp/ (which is recommended), you need to extend
 # Emacs' load-path as shown in the first non-comment.
 # The elisp-site-file-install() function of this eclass will replace
-# "@SITELISP@" by the actual path.
+# "@SITELISP@" and "@SITEETC@" by the actual paths.
 #
 # The next line tells Emacs to load the mode opening a file ending with
 # ".csv" and load functions depending on the context and needed features.
@@ -84,10 +84,10 @@
 # in pkg_postinst(), which should be enough.
 #
 # The naming scheme for this site-init file matches the shell pattern
-# "[1-8][0-9]*-gentoo.el", where the two digits at the beginning define the
+# "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define the
 # loading order (numbers below 10 or above 89 are reserved for internal use).
-# So if you depend on another Emacs package, your site file's number must be
-# higher!
+# So if your initialisation depends on another Emacs package, your site
+# file's number must be higher!
 #
 # Best practice is to define a SITEFILE variable in the global scope of your
 # ebuild (e.g., right after S or RDEPEND):
@@ -98,8 +98,11 @@
 #
 #   	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 #
-# in src_install().  If your subdirectory is not named ${PN}, give the
-# differing name as second argument.
+# in src_install().  Any characters after the "-gentoo" part and before the
+# extension will be stripped from the destination file's name.  For example,
+# a file "50${PN}-gentoo-${PV}.el" will be installed as "50${PN}-gentoo.el".
+# If your subdirectory is not named ${PN}, give the differing name as second
+# argument.
 #
 # .SS
 # pkg_postinst() / pkg_postrm() usage:
@@ -243,7 +246,8 @@ elisp-install() {
 # Install Emacs site-init file in SITELISP directory.
 
 elisp-site-file-install() {
-	local sf="${T}/${1##*/}" my_pn="${2:-${PN}}" ret
+	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
+	sf="${T}/${sf%-gentoo*.el}-gentoo.el"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	cp "$1" "${sf}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
