@@ -247,7 +247,7 @@ elisp-install() {
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
-	sf="${T}/${sf%-gentoo*.el}-gentoo.el"
+	sf="${T}/${sf/%-gentoo*.el/-gentoo.el}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	cp "$1" "${sf}"
 	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
