@@ -3,7 +3,8 @@
 	* elisp-common.eclass (elisp-comp): Die.
 	(elisp-site-file-install): Allow for extra version identifier in
 	the name of the source file, i.e. install 50${PN}-gentoo-${PV}.el
-	as 50${PN}-gentoo.el.
+	as 50${PN}-gentoo.el. Output a warning if the file name doesn't
+	match a pattern that would be recognised by elisp-site-regen.
 
 2009-03-17  Ulrich Mueller  <ulm@gentoo.org>
 

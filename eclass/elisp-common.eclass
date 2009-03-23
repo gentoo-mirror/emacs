@@ -250,6 +250,8 @@ elisp-install() {
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
+	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
+		|| ewarn "elisp-site-file-install: bad name of site-init file"
 	sf="${T}/${sf/%-gentoo*.el/-gentoo.el}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	cp "$1" "${sf}"
