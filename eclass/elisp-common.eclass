@@ -10,58 +10,60 @@
 #
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
-# Feel free to contact the Emacs team through <emacs@gentoo.org> if you have
-# problems, suggestions or questions.
+# Feel free to contact the Emacs team through <emacs@gentoo.org> if you
+# have problems, suggestions or questions.
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
-# Usually you want to use this eclass for (optional) GNU Emacs support of
-# your package.  This is NOT for XEmacs!
+# Usually you want to use this eclass for (optional) GNU Emacs support
+# of your package.  This is NOT for XEmacs!
 #
 # Many of the steps here are sometimes done by the build system of your
-# package (especially compilation), so this is mainly for standalone elisp
-# files you gathered from somewhere else.
+# package (especially compilation), so this is mainly for standalone
+# elisp files you gathered from somewhere else.
 #
 # When relying on the emacs USE flag, you need to add
 #
 #   	emacs? ( virtual/emacs )
 #
-# to your DEPEND/RDEPEND line and use the functions provided here to bring
-# the files to the correct locations.
+# to your DEPEND/RDEPEND line and use the functions provided here to
+# bring the files to the correct locations.
 #
 # .SS
 # src_compile() usage:
 #
-# An elisp file is compiled by the elisp-compile() function defined here and
-# simply takes the source files as arguments.  The case of interdependent
-# elisp files is also supported, since the current directory is added to the
-# load-path which makes sure that all files are loadable.
+# An elisp file is compiled by the elisp-compile() function defined
+# here and simply takes the source files as arguments.  The case of
+# interdependent elisp files is also supported, since the current
+# directory is added to the load-path which makes sure that all files
+# are loadable.
 #
 #   	elisp-compile *.el || die
 #
-# Function elisp-make-autoload-file() can be used to generate a file with
-# autoload definitions for the lisp functions.  It takes the output file name
-# (default: "${PN}-autoloads.el") and a list of directories (default: working
-# directory) as its arguments.  Use of this function requires that the elisp
-# source files contain magic ";;;###autoload" comments.  See the Emacs Lisp
-# Reference Manual (node "Autoload") for a detailed explanation.
+# Function elisp-make-autoload-file() can be used to generate a file
+# with autoload definitions for the lisp functions.  It takes the output
+# file name (default: "${PN}-autoloads.el") and a list of directories
+# (default: working directory) as its arguments.  Use of this function
+# requires that the elisp source files contain magic ";;;###autoload"
+# comments.  See the Emacs Lisp Reference Manual (node "Autoload") for
+# a detailed explanation.
 #
 # .SS
 # src_install() usage:
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
 # /usr/share/emacs/site-lisp/ which is named after the first argument
-# of elisp-install().  The following parameters are the files to be put in
-# that directory.  Usually the subdirectory should be ${PN}, you can choose
-# something else, but remember to tell elisp-site-file-install() (see below)
-# the change, as it defaults to ${PN}.
+# of elisp-install().  The following parameters are the files to be put
+# in that directory.  Usually the subdirectory should be ${PN}, you can
+# choose something else, but remember to tell elisp-site-file-install()
+# (see below) the change, as it defaults to ${PN}.
 #
 #   	elisp-install ${PN} *.el *.elc || die
 #
 # To let the Emacs support be activated by Emacs on startup, you need
-# to provide a site file (shipped in ${FILESDIR}) which contains the startup
-# code (have a look in the documentation of your software).  Normally this
-# would look like this:
+# to provide a site file (shipped in ${FILESDIR}) which contains the
+# startup code (have a look in the documentation of your software).
+# Normally this would look like this:
 #
 #   	;;; csv-mode site-lisp configuration
 #
@@ -75,22 +77,22 @@
 # The elisp-site-file-install() function of this eclass will replace
 # "@SITELISP@" and "@SITEETC@" by the actual paths.
 #
-# The next line tells Emacs to load the mode opening a file ending with
-# ".csv" and load functions depending on the context and needed features.
-# Be careful though.  Commands as "load-library" or "require" bloat the
-# editor as they are loaded on every startup.  When having a lot of Emacs
-# support files, users may be annoyed by the start-up time.  Also avoid
-# keybindings as they might interfere with the user's settings.  Give a hint
-# in pkg_postinst(), which should be enough.
+# The next line tells Emacs to load the mode opening a file ending
+# with ".csv" and load functions depending on the context and needed
+# features.  Be careful though.  Commands as "load-library" or "require"
+# bloat the editor as they are loaded on every startup.  When having
+# many Emacs support files, users may be annoyed by the start-up time.
+# Also avoid keybindings as they might interfere with the user's
+# settings.  Give a hint in pkg_postinst(), which should be enough.
 #
 # The naming scheme for this site-init file matches the shell pattern
-# "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define the
-# loading order (numbers below 10 or above 89 are reserved for internal use).
-# So if your initialisation depends on another Emacs package, your site
-# file's number must be higher!
+# "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define
+# the loading order (numbers below 10 or above 89 are reserved for
+# internal use).  So if your initialisation depends on another Emacs
+# package, your site file's number must be higher!
 #
-# Best practice is to define a SITEFILE variable in the global scope of your
-# ebuild (e.g., right after S or RDEPEND):
+# Best practice is to define a SITEFILE variable in the global scope of
+# your ebuild (e.g., right after S or RDEPEND):
 #
 #   	SITEFILE="50${PN}-gentoo.el"
 #
@@ -98,17 +100,17 @@
 #
 #   	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 #
-# in src_install().  Any characters after the "-gentoo" part and before the
-# extension will be stripped from the destination file's name.  For example,
-# a file "50${PN}-gentoo-${PV}.el" will be installed as "50${PN}-gentoo.el".
-# If your subdirectory is not named ${PN}, give the differing name as second
-# argument.
+# in src_install().  Any characters after the "-gentoo" part and before
+# the extension will be stripped from the destination file's name.
+# For example, a file "50${PN}-gentoo-${PV}.el" will be installed as
+# "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
+# the differing name as second argument.
 #
 # .SS
 # pkg_postinst() / pkg_postrm() usage:
 #
-# After that you need to recreate the start-up file of Emacs after emerging
-# and unmerging by using
+# After that you need to recreate the start-up file of Emacs after
+# emerging and unmerging by using
 #
 #   	pkg_postinst() {
 #   		elisp-site-regen
@@ -118,11 +120,12 @@
 #   		elisp-site-regen
 #   	}
 #
-# When having optional Emacs support, you should prepend "use emacs &&" to
-# above calls of elisp-site-regen().  Don't use "has_version virtual/emacs"!
-# When unmerging the state of the emacs USE flag is taken from the package
-# database and not from the environment, so it is no problem when you unset
-# USE=emacs between merge and unmerge of a package.
+# When having optional Emacs support, you should prepend "use emacs &&"
+# to above calls of elisp-site-regen().
+# Don't use "has_version virtual/emacs"!  When unmerging the state of
+# the emacs USE flag is taken from the package database and not from the
+# environment, so it is no problem when you unset USE=emacs between
+# merge and unmerge of a package.
 #
 # .SS
 # Miscellaneous functions:
@@ -160,13 +163,13 @@ BYTECOMPFLAGS="-L ."
 # @DESCRIPTION:
 # Byte-compile Emacs Lisp files.
 #
-# This function uses GNU Emacs to byte-compile all ".el" specified by its
-# arguments.  The resulting byte-code (".elc") files are placed in the same
-# directory as their corresponding source file.
+# This function uses GNU Emacs to byte-compile all ".el" specified by
+# its arguments.  The resulting byte-code (".elc") files are placed in
+# the same directory as their corresponding source file.
 #
-# The current directory is added to the load-path.  This will ensure that
-# interdependent Emacs Lisp files are visible between themselves, in case
-# they require or load one another.
+# The current directory is added to the load-path.  This will ensure
+# that interdependent Emacs Lisp files are visible between themselves,
+# in case they require or load one another.
 
 elisp-compile() {
 	ebegin "Compiling GNU Emacs Elisp files"
@@ -263,12 +266,13 @@ elisp-site-file-install() {
 
 # @FUNCTION: elisp-site-regen
 # @DESCRIPTION:
-# Regenerate the site-gentoo.el file, based on packages' site initialisation
-# files in the /usr/share/emacs/site-lisp/site-gentoo.d/ directory.
+# Regenerate the site-gentoo.el file, based on packages' site
+# initialisation files in the /usr/share/emacs/site-lisp/site-gentoo.d/
+# directory.
 #
-# Note: Before December 2007, site initialisation files were installed in
-# /usr/share/emacs/site-lisp/.  For backwards compatibility, this location is
-# still supported when generating site-gentoo.el.
+# Note: Before December 2007, site initialisation files were installed
+# in /usr/share/emacs/site-lisp/.  For backwards compatibility, this
+# location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
 	local i sf line obsolete
@@ -286,8 +290,8 @@ elisp-site-regen() {
 
 	einfon "Regenerating site-gentoo.el (${EBUILD_PHASE}) ..."
 
-	# Until January 2009, elisp-common.eclass sometimes created an auxiliary
-	# file for backwards compatibility. Remove any such file.
+	# Until January 2009, elisp-common.eclass sometimes created an
+	# auxiliary file for backwards compatibility. Remove any such file.
 	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
 
 	# set nullglob option, there may be a directory without matching files
