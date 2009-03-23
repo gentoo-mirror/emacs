@@ -250,18 +250,19 @@ elisp-install() {
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
-	sf="${sf/%-gentoo*.el/-gentoo.el}"
-	[[ ${sf} == [0-9][0-9]*-gentoo.el ]] \
+	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
 		|| ewarn "elisp-site-file-install: bad name of site-init file"
+	sf="${T}/${sf/%-gentoo*.el/-gentoo.el}"
 	ebegin "Installing site initialisation file for GNU Emacs"
-	sed -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g;\$q" "$1" >"${T}/${sf}"
+	cp "$1" "${sf}"
+	sed -i -e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
+		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g;\$q" "${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
-		doins "${T}/${sf}"
+		doins "${sf}"
 	)
 	ret=$?
-	rm -f "${T}/${sf}"
+	rm -f "${sf}"
 	eend ${ret} "elisp-site-file-install: doins failed"
 }
 
