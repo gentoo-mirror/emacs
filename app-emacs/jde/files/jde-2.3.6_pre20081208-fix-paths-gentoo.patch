@@ -175,7 +175,7 @@
 +  (oset this jde-classes-dir jde-classes-directory)
 +  (oset this jde-jar jde-jde-jar-file)
 +  (oset this jar jde-bsh-jar-file)
-+  (oset-default 'jde-bsh the-bsh this)))
++  (oset-default 'jde-bsh the-bsh this))
  
  (defmethod bsh-create-buffer ((this jde-bsh))
    "Creates the JDEE's beanshell buffer."
