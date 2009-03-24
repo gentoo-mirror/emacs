@@ -65,9 +65,8 @@ src_install() {
 	use doc && java-pkg_dojavadoc dist/doc/java/api
 
 	elisp-install ${PN} dist/lisp/*.{el,elc} || die
-	cp "${FILESDIR}/${SITEFILE}" "${T}/" || die
-	sed -i -e "s:@PF@:${PF}:" "${T}/${SITEFILE}" || die
-	elisp-site-file-install "${T}/${SITEFILE}" || die
+	sed -e "s:@PF@:${PF}:" "${FILESDIR}/${SITEFILE}" >"${SITEFILE}" || die
+	elisp-site-file-install "${SITEFILE}" || die
 
 	dobin lisp/jtags || die
 
