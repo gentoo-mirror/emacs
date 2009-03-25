@@ -2,7 +2,7 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  25 Mar 2009; Ulrich Mueller <ulm@gentoo.org> files/70jde-gentoo.el,
+  25 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
   +files/jde-2.3.6_pre20081208-classpath-gentoo.patch,
   files/jde-2.3.6_pre20081208-fix-paths-gentoo.patch,
   jde-2.3.6_pre20081208.ebuild:
