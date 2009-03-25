@@ -179,6 +179,14 @@
  
  (defmethod bsh-create-buffer ((this jde-bsh))
    "Creates the JDEE's beanshell buffer."
+@@ -2503,6 +2545,7 @@
+                        (jde-get-tools-jar)
+                        (if ant-home (expand-file-name "lib" ant-home)))
+ 		      (jde-pi-get-bsh-classpath)
++		      bsh-classpath
+                       (jde-expand-classpath (jde-get-global-classpath)))))))
+ 
+ ;; Create the BeanShell wrapper object.
 --- jde-orig/lisp/jde-jdb.el	2007-12-29 04:21:28.000000000 +0100
 +++ jde/lisp/jde-jdb.el	2009-03-20 19:33:33.000000000 +0100
 @@ -1463,10 +1463,10 @@

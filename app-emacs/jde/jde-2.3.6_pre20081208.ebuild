@@ -29,8 +29,9 @@ S="${WORKDIR}/${PN}"
 SITEFILE="70${PN}-gentoo.el"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-paths-gentoo.patch"
 	epatch "${FILESDIR}/${PN}-2.3.5.1-import.patch"
+	epatch "${FILESDIR}/${P}-fix-paths-gentoo.patch"
+	epatch "${FILESDIR}/${P}-classpath-gentoo.patch"
 
 	cd java/lib || die
 	java-pkg_jar-from --build-only checkstyle checkstyle.jar checkstyle-all.jar

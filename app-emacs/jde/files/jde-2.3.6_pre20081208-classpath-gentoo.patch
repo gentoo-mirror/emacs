@@ -1,0 +1,30 @@
+--- jde-orig/lisp/beanshell.el	2009-03-25 11:12:01.000000000 +0100
++++ jde/lisp/beanshell.el	2009-03-25 14:35:02.000000000 +0100
+@@ -101,7 +101,11 @@
+           (const :tag "Default" :value nil)
+           (file :tag "Path")))
+ 
+-(defcustom bsh-classpath nil
++(defcustom bsh-classpath
++  (with-temp-buffer
++    (call-process "java-config" nil t nil "-d" "-p" "bsh")
++    (skip-chars-backward "\n")
++    (split-string (buffer-substring (point-min) (point)) ":+"))
+   "Startup classpath for the BeanShell."
+   :group 'bsh
+   :type '(repeat (file :tag "Path")))
+--- jde-orig/lisp/jde-checkstyle.el	2009-03-25 11:12:01.000000000 +0100
++++ jde/lisp/jde-checkstyle.el	2009-03-25 14:35:41.000000000 +0100
+@@ -74,7 +74,11 @@
+   :group 'jde-checkstyle
+   :type 'string)
+ 
+-(defcustom jde-checkstyle-classpath nil
++(defcustom jde-checkstyle-classpath
++  (with-temp-buffer
++    (call-process "java-config" nil t nil "-d" "-p" "checkstyle")
++    (skip-chars-backward "\n")
++    (split-string (buffer-substring (point-min) (point)) ":+"))
+   "*Specify paths of classes required to run the jde-checkstyle application.
+ The JDE uses the specified paths to construct a -classpath
+ argument to pass to the Java interpreter. This option overrides the

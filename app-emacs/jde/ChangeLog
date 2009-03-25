@@ -2,6 +2,12 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Mar 2009; Ulrich Mueller <ulm@gentoo.org> files/70jde-gentoo.el,
+  +files/jde-2.3.6_pre20081208-classpath-gentoo.patch,
+  files/jde-2.3.6_pre20081208-fix-paths-gentoo.patch,
+  jde-2.3.6_pre20081208.ebuild:
+  Initialise classpath using java-config.
+
   24 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
   files/jde-2.3.6_pre20081208-fix-paths-gentoo.patch:
   Remove extra paren from patch file.
@@ -11,6 +17,8 @@
   -files/jde-2.3.6_pre20081208-import.patch, jde-2.3.6_pre20081208.ebuild:
   Rename patch file, in order to match main tree. Add path of checkstyle
   style file.
+
+*jde-2.3.6_pre20081208 (19 Mar 2009)
 
   19 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/70jde-gentoo.el,
   +files/jde-2.3.6_pre20081208-fix-paths-gentoo.patch,
