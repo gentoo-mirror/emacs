@@ -1,3 +1,9 @@
+2009-03-26  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Automagically
+	insert an empty first line and a header comment if they are
+	missing from the file.
+
 2009-03-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-comp): Die.
