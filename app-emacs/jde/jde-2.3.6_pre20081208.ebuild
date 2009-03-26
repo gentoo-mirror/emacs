@@ -33,6 +33,12 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-fix-paths-gentoo.patch"
 	epatch "${FILESDIR}/${P}-classpath-gentoo.patch"
 
+	local bshjar csjar
+	bshjar=$(java-pkg_getjar --build-only bsh bsh.jar) || die
+	csjar=$(java-pkg_getjar --build-only checkstyle checkstyle.jar) || die
+	sed  -e "s:@BSH_JAR@:${bshjar}:;s:@CHECKSTYLE_JAR@:${csjar}:" \
+		-e "s:@PF@:${PF}:" "${FILESDIR}/${SITEFILE}" >"${SITEFILE}" || die
+
 	cd java/lib || die
 	java-pkg_jar-from --build-only checkstyle checkstyle.jar checkstyle-all.jar
 	java-pkg_jar-from junit
@@ -66,7 +72,6 @@ src_install() {
 	use doc && java-pkg_dojavadoc dist/doc/java/api
 
 	elisp-install ${PN} dist/lisp/*.{el,elc} || die
-	sed -e "s:@PF@:${PF}:" "${FILESDIR}/${SITEFILE}" >"${SITEFILE}" || die
 	elisp-site-file-install "${SITEFILE}" || die
 
 	dobin lisp/jtags || die
