@@ -1,6 +1,3 @@
-
-;;; snippet site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'snippet-insert "snippet"
   "Insert a snippet into the current buffer at point." t)

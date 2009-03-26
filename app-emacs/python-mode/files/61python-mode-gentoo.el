@@ -1,6 +1,3 @@
-
-;;; python-mode site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 
 (autoload 'python-mode "python-mode" "Python editing mode." t)

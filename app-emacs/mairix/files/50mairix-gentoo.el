@@ -1,6 +1,3 @@
-
-;;; mairix site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (mapc (function (lambda (f) (autoload f "mairix" nil t)))
       '(mairix-search

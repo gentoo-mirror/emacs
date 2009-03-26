@@ -1,6 +1,3 @@
-
-;;; fold-dwim site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'fold-dwim-hide-all "fold-dwim"
   "Hide all folds of various kinds in the buffer or region" t)

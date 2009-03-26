@@ -1,6 +1,3 @@
-
-;;; faith site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'faith-insert "faith"
   "Insert a quote right here, right now, in the current buffer" t)

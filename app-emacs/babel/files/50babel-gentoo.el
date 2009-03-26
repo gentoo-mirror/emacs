@@ -1,6 +1,3 @@
-
-;;; babel site-lisp configuration
-
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'babel "babel"
   "Use a web translation service to translate the message MSG." t)
