@@ -62,7 +62,7 @@ case "${EAPI:-0}" in
 esac
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
-RDEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
+RDEPEND="${DEPEND}"
 IUSE=""
 
 elisp_pkg_setup() {
