@@ -53,12 +53,10 @@
 inherit elisp-common eutils versionator
 
 case "${EAPI:-0}" in
-	0|1) EXPORT_FUNCTIONS \
-		src_unpack src_compile src_install \
-		pkg_setup pkg_postinst pkg_postrm ;;
-	*) EXPORT_FUNCTIONS \
-		src_unpack src_prepare src_configure src_compile src_install \
-		pkg_setup pkg_postinst pkg_postrm ;;
+	0|1) EXPORT_FUNCTIONS src_{unpack,compile,install} \
+		pkg_{setup,postinst,postrm} ;;
+	*) EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+		pkg_{setup,postinst,postrm} ;;
 esac
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
