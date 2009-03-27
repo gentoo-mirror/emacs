@@ -246,7 +246,11 @@ elisp-install() {
 # @FUNCTION: elisp-site-file-install
 # @USAGE: <site-init file> [subdirectory]
 # @DESCRIPTION:
-# Install Emacs site-init file in SITELISP directory.
+# Install Emacs site-init file in SITELISP directory.  Automatically
+# inserts a standard comment header with the name of the package (unless
+# it is already present).  Tokens @SITELISP@ and @SITEETC@ are replaced
+# by the path to the package's subdirectory in SITELISP and SITEETC,
+# respectively.
 
 elisp-site-file-install() {
 	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
