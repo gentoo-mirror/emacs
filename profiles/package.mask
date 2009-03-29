@@ -1,5 +1,9 @@
 # package.mask
 
+# Ulrich Mueller <ulm@gentoo.org> (29 Mar 2009)
+# Experimental ebuild, masked for internal testing.
+~app-emacs/emacs-common-gentoo-1.0-r20
+
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org> (18 Mar 2009)
 # Live ebuilds directly from the repository

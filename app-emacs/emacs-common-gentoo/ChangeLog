@@ -2,9 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  29 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
-  emacs-common-gentoo-1.0.ebuild:
-  Sync from Portage tree.
+*emacs-common-gentoo-1.0-r20 (29 Mar 2009)
+
+  29 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/site-start.el,
+  -emacs-common-gentoo-1.0.ebuild, +emacs-common-gentoo-1.0-r20.ebuild:
+  Sync from Portage tree. Try a different approach using CONFIG_PROTECT.
 
   08 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
   emacs-common-gentoo-1.0.ebuild:
