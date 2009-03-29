@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*company-mode-0.2 (29 Mar 2009)
+
+  29 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +company-mode-0.2.ebuild:
+  Version bump.
+
 *company-mode-0.1 (20 Mar 2009)
 
   20 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
