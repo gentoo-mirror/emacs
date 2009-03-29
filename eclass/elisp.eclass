@@ -83,7 +83,8 @@ elisp_src_unpack() {
 	fi
 
 	case "${EAPI:-0}" in
-		0|1) elisp_src_prepare ;;
+		0|1) [ -d "${S}" ] && cd "${S}"
+			elisp_src_prepare ;;
 	esac
 }
 

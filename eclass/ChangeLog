@@ -1,3 +1,8 @@
+2009-03-29  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_unpack): Change directory to S before
+	calling src_prepare.
+
 2009-03-26  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (RDEPEND): Avoid unnecessary code duplication.
