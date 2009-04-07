@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils fdo-mime git
+inherit eutils fdo-mime
 
 DESCRIPTION="Webbrowser based on Gecko engine, inspired by Emacs"
 HOMEPAGE="http://conkeror.org"
-SRC_URI=""
-EGIT_REPO_URI="git://repo.or.cz/conkeror.git"
+# snapshot from http://repo.or.cz/w/conkeror.git?a=snapshot;h=master;sf=tgz
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 GPL-2 LGPL-2.1 )"
 SLOT="0"
@@ -16,6 +16,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=">=net-libs/xulrunner-1.9"
+
+S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" || die
@@ -33,6 +35,7 @@ src_install() {
 	dosym /usr/lib/${PN}/contrib/run-conkeror /usr/bin/conkeror || die
 	domenu "${FILESDIR}/conkeror.desktop" || die
 
+	doman contrib/man/conkeror.1 || die
 	dodoc CREDITS || die
 }
 

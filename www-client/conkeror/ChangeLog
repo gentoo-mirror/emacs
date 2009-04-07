@@ -2,12 +2,20 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*conkeror-0.9_pre20090401 (07 Apr 2009)
+
+  07 Apr 2009; Ulrich Mueller <ulm@gentoo.org>
+  +conkeror-0.9_pre20090401.ebuild:
+  Add ebuild for upstream snapshot.
+
   10 Feb 2009; Ulrich Mueller <ulm@gentoo.org> +files/conkeror.desktop,
   conkeror-9999.ebuild:
   Also install "help", "style" and "tests" subdirectories. Add desktop entry.
 
   05 Sep 2008; Christian Faulhammer <opfer@gentoo.org> conkeror-9999.ebuild:
   add a DESCRIPTION
+
+*conkeror-9999 (05 Sep 2008)
 
   05 Sep 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
   +conkeror-9999.ebuild:
