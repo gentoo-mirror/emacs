@@ -130,7 +130,7 @@
 # .SS
 # Miscellaneous functions:
 #
-# elisp-emacs-version() shows the version of the currently active Emacs.
+# elisp-emacs-version() outputs the version of the currently active Emacs.
 
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
@@ -183,7 +183,7 @@ elisp-comp() {
 
 # @FUNCTION: elisp-emacs-version
 # @DESCRIPTION:
-# Show version of currently active Emacs.
+# Output version of currently active Emacs.
 
 elisp-emacs-version() {
 	# The following will work for at least versions 18-23.
