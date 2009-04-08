@@ -2,13 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-
 inherit elisp
 
 DESCRIPTION="An Emacs major mode for editing Python source"
 HOMEPAGE="https://launchpad.net/python-mode"
-SRC_URI="http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}.el -> ${PN}-${PV}.el"
+# taken from http://launchpad.net/${PN}/trunk/${PV}/+download/${PN}.el"
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -20,7 +19,3 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
 SITEFILE=61${PN}-gentoo.el
-
-src_unpack() {
-	cp "${DISTDIR}"/${P}.el "${WORKDIR}"
-}
