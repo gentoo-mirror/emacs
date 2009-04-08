@@ -1,3 +1,8 @@
+2009-04-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-file-install): Suppress error
+	message if cp source and destination are identical.
+
 2009-03-29  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_unpack): Change directory to S before
