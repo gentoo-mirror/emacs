@@ -297,7 +297,7 @@ elisp-site-regen() {
 		return 1
 	fi
 
-	einfon "Regenerating site-gentoo.el (${EBUILD_PHASE}) ..."
+	einfon "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE}) ..."
 
 	# Until January 2009, elisp-common.eclass sometimes created an
 	# auxiliary file for backwards compatibility. Remove any such file.
