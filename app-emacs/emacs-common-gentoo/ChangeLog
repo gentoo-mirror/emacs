@@ -6,7 +6,7 @@
 
   12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> -files/site-start.el,
   -emacs-common-gentoo-1.0-r20.ebuild +emacs-common-gentoo-9999.ebuild:
-  Live CVS ebuild. Remove old.
+  Live CVS ebuild; LICENSE is GPL-3 now. Remove old.
 
 *emacs-common-gentoo-1.0-r20 (29 Mar 2009)
 

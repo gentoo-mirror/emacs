@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.gz"
 ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="X carbon"
