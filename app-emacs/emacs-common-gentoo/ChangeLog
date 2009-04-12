@@ -2,9 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-common-gentoo-9999 (12 Apr 2009)
+
   12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> -files/site-start.el,
-  -emacs-common-gentoo-1.0-r20.ebuild:
-  Remove old.
+  -emacs-common-gentoo-1.0-r20.ebuild +emacs-common-gentoo-9999.ebuild:
+  Live CVS ebuild. Remove old.
 
 *emacs-common-gentoo-1.0-r20 (29 Mar 2009)
 

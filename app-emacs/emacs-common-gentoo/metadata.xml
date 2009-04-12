@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>emacs</herd>
+<use>
+  <flag name='carbon'>Install Emacs 23 style icons</flag>
+</use>
 </pkgmetadata>
