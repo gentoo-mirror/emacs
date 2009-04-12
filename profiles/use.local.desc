@@ -1,0 +1,4 @@
+app-emacs/emacs-common-gentoo:aqua - Install icons in Emacs 23 / Carbon Emacs style
+app-emacs/whizzytex:advi - Enable support for app-text/active-dvi
+app-emacs/whizzytex:xdvi - Enable support for app-text/xdvik
+app-emacs/whizzytex:gv - Enable support for app-text/gv
