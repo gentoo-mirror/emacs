@@ -12,7 +12,7 @@ ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="X carbon"
+IUSE="X aqua"
 
 PDEPEND="virtual/emacs"
 
@@ -37,7 +37,7 @@ src_install() {
 		local i
 		domenu emacs.desktop emacsclient.desktop || die
 		newicon icons/sink.png emacs-sink.png || die
-		if use carbon; then
+		if use aqua; then
 			newicon icons/emacs23_48.png emacs.png || die
 			for i in 16 24 32 48 128; do
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps

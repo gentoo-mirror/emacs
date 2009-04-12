@@ -3,6 +3,6 @@
 <pkgmetadata>
 <herd>emacs</herd>
 <use>
-  <flag name='carbon'>Install Emacs 23 style icons</flag>
+  <flag name='aqua'>Install icons in Emacs 23 / Carbon Emacs style</flag>
 </use>
 </pkgmetadata>
