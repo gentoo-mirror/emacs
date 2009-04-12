@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -16,12 +16,12 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="!<=app-admin/eselect-emacs-1.5
-	!=app-admin/eselect-emacs-9999
-	app-portage/portage-utils
+	>=app-portage/portage-utils-0.1.28
 	virtual/emacs"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
 	dosbin emacs-updater || die "dosbin failed"
+	doman emacs-updater.8 || die "doman failed"
 }
