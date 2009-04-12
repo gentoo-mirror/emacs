@@ -43,6 +43,8 @@ src_install() {
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps
 				newins icons/emacs23_${i}.png emacs.png || die
 			done
+			insinto /usr/share/icons/hicolor/scalable/apps
+			newins icons/emacs23.svg emacs.svg || die
 		else
 			newicon icons/emacs_48.png emacs.png || die
 			for i in 16 24 32 48; do
