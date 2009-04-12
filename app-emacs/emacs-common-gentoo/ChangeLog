@@ -2,10 +2,6 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-  12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
-  emacs-common-gentoo-9999.ebuild:
-  Rename USE flag to "aqua" since that was its name in Emacs ebuilds.
-
 *emacs-common-gentoo-9999 (12 Apr 2009)
 
   12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> -files/site-start.el,
