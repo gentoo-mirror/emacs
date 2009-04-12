@@ -36,7 +36,7 @@ src_install() {
 	if use X; then
 		local i
 		domenu emacs.desktop emacsclient.desktop || die
-
+		newicon icons/sink.png emacs-sink.png || die
 		if use carbon; then
 			newicon icons/emacs23_48.png emacs.png || die
 			for i in 16 24 32 48 128; do
