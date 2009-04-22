@@ -112,7 +112,7 @@ pkg_postinst() {
 
 		to their ~/.emacs initialisation files, or, for greater flexibility,
 		users may load single package-specific initialisation files from
-pp		/usr/share/emacs/site-lisp/site-gentoo.d/.
+		/usr/share/emacs/site-lisp/site-gentoo.d/.
 		EOF
 		echo
 
