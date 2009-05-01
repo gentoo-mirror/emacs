@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/js2-mode
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*js2-mode-20080616a (16 Jan 2009)
+
+  16 Jan 2009; Ulrich Mueller <ulm@gentoo.org> +files/50js2-mode-gentoo.el,
+  +js2-mode-20080616a.ebuild, +metadata.xml:
+  Initial import.
+
