@@ -25,5 +25,5 @@ pkg_postinst() {
 	elisp-site-regen
 	elog "If you want to activate js2-mode automatically for .js files,"
 	elog "add the following command to your ~/.emacs file:"
-	elog "(add-to-list 'auto-mode-alist '(\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\.js\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'\" . js2-mode))"
+	elog "(add-to-list 'auto-mode-alist '(\""'\\\\.js\\\\'"'\" . js2-mode))"
 }
