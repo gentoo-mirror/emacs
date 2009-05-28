@@ -3,8 +3,6 @@
 # $Header: $
 
 EAPI=2
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
 
 inherit autotools elisp-common eutils flag-o-matic
 

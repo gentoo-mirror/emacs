@@ -4,6 +4,10 @@
 
   28 May 2009; Christian Faulhammer <fauli@gentoo.org>
   emacs-cvs-23.0.9998.ebuild:
+  remove WANT_AUTOCONF and WANT_AUTOMAKE entries to make repoman happy
+
+  28 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  emacs-cvs-23.0.9998.ebuild:
   Remove USE=spell from all ebuilds, we don't want such dependencies
 
   12 Mar 2009; Ulrich Mueller <ulm@gentoo.org> -emacs-cvs-23.0.91.ebuild,
