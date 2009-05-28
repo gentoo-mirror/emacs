@@ -35,7 +35,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C"
 SLOT="23-lexbind"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png spell sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
+IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -77,8 +77,7 @@ DEPEND="${RDEPEND}
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	>=app-emacs/emacs-common-gentoo-1[X?]
-	spell? ( || ( app-text/aspell app-text/ispell ) )"
+	>=app-emacs/emacs-common-gentoo-1[X?]"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
