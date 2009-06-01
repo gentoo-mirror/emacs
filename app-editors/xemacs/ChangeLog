@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*xemacs-21.5.29-r1 (01 Jun 2009)
+
+  01 Jun 2009; Hans de Graaff <graaff@gentoo.org> +xemacs-21.5.29-r1.ebuild:
+  Configure in old location of xemacs package hierarchy so that current
+  installations continue to work as expected. Switch to EAPI=2 to make use
+  of the more fine-grained phases for debugging. Add a note about Xft font
+  names.
+
 *xemacs-21.5.29 (31 May 2009)
 
   31 May 2009; Hans de Graaff <graaff@gentoo.org> +xemacs-21.5.29.ebuild,
