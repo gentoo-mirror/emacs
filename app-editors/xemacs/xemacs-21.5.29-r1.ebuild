@@ -9,7 +9,7 @@
 EAPI="2"
 
 export WANT_AUTOCONF="2.5"
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic multilib
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
@@ -193,7 +193,7 @@ src_install() {
 	emake prefix="${D}"/usr \
 		mandir="${D}"/usr/share/man/man1 \
 		infodir="${D}"/usr/share/info \
-		libdir="${D}"/usr/lib \
+		libdir="${D}"/usr/$(get_libdir) \
 		datadir="${D}"/usr/share \
 		install gzip-el || die
 
