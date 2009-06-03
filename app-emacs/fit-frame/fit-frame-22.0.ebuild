@@ -4,9 +4,9 @@
 
 inherit elisp
 
-DESCRIPTION="Helps spreading the true faith!"
-HOMEPAGE="http://www.gnufans.net/~deego/emacspub/lisp-mine/faith/"
-SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
+DESCRIPTION="fit a frame to its buffer"
+HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki/fit-frame.el"
+SRC_URI="http://dev.gentoo.org/~fauli/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
