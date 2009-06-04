@@ -4,7 +4,7 @@
 
 inherit elisp
 
-DESCRIPTION="fit a frame to its buffer"
+DESCRIPTION="Open anything - QuickSilver-like candidate-selection framework"
 HOMEPAGE="http://www.emacswiki.org/emacs/Anything"
 SRC_URI="http://dev.gentoo.org/~fauli/distfiles/${P}.el.bz2"
 
