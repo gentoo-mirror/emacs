@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Jun 2009; Ulrich Mueller <ulm@gentoo.org>
+  files/50anything-config-gentoo.el:
+  Fix site-init file: the Lisp quote command works only with character "'"
+  (U+0027 apostrophe) but not with "‘" (U+2018 left single quotation mark).
+
 *anything-config-0.4.1 (03 Jun 2009)
 
   03 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
