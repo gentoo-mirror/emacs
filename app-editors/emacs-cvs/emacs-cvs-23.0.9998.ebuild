@@ -30,9 +30,9 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/
 	http://www.emacswiki.org/emacs-ja/DynamicBindingVsLexicalBinding"
 
-LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C"
+LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C unicode"
 SLOT="23-lexbind"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -121,7 +121,11 @@ src_configure() {
 	ALLOWED_FLAGS=""
 	strip-flags
 	#unset LDFLAGS
-	replace-flags -O[3-9] -O2
+	if use sh; then
+		replace-flags -O[1-9] -O0		#262359
+	else
+		replace-flags -O[3-9] -O2
+	fi
 
 	local myconf
 
@@ -148,7 +152,7 @@ src_configure() {
 			myconf="${myconf} $(use_with m17n-lib m17n-flt)"
 		else
 			myconf="${myconf} --without-libotf --without-m17n-flt"
-			use m17n-lib && einfo \
+			use m17n-lib && ewarn \
 				"USE flag \"m17n-lib\" has no effect because xft is not set."
 		fi
 
