@@ -50,6 +50,8 @@ src_install () {
 }
 
 pkg_postinst() {
+	elisp-site-regen
+	echo
 	elog "See the README file in /usr/share/doc/${PF}"
 	elog "for instructions how to use the Remembrance Agent."
 }
