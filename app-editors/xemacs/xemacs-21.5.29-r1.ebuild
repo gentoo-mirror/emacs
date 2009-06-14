@@ -95,7 +95,7 @@ src_configure() {
 			myconf="${myconf} --with-scrollbars=motif"
 			myconf="${myconf} --with-menubars=lucid"
 		fi
-		if use athena ; then
+		if use athena or use Xaw3d ; then
 			myconf="--with-scrollbars=athena"
 		fi
 
