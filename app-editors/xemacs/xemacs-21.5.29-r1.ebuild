@@ -24,7 +24,6 @@ IUSE="alsa debug eolconv esd gif gpm pop postgres ldap xface nas dnd X jpeg tiff
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
-	!virtual/xemacs
 	berkdb? ( sys-libs/db )
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )
 	>=sys-libs/zlib-1.1.4
@@ -56,8 +55,6 @@ DEPEND="${RDEPEND}
 
 PDEPEND="app-xemacs/xemacs-base
 	mule? ( app-xemacs/mule-base )"
-
-PROVIDE="virtual/xemacs"
 
 src_unpack() {
 	default_src_unpack
