@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=virtual/emacs-23"
-RDEPEND="${DEPEND}
-	>=sys-apps/openrc-0.3.0-r1"
+RDEPEND="${DEPEND}"
 
 SITEFILE="10${PN}-gentoo.el"
 
