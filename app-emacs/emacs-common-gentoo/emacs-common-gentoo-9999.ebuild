@@ -12,7 +12,7 @@ ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="X emacs23icons"
+IUSE="X emacs22icons"
 
 PDEPEND="virtual/emacs"
 
@@ -37,20 +37,20 @@ src_install() {
 		local i
 		domenu emacs.desktop emacsclient.desktop || die
 		newicon icons/sink.png emacs-sink.png || die
-		if use emacs23icons; then
-			newicon icons/emacs23_48.png emacs.png || die
-			for i in 16 24 32 48 128; do
+		if use emacs22icons; then
+			newicon icons/emacs22_48.png emacs.png || die
+			for i in 16 24 32 48; do
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps
-				newins icons/emacs23_${i}.png emacs.png || die
+				newins icons/emacs22_${i}.png emacs.png || die
 			done
-			insinto /usr/share/icons/hicolor/scalable/apps
-			newins icons/emacs23.svg emacs.svg || die
 		else
 			newicon icons/emacs_48.png emacs.png || die
-			for i in 16 24 32 48; do
+			for i in 16 24 32 48 128; do
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps
 				newins icons/emacs_${i}.png emacs.png || die
 			done
+			insinto /usr/share/icons/hicolor/scalable/apps
+			doins icons/emacs.svg || die
 		fi
 		gnome2_icon_savelist
 	fi

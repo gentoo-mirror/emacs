@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Aug 2009; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-9999.ebuild, metadata.xml:
+  Emacs 23 style icons are default now.
+
   16 Apr 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
   emacs-common-gentoo-9999.ebuild:
   Rename USE flag to "emacs23icons".
