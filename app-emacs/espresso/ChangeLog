@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/espresso
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*espresso-9 (11 Aug 2009)
+
+  11 Aug 2009; Ulrich Mueller <ulm@gentoo.org> +files/50espresso-gentoo.el,
+  +espresso-9.ebuild, +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
