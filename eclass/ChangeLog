@@ -1,3 +1,9 @@
+2009-08-24  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_pkg_setup): We compare major versions only,
+	so there's no need for versionator.eclass.
+	(inherit): Don't inherit versionator.
+
 2009-04-08  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-file-install): Suppress error
