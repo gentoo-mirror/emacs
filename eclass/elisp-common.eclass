@@ -196,7 +196,7 @@ elisp-emacs-version() {
 # Generate a file with autoload definitions for the lisp functions.
 
 elisp-make-autoload-file() {
-	local f="${1:-${PN}-autoloads.el}"
+	local f="${1:-${PN}-autoloads.el}" null=""
 	shift
 	ebegin "Generating autoload file for GNU Emacs"
 
@@ -209,7 +209,7 @@ elisp-make-autoload-file() {
 
 	;;; Code:
 	FF
-	;; Local ``Variables:
+	;; Local ${null}Variables:
 	;; version-control: never
 	;; no-byte-compile: t
 	;; no-update-autoloads: t
@@ -282,7 +282,7 @@ elisp-site-file-install() {
 # location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
-	local i sf line obsolete
+	local i sf line obsolete null=""
 	local -a sflist
 
 	if [ ! -d "${ROOT}${SITELISP}" ]; then
@@ -336,7 +336,7 @@ elisp-site-regen() {
 
 	(provide 'site-gentoo)
 
-	;; Local ``Variables:
+	;; Local ${null}Variables:
 	;; no-byte-compile: t
 	;; buffer-read-only: t
 	;; End:

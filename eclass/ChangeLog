@@ -2,7 +2,7 @@
 
 	* elisp-common.eclass (elisp-site-regen): Mark site-gentoo.el as
 	buffer-read-only, in order to prevent unintentional edits.
-	(elisp-make-autoload-file, elisp-site-regen): Add dummy backquotes
+	(elisp-make-autoload-file, elisp-site-regen): Add a null string
 	to inhibit local variables detection in the eclass file itself.
 
 2009-08-24  Ulrich Mueller  <ulm@gentoo.org>
