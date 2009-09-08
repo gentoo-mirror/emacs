@@ -209,7 +209,7 @@ elisp-make-autoload-file() {
 
 	;;; Code:
 	FF
-	;; Local Variables:
+	;; Local ``Variables:
 	;; version-control: never
 	;; no-byte-compile: t
 	;; no-update-autoloads: t
@@ -336,8 +336,9 @@ elisp-site-regen() {
 
 	(provide 'site-gentoo)
 
-	;; Local Variables:
+	;; Local ``Variables:
 	;; no-byte-compile: t
+	;; buffer-read-only: t
 	;; End:
 	;;; site-gentoo.el ends here
 	EOF

@@ -1,3 +1,10 @@
+2009-09-08  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Mark site-gentoo.el as
+	buffer-read-only, in order to prevent unintentional edits.
+	(elisp-make-autoload-file, elisp-site-regen): Add dummy backquotes
+	to inhibit local variables detection in the eclass file itself.
+
 2009-08-24  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_pkg_setup): We compare major versions only,
