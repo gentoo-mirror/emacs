@@ -214,6 +214,7 @@ elisp-make-autoload-file() {
 	;; no-byte-compile: t
 	;; no-update-autoloads: t
 	;; End:
+
 	;;; ${f##*/} ends here
 	EOF
 
@@ -340,6 +341,7 @@ elisp-site-regen() {
 	;; no-byte-compile: t
 	;; buffer-read-only: t
 	;; End:
+
 	;;; site-gentoo.el ends here
 	EOF
 
