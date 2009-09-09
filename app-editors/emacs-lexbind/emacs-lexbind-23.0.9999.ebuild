@@ -6,7 +6,7 @@ EAPI=2
 
 inherit autotools elisp-common eutils flag-o-matic
 
-#if [ "${PV##*.}" = "9999" ]; then
+if [ "${PV##*.}" = "9999" ]; then
 	ECVS_AUTH="pserver"
 	ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
 	ECVS_MODULE="emacs"
@@ -14,24 +14,23 @@ inherit autotools elisp-common eutils flag-o-matic
 	ECVS_LOCALNAME="emacs-lexbind"
 	inherit cvs
 	SRC_URI=""
-	FULL_VERSION=""
 	S="${WORKDIR}/${ECVS_LOCALNAME}"
-#else
-#	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
-#		ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz"
-#	# FULL_VERSION keeps the full version number, which is needed in
-#	# order to determine some path information correctly for copy/move
-#	# operations later on
-#	FULL_VERSION="${PV%%_*}"
-#	S="${WORKDIR}/emacs-${FULL_VERSION}"
-#fi
+else
+	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
+		ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz"
+	# FULL_VERSION keeps the full version number, which is needed in
+	# order to determine some path information correctly for copy/move
+	# operations later on
+	FULL_VERSION="${PV%%_*}"
+	S="${WORKDIR}/emacs-${FULL_VERSION}"
+fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/
 	http://www.emacswiki.org/emacs-ja/DynamicBindingVsLexicalBinding"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C unicode"
-SLOT="23-lexbind"
+SLOT="23"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
 IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
@@ -77,14 +76,14 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
-EMACS_SUFFIX="emacs-${SLOT}"
+EMACS_SUFFIX="emacs-${SLOT}-${ECVS_BRANCH}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	# set a fake version number to avoid collisions between SLOTs
 	sed -i -e "/defconst emacs-version/s/23\.0\.[0-9]*/${PV}/" lisp/version.el
 
-	if [ -z "${FULL_VERSION}" ]; then
+	if [ "${PV##*.}" = "9999" ]; then
 		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
 			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
@@ -196,11 +195,11 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	#if [ "${PV##*.}" = "9999" ]; then
+	if [ "${PV##*.}" = "9999" ]; then
 		emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
-	#fi
+	fi
 	emake CC="$(tc-getCC)" || die "emake failed"
 }
 
@@ -247,11 +246,15 @@ src_install () {
 	X  ${c}(setq find-function-C-source-directory
 	X  ${c}      "/usr/share/emacs/${FULL_VERSION}/src")
 	X  (let ((path (getenv "INFOPATH"))
-	X	(dir "/usr/share/info/${EMACS_SUFFIX}"))
+	X	(dir "/usr/share/info/${EMACS_SUFFIX}")
+	X	(re "\\\\\`/usr/share/info\\\\>"))
 	X    (and path
-	X	 ;; move Emacs Info dir to beginning of list
-	X	 (setq Info-directory-list
-	X	       (cons dir (delete dir (split-string path ":" t)))))))
+	X	 ;; move Emacs Info dir before anything else in /usr/share/info
+	X	 (let* ((p (cons nil (split-string path ":" t))) (q p))
+	X	   (while (and (cdr q) (not (string-match re (cadr q))))
+	X	     (setq q (cdr q)))
+	X	   (setcdr q (cons dir (delete dir (cdr q))))
+	X	   (setq Info-directory-list (prune-directory-list (cdr p)))))))
 	EOF
 	elisp-site-file-install "${SITEFILE}" || die
 
@@ -288,8 +291,12 @@ pkg_postinst() {
 	echo
 	elog "You can set the version to be started by /usr/bin/emacs through"
 	elog "the Emacs eselect module, which also redirects man and info pages."
-	elog "You can therefore test emacs-cvs along with the stable release."
+	elog "Therefore, several Emacs versions can be installed at the same time."
 	elog "\"man emacs.eselect\" for details."
+	echo
+	elog "If you upgrade from a previous major version of Emacs, then it is"
+	elog "strongly recommended that you use app-admin/emacs-updater to rebuild"
+	elog "all byte-compiled elisp files of the installed Emacs packages."
 }
 
 pkg_postrm() {
