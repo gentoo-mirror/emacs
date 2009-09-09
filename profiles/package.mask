@@ -6,6 +6,8 @@
 ~app-admin/eselect-emacs-9999
 ~app-admin/eselect-ctags-9999
 ~app-admin/emacs-updater-9999
+app-editors/emacs-cedet-branch
+app-editors/emacs-lexbind
 ~app-emacs/cedet-9999
 ~app-emacs/emacs-common-gentoo-9999
 ~app-emacs/emacs-daemon-9999
