@@ -26,7 +26,8 @@ else
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
-HOMEPAGE="http://www.gnu.org/software/emacs/"
+HOMEPAGE="http://www.gnu.org/software/emacs/
+	http://cedet.sourceforge.net/"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C unicode"
 SLOT="23"
