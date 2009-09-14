@@ -1,3 +1,9 @@
+2009-09-14  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_compile): Generate Info files from
+	Texinfo sources listed in ELISP_TEXINFO.
+	(elisp_src_install): Install them.
+
 2009-09-08  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Mark site-gentoo.el as
