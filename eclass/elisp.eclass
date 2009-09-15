@@ -110,9 +110,9 @@ elisp_src_configure() { :; }
 
 elisp_src_compile() {
 	elisp-compile *.el || die
-	if [ -n "${ELISP_TEXINFO}" ]; do
+	if [ -n "${ELISP_TEXINFO}" ]; then
 		makeinfo ${ELISP_TEXINFO} || die
-	done
+	fi
 }
 
 elisp_src_install() {
