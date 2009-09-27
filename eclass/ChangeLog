@@ -3,6 +3,7 @@
 	* elisp-common.eclass (elisp-make-autoload-file): Don't substitute
 	the "new page" character with sed, since the string could occur in
 	the package name. Use a shell variable instead.
+	(elisp-site-regen): Start new page before local variables block.
 
 2009-09-15  Ulrich Mueller  <ulm@gentoo.org>
 
