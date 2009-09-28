@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Sep 2009; Ulrich Mueller <ulm@gentoo.org> emacs-23.ebuild:
+  Change to slot dependencies and EAPI 2. Remove emacs-cedet-branch from
+  alternatives since it was merged to the trunk.
+
 *emacs-23 (09 Sep 2009)
 
   09 Sep 2009; Ulrich Mueller <ulm@gentoo.org> +emacs-23.ebuild,
