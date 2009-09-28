@@ -1,0 +1,10 @@
+# ChangeLog for app-doc/elisp-tutorial
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*elisp-tutorial-2.04 (28 Sep 2009)
+
+  28 Sep 2009; Ulrich Mueller <ulm@gentoo.org> +elisp-tutorial-2.04.ebuild,
+  +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
