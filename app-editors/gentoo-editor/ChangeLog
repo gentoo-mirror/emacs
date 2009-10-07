@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  gentoo-editor-20091005.ebuild, +files/gentoo-editor-20091005.sh,
+  -files/gentoo-editor:
+  Change LICENSE to MIT, on behalf of Diego. Move script to versioned name.
+
 *gentoo-editor-20091005 (05 Oct 2009)
 
   05 Oct 2009; Ulrich Mueller <ulm@gentoo.org>

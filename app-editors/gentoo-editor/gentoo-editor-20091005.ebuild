@@ -6,12 +6,12 @@ DESCRIPTION="Auxiliary editor script"
 HOMEPAGE="http://www.gentoo.org/"
 SRC_URI=""
 
-LICENSE="public-domain"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 src_install() {
 	exeinto /usr/libexec
-	doexe "${FILESDIR}/gentoo-editor" || die
+	newexe "${FILESDIR}/${P}.sh" gentoo-editor || die
 }
