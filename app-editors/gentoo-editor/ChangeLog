@@ -2,6 +2,13 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gentoo-editor-20091015 (15 Oct 2009)
+
+  15 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  -gentoo-editor-20091005.ebuild, -files/gentoo-editor-20091005.sh,
+  +gentoo-editor-20091015.ebuild, +files/gentoo-editor-20091015.sh:
+  Update: Required exactly one argument and disallow options.
+
   07 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
   gentoo-editor-20091005.ebuild, +files/gentoo-editor-20091005.sh,
   -files/gentoo-editor:
