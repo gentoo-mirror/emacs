@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~spa
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=app-admin/eselect-1.0.10
+RDEPEND=">=app-admin/eselect-1.2.3
 	!<=app-admin/eselect-emacs-1.3"
 
 S="${WORKDIR}/${MY_PN}"
