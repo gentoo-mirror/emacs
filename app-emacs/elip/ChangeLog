@@ -1,6 +1,12 @@
 # ChangeLog for app-emacs/elip
-# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*elip-0.804 (10 Nov 2009)
+
+  10 Nov 2009; Ulrich Mueller <ulm@gentoo.org> -elip-0.801.ebuild,
+  +elip-0.804.ebuild:
+  Version bump. Update edb dependency. Remove old.
 
 *elip-0.803 (29 May 2008)
 
