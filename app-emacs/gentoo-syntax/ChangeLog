@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/gentoo-syntax
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*gentoo-syntax-9999 (15 Nov 2009)
+
+  15 Nov 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/50gentoo-syntax-gentoo.el, +gentoo-syntax-9999.ebuild,
+  +metadata.xml:
+  Move live ebuild from Portage tree to emacs overlay.
+
