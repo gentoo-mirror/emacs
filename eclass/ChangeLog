@@ -1,3 +1,9 @@
+2009-11-17  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Display a warning
+	message if no site-init files were found. Remove the warning about
+	obsolete files; the install location was changed two years ago.
+
 2009-09-27  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-make-autoload-file): Don't substitute

@@ -283,7 +283,7 @@ elisp-site-file-install() {
 # location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
-	local i sf line obsolete null="" page=$'\f'
+	local i sf line null="" page=$'\f'
 	local -a sflist
 
 	if [ ! -d "${ROOT}${SITELISP}" ]; then
@@ -316,8 +316,6 @@ elisp-site-regen() {
 			sflist[i]=${sflist[i-1]}
 		done
 		sflist[i]=${sf}
-		# set a flag if there are obsolete files
-		[ "${sf%/*}" = "${ROOT}${SITELISP}" ] && obsolete=t
 	done
 
 	eval "${old_shopts}"
@@ -355,17 +353,11 @@ elisp-site-regen() {
 	else
 		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
 		echo
-		einfo "... ${#sflist[@]} site initialisation file(s) included."
-	fi
-
-	if [ "${obsolete}" ]; then
-		echo
-		while read line; do ewarn "${line}"; done <<-EOF
-		Site-initialisation files of Emacs packages are now installed in
-		/usr/share/emacs/site-lisp/site-gentoo.d/. We strongly recommend
-		that you use app-admin/emacs-updater to rebuild the installed
-		Emacs packages.
-		EOF
+		case ${#sflist[@]} in
+			0) ewarn "... Huh? No site initialisation files found." ;;
+			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
+			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
+		esac
 	fi
 
 	# cleanup
