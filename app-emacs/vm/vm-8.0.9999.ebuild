@@ -1,8 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EBZR_REPO_URI="http://launchpad.net/viewmail/"
+EBZR_REPO_URI="lp:~reddyuday/viewmail/8.1"
 
 inherit elisp eutils bzr autotools
 
@@ -19,7 +19,7 @@ DEPEND="bbdb? ( app-emacs/bbdb )"
 RDEPEND="${DEPEND}
 	ssl? ( net-misc/stunnel )"
 
-SITEFILE=50${PN}-gentoo.el
+SITEFILE="50${PN}-gentoo.el"
 
 src_unpack() {
 	bzr_src_unpack
@@ -34,16 +34,15 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
-	use bbdb && myconf="--with-other-dirs=${SITELISP}/bbdb"
-	econf --with-emacs="emacs" \
-		--with-pixmapdir="/usr/share/pixmaps/vm" \
-		${myconf} || die "econf failed"
+	econf \
+		--with-emacs="emacs" \
+		--with-pixmapdir="${SITEETC}/${PN}" \
+		$(use bbdb && echo "--with-other-dirs=${SITELISP}/bbdb")
 	emake || die "emake failed"
 }
 
 src_install() {
 	emake -j1 DESTDIR="${D}" install || die "emake install failed"
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	dodoc NEWS README TODO example.vm || die "dodoc failed"
 }
