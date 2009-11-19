@@ -11,4 +11,4 @@ app-editors/emacs-lexbind
 ~app-emacs/emacs-common-gentoo-9999
 ~app-emacs/emacs-daemon-9999
 ~app-emacs/gentoo-syntax-9999
-~app-emacs/vm-9999
+~app-emacs/vm-8.0.9999
