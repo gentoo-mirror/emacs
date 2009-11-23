@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EBZR_REPO_URI="lp:~reddyuday/viewmail/8.1"
+EBZR_REPO_URI="lp:vm"
 
 inherit elisp eutils bzr autotools
 
