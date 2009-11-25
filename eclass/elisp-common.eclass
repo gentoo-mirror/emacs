@@ -283,11 +283,12 @@ elisp-site-file-install() {
 # location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
-	local i sf line null="" page=$'\f'
+	local sitelisp=${ROOT}${SITELISP}
+	local sf i line null="" page=$'\f'
 	local -a sflist
 
-	if [ ! -d "${ROOT}${SITELISP}" ]; then
-		eerror "elisp-site-regen: Directory ${SITELISP} does not exist"
+	if [ ! -d "${sitelisp}" ]; then
+		eerror "elisp-site-regen: Directory ${sitelisp} does not exist"
 		return 1
 	fi
 
@@ -300,14 +301,14 @@ elisp-site-regen() {
 
 	# Until January 2009, elisp-common.eclass sometimes created an
 	# auxiliary file for backwards compatibility. Remove any such file.
-	rm -f "${ROOT}${SITELISP}"/00site-gentoo.el
+	rm -f "${sitelisp}"/00site-gentoo.el
 
 	# set nullglob option, there may be a directory without matching files
 	local old_shopts=$(shopt -p nullglob)
 	shopt -s nullglob
 
-	for sf in "${ROOT}${SITELISP}"/[0-9][0-9]*-gentoo.el \
-		"${ROOT}${SITELISP}"/site-gentoo.d/[0-9][0-9]*.el
+	for sf in "${sitelisp}"/[0-9][0-9]*-gentoo.el \
+		"${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el
 	do
 		[ -r "${sf}" ] || continue
 		# sort files by their basename. straight insertion sort.
@@ -344,14 +345,13 @@ elisp-site-regen() {
 	;;; site-gentoo.el ends here
 	EOF
 
-	if cmp -s "${ROOT}${SITELISP}"/site-gentoo.el "${T}"/site-gentoo.el
-	then
+	if cmp -s "${sitelisp}"/site-gentoo.el "${T}"/site-gentoo.el; then
 		# This prevents outputting unnecessary text when there
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		echo " no changes."
 	else
-		mv "${T}"/site-gentoo.el "${ROOT}${SITELISP}"/site-gentoo.el
+		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		echo
 		case ${#sflist[@]} in
 			0) ewarn "... Huh? No site initialisation files found." ;;
