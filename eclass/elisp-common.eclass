@@ -143,7 +143,7 @@ SITEETC=/usr/share/emacs/etc
 # @ECLASS-VARIABLE: EMACS
 # @DESCRIPTION:
 # Path of Emacs executable.
-EMACS=/usr/bin/emacs
+EMACS=${EPREFIX}/usr/bin/emacs
 
 # @ECLASS-VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
@@ -261,8 +261,8 @@ elisp-site-file-install() {
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = ${sf} ]] || cp "$1" "${sf}"
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
-		-e "s:@SITELISP@:${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${SITEETC}/${my_pn}:g;\$q" "${sf}"
+		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
+		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g;\$q" "${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
 		doins "${sf}"
@@ -283,7 +283,7 @@ elisp-site-file-install() {
 # location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
-	local sitelisp=${ROOT}${SITELISP}
+	local sitelisp=${ROOT}${EPREFIX}${SITELISP}
 	local sf i line null="" page=$'\f'
 	local -a sflist
 

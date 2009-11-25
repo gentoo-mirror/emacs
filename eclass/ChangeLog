@@ -1,3 +1,10 @@
+2009-11-25  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Prepare for Prefix support.
+	(EMACS): Prefix with EPREFIX.
+	(elisp-site-file-install): Add EPREFIX in sed expression.
+	(elisp-site-regen): Prefix SITELISP with EPREFIX.
+
 2009-11-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Display a warning
