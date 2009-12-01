@@ -77,7 +77,11 @@ make-site-start() {
 }
 
 pkg_config() {
+	# make sure that site-gentoo.el exists since site-start.el requires it
+	elisp-site-regen
+
 	if [ ! -e "${ROOT}${SITELISP}/site-start.el" ]; then
+		echo
 		einfo "Press ENTER to create a default site-start.el file"
 		einfo "for GNU Emacs, or Control-C to abort now ..."
 		read
