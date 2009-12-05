@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/smex
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*smex-20090716 (05 Dec 2009)
+
+  05 Dec 2009; Ulrich Mueller <ulm@gentoo.org> +files/50smex-gentoo.el,
+  +smex-20090716.ebuild, +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
