@@ -7,11 +7,12 @@ EAPI=2
 inherit autotools elisp-common eutils flag-o-matic
 
 if [ "${PV##*.}" = "9999" ]; then
+	EMACS_BRANCH="lexbind"
 	ECVS_AUTH="pserver"
 	ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
 	ECVS_MODULE="emacs"
-	ECVS_BRANCH="lexbind"
-	ECVS_LOCALNAME="emacs-lexbind"
+	ECVS_BRANCH="${EMACS_BRANCH}"
+	ECVS_LOCALNAME="emacs-${EMACS_BRANCH}"
 	inherit cvs
 	SRC_URI=""
 	S="${WORKDIR}/${ECVS_LOCALNAME}"
@@ -29,10 +30,10 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/
 	http://www.emacswiki.org/emacs-ja/DynamicBindingVsLexicalBinding"
 
-LICENSE="GPL-3 FDL-1.3 BSD as-is X11 W3C unicode"
+LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
-IUSE="alsa dbus gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -47,6 +48,7 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libXmu
 		x11-libs/libXt
 		x11-misc/xbitmaps
+		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib )
 		jpeg? ( media-libs/jpeg )
 		png? ( media-libs/libpng )
@@ -76,7 +78,7 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
-EMACS_SUFFIX="emacs-${SLOT}-${ECVS_BRANCH}"
+EMACS_SUFFIX="emacs-${SLOT}-${EMACS_BRANCH}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
@@ -88,11 +90,13 @@ src_prepare() {
 			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
-		einfo "Emacs CVS branch: ${ECVS_BRANCH}"
+		einfo "Emacs branch: ${EMACS_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 		echo
+	#else
+	#	EPATCH_SUFFIX=patch epatch
 	fi
 
 	sed -i -e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
@@ -140,11 +144,12 @@ src_configure() {
 
 	if use X; then
 		myconf="${myconf} --with-x"
+		myconf="${myconf} $(use_with gconf)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_with gif) $(use_with jpeg)"
 		myconf="${myconf} $(use_with png) $(use_with svg rsvg)"
 		myconf="${myconf} $(use_with tiff) $(use_with xpm)"
-		myconf="${myconf} $(use_with xft freetype) $(use_with xft)"
+		myconf="${myconf} $(use_with xft)"
 
 		if use xft; then
 			myconf="${myconf} $(use_with m17n-lib libotf)"
