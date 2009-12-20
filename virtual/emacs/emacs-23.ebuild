@@ -16,4 +16,5 @@ IUSE=""
 DEPEND=""
 RDEPEND="|| ( app-editors/emacs:23
 		app-editors/emacs-cvs:23
+		app-editors/emacs-vcs:23
 		app-editors/emacs-lexbind:23 )"
