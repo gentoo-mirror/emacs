@@ -2,6 +2,12 @@
 # Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-lexbind-23.1.9999-r1 (27 Dec 2009)
+
+  27 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  -emacs-lexbind-23.1.9999.ebuild, +emacs-lexbind-23.1.9999-r1.ebuild:
+  Change from CVS to Bazaar.
+
 *emacs-lexbind-23.1.9999 (19 Dec 2009)
 
   19 Dec 2009; Ulrich Mueller <ulm@gentoo.org>

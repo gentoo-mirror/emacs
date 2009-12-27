@@ -7,15 +7,11 @@ EAPI=2
 inherit autotools elisp-common eutils flag-o-matic
 
 if [ "${PV##*.}" = "9999" ]; then
+	inherit bzr
 	EMACS_BRANCH="lexbind"
-	ECVS_AUTH="pserver"
-	ECVS_SERVER="cvs.savannah.gnu.org:/sources/emacs"
-	ECVS_MODULE="emacs"
-	ECVS_BRANCH="${EMACS_BRANCH}"
-	ECVS_LOCALNAME="emacs-${EMACS_BRANCH}"
-	inherit cvs
+	EBZR_REPO_URI="http://bzr.savannah.gnu.org/r/emacs/${EMACS_BRANCH}/"
+	EBZR_CACHE_DIR="emacs-${EMACS_BRANCH}"
 	SRC_URI=""
-	S="${WORKDIR}/${ECVS_LOCALNAME}"
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
 		ftp://alpha.gnu.org/gnu/emacs/pretest/emacs-${PV}.tar.gz"
@@ -32,7 +28,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
