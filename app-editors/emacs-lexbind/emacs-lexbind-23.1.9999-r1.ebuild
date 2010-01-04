@@ -74,7 +74,7 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
-EMACS_SUFFIX="emacs-${SLOT}-${EMACS_BRANCH}"
+EMACS_SUFFIX="emacs-${SLOT}-${EMACS_BRANCH#emacs-}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
