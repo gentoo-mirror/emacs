@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -10,7 +10,7 @@ if [ "${PV##*.}" = "9999" ]; then
 	inherit bzr
 	EMACS_BRANCH="lexbind"
 	EBZR_REPO_URI="http://bzr.savannah.gnu.org/r/emacs/${EMACS_BRANCH}/"
-	EBZR_CACHE_DIR="emacs-${EMACS_BRANCH}"
+	EBZR_CACHE_DIR="emacs-${EMACS_BRANCH#emacs-}"
 	SRC_URI=""
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
@@ -24,7 +24,7 @@ fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/
-	http://www.emacswiki.org/emacs-ja/DynamicBindingVsLexicalBinding"
+	http://www.emacswiki.org/emacs/DynamicBindingVsLexicalBinding"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
