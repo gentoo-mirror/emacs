@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+  Codepad is a pastebin where you can paste code and share it on a
+  chat or via email. Codepad also provides an online
+  compiler/interpreter and can run your programs online.
+</longdescription>
+</pkgmetadata>
