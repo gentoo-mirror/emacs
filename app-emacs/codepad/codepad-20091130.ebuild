@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+NEED_EMACS=23
+
 inherit elisp
 
 DESCRIPTION="Interface to the codepad.org paste service"
 HOMEPAGE="http://codepad.org/"
 SRC_URI="http://www.v-li.de/temp/distfiles/${P}.el.bz2"
 
-LICENSE="GPL2"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
