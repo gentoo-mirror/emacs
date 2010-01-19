@@ -276,7 +276,6 @@ emacs-infodir-rebuild() {
 			&& install-info --info-dir="${ROOT}"${infodir} "${f}" &>/dev/null
 	done
 	rmdir "${ROOT}"${infodir} 2>/dev/null	# remove dir if it is empty
-	echo
 }
 
 pkg_postinst() {
@@ -288,6 +287,15 @@ pkg_postinst() {
 	elisp-site-regen
 	emacs-infodir-rebuild
 	eselect emacs update ifunset
+
+	if use X; then
+		echo
+		elog "You need to install some fonts for Emacs."
+		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
+		elog "machine would satisfy basic Emacs requirements under X11."
+		elog "See also http://www.gentoo.org/proj/en/lisp/emacs/xft.xml"
+		elog "for how to enable anti-aliased fonts."
+	fi
 
 	echo
 	elog "You can set the version to be started by /usr/bin/emacs through"
