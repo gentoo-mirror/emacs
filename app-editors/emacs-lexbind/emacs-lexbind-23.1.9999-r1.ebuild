@@ -46,7 +46,7 @@ RDEPEND="sys-libs/ncurses
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib )
-		jpeg? ( media-libs/jpeg )
+		jpeg? ( media-libs/jpeg:0 )
 		png? ( media-libs/libpng )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
