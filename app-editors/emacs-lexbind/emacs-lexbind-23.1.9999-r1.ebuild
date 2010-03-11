@@ -28,7 +28,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -79,7 +79,7 @@ SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	# set a fake version number to avoid collisions between SLOTs
-	sed -i -e "/defconst emacs-version/s/23\.0\.[0-9]*/${PV}/" lisp/version.el
+	sed -i -e "/defconst emacs-version/s/23\.1\.[0-9]*/${PV}/" lisp/version.el
 
 	if [ "${PV##*.}" = "9999" ]; then
 		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
