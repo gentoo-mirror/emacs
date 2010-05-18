@@ -2,6 +2,13 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*auto-complete-1.2 (18 May 2010)
+
+  18 May 2010; Ulrich Mueller <ulm@gentoo.org> auto-complete-1.0.ebuild,
+  +files/50auto-complete-gentoo-1.0.el, files/50auto-complete-gentoo.el,
+  +auto-complete-1.2.ebuild:
+  Version bump.
+
 *auto-complete-1.0 (02 Jan 2010)
 
   02 Jan 2010; Ulrich Mueller <ulm@gentoo.org>
