@@ -1,3 +1,9 @@
+2010-07-21  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): The nullglob shell
+	option is not needed here, because inside the loop we test for
+	existence of all files anyway. See also bug 328863.
+
 2010-01-30  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_prepare): Look for patch in WORKDIR too.
