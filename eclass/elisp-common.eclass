@@ -343,6 +343,7 @@ elisp-site-regen() {
 		# This prevents outputting unnecessary text when there
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
+		rm -f "${T}"/site-gentoo.el
 		echo " no changes."
 	else
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
@@ -353,9 +354,6 @@ elisp-site-regen() {
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
 		esac
 	fi
-
-	# cleanup
-	rm -f "${T}"/site-gentoo.el
 
 	return 0
 }

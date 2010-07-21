@@ -3,6 +3,7 @@
 	* elisp-common.eclass (elisp-site-regen): The nullglob shell
 	option is not needed here, because inside the loop we test for
 	existence of all files anyway. See also bug 328863.
+	The temporary file needs only be removed in the no changes case.
 
 2010-01-30  Ulrich Mueller  <ulm@gentoo.org>
 
