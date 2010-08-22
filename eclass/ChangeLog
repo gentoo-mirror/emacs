@@ -1,5 +1,8 @@
 2010-08-22  Ulrich Mueller  <ulm@gentoo.org>
 
+	* elisp-common.eclass (elisp-comp): Remove dead function; it has
+	been deprecated two years ago in bug 235442.
+
 	* elisp.eclass: Update documentation.
 
 2010-07-21  Ulrich Mueller  <ulm@gentoo.org>

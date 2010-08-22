@@ -175,10 +175,6 @@ elisp-compile() {
 	eend $? "elisp-compile: batch-byte-compile failed"
 }
 
-elisp-comp() {
-	die "Function elisp-comp is not supported any more, see bug 235442"
-}
-
 # @FUNCTION: elisp-emacs-version
 # @DESCRIPTION:
 # Output version of currently active Emacs.
