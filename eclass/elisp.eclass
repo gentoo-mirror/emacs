@@ -73,6 +73,11 @@ DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
 RDEPEND="${DEPEND}"
 IUSE=""
 
+# @FUNCTION: elisp_pkg_setup
+# @DESCRIPTION:
+# Test if the eselected Emacs version is sufficient to fulfil the major
+# version requirement of the NEED_EMACS variable.
+
 elisp_pkg_setup() {
 	local need_emacs=${NEED_EMACS:-21}
 	local have_emacs=$(elisp-emacs-version)
@@ -83,6 +88,11 @@ elisp_pkg_setup() {
 	fi
 	einfo "Emacs version: ${have_emacs}"
 }
+
+# @FUNCTION: elisp_src_unpack
+# @DESCRIPTION:
+# Unpack the sources; also handle the case of a single *.el file in
+# WORKDIR. For EAPIs without src_prepare, call elisp_src_prepare.
 
 elisp_src_unpack() {
 	[ -n "${A}" ] && unpack ${A}
@@ -97,6 +107,11 @@ elisp_src_unpack() {
 			elisp_src_prepare ;;
 	esac
 }
+
+# @FUNCTION: elisp_src_prepare
+# @DESCRIPTION:
+# Apply any patches listed in ELISP_PATCHES. Patch files are searched
+# for in the current working dir, WORKDIR, and FILESDIR.
 
 elisp_src_prepare() {
 	local patch
@@ -113,7 +128,17 @@ elisp_src_prepare() {
 	done
 }
 
+# @FUNCTION: elisp_src_configure
+# @DESCRIPTION:
+# Do nothing.
+
 elisp_src_configure() { :; }
+
+# @FUNCTION: elisp_src_compile
+# @DESCRIPTION:
+# Call elisp-compile to byte-compile all Emacs Lisp (*.el) files.
+# If ELISP_TEXINFO lists any Texinfo sources, call makeinfo to generate
+# GNU Info files from then.
 
 elisp_src_compile() {
 	elisp-compile *.el || die
@@ -121,6 +146,13 @@ elisp_src_compile() {
 		makeinfo ${ELISP_TEXINFO} || die
 	fi
 }
+
+# @FUNCTION: elisp_src_install
+# @DESCRIPTION:
+# Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
+# If the SITEFILE variable specifies a site-init file, install it with
+# elisp-site-file-install. Also install any GNU Info files listed in
+# ELISP_TEXINFO and documentation listed in the DOCS variable.
 
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc || die
@@ -136,9 +168,17 @@ elisp_src_install() {
 	fi
 }
 
+# @FUNCTION: elisp_pkg_postinst
+# @DESCRIPTION:
+# Call elisp-site-regen, in order to regenerate the site-gentoo.el file.
+
 elisp_pkg_postinst() {
 	elisp-site-regen
 }
+
+# @FUNCTION: elisp_pkg_postrm
+# @DESCRIPTION:
+# Call elisp-site-regen, in order to regenerate the site-gentoo.el file.
 
 elisp_pkg_postrm() {
 	elisp-site-regen
