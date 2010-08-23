@@ -1,3 +1,7 @@
+2010-08-23  Christian Faulhammer  <fauli@gentoo.org>
+
+	* elisp.eclass: Update documentation
+
 2010-08-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-comp): Remove dead function; it has

@@ -92,7 +92,8 @@ elisp_pkg_setup() {
 # @FUNCTION: elisp_src_unpack
 # @DESCRIPTION:
 # Unpack the sources; also handle the case of a single *.el file in
-# WORKDIR. For EAPIs without src_prepare, call elisp_src_prepare.
+# WORKDIR for packages distributed that way. For EAPIs without
+# src_prepare, call elisp_src_prepare.
 
 elisp_src_unpack() {
 	[ -n "${A}" ] && unpack ${A}
@@ -130,7 +131,8 @@ elisp_src_prepare() {
 
 # @FUNCTION: elisp_src_configure
 # @DESCRIPTION:
-# Do nothing.
+# Do nothing, because Emacs packages seldomly bring a full build
+# system.
 
 elisp_src_configure() { :; }
 
@@ -170,7 +172,8 @@ elisp_src_install() {
 
 # @FUNCTION: elisp_pkg_postinst
 # @DESCRIPTION:
-# Call elisp-site-regen, in order to regenerate the site-gentoo.el file.
+# Call elisp-site-regen, in order to regenerate the site-gentoo.el
+# file, which loads all packages installed through Portage.
 
 elisp_pkg_postinst() {
 	elisp-site-regen
@@ -178,7 +181,8 @@ elisp_pkg_postinst() {
 
 # @FUNCTION: elisp_pkg_postrm
 # @DESCRIPTION:
-# Call elisp-site-regen, in order to regenerate the site-gentoo.el file.
+# Call elisp-site-regen, in order to regenerate the site-gentoo.el
+# file, which loads all packages installed through Portage
 
 elisp_pkg_postrm() {
 	elisp-site-regen
