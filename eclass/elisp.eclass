@@ -131,8 +131,7 @@ elisp_src_prepare() {
 
 # @FUNCTION: elisp_src_configure
 # @DESCRIPTION:
-# Do nothing, because Emacs packages seldomly bring a full build
-# system.
+# Do nothing, because Emacs packages seldomly bring a full build system.
 
 elisp_src_configure() { :; }
 
@@ -172,8 +171,8 @@ elisp_src_install() {
 
 # @FUNCTION: elisp_pkg_postinst
 # @DESCRIPTION:
-# Call elisp-site-regen, in order to regenerate the site-gentoo.el
-# file, which loads all packages installed through Portage.
+# Call elisp-site-regen, in order to collect the site initialisation for
+# all installed Emacs Lisp packages in the site-gentoo.el file.
 
 elisp_pkg_postinst() {
 	elisp-site-regen
@@ -181,8 +180,8 @@ elisp_pkg_postinst() {
 
 # @FUNCTION: elisp_pkg_postrm
 # @DESCRIPTION:
-# Call elisp-site-regen, in order to regenerate the site-gentoo.el
-# file, which loads all packages installed through Portage
+# Call elisp-site-regen, in order to collect the site initialisation for
+# all installed Emacs Lisp packages in the site-gentoo.el file.
 
 elisp_pkg_postrm() {
 	elisp-site-regen
