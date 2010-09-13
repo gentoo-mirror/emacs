@@ -15,7 +15,7 @@
 # @DESCRIPTION:
 #
 # This eclass is designed to install elisp files of Emacs related
-# packages into the site-lisp directory. The majority of elisp packages
+# packages into the site-lisp directory.  The majority of elisp packages
 # will only need to define the standard ebuild variables (like SRC_URI)
 # and optionally SITEFILE for successful installation.
 #
@@ -37,8 +37,8 @@
 # @ECLASS-VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Any patches to apply after unpacking the sources. Patches are searched
-# both in ${PWD} and ${FILESDIR}.
+# Any patches to apply after unpacking the sources.  Patch files are
+# searched for in the current working dir, WORKDIR, and FILESDIR.
 
 # @ECLASS-VARIABLE: SITEFILE
 # @DEFAULT_UNSET
@@ -51,7 +51,7 @@
 # @ECLASS-VARIABLE: ELISP_TEXINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Space separated list of Texinfo sources. Respective GNU Info files
+# Space separated list of Texinfo sources.  Respective GNU Info files
 # will be generated in src_compile() and installed in src_install().
 
 # @ECLASS-VARIABLE: DOCS
@@ -92,7 +92,7 @@ elisp_pkg_setup() {
 # @FUNCTION: elisp_src_unpack
 # @DESCRIPTION:
 # Unpack the sources; also handle the case of a single *.el file in
-# WORKDIR for packages distributed that way. For EAPIs without
+# WORKDIR for packages distributed that way.  For EAPIs without
 # src_prepare, call elisp_src_prepare.
 
 elisp_src_unpack() {
@@ -111,7 +111,7 @@ elisp_src_unpack() {
 
 # @FUNCTION: elisp_src_prepare
 # @DESCRIPTION:
-# Apply any patches listed in ELISP_PATCHES. Patch files are searched
+# Apply any patches listed in ELISP_PATCHES.  Patch files are searched
 # for in the current working dir, WORKDIR, and FILESDIR.
 
 elisp_src_prepare() {
@@ -152,7 +152,7 @@ elisp_src_compile() {
 # @DESCRIPTION:
 # Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
 # If the SITEFILE variable specifies a site-init file, install it with
-# elisp-site-file-install. Also install any GNU Info files listed in
+# elisp-site-file-install.  Also install any GNU Info files listed in
 # ELISP_TEXINFO and documentation listed in the DOCS variable.
 
 elisp_src_install() {
