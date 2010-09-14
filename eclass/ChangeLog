@@ -1,3 +1,8 @@
+2010-09-14  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-make-autoload-file): In header
+	comment, use PN not P.
+
 2010-08-23  Christian Faulhammer  <fauli@gentoo.org>
 
 	* elisp.eclass: Update documentation
