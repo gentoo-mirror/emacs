@@ -273,20 +273,21 @@ src_install () {
 	dodoc README BUGS || die "dodoc failed"
 }
 
-emacs-infodir-rebuild() {
-	# Depending on the Portage version, the Info dir file is compressed
-	# or removed. It is only rebuilt by Portage if our directory is in
-	# INFOPATH, which is not guaranteed. So we rebuild it ourselves.
-
+pkg_preinst() {
+	# Depending on Portage version and user's settings, the Info dir file
+	# may have been compressed or removed. We rebuild it in both cases.
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
-	[ -d "${ROOT}"${infodir} ] || return	# may occur with FEATURES=noinfo
-	einfo "Regenerating Info directory index in ${infodir} ..."
-	rm -f "${ROOT}"${infodir}/dir{,.*}
-	for f in "${ROOT}"${infodir}/*.info*; do
-		[[ ${f##*/} != *[0-9].info* && -e ${f} ]] \
-			&& install-info --info-dir="${ROOT}"${infodir} "${f}" &>/dev/null
-	done
-	rmdir "${ROOT}"${infodir} 2>/dev/null	# remove dir if it is empty
+	if [ -f "${D}"${infodir}/dir.info ]; then
+		# prefer existing file if it has survived to here
+		mv "${D}"${infodir}/dir{.info,} || die "mv dir.info failed"
+	else
+		einfo "Regenerating Info directory index in ${infodir} ..."
+		rm -f "${D}"${infodir}/dir{,.*}
+		for f in "${D}"${infodir}/*.info*; do
+			[[ ${f##*/} != *[0-9].info* && -e ${f} ]] \
+				&& install-info --info-dir="${D}"${infodir} "${f}" &>/dev/null
+		done
+	fi
 }
 
 pkg_postinst() {
@@ -297,7 +298,6 @@ pkg_postinst() {
 	chown games:games "${ROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
-	emacs-infodir-rebuild
 	eselect emacs update ifunset
 
 	if use X; then
@@ -322,6 +322,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	elisp-site-regen
-	emacs-infodir-rebuild
 	eselect emacs update ifunset
 }
