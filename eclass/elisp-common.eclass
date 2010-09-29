@@ -87,7 +87,9 @@
 # "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define
 # the loading order (numbers below 10 or above 89 are reserved for
 # internal use).  So if your initialisation depends on another Emacs
-# package, your site file's number must be higher!
+# package, your site file's number must be higher!  If there are no such
+# interdependencies then the number should be 50.  Otherwise, numbers
+# divisible by 10 are preferred.
 #
 # Best practice is to define a SITEFILE variable in the global scope of
 # your ebuild (e.g., right after S or RDEPEND):
