@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Oct 2010; Ulrich Mueller <ulm@gentoo.org> identica-mode-1.0.ebuild:
+  Move distfile to my dev space.
+
 *identica-mode-1.0 (04 Oct 2010)
 
   04 Oct 2010; Ulrich Mueller <ulm@gentoo.org>

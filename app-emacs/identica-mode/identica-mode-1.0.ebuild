@@ -6,7 +6,8 @@ inherit elisp
 
 DESCRIPTION="Identi.ca mode for Emacs"
 HOMEPAGE="http://blog.nethazard.net/identica-mode-for-emacs/"
-SRC_URI="http://git.savannah.gnu.org/cgit/identica-mode.git/snapshot/${P}.tar.gz"
+# taken from: http://git.savannah.gnu.org/cgit/identica-mode.git/snapshot/${P}.tar.gz
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.2"
 SLOT="0"
