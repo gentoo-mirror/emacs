@@ -283,8 +283,10 @@ pkg_preinst() {
 		einfo "Regenerating Info directory index in ${infodir} ..."
 		rm -f "${D}"${infodir}/dir{,.*}
 		for f in "${D}"${infodir}/*; do
-			[[ ${f##*/} != *-[0-9]* && -e ${f} ]] \
-				&& install-info --info-dir="${D}"${infodir} "${f}" &>/dev/null
+			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
+				install-info --info-dir="${D}"${infodir} "${f}" \
+					|| die "install-info failed"
+			fi
 		done
 	fi
 }
