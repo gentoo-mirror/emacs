@@ -64,7 +64,7 @@ RDEPEND="sys-libs/ncurses
 		gtk? ( x11-libs/gtk+:2 )
 		!gtk? (
 			Xaw3d? ( x11-libs/Xaw3d )
-			!Xaw3d? ( motif? ( x11-libs/openmotif ) )
+			!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
 		)
 	)"
 
