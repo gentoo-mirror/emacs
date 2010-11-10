@@ -79,14 +79,7 @@ IUSE=""
 # version requirement of the NEED_EMACS variable.
 
 elisp_pkg_setup() {
-	local need_emacs=${NEED_EMACS:-21}
-	local have_emacs=$(elisp-emacs-version)
-	if [ "${have_emacs%%.*}" -lt "${need_emacs%%.*}" ]; then
-		eerror "This package needs at least Emacs ${need_emacs%%.*}."
-		eerror "Use \"eselect emacs\" to select the active version."
-		die "Emacs version ${have_emacs} is too low."
-	fi
-	einfo "Emacs version: ${have_emacs}"
+	elisp-need-emacs "${NEED_EMACS:-21}" || die "Emacs version too low"
 }
 
 # @FUNCTION: elisp_src_unpack

@@ -1,3 +1,8 @@
+2010-11-10  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-need-emacs): New function.
+	* elisp.eclass (elisp_pkg_setup): Use it.
+
 2010-09-14  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-make-autoload-file): In header

@@ -188,6 +188,24 @@ elisp-emacs-version() {
 	rm -f "${T}"/emacs-version.el
 }
 
+# @FUNCTION: elisp-need-emacs
+# @USAGE: <version>
+# @DESCRIPTION:
+# Test if the eselected Emacs version is at least the major version
+# specified as argument.
+
+elisp-need-emacs() {
+	local need_emacs=$1
+	local have_emacs=$(elisp-emacs-version)
+	if [ "${have_emacs%%.*}" -lt "${need_emacs%%.*}" ]; then
+		eerror "This package needs at least Emacs ${need_emacs%%.*}."
+		eerror "Use \"eselect emacs\" to select the active version."
+		return 1
+	fi
+	einfo "Emacs version: ${have_emacs}"
+	return 0
+}
+
 # @FUNCTION: elisp-make-autoload-file
 # @USAGE: [output file] [list of directories]
 # @DESCRIPTION:
