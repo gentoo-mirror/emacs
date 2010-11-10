@@ -29,6 +29,15 @@
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
 #
+# If your package requires a minimum Emacs version, e.g. Emacs 23, then
+# the dependency should be on >=virtual/emacs-23 instead.  Because the
+# user can select the Emacs executable with eselect, you should also
+# make sure that the active Emacs version is sufficient.  This can be
+# tested with function elisp-need-emacs(), which would typically be
+# called from pkg_setup(), as in the following example:
+#
+#   	elisp-need-emacs 23 || die "Emacs version too low"
+#
 # .SS
 # src_compile() usage:
 #
@@ -126,11 +135,6 @@
 # the emacs USE flag is taken from the package database and not from the
 # environment, so it is no problem when you unset USE=emacs between
 # merge and unmerge of a package.
-#
-# .SS
-# Miscellaneous functions:
-#
-# elisp-emacs-version() outputs the version of the currently active Emacs.
 
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
