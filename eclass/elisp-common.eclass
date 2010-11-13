@@ -38,6 +38,10 @@
 #
 #   	elisp-need-emacs 23 || die "Emacs version too low"
 #
+# Please note that such tests should be limited to packages that are
+# known to fail with lower Emacs versions; the standard case is to
+# depend on virtual/emacs without version.
+#
 # .SS
 # src_compile() usage:
 #
