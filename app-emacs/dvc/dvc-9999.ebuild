@@ -1,9 +1,8 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EBZR_REPO_URI="http://bzr.xsteve.at/dvc/"
-EBZR_BRANCH="."
 NEED_EMACS=22
 
 inherit elisp autotools bzr
@@ -14,7 +13,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=""
@@ -31,9 +30,9 @@ src_unpack() {
 src_compile() {
 	econf --with-lispdir="${D}/${SITELISP}/${PN}" --infodir="${D}/usr/share/info" \
 		|| die "econf failed"
-	emake || die "emake failed"
+	emake MKDIR_P="mkdir -p" || die
 }
 src_install() {
-	emake DESTDIR="${D}" install
+	emake MKDIR_P="mkdir -p" DESTDIR="${D}" install || die
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 }
