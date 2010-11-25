@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+NEED_EMACS=23
+
 inherit elisp
 
 DESCRIPTION="Identi.ca mode for Emacs"
@@ -22,4 +24,11 @@ src_compile() {
 	elisp-compile ${PN}.el || die
 	cd doc
 	makeinfo ${PN}.texi || die
+}
+
+pkg_postinst() {
+	elisp-site-regen
+	elog "You may optionally set username and password in your ~/.emacs file:"
+	elog "  (setq identica-username \"yourusername\")"
+	elog "  (setq identica-password \"yourpassword\")"
 }
