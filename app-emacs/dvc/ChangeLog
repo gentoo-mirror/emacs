@@ -9,11 +9,11 @@
   05 Jun 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml:
   Add metadata.
 
-  23 Mar 2008; Christian Faulhammer <opfer@gentoo.org> dvc-9999.ebuild:
+  23 Mar 2008; Christian Faulhammer <fauli@gentoo.org> dvc-9999.ebuild:
   GNU Emacs 22 is at least needed, reflect this in NEED_EMACS
 
 *dvc-9999 (02 Feb 2008)
 
-  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org> dvc-9999.ebuild:
+  02 Feb 2008; Christian Faulhammer <fauli@gentoo.org> dvc-9999.ebuild:
   do a live ebuild
 
