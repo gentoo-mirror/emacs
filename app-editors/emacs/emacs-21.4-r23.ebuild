@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r22.ebuild,v 1.11 2010/11/14 16:22:09 armin76 Exp $
 
-EAPI=2
+EAPI=4
 
 inherit flag-o-matic eutils toolchain-funcs autotools
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
 
 LICENSE="GPL-2 FDL-1.1 BSD as-is MIT"
 SLOT="21"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="X Xaw3d leim motif sendmail"
 
 DEPEND="sys-libs/ncurses
@@ -95,6 +95,10 @@ src_configure() {
 	else
 		myconf="${myconf} --without-x"
 	fi
+
+	# EAPI 4 failure :(
+	einfo "Please ignore the warning about --disable-dependency-tracking"
+
 	econf ${myconf} || die "econf failed"
 }
 
@@ -129,6 +133,7 @@ src_install() {
 	mv "${D}"/usr/share/info/emacs-${SLOT}/dir{,.orig} \
 		|| die "moving info dir failed"
 	touch "${D}"/usr/share/info/emacs-${SLOT}/.keepinfodir
+	docompress -x /usr/share/info/emacs-${SLOT}/dir.orig
 
 	# avoid collision between slots
 	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
@@ -143,14 +148,13 @@ src_install() {
 }
 
 pkg_preinst() {
-	# Depending on Portage version and user's settings, the Info dir file
-	# may have been compressed or removed. We rebuild it in both cases.
+	# move Info dir file to correct name
 	local infodir=/usr/share/info/emacs-${SLOT} f
 	if [ -f "${D}"${infodir}/dir.orig ]; then
-		# prefer existing file if it has survived to here
 		mv "${D}"${infodir}/dir{.orig,} || die "moving info dir failed"
 	else
-		einfo "Regenerating Info directory index in ${infodir} ..."
+		# this should not happen in EAPI 4
+		ewarn "Regenerating Info directory index in ${infodir} ..."
 		rm -f "${D}"${infodir}/dir{,.*}
 		for f in "${D}"${infodir}/*; do
 			if [[ ${f##*/} != *[0-9].info* && -e ${f} ]]; then

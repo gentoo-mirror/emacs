@@ -2,6 +2,15 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-23.2-r3 (31 Dec 2010)
+*emacs-22.3-r7 (31 Dec 2010)
+*emacs-21.4-r23 (31 Dec 2010)
+
+  31 Dec 2010; Ulrich Mueller <ulm@gentoo.org> -emacs-21.4-r22.ebuild,
+  +emacs-21.4-r23.ebuild, -emacs-22.3-r6.ebuild, +emacs-22.3-r7.ebuild,
+  -emacs-23.2-r2.ebuild, +emacs-23.2-r3.ebuild:
+  Don't compress GNU Info dir. Update ebuilds to EAPI 4.
+
 *emacs-23.2-r2 (31 Dec 2010)
 *emacs-22.3-r6 (31 Dec 2010)
 *emacs-21.4-r22 (31 Dec 2010)

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-23.2-r2.ebuild,v 1.12 2010/12/29 13:09:01 ulm Exp $
 
-EAPI=2
+EAPI=4
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
@@ -27,7 +27,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -189,6 +189,9 @@ src_configure() {
 	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
 	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
 
+	# EAPI 4 failure :(
+	einfo "Please ignore the warning about --disable-dependency-tracking"
+
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
@@ -226,6 +229,7 @@ src_install () {
 	mv "${D}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
 		|| die "moving info dir failed"
 	touch "${D}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
+	docompress -x /usr/share/info/emacs-${SLOT}/dir.orig
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
@@ -266,14 +270,13 @@ src_install () {
 }
 
 pkg_preinst() {
-	# Depending on Portage version and user's settings, the Info dir file
-	# may have been compressed or removed. We rebuild it in both cases.
+	# move Info dir file to correct name
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
 	if [ -f "${D}"${infodir}/dir.orig ]; then
-		# prefer existing file if it has survived to here
 		mv "${D}"${infodir}/dir{.orig,} || die "moving info dir failed"
 	else
-		einfo "Regenerating Info directory index in ${infodir} ..."
+		# this should not happen in EAPI 4
+		ewarn "Regenerating Info directory index in ${infodir} ..."
 		rm -f "${D}"${infodir}/dir{,.*}
 		for f in "${D}"${infodir}/*; do
 			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
