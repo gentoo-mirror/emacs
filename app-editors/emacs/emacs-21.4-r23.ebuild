@@ -96,9 +96,6 @@ src_configure() {
 		myconf="${myconf} --without-x"
 	fi
 
-	# EAPI 4 failure :(
-	einfo "Please ignore the warning about --disable-dependency-tracking"
-
 	econf ${myconf} || die "econf failed"
 }
 

@@ -139,9 +139,6 @@ src_configure() {
 	myconf="${myconf} $(use_with hesiod)"
 	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
 
-	# EAPI 4 failure :(
-	einfo "Please ignore the warning about --disable-dependency-tracking"
-
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
