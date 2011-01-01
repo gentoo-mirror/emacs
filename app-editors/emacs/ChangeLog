@@ -1,6 +1,10 @@
 # ChangeLog for app-editors/emacs
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  01 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r23.ebuild,
+  emacs-22.3-r7.ebuild, emacs-23.2-r3.ebuild:
+  Remove unnecessary automake dependency.
 
 *emacs-23.2-r3 (31 Dec 2010)
 *emacs-22.3-r7 (31 Dec 2010)

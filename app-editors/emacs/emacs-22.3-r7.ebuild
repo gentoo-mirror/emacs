@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-22.3-r6.ebuild,v 1.12 2010/12/29 13:09:01 ulm Exp $
 
 EAPI=4
+WANT_AUTOMAKE="none"
 
 inherit autotools elisp-common eutils flag-o-matic
 
