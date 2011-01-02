@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r23.ebuild,
+  emacs-22.3-r7.ebuild, emacs-23.2-r3.ebuild:
+  Some die statements are not needed in EAPI 4.
+
   01 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r23.ebuild,
   emacs-22.3-r7.ebuild, emacs-23.2-r3.ebuild:
   Remove unnecessary automake dependency.

@@ -195,23 +195,23 @@ src_configure() {
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir=/usr/$(get_libdir) \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
-		${myconf} || die "econf emacs failed"
+		${myconf}
 }
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
 	if [ "${PV##*.}" = "9999" ]; then
-		emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
+		emake CC="$(tc-getCC)" bootstrap
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
 	fi
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install () {
 	local i m
 
-	emake install DESTDIR="${D}" || die "make install failed"
+	emake install DESTDIR="${D}"
 
 	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
 		|| die "removing duplicate emacs executable failed"
@@ -264,7 +264,7 @@ src_install () {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS || die "dodoc failed"
+	dodoc README BUGS
 }
 
 pkg_preinst() {

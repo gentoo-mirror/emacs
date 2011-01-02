@@ -97,24 +97,23 @@ src_configure() {
 		myconf="${myconf} --without-x"
 	fi
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 }
 
 src_compile() {
 	export SANDBOX_ON=0
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 
 	einfo "Recompiling patched lisp files..."
-	(cd lisp; emake recompile) || die "emake recompile failed"
+	(cd lisp; emake recompile)
 	(cd src; emake versionclean)
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
 	local i m
 
-	einstall infodir="${D}/usr/share/info/emacs-${SLOT}" \
-		|| die "einstall failed"
+	einstall infodir="${D}/usr/share/info/emacs-${SLOT}"
 
 	for i in "${D}"/usr/bin/* ; do
 		mv "${i}" "${i}-emacs-${SLOT}" || die "mv ${i} failed"

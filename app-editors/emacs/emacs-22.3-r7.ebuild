@@ -145,18 +145,18 @@ src_configure() {
 		--infodir=/usr/share/info/${EMACS_SUFFIX} \
 		--without-carbon \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
-		${myconf} || die "econf emacs failed"
+		${myconf}
 }
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install () {
 	local i m
 
-	emake install DESTDIR="${D}" || die "make install failed"
+	emake install DESTDIR="${D}"
 
 	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
 		|| die "removing duplicate emacs executable failed"
@@ -208,7 +208,7 @@ src_install () {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc AUTHORS BUGS CONTRIBUTE README || die "dodoc failed"
+	dodoc AUTHORS BUGS CONTRIBUTE README
 }
 
 pkg_preinst() {
