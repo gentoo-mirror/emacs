@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/emacs-common-gentoo-1.2-r1.ebuild,v 1.6 2010/10/14 16:39:41 ranger Exp $
 
-EAPI=3
+EAPI=4
 
 inherit elisp-common eutils fdo-mime gnome2-utils
 
@@ -24,9 +24,6 @@ pkg_setup() {
 		ewarn "Removing orphan subdirs.el (installed by old Emacs ebuilds)"
 		rm -f "${EROOT}${SITELISP}/subdirs.el"
 	fi
-
-	NEW_INSTALL=""
-	has_version ${CATEGORY}/${PN} || NEW_INSTALL="true"
 }
 
 src_install() {
@@ -119,7 +116,7 @@ pkg_postinst() {
 		EOF
 		echo
 
-		if [ "${NEW_INSTALL}" ]; then
+		if [ -z "${REPLACING_VERSIONS}" ]; then
 			# This is a new install. Create default site-start.el, so that
 			# Gentoo packages will work.
 			make-site-start

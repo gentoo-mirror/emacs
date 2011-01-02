@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/emacs-common-gentoo
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Jan 2011; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-1.2-r2.ebuild:
+  Copied from -r1 in portage tree. Update for EAPI 4.
 
   01 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
   emacs-common-gentoo-9999.ebuild:
