@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild,
+  +files/emacs-23.2-ns-appdirs.patch:
+  Incorporate changes from Alt/Prefix overlay and from bug 268793. Thanks to
+  Matsui Tetsushi <VED03370@nifty.ne.jp> and Fabian Groffen.
+
   02 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-21.4-r23.ebuild,
   emacs-22.3-r7.ebuild, emacs-23.2-r3.ebuild:
   Some die statements are not needed in EAPI 4.
