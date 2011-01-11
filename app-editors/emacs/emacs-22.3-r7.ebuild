@@ -172,7 +172,7 @@ src_install () {
 	mv "${D}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
 		|| die "moving info dir failed"
 	touch "${D}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
-	docompress -x /usr/share/info/emacs-${SLOT}/dir.orig
+	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
