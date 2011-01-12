@@ -197,10 +197,10 @@ src_configure() {
 	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
 	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
 
-	# According to configure, this option is only used for GNU/Linux (x86_64
-	# and s390). For Gentoo Prefix we have to explicitly spell out the location
-	# because $(get_libdir) does not necessarily return something that matches
-	# the host OS's libdir naming (e.g. RHEL)
+	# According to configure, this option is only used for GNU/Linux
+	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
+	# out the location because $(get_libdir) does not necessarily return
+	# something that matches the host OS's libdir naming (e.g. RHEL).
 	local crtdir=$($(tc-getCC) -print-file-name=crt1.o)
 	crtdir=${crtdir%crt1.o}
 
@@ -283,8 +283,8 @@ src_install () {
 	if use aqua; then
 		insinto /Applications/Gentoo
 		doins -r nextstep/Emacs.app
-		mv "${ED}"/Applications/Gentoo/Emacs{,-${SLOT}}.app || die
-		einfo "Emacs-${SLOT}.app is in ${EPREFIX}/Applications/Gentoo."
+		mv "${ED}"/Applications/Gentoo/Emacs{,${EMACS_SUFFIX#emacs}}.app || die
+		einfo "Emacs${EMACS_SUFFIX#emacs}.app is in ${EPREFIX}/Applications/Gentoo."
 		einfo "You may want to copy or symlink it into /Applications by yourself."
 	fi
 }
