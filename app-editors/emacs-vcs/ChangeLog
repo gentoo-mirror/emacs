@@ -1,0 +1,10 @@
+# ChangeLog for app-editors/emacs-vcs
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-vcs-24.0.9999 (12 Jan 2011)
+
+  12 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-vcs-24.0.9999.ebuild,
+  +metadata.xml:
+  Update ebuild for EAPI 4. Merge changes from Alt/Prefix overlay.
+
