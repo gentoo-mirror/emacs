@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild:
+  Install Emacs.app with mv because doins -r does not preserve permissions.
+
   11 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild,
   +files/emacs-23.2-ns-appdirs.patch:
   Incorporate changes from Alt/Prefix overlay and from bug 268793. Thanks to

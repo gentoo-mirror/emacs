@@ -281,9 +281,10 @@ src_install () {
 	dodoc README BUGS
 
 	if use aqua; then
-		insinto /Applications/Gentoo
-		doins -r nextstep/Emacs.app
-		mv "${ED}"/Applications/Gentoo/Emacs{,${EMACS_SUFFIX#emacs}}.app || die
+		dodir /Applications/Gentoo
+		rm -rf "${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app
+		mv nextstep/Emacs.app \
+			"${ED}"/Applications/Gentoo/Emacs${EMACS_SUFFIX#emacs}.app || die
 		einfo "Emacs${EMACS_SUFFIX#emacs}.app is in ${EPREFIX}/Applications/Gentoo."
 		einfo "You may want to copy or symlink it into /Applications by yourself."
 	fi
