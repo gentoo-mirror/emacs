@@ -81,15 +81,6 @@ RDEPEND="${RDEPEND}
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
-pkg_setup() {
-	local cvsdir="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/cvs-src/emacs"
-	if [ -d "${cvsdir}" ]; then
-		ewarn "GNU Emacs upstream has moved from CVS to Bazaar."
-		ewarn "Therefore, you may remove the old CVS directory:"
-		ewarn "rm -rf ${cvsdir}"
-	fi
-}
-
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then
 		FULL_VERSION=$(grep 'const char emacs_version' src/emacs.c \

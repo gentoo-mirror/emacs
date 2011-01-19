@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-24.0.9999.ebuild:
+  Remove warning about the CVS->BZR move; it's been more than one year ago.
+
 *emacs-vcs-24.0.9999 (12 Jan 2011)
 
   12 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-vcs-24.0.9999.ebuild,
