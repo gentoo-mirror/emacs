@@ -115,7 +115,7 @@ src_prepare() {
 			|| die "unable to sed configure.in"
 	fi
 
-	eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
