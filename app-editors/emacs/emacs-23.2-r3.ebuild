@@ -202,7 +202,7 @@ src_configure() {
 	# out the location because $(get_libdir) does not necessarily return
 	# something that matches the host OS's libdir naming (e.g. RHEL).
 	local crtdir=$($(tc-getCC) -print-file-name=crt1.o)
-	crtdir=${crtdir%crt1.o}
+	crtdir=${crtdir%/crt1.o}
 
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \

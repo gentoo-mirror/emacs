@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild:
+  Omit trailing slash from crtdir.
+
   13 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild:
   Install Emacs.app with mv because doins -r does not preserve permissions.
 
