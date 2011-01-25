@@ -92,6 +92,7 @@ src_prepare() {
 		echo
 	else
 		EPATCH_SUFFIX=patch epatch
+		epatch "${FILESDIR}/${P}-gnu-linux-crt-dir.patch"
 		epatch "${FILESDIR}/${P}-ns-appdirs.patch"
 	fi
 
