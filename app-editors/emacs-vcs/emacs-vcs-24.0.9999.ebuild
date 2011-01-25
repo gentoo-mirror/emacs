@@ -96,11 +96,6 @@ src_prepare() {
 	#	EPATCH_SUFFIX=patch epatch
 	fi
 
-	sed -i \
-		-e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
-		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
-		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"
-
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
 		# Suppress it by supplying pkg-config with a wrong library name.
