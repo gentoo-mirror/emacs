@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  26 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild,
+  -files/emacs-23.2-gnu-linux-crt-dir.patch,
+  -files/emacs-23.2-ns-appdirs.patch:
+  Patches moved into patchset.
+
   25 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.2-r3.ebuild,
   +files/emacs-23.2-gnu-linux-crt-dir.patch:
   Honour the --with-crt-dir configure option also on 32 bit architectures,

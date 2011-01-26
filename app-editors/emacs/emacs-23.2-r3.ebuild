@@ -15,7 +15,7 @@ if [ "${PV##*.}" = "9999" ]; then
 	SRC_URI=""
 else
 	SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
-		mirror://gentoo/${P}-patches-2.tar.bz2"
+		mirror://gentoo/${P}-patches-3.tar.bz2"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -92,8 +92,6 @@ src_prepare() {
 		echo
 	else
 		EPATCH_SUFFIX=patch epatch
-		epatch "${FILESDIR}/${P}-gnu-linux-crt-dir.patch"
-		epatch "${FILESDIR}/${P}-ns-appdirs.patch"
 	fi
 
 	sed -i \
