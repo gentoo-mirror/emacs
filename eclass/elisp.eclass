@@ -132,7 +132,7 @@ elisp_src_configure() { :; }
 # @DESCRIPTION:
 # Call elisp-compile to byte-compile all Emacs Lisp (*.el) files.
 # If ELISP_TEXINFO lists any Texinfo sources, call makeinfo to generate
-# GNU Info files from then.
+# GNU Info files from them.
 
 elisp_src_compile() {
 	elisp-compile *.el || die
