@@ -13,8 +13,9 @@ if [ "${PV##*.}" = "9999" ]; then
 	#EBZR_CACHE_DIR="emacs-${EMACS_BRANCH#emacs-}"
 	#inherit bzr
 	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
+	EGIT_PROJECT="emacs"
 	EGIT_BRANCH="master"
-	EGIT_FETCH_CMD="git clone --depth=1"
+	EGIT_OPTIONS="--depth=1"
 	EGIT_HAS_SUBMODULES=1		# needed, otherwise --depth won't work
 	inherit git
 	SRC_URI=""
@@ -97,8 +98,8 @@ pkg_setup() {
 
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then
-		FULL_VERSION=$(grep 'const char emacs_version' src/emacs.c \
-			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
+			configure.in)
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
 		einfo "Emacs branch: ${EGIT_BRANCH}"
