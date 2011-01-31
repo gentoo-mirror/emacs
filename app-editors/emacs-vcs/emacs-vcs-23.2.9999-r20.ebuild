@@ -98,7 +98,7 @@ src_prepare() {
 			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
-		einfo "Emacs branch: ${EMACS_BRANCH}"
+		einfo "Emacs branch: ${EGIT_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
