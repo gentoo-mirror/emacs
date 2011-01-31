@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -15,5 +15,5 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="|| ( app-editors/emacs:23
-		app-editors/emacs-vcs:23
-		app-editors/emacs-lexbind:23 )"
+		>=app-editors/emacs-vcs-23.1
+		>=app-editors/emacs-lexbind-23.1 )"

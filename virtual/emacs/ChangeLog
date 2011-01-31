@@ -1,6 +1,9 @@
 # ChangeLog for virtual/emacs
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  31 Jan 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23-r1.ebuild:
+  Fix dependencies.
 
 *emacs-23-r1 (16 Jan 2010)
 
