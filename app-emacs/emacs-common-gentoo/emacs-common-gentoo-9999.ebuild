@@ -1,6 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+EAPI=4
 
 inherit elisp-common eutils fdo-mime gnome2-utils subversion
 
@@ -11,7 +13,7 @@ ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~sparc-fbsd ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="X emacs22icons"
 
 PDEPEND="virtual/emacs"
@@ -19,15 +21,12 @@ PDEPEND="virtual/emacs"
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	if [ -e "${ROOT}${SITELISP}/subdirs.el" ] \
+	if [ -e "${EROOT}${SITELISP}/subdirs.el" ] \
 		&& ! has_version ">=${CATEGORY}/${PN}-1"
 	then
 		ewarn "Removing orphan subdirs.el (installed by old Emacs ebuilds)"
-		rm -f "${ROOT}${SITELISP}/subdirs.el"
+		rm -f "${EROOT}${SITELISP}/subdirs.el"
 	fi
-
-	NEW_INSTALL=""
-	has_version ${CATEGORY}/${PN} || NEW_INSTALL="true"
 }
 
 src_install() {
@@ -41,16 +40,16 @@ src_install() {
 			newicon icons/emacs22_48.png emacs.png || die
 			for i in 16 24 32 48; do
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps
-				newins icons/emacs22_${i}.png emacs.png || die
+				newins icons/emacs22_${i}.png emacs.png
 			done
 		else
 			newicon icons/emacs_48.png emacs.png || die
 			for i in 16 24 32 48 128; do
 				insinto /usr/share/icons/hicolor/${i}x${i}/apps
-				newins icons/emacs_${i}.png emacs.png || die
+				newins icons/emacs_${i}.png emacs.png
 			done
 			insinto /usr/share/icons/hicolor/scalable/apps
-			doins icons/emacs.svg || die
+			doins icons/emacs.svg
 		fi
 		gnome2_icon_savelist
 	fi
@@ -72,7 +71,7 @@ make-site-start() {
 
 	;;; site-start.el ends here
 	EOF
-	mv "${T}/site-start.el" "${ROOT}${SITELISP}/site-start.el"
+	mv "${T}/site-start.el" "${EROOT}${SITELISP}/site-start.el"
 	eend $? "Installation of site-start.el failed"
 }
 
@@ -80,7 +79,7 @@ pkg_config() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
 	elisp-site-regen
 
-	if [ ! -e "${ROOT}${SITELISP}/site-start.el" ]; then
+	if [ ! -e "${EROOT}${SITELISP}/site-start.el" ]; then
 		echo
 		einfo "Press ENTER to create a default site-start.el file"
 		einfo "for GNU Emacs, or Control-C to abort now ..."
@@ -100,7 +99,7 @@ pkg_postinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
 	elisp-site-regen
 
-	if [ ! -e "${ROOT}${SITELISP}/site-start.el" ]; then
+	if [ ! -e "${EROOT}${SITELISP}/site-start.el" ]; then
 		local line
 		echo
 		while read line; do elog "${line:- }"; done <<-EOF
@@ -120,7 +119,7 @@ pkg_postinst() {
 		EOF
 		echo
 
-		if [ "${NEW_INSTALL}" ]; then
+		if [ -z "${REPLACING_VERSIONS}" ]; then
 			# This is a new install. Create default site-start.el, so that
 			# Gentoo packages will work.
 			make-site-start
