@@ -15,7 +15,7 @@ if [ "${PV##*.}" = "9999" ]; then
 	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
 	EGIT_PROJECT="emacs"
 	EGIT_BRANCH="emacs-23"
-	EGIT_OPTIONS="--depth=1"
+	EGIT_FETCH_CMD="git clone --depth=1"
 	EGIT_HAS_SUBMODULES=1		# needed, otherwise --depth won't work
 	inherit git
 	SRC_URI=""
