@@ -1,16 +1,18 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=4
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
-	inherit bzr
-	EMACS_BRANCH="lexbind-new"
-	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EMACS_BRANCH}/"
-	EBZR_CACHE_DIR="emacs-${EMACS_BRANCH#emacs-}"
+	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
+	EGIT_PROJECT="emacs"
+	EGIT_BRANCH="lexbind-new"
+	EGIT_FETCH_CMD="git clone --depth=1"
+	EGIT_HAS_SUBMODULES=1		# needed, otherwise --depth won't work
+	inherit git
 	SRC_URI=""
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
@@ -28,7 +30,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="24"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
 IUSE="alsa dbus gconf gif gnutls gpm gtk gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -49,7 +51,7 @@ RDEPEND="sys-libs/ncurses
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		libxml2? ( >=dev-libs/libxml2-2.2.0 )
 		gif? ( media-libs/giflib )
-		jpeg? ( media-libs/jpeg:0 )
+		jpeg? ( virtual/jpeg )
 		png? ( media-libs/libpng )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
@@ -78,20 +80,19 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
-EMACS_SUFFIX="emacs-${SLOT}-${EMACS_BRANCH#emacs-}"
+EMACS_SUFFIX="emacs-${SLOT}-${EGIT_BRANCH#emacs-}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	# set a fake version number to avoid collisions between SLOTs
 	sed -i -e "/AC_INIT/s/24\.0\.[0-9]*/${PV}/" configure.in
-	sed -i -e "/const char emacs_version/s/24\.0\.[0-9]*/${PV}/" src/emacs.c
 
 	if [ "${PV##*.}" = "9999" ]; then
-		FULL_VERSION=$(grep 'const char emacs_version' src/emacs.c \
-			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
+			configure.in)
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
-		einfo "Emacs branch: ${EMACS_BRANCH}"
+		einfo "Emacs branch: ${EGIT_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
@@ -99,11 +100,6 @@ src_prepare() {
 	#else
 	#	EPATCH_SUFFIX=patch epatch
 	fi
-
-	sed -i \
-		-e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
-		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
-		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"
 
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
@@ -119,7 +115,7 @@ src_prepare() {
 			|| die "unable to sed configure.in"
 	fi
 
-	eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
@@ -198,48 +194,57 @@ src_configure() {
 	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
 	myconf="${myconf} $(use_with gnutls) $(use_with selinux)"
 
+	# According to configure, this option is only used for GNU/Linux
+	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
+	# out the location because $(get_libdir) does not necessarily return
+	# something that matches the host OS's libdir naming (e.g. RHEL).
+	local crtdir=$($(tc-getCC) -print-file-name=crt1.o)
+	crtdir=${crtdir%/*}
+
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
-		--infodir=/usr/share/info/${EMACS_SUFFIX} \
-		--with-crt-dir=/usr/$(get_libdir) \
+		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
+		--with-crt-dir="${crtdir}" \
+		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
-		${myconf} || die "econf emacs failed"
+		${myconf}
 }
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
 	if [ "${PV##*.}" = "9999" ]; then
-		emake CC="$(tc-getCC)" bootstrap || die "make bootstrap failed"
+		emake CC="$(tc-getCC)" bootstrap
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
 	fi
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install () {
 	local i m
 
-	emake install DESTDIR="${D}" || die "make install failed"
+	emake install DESTDIR="${D}"
 
-	rm "${D}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
+	rm "${ED}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
 		|| die "removing duplicate emacs executable failed"
-	mv "${D}"/usr/bin/emacs-${EMACS_SUFFIX} "${D}"/usr/bin/${EMACS_SUFFIX} \
+	mv "${ED}"/usr/bin/emacs-${EMACS_SUFFIX} "${ED}"/usr/bin/${EMACS_SUFFIX} \
 		|| die "moving Emacs executable failed"
 
 	# move man pages to the correct place
-	for m in "${D}"/usr/share/man/man1/* ; do
+	for m in "${ED}"/usr/share/man/man1/* ; do
 		mv "${m}" "${m%.1}-${EMACS_SUFFIX}.1" || die "mv man failed"
 	done
 
 	# move info dir to avoid collisions with the dir file generated by portage
-	mv "${D}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
+	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
 		|| die "moving info dir failed"
-	touch "${D}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
+	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
+	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${D}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${D}"/usr/share/{applications,icons}
-	rm "${D}"/var/lib/games/emacs/{snake,tetris}-scores
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
+	rm -rf "${ED}"/usr/share/{applications,icons}
+	rm "${ED}"/var/lib/games/emacs/{snake,tetris}-scores
 	keepdir /var/lib/games/emacs
 
 	local c=";;"
@@ -257,10 +262,10 @@ src_install () {
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 	X  ${c}(setq find-function-C-source-directory
-	X  ${c}      "/usr/share/emacs/${FULL_VERSION}/src")
+	X  ${c}      "${EPREFIX}/usr/share/emacs/${FULL_VERSION}/src")
 	X  (let ((path (getenv "INFOPATH"))
-	X	(dir "/usr/share/info/${EMACS_SUFFIX}")
-	X	(re "\\\\\`/usr/share/info\\\\>"))
+	X	(dir "${EPREFIX}/usr/share/info/${EMACS_SUFFIX}")
+	X	(re "\\\\\`${EPREFIX}/usr/share/info\\\\>"))
 	X    (and path
 	X	 ;; move Emacs Info dir before anything else in /usr/share/info
 	X	 (let* ((p (cons nil (split-string path ":" t))) (q p))
@@ -271,22 +276,21 @@ src_install () {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS || die "dodoc failed"
+	dodoc README BUGS
 }
 
 pkg_preinst() {
-	# Depending on Portage version and user's settings, the Info dir file
-	# may have been compressed or removed. We rebuild it in both cases.
+	# move Info dir file to correct name
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
-	if [ -f "${D}"${infodir}/dir.orig ]; then
-		# prefer existing file if it has survived to here
-		mv "${D}"${infodir}/dir{.orig,} || die "moving info dir failed"
+	if [ -f "${ED}"${infodir}/dir.orig ]; then
+		mv "${ED}"${infodir}/dir{.orig,} || die "moving info dir failed"
 	else
-		einfo "Regenerating Info directory index in ${infodir} ..."
-		rm -f "${D}"${infodir}/dir{,.*}
-		for f in "${D}"${infodir}/*; do
+		# this should not happen in EAPI 4
+		ewarn "Regenerating Info directory index in ${infodir} ..."
+		rm -f "${ED}"${infodir}/dir{,.*}
+		for f in "${ED}"${infodir}/*; do
 			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
-				install-info --info-dir="${D}"${infodir} "${f}" \
+				install-info --info-dir="${ED}"${infodir} "${f}" \
 					|| die "install-info failed"
 			fi
 		done
@@ -295,10 +299,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	local f
-	for f in "${ROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
+	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown games:games "${ROOT}"/var/lib/games/emacs
+	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset

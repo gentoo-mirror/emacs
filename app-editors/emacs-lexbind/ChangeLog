@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/emacs-lexbind
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  02 Feb 2011; Ulrich Mueller <ulm@gentoo.org> emacs-lexbind-24.0.9999.ebuild:
+  Sync from emacs-vcs.
 
   26 Oct 2010; Ulrich Mueller <ulm@gentoo.org>
   emacs-lexbind-24.0.9999.ebuild:
