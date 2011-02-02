@@ -310,7 +310,7 @@ pkg_postinst() {
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown games "${ROOT}"/var/lib/games/emacs
+	chown games "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset
