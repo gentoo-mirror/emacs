@@ -3,7 +3,6 @@
 # $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.1 2011/01/30 08:54:05 ulm Exp $
 
 EAPI=4
-WANT_AUTOMAKE="none"
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 

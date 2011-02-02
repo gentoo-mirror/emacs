@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Feb 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-24.0.9999-r20.ebuild:
+  Emacs uses automake now.
+
 *emacs-vcs-23.2.9999-r20 (31 Jan 2011)
 
   31 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-vcs-23.2.9999-r20.ebuild:
