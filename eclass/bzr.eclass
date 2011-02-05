@@ -231,7 +231,17 @@ bzr_fetch() {
 			${EBZR_INIT_REPO_CMD} "${repo_dir}" \
 				|| die "${EBZR}: can't create shared repository"
 		fi
-		bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
+
+		if [[ -z ${EBZR_MIRROR_URI} ]]; then
+			bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
+		else
+			# Workaround for faster initial download. This clones the
+			# branch from a fast mirror (which may be out of date), and
+			# subsequently pulls from the slow original repository.
+			bzr_initial_fetch "${EBZR_MIRROR_URI}" "${branch_dir}"
+			EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite"	\
+				EBZR_OFFLINE="" bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
+		fi
 	else
 		bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
