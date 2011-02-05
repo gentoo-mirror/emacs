@@ -11,12 +11,12 @@
 # and anyone who wants to help
 # @BLURB: This eclass provides support to use the Bazaar VCS
 # @DESCRIPTION:
-# The bzr.eclass provides support for apps using the Bazaar VCS
-# (distributed version control system).
-# The eclass was originally derived from the git eclass.
+# The bzr.eclass provides functions to fetch, unpack, patch, and
+# bootstrap sources from repositories of the Bazaar distributed version
+# control system.  The eclass was originally derived from git.eclass.
 #
-# Note: Just set EBZR_REPO_URI to the URI of the branch and the src_unpack()
-# of this eclass will put an export of the branch in ${WORKDIR}/${PN}.
+# Note: Just set EBZR_REPO_URI to the URI of the branch and src_unpack()
+# of this eclass will export the branch to ${WORKDIR}/${P}.
 
 inherit eutils
 
@@ -91,13 +91,12 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 # @ECLASS-VARIABLE: EBZR_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# bzr eclass can apply patches in bzr_bootstrap().
-# You can use regular expressions in this variable like *.diff or
-# *.patch and the like.
-# NOTE: These patches will be applied before EBZR_BOOTSTRAP is processed.
+# bzr.eclass can apply patches in bzr_bootstrap().  You can use regular
+# expressions in this variable like *.diff or *.patch and the like.
+# Note: These patches will be applied before EBZR_BOOTSTRAP is processed.
 #
-# Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
-# location, the installation dies.
+# Patches are searched both in ${PWD} and ${FILESDIR}.  If not found in
+# either location, the installation dies.
 
 # @ECLASS-VARIABLE: EBZR_BRANCH
 # @DEFAULT_UNSET
@@ -106,12 +105,12 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 # relative to EBZR_CACHE_DIR.
 #
 # This variable should be set if there are several live ebuilds for
-# different branches of the same upstream project. The branches can then
-# share the same repository in EBZR_CACHE_DIR, which will save both data
-# traffic volume and disk space.
+# different branches of the same upstream project.  The branches can
+# then share the same repository in EBZR_CACHE_DIR, which will save both
+# data traffic volume and disk space.
 #
 # If there is only a live ebuild for one single branch, EBZR_BRANCH
-# needs not be set. In this case, the branch will be stored in a
+# needs not be set.  In this case, the branch will be stored in a
 # stand-alone repository directly in EBZR_CACHE_DIR.
 
 # @ECLASS-VARIABLE: EBZR_REVISION
@@ -128,14 +127,15 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 
 # @ECLASS-VARIABLE: EBZR_OFFLINE
 # @DESCRIPTION:
-# Set this variable to a non-empty value to disable the automatic updating of
-# a bzr source tree. This is intended to be set outside the ebuild by users.
+# Set this variable to a non-empty value to disable automatic updating
+# of a bzr source tree.  This is intended to be set outside the ebuild
+# by users.
 : ${EBZR_OFFLINE:=${ESCM_OFFLINE}}
 
 # @FUNCTION: bzr_initial_fetch
 # @DESCRIPTION:
-# Retrieves the source code from a repository for the first time, via
-# ${EBZR_FETCH_CMD}.
+# Internal function, retrieves the source code from a repository for the
+# first time, using ${EBZR_FETCH_CMD}.
 bzr_initial_fetch() {
 	local repo_uri=$1 branch_dir=$2
 
@@ -149,7 +149,8 @@ bzr_initial_fetch() {
 
 # @FUNCTION: bzr_update
 # @DESCRIPTION:
-# Updates the source code from a repository, via ${EBZR_UPDATE_CMD}.
+# Internal function, updates the source code from a repository, using
+# ${EBZR_UPDATE_CMD}.
 bzr_update() {
 	local repo_uri=$1 branch_dir=$2
 
@@ -170,8 +171,8 @@ bzr_update() {
 
 # @FUNCTION: bzr_fetch
 # @DESCRIPTION:
-# Wrapper function to fetch sources from a Bazaar repository via bzr
-# fetch or bzr update, depending on whether there is an existing
+# Wrapper function to fetch sources from a Bazaar repository with
+# bzr branch or bzr pull, depending on whether there is an existing
 # working copy in ${EBZR_CACHE_DIR}.
 bzr_fetch() {
 	local repo_dir branch_dir
@@ -182,7 +183,6 @@ bzr_fetch() {
 	# check for the protocol or pull from a local repo.
 	if [[ -z ${EBZR_REPO_URI%%:*} ]] ; then
 		case ${EBZR_REPO_URI%%:*} in
-			# lp: seems to be an alias to https://launchpad.net
 			http|https|rsync|lp)
 				;;
 			sftp)
@@ -215,8 +215,8 @@ bzr_fetch() {
 
 	addwrite "${EBZR_STORE_DIR}"
 
-	# Clean up if the existing local copy is a checkout (as it was the
-	# case with an older version of bzr.eclass)
+	# Clean up if the existing local copy is a checkout (as was the case
+	# with an older version of bzr.eclass).
 	if [[ ${EBZR_FETCH_CMD} != *checkout* && -d ${repo_dir}/.bzr/checkout ]]
 	then
 		ewarn "removing old bzr checkout"
@@ -294,7 +294,7 @@ bzr_bootstrap() {
 
 # @FUNCTION: bzr_src_unpack
 # @DESCRIPTION:
-# Default src_unpack(), calls bzr_fetch. For EAPIs 0 and 1, also calls
+# Default src_unpack(), calls bzr_fetch.  For EAPIs 0 and 1, also calls
 # bzr_src_prepare.
 bzr_src_unpack() {
 	bzr_fetch
