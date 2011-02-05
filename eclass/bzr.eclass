@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/eclass/bzr.eclass,v 1.10 2010/11/07 22:44:35 fauli Exp $
 #
@@ -30,44 +30,45 @@ esac
 HOMEPAGE="http://bazaar-vcs.org/"
 DESCRIPTION="Based on the ${EBZR} eclass"
 
-DEPEND=">=dev-vcs/bzr-1.5"
+DEPEND=">=dev-vcs/bzr-2.0.1"
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
 # The directory to store all fetched Bazaar live sources.
 : ${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/bzr-src}
 
+# @ECLASS-VARIABLE: EBZR_INIT_REPO_CMD
+# @DESCRIPTION:
+# The Bazaar command to initialise a shared repository.
+: ${EBZR_INIT_REPO_CMD:="bzr init-repository --no-trees"}
+
 # @ECLASS-VARIABLE: EBZR_FETCH_CMD
 # @DESCRIPTION:
 # The Bazaar command to fetch the sources.
-EBZR_FETCH_CMD="bzr checkout --lightweight"
+: ${EBZR_FETCH_CMD="bzr branch --no-tree"}
 
 # @ECLASS-VARIABLE: EBZR_UPDATE_CMD
 # @DESCRIPTION:
 # The Bazaar command to update the sources.
-EBZR_UPDATE_CMD="bzr update"
-
-# @ECLASS-VARIABLE: EBZR_DIFF_CMD
-# @DESCRIPTION:
-# The Bazaar command to get the diff output.
-EBZR_DIFF_CMD="bzr diff"
+: ${EBZR_UPDATE_CMD:="bzr pull"}
 
 # @ECLASS-VARIABLE: EBZR_EXPORT_CMD
 # @DESCRIPTION:
 # The Bazaar command to export a branch.
-EBZR_EXPORT_CMD="bzr export"
+: ${EBZR_EXPORT_CMD:="bzr export"}
 
 # @ECLASS-VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
 # The Bazaar command to list a revision number of the branch.
-EBZR_REVNO_CMD="bzr revno"
+: ${EBZR_REVNO_CMD:="bzr revno"}
 
 # @ECLASS-VARIABLE: EBZR_OPTIONS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The options passed to the fetch and update commands.
-EBZR_OPTIONS="${EBZR_OPTIONS:-}"
 
 # @ECLASS-VARIABLE: EBZR_REPO_URI
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # The repository URI for the source package.
 #
@@ -81,79 +82,88 @@ EBZR_OPTIONS="${EBZR_OPTIONS:-}"
 # @CODE
 #
 # Note: lp: seems to be an alias for https://launchpad.net
-EBZR_REPO_URI="${EBZR_REPO_URI:-}"
 
 # @ECLASS-VARIABLE: EBZR_BOOTSTRAP
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Bootstrap script or command like autogen.sh or etc.
-EBZR_BOOTSTRAP="${EBZR_BOOTSTRAP:-}"
 
 # @ECLASS-VARIABLE: EBZR_PATCHES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # bzr eclass can apply patches in bzr_bootstrap().
 # You can use regular expressions in this variable like *.diff or
 # *.patch and the like.
-# NOTE: These patches will bei applied before EBZR_BOOTSTRAP is processed.
+# NOTE: These patches will be applied before EBZR_BOOTSTRAP is processed.
 #
 # Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
 # location, the installation dies.
-EBZR_PATCHES="${EBZR_PATCHES:-}"
+
+# @ECLASS-VARIABLE: EBZR_BRANCH
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The directory where to store the branch within a shared repository,
+# relative to EBZR_CACHE_DIR.
+#
+# This variable should be set if there are several live ebuilds for
+# different branches of the same upstream project. The branches can then
+# share the same repository in EBZR_CACHE_DIR, which will save both data
+# traffic volume and disk space.
+#
+# If there is only a live ebuild for one single branch, EBZR_BRANCH
+# needs not be set. In this case, the branch will be stored in a
+# stand-alone repository directly in EBZR_CACHE_DIR.
 
 # @ECLASS-VARIABLE: EBZR_REVISION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Revision to fetch, defaults to the latest
 # (see http://bazaar-vcs.org/BzrRevisionSpec or bzr help revisionspec).
-# If you set this to a non-empty value, then it is recommended not to
-# use a lightweight checkout (see also EBZR_FETCH_CMD).
-EBZR_REVISION="${EBZR_REVISION:-}"
 
 # @ECLASS-VARIABLE: EBZR_CACHE_DIR
 # @DESCRIPTION:
 # The directory to store the source for the package, relative to
 # EBZR_STORE_DIR.
-#
-# default: ${PN}
-EBZR_CACHE_DIR="${EBZR_CACHE_DIR:-${PN}}"
+: ${EBZR_CACHE_DIR:=${PN}}
 
 # @ECLASS-VARIABLE: EBZR_OFFLINE
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # a bzr source tree. This is intended to be set outside the ebuild by users.
-EBZR_OFFLINE="${EBZR_OFFLINE:-${ESCM_OFFLINE}}"
+: ${EBZR_OFFLINE:=${ESCM_OFFLINE}}
 
 # @FUNCTION: bzr_initial_fetch
 # @DESCRIPTION:
 # Retrieves the source code from a repository for the first time, via
 # ${EBZR_FETCH_CMD}.
 bzr_initial_fetch() {
-	local repository="${1}";
-	local branch_dir="${2}";
+	local repo_uri=$1 branch_dir=$2
 
 	# fetch branch
-	einfo "bzr fetch start -->"
-	einfo "   repository: ${repository} => ${branch_dir}"
+	einfo "bzr branch start -->"
+	einfo "   repository: ${repo_uri} => ${branch_dir}"
 
-	${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${repository}" "${branch_dir}" \
-		|| die "${EBZR}: can't branch from ${repository}."
+	${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${repo_uri}" "${branch_dir}" \
+		|| die "${EBZR}: can't branch from ${repo_uri}."
 }
 
 # @FUNCTION: bzr_update
 # @DESCRIPTION:
 # Updates the source code from a repository, via ${EBZR_UPDATE_CMD}.
 bzr_update() {
-	local repository="${1}";
+	local repo_uri=$1 branch_dir=$2
 
 	if [[ -n "${EBZR_OFFLINE}" ]]; then
-		einfo "skipping bzr update -->"
-		einfo "   repository: ${repository}"
+		einfo "skipping bzr pull -->"
+		einfo "   repository: ${repo_uri}"
 	else
 		# update branch
-		einfo "bzr update start -->"
-		einfo "   repository: ${repository}"
+		einfo "bzr pull start -->"
+		einfo "   repository: ${repo_uri}"
 
-		pushd "${EBZR_BRANCH_DIR}" > /dev/null
-		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} \
-			|| die "${EBZR}: can't update from ${repository}."
+		pushd "${branch_dir}" > /dev/null
+		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repo_uri}" \
+			|| die "${EBZR}: can't pull from ${repo_uri}."
 		popd > /dev/null
 	fi
 }
@@ -162,9 +172,9 @@ bzr_update() {
 # @DESCRIPTION:
 # Wrapper function to fetch sources from a Bazaar repository via bzr
 # fetch or bzr update, depending on whether there is an existing
-# working copy in ${EBZR_BRANCH_DIR}.
+# working copy in ${EBZR_CACHE_DIR}.
 bzr_fetch() {
-	local EBZR_BRANCH_DIR
+	local repo_dir branch_dir
 
 	# EBZR_REPO_URI is empty.
 	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty."
@@ -200,39 +210,39 @@ bzr_fetch() {
 	pushd "${EBZR_STORE_DIR}" > /dev/null \
 		|| die "${EBZR}: can't chdir to ${EBZR_STORE_DIR}"
 
-	EBZR_BRANCH_DIR="${EBZR_STORE_DIR}/${EBZR_CACHE_DIR}"
+	repo_dir=${EBZR_STORE_DIR}/${EBZR_CACHE_DIR}
+	branch_dir=${repo_dir}${EBZR_BRANCH:+/${EBZR_BRANCH}}
 
 	addwrite "${EBZR_STORE_DIR}"
-	addwrite "${EBZR_BRANCH_DIR}"
+
+	# Clean up if the existing local copy is a checkout (as it was the
+	# case with an older version of bzr.eclass)
+	if [[ ${EBZR_FETCH_CMD} != *checkout* && -d ${repo_dir}/.bzr/checkout ]]
+	then
+		ewarn "removing old bzr checkout"
+		rm -rf "${repo_dir}"
+	fi
 
 	debug-print "${FUNCNAME}: EBZR_OPTIONS = ${EBZR_OPTIONS}"
 
-	# Run bzr_initial_fetch() only if the branch has not been pulled
-	# before or if the existing local copy is a full checkout (as did
-	# an older version of bzr.eclass)
-	if [[ ! -d ${EBZR_BRANCH_DIR} ]] ; then
-		bzr_initial_fetch "${EBZR_REPO_URI}" "${EBZR_BRANCH_DIR}"
+	if [[ ! -d ${branch_dir}/.bzr ]]; then
+		if [[ ${repo_dir} != "${branch_dir}" && ! -d ${repo_dir}/.bzr ]]; then
+			einfo "creating shared bzr repository"
+			${EBZR_INIT_REPO_CMD} "${repo_dir}" \
+				|| die "${EBZR}: can't create shared repository"
+		fi
+		bzr_initial_fetch "${EBZR_REPO_URI}" "${branch_dir}"
 	else
-		bzr_update "${EBZR_REPO_URI}" "${EBZR_BRANCH_DIR}"
+		bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
 
-	cd "${EBZR_BRANCH_DIR}"
+	cd "${branch_dir}"
+	export EBZR_REVNO=$(${EBZR_REVNO_CMD})
 
 	einfo "exporting ..."
-
-	if [[ -z ${EBZR_REVISION} ]]; then
-		rsync -rlpgo --exclude=".bzr/" . "${WORKDIR}/${P}" \
-			|| die "${EBZR}: export failed"
-	else
-		# revisions of a lightweight checkout are only available when online
-		[[ -z ${EBZR_OFFLINE} || -d ${EBZR_BRANCH_DIR}/.bzr/repository ]] \
-			|| die "${EBZR}: No support for revisions when off-line"
-		${EBZR_EXPORT_CMD} -r "${EBZR_REVISION}" "${WORKDIR}/${P}" \
-			|| die "${EBZR}: export failed"
-	fi
-
-	export EBZR_TREE_CRC32=$(awk '$1 == "crc32:" { print $2; exit }' \
-		.bzr/checkout/dirstate)
+	${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
+		"${WORKDIR}/${P}" . || die "${EBZR}: export failed"
+	einfo "Revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${WORKDIR}/${P}"
 
 	popd > /dev/null
 }
@@ -284,15 +294,10 @@ bzr_bootstrap() {
 
 # @FUNCTION: bzr_src_unpack
 # @DESCRIPTION:
-# Default src_unpack(). Includes bzr_fetch() and bootstrap().
+# Default src_unpack(), calls bzr_fetch. For EAPIs 0 and 1, also calls
+# bzr_src_prepare.
 bzr_src_unpack() {
-	if ! [ -z ${EBZR_BRANCH} ]; then
-		# This test will go away on 01 Jul 2010
-		eerror "This ebuild uses EBZR_BRANCH which is not supported anymore"
-		eerror "by the bzr.eclass.  Please report this to the ebuild's maintainer."
-		die "EBZR_BRANCH still defined"
-	fi
-	bzr_fetch || die "${EBZR}: unknown problem in bzr_fetch()."
+	bzr_fetch
 	case "${EAPI:-0}" in
 		0|1) bzr_src_prepare ;;
 	esac
@@ -300,8 +305,7 @@ bzr_src_unpack() {
 
 # @FUNCTION: bzr_src_prepare
 # @DESCRIPTION:
-# Default src_prepare(). Executes bzr_bootstrap() for patch
-# application and Make file generation (if needed).
+# Default src_prepare(), calls bzr_bootstrap.
 bzr_src_prepare() {
-	bzr_bootstrap || die "${EBZR}: unknown problem in bzr_bootstrap()."
+	bzr_bootstrap
 }
