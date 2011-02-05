@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Feb 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-24.0.9999-r1.ebuild:
+  Add a workaround for faster initial download; this clones the branch from a
+  fast mirror (which may be out of date), and subsequently pulls from the slow
+  original repository. The updated bzr.eclass is needed for this.
+
 *emacs-vcs-24.0.9999-r1 (05 Feb 2011)
 *emacs-vcs-23.2.9999-r1 (05 Feb 2011)
 
