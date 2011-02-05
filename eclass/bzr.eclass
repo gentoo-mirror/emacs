@@ -139,6 +139,10 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 bzr_initial_fetch() {
 	local repo_uri=$1 branch_dir=$2
 
+	if [[ -n "${EBZR_OFFLINE}" ]]; then
+		ewarn "EBZR_OFFLINE cannot be used when there is no local branch yet."
+	fi
+
 	# fetch branch
 	einfo "bzr branch start -->"
 	einfo "   repository: ${repo_uri} => ${branch_dir}"
@@ -199,7 +203,6 @@ bzr_fetch() {
 	fi
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
-		debug-print "${FUNCNAME}: initial branch. Creating bzr directory"
 		local save_sandbox_write=${SANDBOX_WRITE}
 		addwrite /
 		mkdir -p "${EBZR_STORE_DIR}" \
@@ -222,8 +225,6 @@ bzr_fetch() {
 		ewarn "removing old bzr checkout"
 		rm -rf "${repo_dir}"
 	fi
-
-	debug-print "${FUNCNAME}: EBZR_OPTIONS = ${EBZR_OPTIONS}"
 
 	if [[ ! -d ${branch_dir}/.bzr ]]; then
 		if [[ ${repo_dir} != "${branch_dir}" && ! -d ${repo_dir}/.bzr ]]; then
