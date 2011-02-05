@@ -1,19 +1,18 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-23.2.9999-r1.ebuild,v 1.1 2011/01/30 08:54:05 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.4 2011/02/02 19:29:05 ulm Exp $
 
 EAPI=4
-WANT_AUTOMAKE="none"
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
-	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
-	EGIT_PROJECT="emacs"
-	EGIT_BRANCH="emacs-23"
-	EGIT_FETCH_CMD="git clone --depth=1"
-	EGIT_HAS_SUBMODULES=1		# needed, otherwise --depth won't work
-	inherit git
+	EBZR_BRANCH="trunk"
+	#EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
+	# The mirror at launchpad has much better performance.
+	EBZR_REPO_URI="lp:emacs"
+	EBZR_CACHE_DIR="emacs"
+	inherit bzr
 	SRC_URI=""
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
@@ -29,9 +28,9 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
-SLOT="23"
-KEYWORDS=""
-IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
+SLOT="24"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+IUSE="alsa dbus gconf gif gnutls gpm gtk gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -42,17 +41,21 @@ RDEPEND="sys-libs/ncurses
 	alsa? ( media-libs/alsa-lib )
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
+	gnutls? ( net-libs/gnutls )
+	selinux? ( sys-libs/libselinux )
 	X? (
 		x11-libs/libXmu
 		x11-libs/libXt
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
+		libxml2? ( >=dev-libs/libxml2-2.2.0 )
 		gif? ( media-libs/giflib )
 		jpeg? ( virtual/jpeg )
 		png? ( media-libs/libpng )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
 		xpm? ( x11-libs/libXpm )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2 )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -76,16 +79,16 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
-EMACS_SUFFIX="emacs-${SLOT}-vcs"
+EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then
-		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
-			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
+		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
+			configure.in)
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
-		einfo "Emacs branch: ${EGIT_BRANCH}"
+		einfo "Emacs branch: ${EBZR_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
@@ -93,11 +96,6 @@ src_prepare() {
 	#else
 	#	EPATCH_SUFFIX=patch epatch
 	fi
-
-	sed -i \
-		-e "s:/usr/lib/crtbegin.o:$(`tc-getCC` -print-file-name=crtbegin.o):g" \
-		-e "s:/usr/lib/crtend.o:$(`tc-getCC` -print-file-name=crtend.o):g" \
-		"${S}"/src/s/freebsd.h || die "unable to sed freebsd.h settings"
 
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
@@ -113,7 +111,7 @@ src_prepare() {
 			|| die "unable to sed configure.in"
 	fi
 
-	eautoreconf
+	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
@@ -143,12 +141,12 @@ src_configure() {
 
 	if use X; then
 		myconf="${myconf} --with-x"
-		myconf="${myconf} $(use_with gconf)"
+		myconf="${myconf} $(use_with gconf) $(use_with libxml2 xml2)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_with gif) $(use_with jpeg)"
 		myconf="${myconf} $(use_with png) $(use_with svg rsvg)"
 		myconf="${myconf} $(use_with tiff) $(use_with xpm)"
-		myconf="${myconf} $(use_with xft)"
+		myconf="${myconf} $(use_with imagemagick) $(use_with xft)"
 
 		if use xft; then
 			myconf="${myconf} $(use_with m17n-lib libotf)"
@@ -190,6 +188,7 @@ src_configure() {
 	myconf="${myconf} $(use_with hesiod)"
 	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
 	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
+	myconf="${myconf} $(use_with gnutls) $(use_with selinux)"
 
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
@@ -202,6 +201,8 @@ src_configure() {
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir="${crtdir}" \
+		--with-gameuser="${GAMES_USER_DED:-games}" \
+		--without-compress-info \
 		${myconf}
 }
 
@@ -297,7 +298,7 @@ pkg_postinst() {
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown games "${EROOT}"/var/lib/games/emacs
+	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset

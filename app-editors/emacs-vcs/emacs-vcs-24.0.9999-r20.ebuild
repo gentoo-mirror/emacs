@@ -7,10 +7,6 @@ EAPI=4
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
-	#EMACS_BRANCH="trunk"
-	#EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EMACS_BRANCH}/"
-	#EBZR_CACHE_DIR="emacs-${EMACS_BRANCH#emacs-}"
-	#inherit bzr
 	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
 	EGIT_PROJECT="emacs"
 	EGIT_BRANCH="master"
@@ -33,7 +29,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="24"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS=""
 IUSE="alsa dbus gconf gif gnutls gpm gtk gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -85,15 +81,6 @@ RDEPEND="${RDEPEND}
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
-
-pkg_setup() {
-	local olddir="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/bzr-src/emacs-trunk"
-	if [ -d "${olddir}" ]; then
-		ewarn "The GNU Emacs live ebuild now uses Git instead of Bazaar."
-		ewarn "Therefore, you may remove the old Bazaar directory:"
-		ewarn "rm -rf ${olddir}"
-	fi
-}
 
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then

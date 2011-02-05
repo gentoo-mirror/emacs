@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-23.2.9999-r1.ebuild,v 1.1 2011/01/30 08:54:05 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-23.2.9999-r1.ebuild,v 1.2 2011/02/02 19:02:16 ulm Exp $
 
 EAPI=4
 WANT_AUTOMAKE="none"
@@ -8,12 +8,10 @@ WANT_AUTOMAKE="none"
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
-	EGIT_REPO_URI="git://repo.or.cz/emacs.git"
-	EGIT_PROJECT="emacs"
-	EGIT_BRANCH="emacs-23"
-	EGIT_FETCH_CMD="git clone --depth=1"
-	EGIT_HAS_SUBMODULES=1		# needed, otherwise --depth won't work
-	inherit git
+	EBZR_BRANCH="emacs-23"
+	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
+	EBZR_CACHE_DIR="emacs"
+	inherit bzr
 	SRC_URI=""
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.gz
@@ -30,7 +28,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 RESTRICT="strip"
 
@@ -85,7 +83,7 @@ src_prepare() {
 			| sed -e 's/^[^"]*"\([^"]*\)".*$/\1/')
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
-		einfo "Emacs branch: ${EGIT_BRANCH}"
+		einfo "Emacs branch: ${EBZR_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
