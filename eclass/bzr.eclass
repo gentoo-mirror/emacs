@@ -9,7 +9,7 @@
 # Christian Faulhammer <fauli@gentoo.org>,
 # Mark Lee <bzr-gentoo-overlay@lazymalevolence.com>,
 # and anyone who wants to help
-# @BLURB: This eclass provides support to use the Bazaar VCS
+# @BLURB: generic fetching functions for the Bazaar VCS
 # @DESCRIPTION:
 # The bzr.eclass provides functions to fetch, unpack, patch, and
 # bootstrap sources from repositories of the Bazaar distributed version
@@ -72,16 +72,8 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 # @DESCRIPTION:
 # The repository URI for the source package.
 #
-# @CODE
-# Supported protocols:
-# 		- http://
-# 		- https://
-# 		- sftp://
-# 		- rsync://
-# 		- lp:
-# @CODE
-#
-# Note: lp: seems to be an alias for https://launchpad.net
+# Note: If the ebuild uses an sftp:// URI for the repository, then it
+# must depend on dev-vcs/bzr[sftp].
 
 # @ECLASS-VARIABLE: EBZR_BOOTSTRAP
 # @DEFAULT_UNSET
@@ -98,32 +90,36 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 # Patches are searched both in ${PWD} and ${FILESDIR}.  If not found in
 # either location, the installation dies.
 
+# @ECLASS-VARIABLE: EBZR_PROJECT
+# @DESCRIPTION:
+# The project name of your ebuild.  Normally, the branch will be stored
+# in the ${EBZR_STORE_DIR}/${EBZR_PROJECT} directory.
+#
+# If EBZR_BRANCH is set (see below), then a shared repository will be
+# created in that directory, and the branch will be located in
+# ${EBZR_STORE_DIR}/${EBZR_PROJECT}/${EBZR_BRANCH}.
+: ${EBZR_PROJECT:=${PN}}
+
 # @ECLASS-VARIABLE: EBZR_BRANCH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The directory where to store the branch within a shared repository,
-# relative to EBZR_CACHE_DIR.
+# relative to ${EBZR_STORE_DIR}/${EBZR_PROJECT}.
 #
 # This variable should be set if there are several live ebuilds for
 # different branches of the same upstream project.  The branches can
-# then share the same repository in EBZR_CACHE_DIR, which will save both
+# then share the same repository in EBZR_PROJECT, which will save both
 # data traffic volume and disk space.
 #
 # If there is only a live ebuild for one single branch, EBZR_BRANCH
 # needs not be set.  In this case, the branch will be stored in a
-# stand-alone repository directly in EBZR_CACHE_DIR.
+# stand-alone repository directly in EBZR_PROJECT.
 
 # @ECLASS-VARIABLE: EBZR_REVISION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Revision to fetch, defaults to the latest
 # (see http://bazaar-vcs.org/BzrRevisionSpec or bzr help revisionspec).
-
-# @ECLASS-VARIABLE: EBZR_CACHE_DIR
-# @DESCRIPTION:
-# The directory to store the source for the package, relative to
-# EBZR_STORE_DIR.
-: ${EBZR_CACHE_DIR:=${PN}}
 
 # @ECLASS-VARIABLE: EBZR_OFFLINE
 # @DESCRIPTION:
@@ -177,30 +173,12 @@ bzr_update() {
 # @DESCRIPTION:
 # Wrapper function to fetch sources from a Bazaar repository with
 # bzr branch or bzr pull, depending on whether there is an existing
-# working copy in ${EBZR_CACHE_DIR}.
+# working copy.
 bzr_fetch() {
 	local repo_dir branch_dir
 
 	# EBZR_REPO_URI is empty.
 	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty."
-
-	# check for the protocol or pull from a local repo.
-	if [[ -z ${EBZR_REPO_URI%%:*} ]] ; then
-		case ${EBZR_REPO_URI%%:*} in
-			http|https|rsync|lp)
-				;;
-			sftp)
-				if ! built_with_use --missing true dev-vcs/bzr sftp; then
-					eerror "To fetch sources from ${EBZR_REPO_URI} you need SFTP"
-					eerror "support in dev-vcs/bzr."
-					die "Please, rebuild dev-vcs/bzr with the sftp USE flag enabled."
-				fi
-				;;
-			*)
-				die "${EBZR}: fetch from ${EBZR_REPO_URI%:*} is not yet implemented."
-				;;
-		esac
-	fi
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
 		local save_sandbox_write=${SANDBOX_WRITE}
@@ -213,7 +191,7 @@ bzr_fetch() {
 	pushd "${EBZR_STORE_DIR}" > /dev/null \
 		|| die "${EBZR}: can't chdir to ${EBZR_STORE_DIR}"
 
-	repo_dir=${EBZR_STORE_DIR}/${EBZR_CACHE_DIR}
+	repo_dir=${EBZR_STORE_DIR}/${EBZR_PROJECT}
 	branch_dir=${repo_dir}${EBZR_BRANCH:+/${EBZR_BRANCH}}
 
 	addwrite "${EBZR_STORE_DIR}"
