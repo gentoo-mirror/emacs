@@ -150,7 +150,7 @@ bzr_initial_fetch() {
 	einfo "   repository: ${repo_uri} => ${branch_dir}"
 
 	${EBZR_FETCH_CMD} ${EBZR_OPTIONS} "${repo_uri}" "${branch_dir}" \
-		|| die "${EBZR}: can't branch from ${repo_uri}."
+		|| die "${EBZR}: can't branch from ${repo_uri}"
 }
 
 # @FUNCTION: bzr_update
@@ -168,9 +168,10 @@ bzr_update() {
 		einfo "bzr pull start -->"
 		einfo "   repository: ${repo_uri}"
 
-		pushd "${branch_dir}" > /dev/null
+		pushd "${branch_dir}" > /dev/null \
+			|| die "${EBZR}: can't chdir to ${branch_dir}"
 		${EBZR_UPDATE_CMD} ${EBZR_OPTIONS} "${repo_uri}" \
-			|| die "${EBZR}: can't pull from ${repo_uri}."
+			|| die "${EBZR}: can't pull from ${repo_uri}"
 		popd > /dev/null
 	fi
 }
@@ -184,13 +185,13 @@ bzr_fetch() {
 	local repo_dir branch_dir
 
 	# EBZR_REPO_URI is empty.
-	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty."
+	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty"
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
 		local save_sandbox_write=${SANDBOX_WRITE}
 		addwrite /
 		mkdir -p "${EBZR_STORE_DIR}" \
-			|| die "${EBZR}: can't mkdir ${EBZR_STORE_DIR}."
+			|| die "${EBZR}: can't mkdir ${EBZR_STORE_DIR}"
 		SANDBOX_WRITE=${save_sandbox_write}
 	fi
 
@@ -231,7 +232,7 @@ bzr_fetch() {
 		bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
 
-	cd "${branch_dir}"
+	cd "${branch_dir}" || die "${EBZR}: can't chdir to ${branch_dir}"
 	export EBZR_REVNO=$(${EBZR_REVNO_CMD})
 
 	einfo "exporting ..."
@@ -248,7 +249,7 @@ bzr_fetch() {
 bzr_bootstrap() {
 	local patch lpatch
 
-	pushd "${S}" > /dev/null
+	pushd "${S}" > /dev/null || die "${EBZR}: can't chdir to ${S}"
 
 	if [[ -n ${EBZR_PATCHES} ]] ; then
 		einfo "apply patches -->"
@@ -276,11 +277,11 @@ bzr_bootstrap() {
 		if [[ -f ${EBZR_BOOTSTRAP} ]] && [[ -x ${EBZR_BOOTSTRAP} ]] ; then
 			einfo "   bootstrap with a file: ${EBZR_BOOTSTRAP}"
 			"./${EBZR_BOOTSTRAP}" \
-				|| die "${EBZR}: can't execute EBZR_BOOTSTRAP."
+				|| die "${EBZR}: can't execute EBZR_BOOTSTRAP"
 		else
 			einfo "   bootstrap with commands: ${EBZR_BOOTSTRAP}"
 			"${EBZR_BOOTSTRAP}" \
-				|| die "${EBZR}: can't eval EBZR_BOOTSTRAP."
+				|| die "${EBZR}: can't eval EBZR_BOOTSTRAP"
 		fi
 	fi
 
