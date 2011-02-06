@@ -31,6 +31,11 @@ HOMEPAGE="http://bazaar-vcs.org/"
 DESCRIPTION="Based on the ${EBZR} eclass"
 
 DEPEND=">=dev-vcs/bzr-2.0.1"
+case "${EAPI:-0}" in
+	0|1) ;;
+	*) [[ ${EBZR_REPO_URI%%:*} = sftp ]] \
+		&& DEPEND=">=dev-vcs/bzr-2.0.1[sftp]" ;;
+esac
 
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
@@ -72,8 +77,9 @@ DEPEND=">=dev-vcs/bzr-2.0.1"
 # @DESCRIPTION:
 # The repository URI for the source package.
 #
-# Note: If the ebuild uses an sftp:// URI for the repository, then it
-# must depend on dev-vcs/bzr[sftp].
+# Note: If the ebuild uses an sftp:// URI, then in EAPI 0 or 1 it must
+# make sure that dev-vcs/bzr was built with USE="sftp".  In EAPI 2 or
+# later, the eclass will depend on dev-vcs/bzr[sftp].
 
 # @ECLASS-VARIABLE: EBZR_BOOTSTRAP
 # @DEFAULT_UNSET
