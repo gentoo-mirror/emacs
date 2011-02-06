@@ -8,9 +8,9 @@ WANT_AUTOMAKE="none"
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
+	EBZR_PROJECT="emacs"
 	EBZR_BRANCH="emacs-23"
 	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}"
-	EBZR_CACHE_DIR="emacs"
 	inherit bzr
 	SRC_URI=""
 else

@@ -7,11 +7,11 @@ EAPI=4
 inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
+	EBZR_PROJECT="emacs"
 	EBZR_BRANCH="trunk"
 	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}"
 	# The mirror at launchpad has much better performance.
 	EBZR_MIRROR_URI="lp:emacs"
-	EBZR_CACHE_DIR="emacs"
 	inherit bzr
 	SRC_URI=""
 else
