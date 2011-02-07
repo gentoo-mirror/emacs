@@ -74,6 +74,7 @@ esac
 
 # @ECLASS-VARIABLE: EBZR_REPO_URI
 # @DEFAULT_UNSET
+# @REQUIRED
 # @DESCRIPTION:
 # The repository URI for the source package.
 #
@@ -135,6 +136,7 @@ esac
 : ${EBZR_OFFLINE:=${ESCM_OFFLINE}}
 
 # @FUNCTION: bzr_initial_fetch
+# @USAGE: <repository URI> <branch directory>
 # @DESCRIPTION:
 # Internal function, retrieves the source code from a repository for the
 # first time, using ${EBZR_FETCH_CMD}.
@@ -154,6 +156,7 @@ bzr_initial_fetch() {
 }
 
 # @FUNCTION: bzr_update
+# @USAGE: <repository URI> <branch directory>
 # @DESCRIPTION:
 # Internal function, updates the source code from a repository, using
 # ${EBZR_UPDATE_CMD}.
@@ -236,7 +239,10 @@ bzr_fetch() {
 	fi
 
 	cd "${branch_dir}" || die "${EBZR}: can't chdir to ${branch_dir}"
+
+	# Save some variables in environment. #311101
 	export EBZR_REVNO=$(${EBZR_REVNO_CMD})
+	export EBZR_WC_PATH=${branch_dir}
 
 	einfo "exporting ..."
 	${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
