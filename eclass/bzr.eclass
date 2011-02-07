@@ -40,7 +40,7 @@ esac
 # @ECLASS-VARIABLE: EBZR_STORE_DIR
 # @DESCRIPTION:
 # The directory to store all fetched Bazaar live sources.
-: ${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/bzr-src}
+: ${EBZR_STORE_DIR:=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/bzr-src}
 
 # @ECLASS-VARIABLE: EBZR_INIT_REPO_CMD
 # @DESCRIPTION:
@@ -184,8 +184,7 @@ bzr_update() {
 bzr_fetch() {
 	local repo_dir branch_dir
 
-	# EBZR_REPO_URI is empty.
-	[[ ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty"
+	[[ -n ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty"
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
 		local save_sandbox_write=${SANDBOX_WRITE}
@@ -225,7 +224,7 @@ bzr_fetch() {
 			# branch from a fast mirror (which may be out of date), and
 			# subsequently pulls from the slow original repository.
 			bzr_initial_fetch "${EBZR_MIRROR_URI}" "${branch_dir}"
-			EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite"	\
+			EBZR_UPDATE_CMD="${EBZR_UPDATE_CMD} --remember --overwrite" \
 				EBZR_OFFLINE="" bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 		fi
 	else
@@ -238,7 +237,7 @@ bzr_fetch() {
 	einfo "exporting ..."
 	${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
 		"${WORKDIR}/${P}" . || die "${EBZR}: export failed"
-	einfo "Revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${WORKDIR}/${P}"
+	einfo "revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${WORKDIR}/${P}"
 
 	popd > /dev/null
 }
