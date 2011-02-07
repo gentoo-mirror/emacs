@@ -207,6 +207,7 @@ bzr_fetch() {
 
 	# Clean up if the existing local copy is a checkout (as was the case
 	# with an older version of bzr.eclass).
+	# This test can be removed after 1 Mar 2012.
 	if [[ ${EBZR_FETCH_CMD} != *checkout* && -d ${repo_dir}/.bzr/checkout ]]
 	then
 		local tmpname=$(mktemp -u "${repo_dir}._old_.XXXXXX")
