@@ -82,6 +82,17 @@ esac
 # make sure that dev-vcs/bzr was built with USE="sftp".  In EAPI 2 or
 # later, the eclass will depend on dev-vcs/bzr[sftp].
 
+# @ECLASS-VARIABLE: EBZR_MIRROR_URI
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The URI of a fast mirror of the source repository.  If this variable
+# is set, the initial branch will be cloned from the mirror, followed
+# by a pull from the original repository.  This is intended for special
+# cases, where download from the original repository is slow, but a fast
+# mirror exists but may be out of date.
+#
+# Normally, this variable needs not be set.
+
 # @ECLASS-VARIABLE: EBZR_BOOTSTRAP
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -211,7 +222,7 @@ bzr_fetch() {
 	if [[ ${EBZR_FETCH_CMD} != *checkout* && -d ${repo_dir}/.bzr/checkout ]]
 	then
 		local tmpname=$(mktemp -u "${repo_dir}._old_.XXXXXX")
-		ewarn "checkout from old version of bzr.eclass found, moving it to:"
+		ewarn "checkout from old version of ${EBZR} found, moving it to:"
 		ewarn "${tmpname}"
 		ewarn "you may manually remove it"
 		mv "${repo_dir}" "${tmpname}" \
