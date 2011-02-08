@@ -5,7 +5,7 @@
 # @ECLASS: bzr.eclass
 # @MAINTAINER:
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>,
-# Ulrich Mueller <ulm@gentoo.org>,
+# Ulrich Müller <ulm@gentoo.org>,
 # Christian Faulhammer <fauli@gentoo.org>,
 # Mark Lee <bzr-gentoo-overlay@lazymalevolence.com>,
 # and anyone who wants to help
