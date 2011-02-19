@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 #
@@ -6,7 +6,7 @@
 # Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
 # Copyright 2007-2008 Christian Faulhammer <fauli@gentoo.org>
-# Copyright 2007-2010 Ulrich Müller <ulm@gentoo.org>
+# Copyright 2007-2011 Ulrich Müller <ulm@gentoo.org>
 #
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
