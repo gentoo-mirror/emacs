@@ -11,6 +11,8 @@ if [ "${PV##*.}" = "9999" ]; then
 	EBZR_PROJECT="emacs"
 	EBZR_BRANCH="emacs-23"
 	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}"
+	# "Nosmart" is much faster for initial branching.
+	EBZR_INITIAL_URI="nosmart+${EBZR_REPO_URI}"
 	inherit bzr
 	SRC_URI=""
 else
@@ -30,10 +32,6 @@ LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
-REQUIRED_USE="X? (
-	gtk? ( !Xaw3d !motif )
-	Xaw3d? ( !motif )
-)"
 RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
@@ -170,6 +168,9 @@ src_configure() {
 				"USE flag \"m17n-lib\" has no effect because xft is not set."
 		fi
 
+		# GTK+ is the default toolkit if USE=gtk is chosen with other
+		# possibilities. Emacs upstream thinks this should be standard
+		# policy on all distributions
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			myconf="${myconf} --with-x-toolkit=gtk"
@@ -183,6 +184,14 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf="${myconf} --with-x-toolkit=no"
 		fi
+
+		local f tk=
+		for f in gtk Xaw3d motif; do
+			use ${f} || continue
+			[ "${tk}" ] \
+				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"
+			tk="${tk}${tk:+ }${f}"
+		done
 	else
 		myconf="${myconf} --without-x"
 	fi
