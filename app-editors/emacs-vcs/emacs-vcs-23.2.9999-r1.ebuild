@@ -10,7 +10,7 @@ inherit autotools elisp-common eutils flag-o-matic multilib
 if [ "${PV##*.}" = "9999" ]; then
 	EBZR_PROJECT="emacs"
 	EBZR_BRANCH="emacs-23"
-	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}"
+	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
 	# "Nosmart" is much faster for initial branching.
 	EBZR_INITIAL_URI="nosmart+${EBZR_REPO_URI}"
 	inherit bzr
