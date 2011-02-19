@@ -8,7 +8,7 @@ inherit autotools elisp-common eutils flag-o-matic multilib
 
 if [ "${PV##*.}" = "9999" ]; then
 	EBZR_BRANCH="lexbind-new"
-	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}"
+	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
 	EBZR_CACHE_DIR="emacs"
 	inherit bzr
 	SRC_URI=""
