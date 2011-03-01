@@ -192,11 +192,6 @@ src_configure() {
 		myconf="${myconf} --without-x"
 	fi
 
-	myconf="${myconf} $(use_with hesiod)"
-	myconf="${myconf} $(use_with kerberos) $(use_with kerberos kerberos5)"
-	myconf="${myconf} $(use_with gpm) $(use_with dbus)"
-	myconf="${myconf} $(use_with gnutls) $(use_with selinux)"
-
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
 	# out the location because $(get_libdir) does not necessarily return
@@ -210,6 +205,12 @@ src_configure() {
 		--with-crt-dir="${crtdir}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
+		$(use_with hesiod) \
+		$(use_with kerberos) $(use_with kerberos kerberos5) \
+		$(use_with gpm) \
+		$(use_with dbus) \
+		$(use_with gnutls) \
+		$(use_with selinux) \
 		${myconf}
 }
 
