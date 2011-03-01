@@ -74,6 +74,7 @@ DEPEND="${RDEPEND}
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
+	!=app-editors/emacs-23.3*
 	>=app-emacs/emacs-common-gentoo-1[X?]"
 
 EMACS_SUFFIX="emacs-${SLOT}-vcs"
