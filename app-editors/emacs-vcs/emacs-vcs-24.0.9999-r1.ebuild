@@ -99,11 +99,9 @@ src_prepare() {
 		echo
 		einfo "Emacs branch: ${EBZR_BRANCH}"
 		einfo "Emacs version number: ${FULL_VERSION}"
-		[ "${FULL_VERSION%.*}" = ${PV%.*} ] \
+		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 		echo
-	#else
-	#	EPATCH_SUFFIX=patch epatch
 	fi
 
 	if ! use alsa; then

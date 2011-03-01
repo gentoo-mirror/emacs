@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-vcs-23.3.9999 (01 Mar 2011)
+
+  01 Mar 2011; Ulrich Mueller <ulm@gentoo.org> -emacs-vcs-23.2.9999-r1.ebuild,
+  +emacs-vcs-23.3.9999.ebuild, emacs-vcs-24.0.9999-r1.ebuild, metadata.xml:
+  Bump emacs-23 live ebuild to reflect upstream change of version number.
+  The sound USE flag is global now.
+
   19 Feb 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-23.2.9999-r1.ebuild,
   emacs-vcs-24.0.9999-r1.ebuild:
   Revert change of 09 Feb 2011. Add "nosmart" initial URI.
