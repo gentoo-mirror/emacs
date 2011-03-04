@@ -19,6 +19,7 @@ RDEPEND="x11-libs/libXt
 	x11-libs/libX11
 	x11-libs/libXmu
 	x11-libs/libXpm
+	x11-libs/libXp
 	x11-libs/libXft"
 
 DEPEND="${RDEPEND}
