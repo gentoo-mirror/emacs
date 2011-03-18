@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*sxemacs-22.1.14 (18 Mar 2011)
+
+  18 Mar 2011; Hans de Graaff <graaff@gentoo.org> +sxemacs-22.1.14.ebuild:
+  Update from Horst Günther Burkhardt III
+
 *sxemacs-22.1.12 (28 Feb 2011)
 
   28 Feb 2011; Hans de Graaff <graaff@gentoo.org> -sxemacs-22.1.9.ebuild,
