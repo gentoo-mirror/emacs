@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Mar 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-23.3.9999.ebuild,
+  emacs-vcs-24.0.9999-r1.ebuild, -emacs-vcs-24.0.9999-r2.ebuild:
+  Sync from portage tree. Remove experimental ebuild linking to Xaw3dxft.
+
   11 Mar 2011; Ulrich Mueller <ulm@gentoo.org> emacs-vcs-23.3.9999.ebuild:
   Sync from portage tree.
 
