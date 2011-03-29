@@ -1,16 +1,13 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=4
 NEED_EMACS=22
+EBZR_REPO_URI="bzr://cedet.bzr.sourceforge.net/bzrroot/cedet/code/trunk"
 
-ECVS_SERVER="cedet.cvs.sourceforge.net:/cvsroot/cedet"
-ECVS_MODULE="cedet"
-ECVS_AUTH="pserver"
-ECVS_CVS_COMPRESS="-z3"
-ECVS_LOCALNAME="cedet"
-
-inherit eutils elisp cvs
+# Inherit bzr last so that bzr_src_unpack takes action
+inherit elisp eutils bzr
 
 DESCRIPTION="CEDET: Collection of Emacs Development Tools"
 HOMEPAGE="http://cedet.sourceforge.net/"
@@ -21,23 +18,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND=""
 RDEPEND="!app-emacs/semantic
 	!app-emacs/eieio
 	!app-emacs/speedbar"
 
-S="${WORKDIR}/${ECVS_LOCALNAME}"
 SITEFILE="50${PN}-gentoo.el"
 
-src_unpack() {
-	cvs_src_unpack
-	cd "${S}"
-	ecvs_clean
-	find . -name Makefile | xargs touch
-}
-
 src_compile() {
-	emake -j1 EMACS="${EMACS}" || die "emake failed"
+	emake -j1 EMACS="${EMACS}"
 }
 
 #src_test() {
@@ -52,27 +40,27 @@ src_install() {
 		file=${target##*/}
 		dir=${target%/*}; dir=${dir#./}
 		case "${file}" in
-			*~ | Makefile* | *.texi | *-script | PRERELEASE_CHECKLIST \
-				| Project.ede | USING_CEDET_FROM_CVS | gettodos.sh \
-				| test.dot | grammar-fw-ov.txt | grammar-fw-ov.dia)
+			*~ | .cvsignore | .ede-ignore | Makefile* | *.texi | *-script \
+				| PRERELEASE_CHECKLIST | Project.ede | USING_CEDET_FROM_BZR \
+				| USING_CEDET_FROM_CVS | gettodos.sh | test.dot | testdist.sh \
+				| grammar-fw-ov.txt | grammar-fw-ov.dia)
 				;;
-			ChangeLog | README | AUTHORS | *NEWS | INSTALL | *.txt \
-				| semanticdb.sh)
+			README | AUTHORS | *NEWS | INSTALL | *.txt | semanticdb.sh)
 				docinto "${dir}"
-				dodoc "${target}" || die ;;
-			*.el | *.by | *.wy)
+				dodoc "${target}" ;;
+			*.el | *.by | *.wy | *.clj)
 				# install grammar sources along with the elisp files, since
 				# the location where semantic expects them is not configurable
 				insinto "${SITELISP}/${PN}/${dir}"
-				doins "${target}" || die ;;
+				doins "${target}" ;;
 			*.elc)
 				# we are in a subshell, so collecting in a variable won't work
 				echo "${target}" >>"${T}/elc-list.txt" ;;
 			*.srt | *.xpm)
 				insinto "${SITEETC}/${PN}/${dir}"
-				doins "${target}" || die ;;
+				doins "${target}" ;;
 			*.info* | grammar-fw-ov.png)
-				doinfo "${target}" || die ;;
+				doinfo "${target}" ;;
 			*)
 				# don't die in the live ebuild since upstream may add files
 				# die "Unrecognised file ${target}" ;;
@@ -85,7 +73,7 @@ src_install() {
 	while read target; do
 		dir=${target%/*}; dir=${dir#./}
 		insinto "${SITELISP}/${PN}/${dir}"
-		doins "${target}" || die
+		doins "${target}"
 	done <"${T}/elc-list.txt"
 
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die

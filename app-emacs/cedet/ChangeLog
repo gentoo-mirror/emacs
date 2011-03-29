@@ -1,6 +1,11 @@
 # ChangeLog for app-emacs/cedet
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  29 Mar 2011; Ulrich Mueller <ulm@gentoo.org> cedet-9999.ebuild:
+  CEDET upstream has moved to Bazaar. Update ebuild accordingly, bug 361091,
+  thanks to Dmitry Dzhus <dima@sphinx.net.ru>. Change ebuild to EAPI 4.
+  Suppress all "unrecognised file" warnings.
 
   02 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/50cedet-gentoo.el,
   -files/60cedet-gentoo.el, cedet-9999.ebuild:
