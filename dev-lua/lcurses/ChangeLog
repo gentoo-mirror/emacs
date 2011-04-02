@@ -1,0 +1,10 @@
+# ChangeLog for dev-lua/lcurses
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*lcurses-5 (02 Apr 2011)
+
+  02 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +lcurses-5.ebuild,
+  +metadata.xml:
+  Initial import. Needed as dependency of zile-2.4. Ebuild contributed by me.
+
