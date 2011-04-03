@@ -11,10 +11,14 @@ SRC_URI="http://luaforge.net/frs/download.php/4810/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="static-libs"
 
-RDEPEND=">=dev-lang/lua-5.1
+RDEPEND="=dev-lang/lua-5.1*
 	sys-libs/ncurses"
 DEPEND="${RDEPEND}"
 
 DOCS="README"
+
+src_configure() {
+	econf $(use_enable static-libs static)
+}
