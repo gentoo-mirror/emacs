@@ -3,13 +3,13 @@
 # $Header: $
 
 EAPI=4
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 
-inherit git toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Linus Torvalds' Microemacs, a fork of uEmacs/PK"
 HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary"
-SRC_URI=""
+# snapshot from git repo
+SRC_URI="http://dev.gentoo.org/~ulm/distfiles/uemacs-${PV}.tar.bz2"
 
 LICENSE="free-noncomm"
 SLOT="0"
@@ -18,6 +18,8 @@ IUSE=""
 
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/uemacs"
 
 src_prepare() {
 	sed -i -e "s:/usr/lib/:/usr/share/${PN}/:" epath.h || die

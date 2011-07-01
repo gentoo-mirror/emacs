@@ -1,6 +1,12 @@
 # ChangeLog for app-editors/uemacs-linus
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*uemacs-linus-4.0.15_p20101216 (01 Jul 2011)
+
+  01 Jul 2011; Ulrich Mueller <ulm@gentoo.org>
+  +uemacs-linus-4.0.15_p20101216.ebuild, uemacs-linus-9999.ebuild:
+  Snapshot. Update EAPI to 4.
 
 *uemacs-linus-9999 (12 Sep 2010)
 
