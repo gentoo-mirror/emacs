@@ -13,7 +13,7 @@
 app-editors/emacs-lexbind
 ~app-editors/emacs-vcs-23.3.9999
 ~app-editors/emacs-vcs-24.0.9999
-app-editors/uemacs-linus
+~app-editors/uemacs-linus-9999
 ~app-emacs/cedet-9999
 ~app-emacs/emacs-common-gentoo-9999
 ~app-emacs/emacs-daemon-9999
