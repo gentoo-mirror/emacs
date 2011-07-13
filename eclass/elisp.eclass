@@ -5,7 +5,7 @@
 # Copyright 2002-2003 Matthew Kennedy <mkennedy@gentoo.org>
 # Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007-2010 Christian Faulhammer <fauli@gentoo.org>
-# Copyright 2007-2010 Ulrich Müller <ulm@gentoo.org>
+# Copyright 2007-2011 Ulrich Müller <ulm@gentoo.org>
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
@@ -155,6 +155,7 @@ elisp_src_install() {
 	fi
 	if [ -n "${ELISP_TEXINFO}" ]; then
 		set -- ${ELISP_TEXINFO}
+		set -- ${@##*/}
 		doinfo ${@/%.*/.info*} || die
 	fi
 	if [ -n "${DOCS}" ]; then

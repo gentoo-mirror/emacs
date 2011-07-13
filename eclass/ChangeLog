@@ -1,3 +1,9 @@
+2011-07-13  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_install): Fix installation of Info files
+	if Texinfo source is in a subdirectory, bug 373741. Thanks to
+	Martin von Gagern <Martin.vGagern@gmx.net>.
+
 2010-11-10  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-need-emacs): New function.
