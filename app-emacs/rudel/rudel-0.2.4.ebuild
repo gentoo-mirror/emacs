@@ -31,13 +31,14 @@ src_compile() {
 }
 
 src_install() {
-	local subdir
+	local dir
 
-	elisp-install ${PN} *.{el,elc} || die
-	for subdir in jupiter obby zeroconf; do
-		elisp-install ${PN}/${subdir} ${subdir}/*.{el,elc} || die
+	for dir in . jupiter obby zeroconf; do
+		insinto "${SITELISP}/${PN}/${dir}"
+		doins *.el *.elc
 	done
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
+
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 
 	insinto "${SITEETC}/${PN}"
 	doins -r icons
