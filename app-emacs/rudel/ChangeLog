@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*rudel-9999 (19 Jul 2011)
+
+  19 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-9999.ebuild:
+  Live ebuild.
+
 *rudel-0.2.4 (18 Jul 2011)
 
   18 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +files/60rudel-gentoo.el,
