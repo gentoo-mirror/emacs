@@ -35,7 +35,7 @@ src_install() {
 
 	for dir in . jupiter obby zeroconf; do
 		insinto "${SITELISP}/${PN}/${dir}"
-		doins *.el *.elc
+		doins ${dir}/*.{el,elc}
 	done
 
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
