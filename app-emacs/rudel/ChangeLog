@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/rudel
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*rudel-0.2.4 (18 Jul 2011)
+
+  18 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +files/60rudel-gentoo.el,
+  +rudel-0.2.4.ebuild, +files/rudel-0.2.4-icons-dir.patch, +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
