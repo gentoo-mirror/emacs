@@ -3,7 +3,7 @@
 # $Header: $
 
 EAPI=4
-NEED_EMACS=22
+NEED_EMACS=23
 
 inherit elisp bzr
 
