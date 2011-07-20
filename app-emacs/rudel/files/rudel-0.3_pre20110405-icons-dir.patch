@@ -1,0 +1,11 @@
+--- rudel-orig/rudel-icons.el
++++ rudel/rudel-icons.el
+@@ -44,7 +44,7 @@
+ (defconst rudel-icons-image-formats '(svg png)
+   "Image formats to try (in that order) when loading Rudel icons.")
+ 
+-(defconst rudel-icons-directory
++(defvar rudel-icons-directory
+   (file-name-as-directory
+    (concat (file-name-directory load-file-name)  "icons"))
+   "Directory that holds Rudel icon files.")

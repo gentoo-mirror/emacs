@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*rudel-0.3_pre20110405 (20 Jul 2011)
+
+  20 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-0.3_pre20110405.ebuild,
+  files/60rudel-gentoo.el, +files/rudel-0.3_pre20110405-icons-dir.patch:
+  Snapshot.
+
 *rudel-9999 (19 Jul 2011)
 
   19 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-9999.ebuild:
