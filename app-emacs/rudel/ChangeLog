@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  20 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.2.4.ebuild,
+  -files/rudel-0.2.4-icons-dir.patch, -files/rudel-0.2.4-require-cl.patch,
+  files/rudel-0.3_pre20110405-icons-dir.patch:
+  Patch to fix image load path. Remove old.
+
 *rudel-0.3_pre20110405 (20 Jul 2011)
 
   20 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-0.3_pre20110405.ebuild,

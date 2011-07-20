@@ -9,3 +9,23 @@
    (file-name-as-directory
     (concat (file-name-directory load-file-name)  "icons"))
    "Directory that holds Rudel icon files.")
+@@ -64,13 +64,13 @@
+ 		  `(:type   ,type
+ 		    :ascent center
+ 		    :mask   heuristic
+-		    :file   ,(concat rudel-icons-directory
+-				     name "." (symbol-name type))))
++		    :file   ,(concat name "." (symbol-name type))))
+ 		rudel-icons-image-formats)))
+-    `(defimage ,icon
+-       (,@specs)
+-       ,(or docstring
+-	    (format "%s icon." (capitalize name)))))
++    `(let ((image-load-path (list rudel-icons-directory)))
++       (defimage ,icon
++	 (,@specs)
++	 ,(or docstring
++	      (format "%s icon." (capitalize name))))))
+   )
+ 
+ 
