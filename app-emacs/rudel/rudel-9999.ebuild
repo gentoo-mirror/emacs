@@ -42,7 +42,7 @@ src_install() {
 	insinto "${SITEETC}/${PN}"
 	doins -r icons
 
-	dodoc README INSTALL ChangeLog doc/card.pdf
+	dodoc README INSTALL ChangeLog TODO doc/card.pdf
 }
 
 pkg_postinst() {

@@ -22,7 +22,6 @@ DEPEND="virtual/emacs-cedet"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
-ELISP_PATCHES="${P}-icons-dir.patch"
 SITEFILE="60${PN}-gentoo.el"
 
 src_compile() {
@@ -44,7 +43,7 @@ src_install() {
 	insinto "${SITEETC}/${PN}"
 	doins -r icons
 
-	dodoc README INSTALL ChangeLog doc/card.pdf
+	dodoc README INSTALL ChangeLog TODO doc/card.pdf
 }
 
 pkg_postinst() {
