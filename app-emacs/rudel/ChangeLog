@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  22 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.3_pre20110721.ebuild:
+  Moved to Portage tree.
+
 *rudel-0.3_pre20110721 (21 Jul 2011)
 
   21 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.3_pre20110405.ebuild,
