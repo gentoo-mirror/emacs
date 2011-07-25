@@ -5,7 +5,7 @@
 EAPI=4
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 
-inherit git toolchain-funcs
+inherit git-2 toolchain-funcs
 
 DESCRIPTION="Linus Torvalds' Microemacs, a fork of uEmacs/PK"
 HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary"
@@ -35,5 +35,5 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins emacs.hlp
 	newins emacs.rc .emacsrc
-	dodoc README readme.39e emacs.ps
+	dodoc README readme.39e emacs.ps UTF-8-demo.txt
 }

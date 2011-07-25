@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Jul 2011; Ulrich Mueller <ulm@gentoo.org> uemacs-linus-9999.ebuild:
+  Update ebuild for git-2.eclass.
+
 *uemacs-linus-4.0.15_p20101216 (01 Jul 2011)
 
   01 Jul 2011; Ulrich Mueller <ulm@gentoo.org>
