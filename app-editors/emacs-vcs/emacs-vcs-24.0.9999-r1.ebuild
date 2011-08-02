@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.10 2011/07/01 18:39:13 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.0.9999-r1.ebuild,v 1.13 2011/08/02 05:43:09 mattst88 Exp $
 
 EAPI=4
 
@@ -27,7 +27,7 @@ fi
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 
-LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode"
+LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="alsa dbus gconf gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
@@ -71,7 +71,7 @@ RDEPEND="sys-libs/ncurses
 			!gtk3? ( x11-libs/gtk+:2 )
 		)
 		!gtk? (
-			Xaw3d? ( x11-libs/Xaw3d )
+			Xaw3d? ( x11-libs/libXaw3d )
 			!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
 		)
 	)"
@@ -188,7 +188,7 @@ src_configure() {
 			fi
 		elif use Xaw3d; then
 			einfo "Configuring to build with Xaw3d (Athena/Lucid) toolkit"
-			myconf="${myconf} --with-x-toolkit=athena"
+			myconf="${myconf} --with-x-toolkit=lucid"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf="${myconf} --with-x-toolkit=motif"
