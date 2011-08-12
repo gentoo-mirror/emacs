@@ -1,3 +1,8 @@
+2011-08-12  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-emacs-version): Report error and
+	return exit status if running of Emacs failed.
+
 2011-07-13  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_install): Fix installation of Info files
