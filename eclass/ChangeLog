@@ -2,6 +2,7 @@
 
 	* elisp-common.eclass (elisp-emacs-version): Report error and
 	return exit status if running of Emacs failed.
+	(elisp-need-emacs): Test for return status of elisp-emacs-version.
 
 2011-07-13  Ulrich Mueller  <ulm@gentoo.org>
 
