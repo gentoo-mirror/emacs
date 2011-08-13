@@ -32,7 +32,6 @@ LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
-RESTRICT="strip"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
