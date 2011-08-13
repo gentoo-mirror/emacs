@@ -192,7 +192,7 @@ elisp-emacs-version() {
 
 elisp-need-emacs() {
 	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return 1
+	have_emacs=$(elisp-emacs-version) || return
 	einfo "Emacs version: ${have_emacs}"
 	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
 		eerror "This package needs at least Emacs ${need_emacs%%.*}."
