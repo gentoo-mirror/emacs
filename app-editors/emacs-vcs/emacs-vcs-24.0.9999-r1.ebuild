@@ -101,6 +101,7 @@ src_prepare() {
 		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
 		echo
 		einfo "Emacs branch: ${EBZR_BRANCH}"
+		einfo "Revision: ${EBZR_REVISION:-${EBZR_REVNO}}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
@@ -236,7 +237,7 @@ src_compile() {
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
 	fi
-	# hack: last component of emacs-version is ${PR}+1
+	# hack: set last component of emacs-version to ${PR}+1
 	touch src/emacs-${FULL_VERSION}.${PR#r}
 	emake CC="$(tc-getCC)"
 }
