@@ -237,7 +237,7 @@ src_compile() {
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
 	fi
-	# hack: set last component of emacs-version to ${PR}+1
+	# set last component of emacs-version to (package revision + 1)
 	touch src/emacs-${FULL_VERSION}.${PR#r}
 	emake CC="$(tc-getCC)"
 }
