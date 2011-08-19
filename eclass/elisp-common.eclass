@@ -318,12 +318,12 @@ elisp-site-regen() {
 	local sf i line null="" page=$'\f'
 	local -a sflist
 
-	if [ ! -d "${sitelisp}" ]; then
+	if [[ ! -d ${sitelisp} ]]; then
 		eerror "elisp-site-regen: Directory ${sitelisp} does not exist"
 		return 1
 	fi
 
-	if [ ! -d "${T}" ]; then
+	if [[ ! -d ${T} ]]; then
 		eerror "elisp-site-regen: Temporary directory ${T} does not exist"
 		return 1
 	fi
@@ -337,7 +337,7 @@ elisp-site-regen() {
 	for sf in "${sitelisp}"/[0-9][0-9]*-gentoo.el \
 		"${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el
 	do
-		[ -r "${sf}" ] || continue
+		[[ -r ${sf} ]] || continue
 		# sort files by their basename. straight insertion sort.
 		for ((i=${#sflist[@]}; i>0; i--)); do
 			[[ ${sf##*/} < ${sflist[i-1]##*/} ]] || break

@@ -89,15 +89,15 @@ elisp_pkg_setup() {
 # src_prepare, call elisp_src_prepare.
 
 elisp_src_unpack() {
-	[ -n "${A}" ] && unpack ${A}
-	if [ -f ${P}.el ]; then
+	[[ -n ${A} ]] && unpack ${A}
+	if [[ -f ${P}.el ]]; then
 		# the "simple elisp" case with a single *.el file in WORKDIR
 		mv ${P}.el ${PN}.el || die
-		[ -d "${S}" ] || S=${WORKDIR}
+		[[ -d ${S} ]] || S=${WORKDIR}
 	fi
 
 	case "${EAPI:-0}" in
-		0|1) [ -d "${S}" ] && cd "${S}"
+		0|1) [[ -d ${S} ]] && cd "${S}"
 			elisp_src_prepare ;;
 	esac
 }
@@ -110,11 +110,11 @@ elisp_src_unpack() {
 elisp_src_prepare() {
 	local patch
 	for patch in ${ELISP_PATCHES}; do
-		if [ -f "${patch}" ]; then
+		if [[ -f ${patch} ]]; then
 			epatch "${patch}"
-		elif [ -f "${WORKDIR}/${patch}" ]; then
+		elif [[ -f ${WORKDIR}/${patch} ]]; then
 			epatch "${WORKDIR}/${patch}"
-		elif [ -f "${FILESDIR}/${patch}" ]; then
+		elif [[ -f ${FILESDIR}/${patch} ]]; then
 			epatch "${FILESDIR}/${patch}"
 		else
 			die "Cannot find ${patch}"
@@ -136,7 +136,7 @@ elisp_src_configure() { :; }
 
 elisp_src_compile() {
 	elisp-compile *.el || die
-	if [ -n "${ELISP_TEXINFO}" ]; then
+	if [[ -n ${ELISP_TEXINFO} ]]; then
 		makeinfo ${ELISP_TEXINFO} || die
 	fi
 }
@@ -150,15 +150,15 @@ elisp_src_compile() {
 
 elisp_src_install() {
 	elisp-install ${PN} *.el *.elc || die
-	if [ -n "${SITEFILE}" ]; then
+	if [[ -n ${SITEFILE} ]]; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
-	if [ -n "${ELISP_TEXINFO}" ]; then
+	if [[ -n ${ELISP_TEXINFO} ]]; then
 		set -- ${ELISP_TEXINFO}
 		set -- ${@##*/}
 		doinfo ${@/%.*/.info*} || die
 	fi
-	if [ -n "${DOCS}" ]; then
+	if [[ -n ${DOCS} ]]; then
 		dodoc ${DOCS} || die
 	fi
 }
