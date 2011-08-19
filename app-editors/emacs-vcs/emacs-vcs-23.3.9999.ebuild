@@ -195,6 +195,11 @@ src_configure() {
 		myconf="${myconf} --without-x"
 	fi
 
+	if [ "${PV##*.}" = "9999" ]; then
+		# This will be saved in system-configuration-options
+		myconf="${myconf} EBZR_BRANCH=${EBZR_BRANCH} EBZR_REVNO=${EBZR_REVNO}"
+	fi
+
 	# According to configure, this option is only used for GNU/Linux
 	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
 	# out the location because $(get_libdir) does not necessarily return
