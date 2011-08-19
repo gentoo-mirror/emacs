@@ -46,8 +46,8 @@ RDEPEND="sys-libs/ncurses
 		x11-libs/libXmu
 		x11-libs/libXt
 		x11-misc/xbitmaps
+		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
-		!gsettings? ( gconf? ( >=gnome-base/gconf-2.26.2 ) )
 		libxml2? ( >=dev-libs/libxml2-2.2.0 )
 		gif? ( media-libs/giflib )
 		jpeg? ( virtual/jpeg )
@@ -151,6 +151,8 @@ src_configure() {
 
 	if use X; then
 		myconf="${myconf} --with-x"
+		myconf="${myconf} $(use_with gconf)"
+		myconf="${myconf} $(use_with gsettings)"
 		myconf="${myconf} $(use_with libxml2 xml2)"
 		myconf="${myconf} $(use_with toolkit-scroll-bars)"
 		myconf="${myconf} $(use_with wide-int)"
@@ -158,14 +160,6 @@ src_configure() {
 		myconf="${myconf} $(use_with png) $(use_with svg rsvg)"
 		myconf="${myconf} $(use_with tiff) $(use_with xpm)"
 		myconf="${myconf} $(use_with imagemagick)"
-
-		if use gsettings; then
-			myconf="${myconf} --with-gsettings --without-gconf"
-			use gconf && ewarn \
-				"USE flag \"gconf\" has no effect if \"gsettings\" is also set."
-		else
-			myconf="${myconf} --without-gsettings $(use_with gconf)"
-		fi
 
 		if use xft; then
 			myconf="${myconf} --with-xft"
