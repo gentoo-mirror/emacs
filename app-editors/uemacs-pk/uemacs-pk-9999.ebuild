@@ -7,8 +7,9 @@ EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 
 inherit git-2 toolchain-funcs
 
-DESCRIPTION="Linus Torvalds' Microemacs, a fork of uEmacs/PK"
-HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary"
+DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
+HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
+	ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK"
 SRC_URI=""
 
 LICENSE="free-noncomm"
@@ -27,7 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
