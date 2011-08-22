@@ -4,8 +4,7 @@
 #
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
-# Feel free to contact the Emacs team through <emacs@gentoo.org> if you
-# have problems, suggestions or questions.
+# Gentoo Emacs team <emacs@gentoo.org>
 # @AUTHOR:
 # Matthew Kennedy <mkennedy@gentoo.org>
 # Jeremy Maitin-Shepard <jbms@attbi.com>
