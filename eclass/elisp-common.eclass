@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 #
-# Copyright 2002-2004 Matthew Kennedy <mkennedy@gentoo.org>
-# Copyright 2003      Jeremy Maitin-Shepard <jbms@attbi.com>
-# Copyright 2004-2005 Mamoru Komachi <usata@gentoo.org>
-# Copyright 2007-2008 Christian Faulhammer <fauli@gentoo.org>
-# Copyright 2007-2011 Ulrich Müller <ulm@gentoo.org>
-#
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
 # Feel free to contact the Emacs team through <emacs@gentoo.org> if you
 # have problems, suggestions or questions.
+# @AUTHOR:
+# Matthew Kennedy <mkennedy@gentoo.org>
+# Jeremy Maitin-Shepard <jbms@attbi.com>
+# Mamoru Komachi <usata@gentoo.org>
+# Christian Faulhammer <fauli@gentoo.org>
+# Ulrich Müller <ulm@gentoo.org>
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
