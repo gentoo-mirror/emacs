@@ -22,9 +22,6 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e "s:/usr/lib/:/usr/share/${PN}/:" epath.h || die
-	# Respect LDFLAGS when linking
-	sed -i -e 's/\(\$(CC) \$(DEFINES)\) \(-o \$@\)/\1 $(LDFLAGS) \2/' \
-		Makefile || die
 }
 
 src_compile() {

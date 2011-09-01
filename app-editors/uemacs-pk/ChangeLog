@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Sep 2011; Ulrich Mueller <ulm@gentoo.org> uemacs-pk-9999.ebuild:
+  LDFLAGS patch was accepted upstream.
+
   21 Aug 2011; Ulrich Mueller <ulm@gentoo.org>
   -uemacs-pk-4.0.15_p20101216.ebuild:
   Package renamed to uemacs-pk. Snapshot moved to portage tree.
