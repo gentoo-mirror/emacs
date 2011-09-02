@@ -78,15 +78,6 @@ RDEPEND="${RDEPEND}
 EMACS_SUFFIX="emacs-${SLOT}-vcs"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
-pkg_setup() {
-	local olddir="${EBZR_STORE_DIR}/emacs-${EBZR_BRANCH#emacs-}"
-	if [ -d "${olddir}" ]; then
-		ewarn "bzr.eclass uses branches instead of checkouts now."
-		ewarn "Therefore, you may remove the old bzr checkout:"
-		ewarn "rm -rf ${olddir}"
-	fi
-}
-
 src_prepare() {
 	if [ "${PV##*.}" = "9999" ]; then
 		FULL_VERSION=$(grep 'defconst[	 ]*emacs-version' lisp/version.el \
