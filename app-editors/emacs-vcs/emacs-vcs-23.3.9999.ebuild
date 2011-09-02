@@ -147,15 +147,16 @@ src_configure() {
 		myconf="${myconf} $(use_with gif) $(use_with jpeg)"
 		myconf="${myconf} $(use_with png) $(use_with svg rsvg)"
 		myconf="${myconf} $(use_with tiff) $(use_with xpm)"
-		myconf="${myconf} $(use_with xft)"
 
 		if use xft; then
+			myconf="${myconf} --with-xft"
 			myconf="${myconf} $(use_with m17n-lib libotf)"
 			myconf="${myconf} $(use_with m17n-lib m17n-flt)"
 		else
+			myconf="${myconf} --without-xft"
 			myconf="${myconf} --without-libotf --without-m17n-flt"
 			use m17n-lib && ewarn \
-				"USE flag \"m17n-lib\" has no effect because xft is not set."
+				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
 		# GTK+ is the default toolkit if USE=gtk is chosen with other
@@ -166,7 +167,7 @@ src_configure() {
 			myconf="${myconf} --with-x-toolkit=gtk"
 		elif use Xaw3d; then
 			einfo "Configuring to build with Xaw3d (Athena/Lucid) toolkit"
-			myconf="${myconf} --with-x-toolkit=athena"
+			myconf="${myconf} --with-x-toolkit=lucid"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf="${myconf} --with-x-toolkit=motif"
@@ -204,6 +205,7 @@ src_configure() {
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir="${crtdir}" \
+		--with-gameuser="${GAMES_USER_DED:-games}" \
 		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with gpm) \
@@ -305,7 +307,7 @@ pkg_postinst() {
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown games "${EROOT}"/var/lib/games/emacs
+	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset
