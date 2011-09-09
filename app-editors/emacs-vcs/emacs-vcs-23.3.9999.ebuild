@@ -205,7 +205,6 @@ src_configure() {
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--with-crt-dir="${crtdir}" \
-		--with-gameuser="${GAMES_USER_DED:-games}" \
 		$(use_with hesiod) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with gpm) \
@@ -307,7 +306,7 @@ pkg_postinst() {
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
 		[ -e "${f}" ] || touch "${f}"
 	done
-	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
+	chown games "${EROOT}"/var/lib/games/emacs
 
 	elisp-site-regen
 	eselect emacs update ifunset
