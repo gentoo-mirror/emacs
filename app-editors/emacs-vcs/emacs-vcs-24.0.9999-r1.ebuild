@@ -6,7 +6,7 @@ EAPI=4
 
 inherit autotools elisp-common eutils flag-o-matic multilib
 
-if [ "${PV##*.}" = "9999" ]; then
+if [[ ${PV##*.} = 9999 ]]; then
 	EBZR_PROJECT="emacs"
 	EBZR_BRANCH="trunk"
 	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
@@ -86,10 +86,10 @@ EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
-	if [ "${PV##*.}" = "9999" ]; then
+	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
 			configure.in)
-		[ "${FULL_VERSION}" ] || die "Cannot determine current Emacs version"
+		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
 		echo
 		einfo "Emacs branch: ${EBZR_BRANCH}"
 		einfo "Revision: ${EBZR_REVISION:-${EBZR_REVNO}}"
@@ -185,7 +185,7 @@ src_configure() {
 		local f tk=
 		for f in gtk Xaw3d motif; do
 			use ${f} || continue
-			[ "${tk}" ] \
+			[[ ${tk} ]] \
 				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"
 			tk="${tk}${tk:+ }${f}"
 		done
@@ -193,7 +193,7 @@ src_configure() {
 		myconf="${myconf} --without-x"
 	fi
 
-	if [ "${PV##*.}" = "9999" ]; then
+	if [[ ${PV##*.} = 9999 ]]; then
 		# These variables are not needed for building. We add them to
 		# configure options because they are stored in the Emacs binary
 		# and available in variable "system-configuration-options".
@@ -224,7 +224,7 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	if [ "${PV##*.}" = "9999" ]; then
+	if [[ ${PV##*.} = 9999 ]]; then
 		emake CC="$(tc-getCC)" bootstrap
 		# cleanup, otherwise emacs will be dumped again in src_install
 		(cd src; emake versionclean)
@@ -296,7 +296,7 @@ src_install () {
 pkg_preinst() {
 	# move Info dir file to correct name
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
-	if [ -f "${ED}"${infodir}/dir.orig ]; then
+	if [[ -f ${ED}${infodir}/dir.orig ]]; then
 		mv "${ED}"${infodir}/dir{.orig,} || die "moving info dir failed"
 	else
 		# this should not happen in EAPI 4
@@ -314,7 +314,7 @@ pkg_preinst() {
 pkg_postinst() {
 	local f
 	for f in "${EROOT}"/var/lib/games/emacs/{snake,tetris}-scores; do
-		[ -e "${f}" ] || touch "${f}"
+		[[ -e ${f} ]] || touch "${f}"
 	done
 	chown "${GAMES_USER_DED:-games}" "${EROOT}"/var/lib/games/emacs
 
