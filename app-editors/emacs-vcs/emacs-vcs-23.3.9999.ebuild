@@ -170,8 +170,7 @@ src_configure() {
 			myconf="${myconf} --with-x-toolkit=gtk"
 		elif use Xaw3d || use athena; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
-			myconf="${myconf} --with-x-toolkit=lucid"
-			myconf="${myconf} $(use_with Xaw3d xaw3d)"
+			myconf="${myconf} --with-x-toolkit=lucid $(use_with Xaw3d xaw3d)"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf="${myconf} --with-x-toolkit=motif"
