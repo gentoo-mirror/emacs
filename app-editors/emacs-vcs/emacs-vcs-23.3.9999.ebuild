@@ -31,7 +31,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="alsa dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
+IUSE="alsa athena dbus gconf gif gpm gtk gzip-el hesiod jpeg kerberos m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
@@ -64,7 +64,10 @@ RDEPEND="sys-libs/ncurses
 		gtk? ( x11-libs/gtk+:2 )
 		!gtk? (
 			Xaw3d? ( x11-libs/libXaw3d )
-			!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
+			!Xaw3d? (
+				athena? ( x11-libs/libXaw )
+				!athena? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
+			)
 		)
 	)"
 
@@ -165,9 +168,10 @@ src_configure() {
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			myconf="${myconf} --with-x-toolkit=gtk"
-		elif use Xaw3d; then
-			einfo "Configuring to build with Xaw3d (Athena/Lucid) toolkit"
+		elif use Xaw3d || use athena; then
+			einfo "Configuring to build with Athena/Lucid toolkit"
 			myconf="${myconf} --with-x-toolkit=lucid"
+			myconf="${myconf} $(use_with Xaw3d xaw3d)"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf="${myconf} --with-x-toolkit=motif"
@@ -177,7 +181,7 @@ src_configure() {
 		fi
 
 		local f tk=
-		for f in gtk Xaw3d motif; do
+		for f in gtk Xaw3d athena motif; do
 			use ${f} || continue
 			[[ ${tk} ]] \
 				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"

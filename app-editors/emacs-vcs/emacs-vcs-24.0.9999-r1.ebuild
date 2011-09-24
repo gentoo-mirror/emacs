@@ -30,7 +30,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="alsa dbus gconf gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
+IUSE="alsa athena dbus gconf gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
@@ -71,7 +71,10 @@ RDEPEND="sys-libs/ncurses
 		)
 		!gtk? (
 			Xaw3d? ( x11-libs/libXaw3d )
-			!Xaw3d? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
+			!Xaw3d? (
+				athena? ( x11-libs/libXaw )
+				!athena? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
+			)
 		)
 	)"
 
@@ -164,16 +167,12 @@ src_configure() {
 		fi
 
 		if use gtk; then
-			if use gtk3; then
-				einfo "Configuring to build with GIMP Toolkit (GTK+ 3)"
-				myconf="${myconf} --with-x-toolkit=gtk3"
-			else
-				einfo "Configuring to build with GIMP Toolkit (GTK+ 2)"
-				myconf="${myconf} --with-x-toolkit=gtk"
-			fi
-		elif use Xaw3d; then
-			einfo "Configuring to build with Xaw3d (Athena/Lucid) toolkit"
+			einfo "Configuring to build with GIMP Toolkit (GTK+)"
+			myconf="${myconf} --with-x-toolkit=$(usev gtk3 || echo gtk)"
+		elif use Xaw3d || use athena; then
+			einfo "Configuring to build with Athena/Lucid toolkit"
 			myconf="${myconf} --with-x-toolkit=lucid"
+			myconf="${myconf} $(use_with Xaw3d xaw3d)"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf="${myconf} --with-x-toolkit=motif"
@@ -183,7 +182,7 @@ src_configure() {
 		fi
 
 		local f tk=
-		for f in gtk Xaw3d motif; do
+		for f in gtk Xaw3d athena motif; do
 			use ${f} || continue
 			[[ ${tk} ]] \
 				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"
