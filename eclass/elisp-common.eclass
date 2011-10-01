@@ -94,6 +94,8 @@
 # many Emacs support files, users may be annoyed by the start-up time.
 # Also avoid keybindings as they might interfere with the user's
 # settings.  Give a hint in pkg_postinst(), which should be enough.
+# The guiding principle is that emerging your package should not by
+# itself cause a change of standard Emacs behaviour.
 #
 # The naming scheme for this site-init file matches the shell pattern
 # "[1-8][0-9]*-gentoo*.el", where the two digits at the beginning define
