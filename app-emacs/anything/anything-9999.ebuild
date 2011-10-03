@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/slime/slime-2.0_p20101103.ebuild,v 1.1 2010/11/21 11:13:48 ulm Exp $
+# $Header: $
 
 EAPI=4
 
@@ -9,6 +9,7 @@ inherit elisp
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://repo.or.cz/anything-config.git"
 	inherit git-2
+	SRC_URI=""
 else
 	# snapshot from upstream git repo
 	SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
