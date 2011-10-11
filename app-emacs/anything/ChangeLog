@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  11 Oct 2011; Ulrich Mueller <ulm@gentoo.org> -anything-1.3.1.ebuild:
+  Package committed to Portage tree. Keeping only live ebuild in overlay.
+
 *anything-9999 (03 Oct 2011)
 *anything-1.3.1 (03 Oct 2011)
 
