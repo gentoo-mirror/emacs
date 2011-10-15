@@ -3,7 +3,8 @@
 # $Header: $
 
 EAPI=4
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+#EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/uemacs.git"
 
 inherit git-2 toolchain-funcs
 
