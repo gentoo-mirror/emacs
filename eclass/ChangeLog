@@ -1,3 +1,7 @@
+2011-10-17  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_prepare): Allow for user patches.
+
 2011-10-01  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass: Clarify policy on site-init files.

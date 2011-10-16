@@ -119,6 +119,9 @@ elisp_src_prepare() {
 			die "Cannot find ${patch}"
 		fi
 	done
+
+	# apply any user patches
+	epatch_user
 }
 
 # @FUNCTION: elisp_src_configure
