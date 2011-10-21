@@ -36,8 +36,9 @@
 # @ECLASS-VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Any patches to apply after unpacking the sources.  Patch files are
-# searched for in the current working dir, WORKDIR, and FILESDIR.
+# Space separated list of patches to apply after unpacking the sources.
+# Patch files are searched for in the current working dir, WORKDIR, and
+# FILESDIR.
 
 # @ECLASS-VARIABLE: SITEFILE
 # @DEFAULT_UNSET
