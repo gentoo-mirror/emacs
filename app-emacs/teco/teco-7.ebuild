@@ -7,7 +7,7 @@ EAPI=4
 inherit elisp
 
 DESCRIPTION="TECO interpreter for GNU Emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/TecoInterpreterInElisp"
+HOMEPAGE="http://www.emacswiki.org/emacs/TECO"
 # taken from: http://www.emacswiki.org/emacs/teco.el
 SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
