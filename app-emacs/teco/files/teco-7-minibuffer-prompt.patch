@@ -1,0 +1,43 @@
+--- teco.el
++++ teco.el
+@@ -2276,7 +2276,7 @@
+   (interactive)
+   ;; Two ESCs in a row terminate the command string
+   (if (eq last-command 'teco:command-escape)
+-      (throw 'teco:command-quit (buffer-string)))
++      (throw 'teco:command-quit (minibuffer-contents-no-properties)))
+   (teco:command-insert-character last-command-char))
+ 
+ (defun teco:command-ctrl-u ()
+@@ -2284,7 +2284,9 @@
+   ;; delete the characters
+   (kill-line 0)
+   ;; forget that they were ESCs
+-  (while (and teco:command-escapes (<= (point) (car teco:command-escapes)))
++  (while (and teco:command-escapes
++	      (<= (- (point) (minibuffer-prompt-end))
++		  (car teco:command-escapes)))
+       (setq teco:command-escapes (cdr teco:command-escapes)))
+   ;; decide whether to shrink the window
+   (while (let ((a (insert ?\n))
+@@ -2298,7 +2300,9 @@
+   ;; delete the character
+   (backward-delete-char 1)
+   ;; forget that it was an ESC
+-  (if (and teco:command-escapes (= (1- (point)) (car teco:command-escapes)))
++  (if (and teco:command-escapes
++	   (= (- (point) (minibuffer-prompt-end))
++	      (car teco:command-escapes)))
+       (setq teco:command-escapes (cdr teco:command-escapes)))
+   ;; decide whether to shrink the window
+   (insert ?\n)
+@@ -2363,7 +2367,8 @@
+ ;; Insert a single command character
+ (defun teco:command-insert-character (c)
+   (if (eq c ?\e)
+-      (setq teco:command-escapes (cons (1- (point)) teco:command-escapes)
++      (setq teco:command-escapes
++	    (cons (- (point) (minibuffer-prompt-end)) teco:command-escapes)
+ 	    c ?$))
+   (insert c)
+   (if (not (pos-visible-in-window-p))

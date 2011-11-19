@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/teco
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*teco-7 (19 Nov 2011)
+
+  19 Nov 2011; Ulrich Mueller <ulm@gentoo.org> +teco-7.ebuild,
+  +files/teco-7-minibuffer-prompt.patch, +files/50teco-gentoo.el,
+  +metadata.xml:
+  Initial import. Ebuild contributed by me.
+
