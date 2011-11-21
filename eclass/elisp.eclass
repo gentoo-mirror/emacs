@@ -162,11 +162,12 @@ elisp_src_compile() {
 # ELISP_TEXINFO and documentation listed in the DOCS variable.
 
 elisp_src_install() {
-	set -- ${ELISP_SOURCES}
-	set -- $@ ${@/%.el/.elc}
-	[[ $# -eq 0 ]] && set -- *.el *.elc
-	elisp-install ${PN} $@ || die
-
+	if [[ -n ${ELISP_SOURCES} ]]; then
+		set -- ${ELISP_SOURCES}
+		elisp-install ${PN} $@ ${@/%.el/.elc} || die
+	else
+		elisp-install ${PN} *.el *.elc || die
+	fi
 	if [[ -n ${SITEFILE} ]]; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
