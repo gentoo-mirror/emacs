@@ -48,6 +48,14 @@
 # reserved for internal use.  "50${PN}-gentoo.el" is a reasonable choice
 # in most cases.
 
+# @ECLASS-VARIABLE: ELISP_SOURCES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Space separated list of Emacs Lisp sources.  These will be
+# byte-compiled in src_compile() and installed in src_install().
+# Normally this variable needs not be set, in which case the default is
+# to compile all *.el files and to install all *.el and *.elc files.
+
 # @ECLASS-VARIABLE: ELISP_TEXINFO
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -133,12 +141,13 @@ elisp_src_configure() { :; }
 
 # @FUNCTION: elisp_src_compile
 # @DESCRIPTION:
-# Call elisp-compile to byte-compile all Emacs Lisp (*.el) files.
+# Call elisp-compile to byte-compile all Emacs Lisp (*.el) files;
+# if ELISP_SOURCES is set, then compile only the files listed there.
 # If ELISP_TEXINFO lists any Texinfo sources, call makeinfo to generate
 # GNU Info files from them.
 
 elisp_src_compile() {
-	elisp-compile *.el || die
+	elisp-compile ${ELISP_SOURCES:-*.el} || die
 	if [[ -n ${ELISP_TEXINFO} ]]; then
 		makeinfo ${ELISP_TEXINFO} || die
 	fi
@@ -146,13 +155,18 @@ elisp_src_compile() {
 
 # @FUNCTION: elisp_src_install
 # @DESCRIPTION:
-# Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
+# Call elisp-install to install all Emacs Lisp (*.el and *.elc) files;
+# if ELISP_SOURCES is set, then install only the files listed there.
 # If the SITEFILE variable specifies a site-init file, install it with
 # elisp-site-file-install.  Also install any GNU Info files listed in
 # ELISP_TEXINFO and documentation listed in the DOCS variable.
 
 elisp_src_install() {
-	elisp-install ${PN} *.el *.elc || die
+	set -- ${ELISP_SOURCES}
+	set -- $@ ${@/%.el/.elc}
+	[[ $# -eq 0 ]] && set -- *.el *.elc
+	elisp-install ${PN} $@ || die
+
 	if [[ -n ${SITEFILE} ]]; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
