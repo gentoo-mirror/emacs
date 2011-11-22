@@ -1,9 +1,3 @@
-2011-11-21  Ulrich Mueller  <ulm@gentoo.org>
-
-	* elisp.eclass (ELISP_SOURCES): New variable, allows to specify
-	a list of source files that should be compiled and installed.
-	(elisp_src_compile, elisp_src_install): Use it.
-
 2011-10-17  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp.eclass (elisp_src_prepare): Allow for user patches.
