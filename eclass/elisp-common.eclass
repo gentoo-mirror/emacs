@@ -329,7 +329,7 @@ elisp-site-regen() {
 		return 1
 	fi
 
-	einfon "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE}) ..."
+	einfo "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE}) ..."
 
 	# Until January 2009, elisp-common.eclass sometimes created an
 	# auxiliary file for backwards compatibility. Remove any such file.
@@ -376,10 +376,9 @@ elisp-site-regen() {
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		rm -f "${T}"/site-gentoo.el
-		echo " no changes."
+		einfo "... no changes."
 	else
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
-		echo
 		case ${#sflist[@]} in
 			0) ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;

@@ -1,5 +1,8 @@
 2011-11-22  Ulrich Mueller  <ulm@gentoo.org>
 
+	* elisp-common.eclass (elisp-site-regen): Replace echo by einfo,
+	so that the message will be properly logged.
+
 	* elisp.eclass (ELISP_REMOVE): New variable.
 	(elisp_src_prepare): Remove files specified in ELISP_REMOVE.
 
