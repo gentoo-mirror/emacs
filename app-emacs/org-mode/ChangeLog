@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/org-mode
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*org-mode-9999 (03 Dec 2011)
+
+  03 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +files/50org-mode-gentoo.el,
+  +org-mode-9999.ebuild, +metadata.xml:
+  Live ebuild, bug 392303. Thanks to Tom Prince <tom.prince@ualberta.net>.
+
