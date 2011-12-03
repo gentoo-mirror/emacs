@@ -1,3 +1,8 @@
+2011-12-03  Ulrich Mueller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Use ebegin/eend instead
+	of einfo.
+
 2011-11-22  Ulrich Mueller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-site-regen): Replace echo by einfo,
