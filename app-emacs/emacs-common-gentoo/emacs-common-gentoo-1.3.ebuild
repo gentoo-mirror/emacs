@@ -28,10 +28,11 @@ pkg_setup() {
 
 src_install() {
 	keepdir "${SITELISP}"
-	keepdir /etc/emacs
-
 	elisp-install . subdirs.el || die
-	insinto /etc/emacs; doins site-start.el
+
+	keepdir /etc/emacs
+	insinto /etc/emacs
+	doins site-start.el
 
 	if use X; then
 		local i
@@ -88,7 +89,7 @@ pkg_postinst() {
 		The location of the site startup file for Emacs has changed to
 		/etc/emacs/site-start.el. If your site-start file contains your
 		own customisation, then you should move it to the new file and
-		remove the old ${SITELISP}/site-start.el.
+		remove the old ${SITELISP}/site-start.el file.
 		EOF
 	fi
 }

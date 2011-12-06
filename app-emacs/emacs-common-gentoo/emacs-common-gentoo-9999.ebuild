@@ -30,7 +30,12 @@ pkg_setup() {
 }
 
 src_install() {
+	keepdir "${SITELISP}"
 	elisp-install . subdirs.el || die
+
+	keepdir /etc/emacs
+	insinto /etc/emacs
+	doins site-start.el
 
 	if use X; then
 		local i
@@ -55,41 +60,6 @@ src_install() {
 	fi
 }
 
-make-site-start() {
-	ebegin "Creating default ${SITELISP}/site-start.el"
-	cat <<-EOF >"${T}/site-start.el"
-	;;; site-start.el			-*- no-byte-compile: t -*-
-
-	;;; Commentary:
-	;; This default site startup file for Emacs was created by package
-	;; ${CATEGORY}/${PF}. You may modify this file, replace
-	;; it by your own site initialisation, or even remove it completely.
-
-	;;; Code:
-	;; Load site initialisation for Gentoo installed packages.
-	(require 'site-gentoo)
-
-	;;; site-start.el ends here
-	EOF
-	mv "${T}/site-start.el" "${EROOT}${SITELISP}/site-start.el"
-	eend $? "Installation of site-start.el failed"
-}
-
-pkg_config() {
-	# make sure that site-gentoo.el exists since site-start.el requires it
-	elisp-site-regen
-
-	if [ ! -e "${EROOT}${SITELISP}/site-start.el" ]; then
-		echo
-		einfo "Press ENTER to create a default site-start.el file"
-		einfo "for GNU Emacs, or Control-C to abort now ..."
-		read
-		make-site-start
-	else
-		einfo "site-start.el for GNU Emacs already exists."
-	fi
-}
-
 pkg_postinst() {
 	if use X; then
 		fdo-mime_desktop_database_update
@@ -99,35 +69,31 @@ pkg_postinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
 	elisp-site-regen
 
-	if [ ! -e "${EROOT}${SITELISP}/site-start.el" ]; then
-		local line
-		while read line; do elog "${line:- }"; done <<-EOF
-		All site initialisation for Gentoo-installed packages is added to
-		/usr/share/emacs/site-lisp/site-gentoo.el. In order for this site
-		initialisation to be loaded for all users automatically, a default
-		site-start.el is created in the same directory. You are responsible
-		for all further maintenance of this file.
+	local line
+	while read line; do elog "${line:- }"; done <<-EOF
+	All site initialisation for Gentoo-installed packages is added to
+	${SITELISP}/site-gentoo.el. In order for this site
+	initialisation to be loaded for all users automatically, a default
+	site startup file /etc/emacs/site-start.el is created. You are
+	responsible for maintenance of this file.
 
-		Alternatively, individual users can add the following command:
+	Alternatively, individual users can add the following command:
 
-		(require 'site-gentoo)
+	(require 'site-gentoo)
 
-		to their ~/.emacs initialisation files, or, for greater flexibility,
-		users may load single package-specific initialisation files from
-		/usr/share/emacs/site-lisp/site-gentoo.d/.
+	to their ~/.emacs initialisation files, or, for greater flexibility,
+	users may load single package-specific initialisation files from
+	${SITELISP}/site-gentoo.d/.
+	EOF
 
+	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
+		elog
+		while read line; do ewarn "${line}"; done <<-EOF
+		The location of the site startup file for Emacs has changed to
+		/etc/emacs/site-start.el. If your site-start file contains your
+		own customisation, then you should move it to the new file and
+		remove the old ${SITELISP}/site-start.el file.
 		EOF
-
-		if [ -z "${REPLACING_VERSIONS}" ]; then
-			# This is a new install. Create default site-start.el, so that
-			# Gentoo packages will work.
-			make-site-start
-		else
-			# This package was already installed, but site-start.el does
-			# not exist. Give a hint how to (re-)create it.
-			elog "If this is a new install, you may want to run:"
-			elog "emerge --config =${CATEGORY}/${PF}"
-		fi
 	fi
 }
 
