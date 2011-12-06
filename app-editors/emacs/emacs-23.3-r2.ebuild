@@ -115,10 +115,8 @@ src_configure() {
 	local myconf
 
 	if use alsa && ! use sound; then
-		echo
 		einfo "Although sound USE flag is disabled you chose to have alsa,"
 		einfo "so sound is switched on anyway."
-		echo
 		myconf="${myconf} --with-sound"
 	else
 		myconf="${myconf} $(use_with sound)"
@@ -309,20 +307,19 @@ pkg_postinst() {
 	fi
 
 	if use X; then
-		echo
 		elog "You need to install some fonts for Emacs."
 		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
 		elog "machine would satisfy basic Emacs requirements under X11."
 		elog "See also http://www.gentoo.org/proj/en/lisp/emacs/xft.xml"
 		elog "for how to enable anti-aliased fonts."
+		elog
 	fi
 
-	echo
 	elog "You can set the version to be started by /usr/bin/emacs through"
 	elog "the Emacs eselect module, which also redirects man and info pages."
 	elog "Therefore, several Emacs versions can be installed at the same time."
 	elog "\"man emacs.eselect\" for details."
-	echo
+	elog
 	elog "If you upgrade from a previous major version of Emacs, then it is"
 	elog "strongly recommended that you use app-admin/emacs-updater to rebuild"
 	elog "all byte-compiled elisp files of the installed Emacs packages."
