@@ -1,0 +1,10 @@
+# ChangeLog for app-editors/emacs
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-23.3-r2 (06 Dec 2011)
+
+  06 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-23.3-r2.ebuild,
+  +metadata.xml:
+  Copy from Portage tree. The site-start.el has moved to /etc/emacs/.
+
