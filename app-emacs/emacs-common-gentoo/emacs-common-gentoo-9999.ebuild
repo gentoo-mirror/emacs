@@ -101,7 +101,6 @@ pkg_postinst() {
 
 	if [ ! -e "${EROOT}${SITELISP}/site-start.el" ]; then
 		local line
-		echo
 		while read line; do elog "${line:- }"; done <<-EOF
 		All site initialisation for Gentoo-installed packages is added to
 		/usr/share/emacs/site-lisp/site-gentoo.el. In order for this site
@@ -116,8 +115,8 @@ pkg_postinst() {
 		to their ~/.emacs initialisation files, or, for greater flexibility,
 		users may load single package-specific initialisation files from
 		/usr/share/emacs/site-lisp/site-gentoo.d/.
+
 		EOF
-		echo
 
 		if [ -z "${REPLACING_VERSIONS}" ]; then
 			# This is a new install. Create default site-start.el, so that

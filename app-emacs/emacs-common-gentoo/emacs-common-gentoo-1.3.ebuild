@@ -66,7 +66,6 @@ pkg_postinst() {
 	elisp-site-regen
 
 	local line
-	echo
 	while read line; do elog "${line:- }"; done <<-EOF
 	All site initialisation for Gentoo-installed packages is added to
 	${SITELISP}/site-gentoo.el. In order for this site
@@ -84,7 +83,7 @@ pkg_postinst() {
 	EOF
 
 	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
-		echo
+		elog
 		while read line; do ewarn "${line}"; done <<-EOF
 		The location of the site startup file for Emacs has changed to
 		/etc/emacs/site-start.el. If your site-start file contains your
