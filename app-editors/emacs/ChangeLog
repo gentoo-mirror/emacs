@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  08 Dec 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.3-r2.ebuild:
+  Remove obsolete code in pkg_preinst().
+
   06 Dec 2011; Ulrich Mueller <ulm@gentoo.org> emacs-23.3-r2.ebuild:
   Get rid of all echo commands because they aren't logged.
 
