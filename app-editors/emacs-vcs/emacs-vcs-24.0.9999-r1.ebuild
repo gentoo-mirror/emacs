@@ -83,7 +83,7 @@ DEPEND="${RDEPEND}
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	>=app-emacs/emacs-common-gentoo-1[X?]"
+	>=app-emacs/emacs-common-gentoo-1.3[X?]"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
@@ -204,6 +204,7 @@ src_configure() {
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
+		--enable-locallisppath="/etc/emacs:${SITELISP}" \
 		--with-crt-dir="${crtdir}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
