@@ -227,6 +227,9 @@ src_install () {
 	rm "${ED}"/var/lib/games/emacs/{snake,tetris}-scores
 	keepdir /var/lib/games/emacs
 
+	# remove unused <version>/site-lisp dir
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+
 	local c=";;"
 	if use source; then
 		insinto /usr/share/emacs/${FULL_VERSION}/src
