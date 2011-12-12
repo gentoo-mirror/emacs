@@ -71,7 +71,7 @@ pkg_postinst() {
 	All site initialisation for Gentoo-installed packages is added to
 	${SITELISP}/site-gentoo.el. In order for this site
 	initialisation to be loaded for all users automatically, a default
-	site startup file /etc/emacs/site-start.el is created. You are
+	site startup file /etc/emacs/site-start.el is installed. You are
 	responsible for maintenance of this file.
 
 	Alternatively, individual users can add the following command:
@@ -87,9 +87,9 @@ pkg_postinst() {
 		elog
 		while read line; do ewarn "${line}"; done <<-EOF
 		The location of the site startup file for Emacs has changed to
-		/etc/emacs/site-start.el. If your site-start file contains your
-		own customisation, then you should move it to the new file and
-		remove the old ${SITELISP}/site-start.el file.
+		/etc/emacs/site-start.el. If your site-start file contains your own
+		customisation, then you should move it to the new file. In any case,
+		you should remove the old ${SITELISP}/site-start.el file.
 		EOF
 	fi
 }
