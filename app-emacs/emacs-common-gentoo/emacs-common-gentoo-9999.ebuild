@@ -89,10 +89,11 @@ pkg_postinst() {
 	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
 		elog
 		while read line; do ewarn "${line}"; done <<-EOF
-		The location of the site startup file for Emacs has changed to
-		/etc/emacs/site-start.el. If your site-start file contains your own
-		customisation, then you should move it to the new file. In any case,
-		you should remove the old ${SITELISP}/site-start.el file.
+		Starting with emacs-23.3-r3, the location of the site startup
+		file for Emacs has changed to /etc/emacs/site-start.el. If your
+		site-start file contains your own customisation, then you should
+		move it to the new file. In any case, you should remove the old
+		${SITELISP}/site-start.el file.
 		EOF
 	fi
 }
