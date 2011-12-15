@@ -21,7 +21,7 @@ PDEPEND="virtual/emacs"
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	if [ -e "${EROOT}${SITELISP}/subdirs.el" ] \
+	if [[ -e ${EROOT}${SITELISP}/subdirs.el ]] \
 		&& ! has_version ">=${CATEGORY}/${PN}-1"
 	then
 		ewarn "Removing orphan subdirs.el (installed by old Emacs ebuilds)"
@@ -30,8 +30,8 @@ pkg_setup() {
 }
 
 src_install() {
-	keepdir "${SITELISP}"
-	elisp-install . subdirs.el || die
+	insinto "${SITELISP}"
+	doins subdirs.el
 
 	keepdir /etc/emacs
 	insinto /etc/emacs
