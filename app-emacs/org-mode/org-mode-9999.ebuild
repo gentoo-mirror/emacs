@@ -52,6 +52,7 @@ src_install() {
 	emake \
 		prefix="${ED}/usr" \
 		lispdir="${ED}${SITELISP}/${PN}" \
+		etcdir="${ED}${SITEETC}/${PN}" \
 		infodir="${ED}/usr/share/info" \
 		install
 
