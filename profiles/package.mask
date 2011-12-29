@@ -1,16 +1,11 @@
 # package.mask
 
-# Ulrich Mueller <ulm@gentoo.org> (03 Apr 2011)
-# Mask alpha release.
-=app-editors/zile-2.4.0_alpha*
-
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Mueller <ulm@gentoo.org> (30 Sep 2011)
 # Live ebuilds directly from the repository
 ~app-admin/eselect-emacs-9999
 ~app-admin/eselect-ctags-9999
 ~app-admin/emacs-updater-9999
-~app-editors/emacs-vcs-24.0.9999
 ~app-editors/emacs-xwidget-24.0.9999
 ~app-editors/uemacs-pk-9999
 ~app-emacs/anything-9999
