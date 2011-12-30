@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  30 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Upstream has renamed etcdir to datadir, bug 396269.
+
   28 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
   Specify etcdir to emake.
 
