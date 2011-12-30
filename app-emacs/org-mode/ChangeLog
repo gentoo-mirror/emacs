@@ -4,6 +4,7 @@
 
   30 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
   Upstream has renamed etcdir to datadir, bug 396269.
+  Set org-odt-data-dir in site-init file.
 
   28 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
   Specify etcdir to emake.
