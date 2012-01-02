@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/evil
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*evil-9999 (02 Jan 2012)
+
+  02 Jan 2012; Ulrich Mueller <ulm@gentoo.org> +files/50evil-gentoo.el,
+  +evil-9999.ebuild, +metadata.xml:
+  Initial import. Ebuild contributed by Tom Prince <tom.prince@ualberta.net>,
+  with modifications by me. Bug 385405.
+
