@@ -141,9 +141,6 @@
 # environment, so it is no problem when you unset USE=emacs between
 # merge and unmerge of a package.
 
-if [[ ${___ECLASS_ONCE_ELISP_COMMON} != "recur -_+^+_- spank" ]] ; then
-___ECLASS_ONCE_ELISP_COMMON="recur -_+^+_- spank"
-
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
 # Directory where packages install Emacs Lisp files.
@@ -393,5 +390,3 @@ elisp-site-regen() {
 
 	return 0
 }
-
-fi

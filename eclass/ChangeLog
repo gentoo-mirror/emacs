@@ -728,9 +728,3 @@
 
 Copyright 2002-2010 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
-
-  27 Dec 2011; Christian Faulhammer <fauli@gentoo.org> elisp.eclass,
-  elisp-common.eclass:
-  Prevent multiple loading for eclasses to speed up caching (thanks to vapier
-  for the idea)
-

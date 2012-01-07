@@ -65,9 +65,6 @@
 # DOCS="blah.txt ChangeLog" is automatically used to install the given
 # files by dodoc in src_install().
 
-if [[ ${___ECLASS_ONCE_ELISP} != "recur -_+^+_- spank" ]] ; then
-___ECLASS_ONCE_ELISP="recur -_+^+_- spank"
-
 inherit elisp-common eutils
 
 case "${EAPI:-0}" in
@@ -195,5 +192,3 @@ elisp_pkg_postinst() {
 elisp_pkg_postrm() {
 	elisp-site-regen
 }
-
-fi
