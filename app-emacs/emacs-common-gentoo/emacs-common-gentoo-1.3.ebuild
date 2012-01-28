@@ -1,24 +1,21 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-common-gentoo/emacs-common-gentoo-1.3.ebuild,v 1.7 2012/01/16 02:59:27 jer Exp $
 
 EAPI=4
 
-inherit elisp-common eutils fdo-mime gnome2-utils subversion
+inherit elisp-common eutils fdo-mime gnome2-utils
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-#SRC_URI="mirror://gentoo/${P}.tar.gz"
-ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="X emacs22icons"
 
 PDEPEND="virtual/emacs"
-
-S="${WORKDIR}/${PN}"
 
 pkg_setup() {
 	if [[ -e ${EROOT}${SITELISP}/subdirs.el ]] \
