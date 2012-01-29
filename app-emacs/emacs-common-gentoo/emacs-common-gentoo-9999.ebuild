@@ -60,6 +60,20 @@ src_install() {
 	fi
 }
 
+site-start-modified-p() {
+	case $(cksum <"${EROOT}${SITELISP}/site-start.el") in
+		# checksums of auto-generated site-start.el files
+		"2098727038 349") return 1 ;;	# elisp-common.eclass
+		"3626264063 355") return 1 ;;	# emacs-common-gentoo-1.0 (cvs rev 1.1)
+		"3738455534 394") return 1 ;;	# emacs-common-gentoo-1.0 (cvs rev 1.6)
+		"4199862847 394") return 1 ;;	# emacs-common-gentoo-1.1
+		"2547348044 394") return 1 ;;	# emacs-common-gentoo-1.2
+		"2214952934 397") return 1 ;;	# emacs-common-gentoo-1.2-r1
+		"3917799317 397") return 1 ;;	# emacs-common-gentoo-1.2-r2
+		*) return 0 ;;
+	esac
+}
+
 pkg_postinst() {
 	if use X; then
 		fdo-mime_desktop_database_update
@@ -87,35 +101,16 @@ pkg_postinst() {
 	EOF
 
 	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
-		local s sum known_file=""
-		local known_sums=(
-			# checksums of auto-generated site-start.el files
-			"2098727038 349"	# elisp-common.eclass
-			"3626264063 355"	# emacs-common-gentoo-1.0 (cvs rev 1.1)
-			"3738455534 394"	# emacs-common-gentoo-1.0 (cvs rev 1.6)
-			"4199862847 394"	# emacs-common-gentoo-1.1
-			"2547348044 394"	# emacs-common-gentoo-1.2
-			"2214952934 397"	# emacs-common-gentoo-1.2-r1
-			"3917799317 397"	# emacs-common-gentoo-1.2-r2
-		)
-
-		sum=$(cksum <"${EROOT}${SITELISP}/site-start.el")
-		for s in "${known_sums[@]}"; do
-			[[ ${sum} = "${s}" ]] && { known_file=1; break; }
-		done
-
 		elog
 		ewarn "The location of the site startup file for Emacs has changed to"
 		ewarn "/etc/emacs/site-start.el."
-
-		if [[ -n ${known_file} ]]; then
-			# checksum is known, so the file hasn't been modified by the user
-			ewarn "Removing the old ${SITELISP}/site-start.el file."
-			rm -f "${EROOT}${SITELISP}/site-start.el"
-		else
+		if site-start-modified-p; then
 			ewarn "If your site-start.el file contains your own customisation,"
 			ewarn "you should move it to the new file. In any case, you should"
 			ewarn "remove the old ${SITELISP}/site-start.el file."
+		else
+			ewarn "Removing the old ${SITELISP}/site-start.el file."
+			rm -f "${EROOT}${SITELISP}/site-start.el"
 		fi
 	fi
 }
