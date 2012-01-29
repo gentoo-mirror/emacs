@@ -105,17 +105,17 @@ pkg_postinst() {
 		done
 
 		elog
-		ewarn "The location of the site startup file for Emacs has changed"
-		ewarn "to /etc/emacs/site-start.el."
+		ewarn "The location of the site startup file for Emacs has changed to"
+		ewarn "/etc/emacs/site-start.el."
 
 		if [[ -n ${known_file} ]]; then
 			# checksum is known, so the file hasn't been modified by the user
 			ewarn "Removing the old ${SITELISP}/site-start.el file."
 			rm -f "${EROOT}${SITELISP}/site-start.el"
 		else
-			ewarn "If your site-start file contains your own customisation,"
-			ewarn "then you should move it to the new file. In any case, you"
-			ewarn "should remove the old file in ${SITELISP}."
+			ewarn "If your site-start.el file contains your own customisation,"
+			ewarn "you should move it to the new file. In any case, you should"
+			ewarn "remove the old ${SITELISP}/site-start.el file."
 		fi
 	fi
 }
