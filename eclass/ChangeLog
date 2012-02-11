@@ -728,3 +728,7 @@
 
 Copyright 2002-2012 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
+
+  11 Feb 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Delete declaration of unused variable.
+
