@@ -173,7 +173,7 @@ BYTECOMPFLAGS="-L ."
 
 elisp-emacs-version() {
 	local ret
-	# The following will work for at least versions 18-23.
+	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el
 	ret=$?
@@ -195,6 +195,10 @@ elisp-need-emacs() {
 	local need_emacs=$1 have_emacs
 	have_emacs=$(elisp-emacs-version) || return
 	einfo "Emacs version: ${have_emacs}"
+	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
+		eerror "This package needs GNU Emacs."
+		return 1
+	fi
 	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
 		eerror "This package needs at least Emacs ${need_emacs%%.*}."
 		eerror "Use \"eselect emacs\" to select the active version."

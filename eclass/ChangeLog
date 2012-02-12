@@ -1,5 +1,7 @@
 2012-02-11  Ulrich Müller  <ulm@gentoo.org>
 
+	* elisp-common.eclass (elisp-need-emacs): Require GNU Emacs.
+
 	* elisp-common.eclass (elisp-site-regen): Delete declaration of
 	unused variable.
 
