@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -30,19 +30,18 @@ if [[ ${PV} = 9999 ]]; then
 		dev-lang/perl
 		virtual/tex-base
 		virtual/texi2dvi"
+else
+	# Remove autoload file to make sure that it is regenerated with
+	# the right Emacs version.
+	ELISP_REMOVE="lisp/org-install.el"
 fi
 
 S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
 
-src_prepare() {
-	# Remove autoload file to make sure that it is regenerated with
-	# the right Emacs version.
-	rm -f lisp/org-install.el
-}
-
 src_compile() {
-	emake
+	emake datadir="${SITEETC}/${PN}"
+
 	if [[ ${PV} = 9999 ]]; then
 		emake info pdf card
 	fi
