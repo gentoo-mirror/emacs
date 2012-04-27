@@ -159,7 +159,7 @@ EMACS=${EPREFIX}/usr/bin/emacs
 # @ECLASS-VARIABLE: EMACSFLAGS
 # @DESCRIPTION:
 # Flags for executing Emacs in batch mode.
-# These work for Emacs versions 18-23, so don't change them.
+# These work for Emacs versions 18-24, so don't change them.
 EMACSFLAGS="-batch -q --no-site-file"
 
 # @ECLASS-VARIABLE: BYTECOMPFLAGS
