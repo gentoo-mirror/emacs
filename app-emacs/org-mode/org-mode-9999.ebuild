@@ -60,7 +60,7 @@ src_install() {
 	if use contrib; then
 		elisp-install ${PN}/contrib contrib/lisp/*org*.el || die
 		insinto /usr/share/doc/${PF}/contrib
-		doins -r contrib/README contrib/babel contrib/odt contrib/scripts
+		doins -r contrib/README contrib/babel contrib/scripts
 		find "${ED}/usr/share/doc/${PF}/contrib" -type f -name '.*' \
 			-exec rm -f '{}' '+'
 		# add the contrib subdirectory to load-path
@@ -70,5 +70,5 @@ src_install() {
 
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 	doinfo doc/org
-	dodoc README doc/orgcard.txt doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
+	dodoc README doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
 }

@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  05 Jun 2012; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Don't try to install files no longer present, bug 419817.
+
   01 Jan 2012; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
   Define ELISP_REMOVE and delete src_prepare function.
 
