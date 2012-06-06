@@ -78,9 +78,10 @@ pkg_preinst() {
 		local f
 		for f in /var/lib/games/emacs/{snake,tetris}-scores; do
 			if [[ -e ${EROOT}${f} ]]; then
-				cp -p "${EROOT}${f}" "${ED}${f}" || die
+				cp "${EROOT}${f}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
+			chown "${GAMES_USER_DED:-games}" "${ED}${f}" || die
 		done
 	fi
 }
