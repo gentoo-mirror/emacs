@@ -18,7 +18,8 @@ IUSE="games X"
 PDEPEND="virtual/emacs"
 
 pkg_setup() {
-	if use games && [[ ${GAMES_USER_DED} != root ]]; then
+	if use games && [[ -z $(egetent passwd "${GAMES_USER_DED:-games}") ]]
+	then
 		enewgroup "${GAMES_GROUP:-games}" 35
 		enewuser "${GAMES_USER_DED:-games}" 36 /bin/bash \
 			"${GAMES_PREFIX:-/usr/games}" "${GAMES_GROUP:-games}"
