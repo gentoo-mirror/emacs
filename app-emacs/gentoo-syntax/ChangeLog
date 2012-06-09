@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/gentoo-syntax
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> gentoo-syntax-9999.ebuild:
+  Change live ebuild to use Git. Update to EAPI 4.
 
 *gentoo-syntax-9999 (15 Nov 2009)
 
