@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/emacs-daemon
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> emacs-daemon-9999.ebuild:
+  Change live ebuild to use Git. Update to EAPI 4.
 
   17 Jul 2009; Ulrich Mueller <ulm@gentoo.org> emacs-daemon-9999.ebuild:
   Remove OpenRC dependency, as the init script is now baselayout-1 compatible.
