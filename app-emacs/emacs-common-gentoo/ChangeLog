@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild,
+  metadata.xml:
+  Change live ebuild to use Git. Forward port changes from 1.3-r2.
+
 *emacs-common-gentoo-1.3-r2 (06 Jun 2012)
 
   06 Jun 2012; Ulrich Müller <ulm@gentoo.org>

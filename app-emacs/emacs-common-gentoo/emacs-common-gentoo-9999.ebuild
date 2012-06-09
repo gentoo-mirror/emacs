@@ -4,28 +4,30 @@
 
 EAPI=4
 
-inherit elisp-common eutils fdo-mime gnome2-utils subversion
+EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
+EGIT_BRANCH="${PN}"
+
+inherit elisp-common eutils fdo-mime gnome2-utils user git-2
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.gz"
-ESVN_REPO_URI="svn://anonsvn.gentoo.org/emacs/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="X emacs22icons"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="games X"
 
 PDEPEND="virtual/emacs"
 
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	if [[ -e ${EROOT}${SITELISP}/subdirs.el ]] \
-		&& ! has_version ">=${CATEGORY}/${PN}-1"
+	if use games && [[ -z $(egetent passwd "${GAMES_USER_DED:-games}") ]]
 	then
-		ewarn "Removing orphan subdirs.el (installed by old Emacs ebuilds)"
-		rm -f "${EROOT}${SITELISP}/subdirs.el"
+		enewgroup "${GAMES_GROUP:-games}" 35
+		enewuser "${GAMES_USER_DED:-games}" 36 /bin/bash \
+			"${GAMES_PREFIX:-/usr/games}" "${GAMES_GROUP:-games}"
 	fi
 }
 
@@ -37,25 +39,28 @@ src_install() {
 	insinto /etc/emacs
 	doins site-start.el
 
+	if use games; then
+		keepdir /var/lib/games/emacs
+		fowners "${GAMES_USER_DED:-games}" /var/lib/games/emacs
+	fi
+
 	if use X; then
 		local i
 		domenu emacs.desktop emacsclient.desktop || die
-		newicon icons/sink.png emacs-sink.png || die
-		if use emacs22icons; then
-			newicon icons/emacs22_48.png emacs.png || die
-			for i in 16 24 32 48; do
-				insinto /usr/share/icons/hicolor/${i}x${i}/apps
-				newins icons/emacs22_${i}.png emacs.png
-			done
-		else
-			newicon icons/emacs_48.png emacs.png || die
-			for i in 16 24 32 48 128; do
-				insinto /usr/share/icons/hicolor/${i}x${i}/apps
-				newins icons/emacs_${i}.png emacs.png
-			done
-			insinto /usr/share/icons/hicolor/scalable/apps
-			doins icons/emacs.svg
-		fi
+
+		pushd icons
+		newicon sink.png emacs-sink.png || die
+		newicon emacs_48.png emacs.png || die
+		newicon emacs22_48.png emacs22.png || die
+		for i in 16 24 32 48 128; do
+			insinto /usr/share/icons/hicolor/${i}x${i}/apps
+			newins emacs_${i}.png emacs.png
+			[[ ${i} -ne 128 ]] && newins emacs22_${i}.png emacs22.png
+		done
+		insinto /usr/share/icons/hicolor/scalable/apps
+		doins emacs.svg
+		popd
+
 		gnome2_icon_savelist
 	fi
 }
@@ -72,6 +77,19 @@ site-start-modified-p() {
 		"3917799317 397") return 1 ;;	# emacs-common-gentoo-1.2-r2
 		*) return 0 ;;
 	esac
+}
+
+pkg_preinst() {
+	if use games; then
+		local f
+		for f in /var/lib/games/emacs/{snake,tetris}-scores; do
+			if [[ -e ${EROOT}${f} ]]; then
+				cp "${EROOT}${f}" "${ED}${f}" || die
+			fi
+			touch "${ED}${f}" || die
+			chown "${GAMES_USER_DED:-games}" "${ED}${f}" || die
+		done
+	fi
 }
 
 pkg_postinst() {
