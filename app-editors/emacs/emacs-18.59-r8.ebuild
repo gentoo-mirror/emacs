@@ -10,7 +10,7 @@ DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/old-gnu/emacs/${P}.tar.gz
 	ftp://ftp.splode.com/pub/users/friedman/emacs/${P}-linux22x-elf-glibc21.diff.gz
-	mirror://gentoo/${P}-patches-7.tar.bz2"
+	http://dev.gentoo.org/~ulm/emacs/${P}-patches-8.tar.bz2"
 
 LICENSE="GPL-1 GPL-2 BSD" #as-is
 SLOT="18"
@@ -32,9 +32,16 @@ src_configure() {
 	# autoconf? What's autoconf? We are living in 1992. ;-)
 	local arch
 	case ${ARCH} in
-		amd64) arch=intel386; multilib_toolchain_setup x86 ;;
-		x86)   arch=intel386 ;;
-		*)	   die "Architecture ${ARCH} not yet supported" ;;
+		amd64)
+			if [[ ${DEFAULT_ABI} = x32 ]]; then
+				arch=x86-x32
+				multilib_toolchain_setup x32
+			else
+				arch=intel386
+				multilib_toolchain_setup x86
+			fi ;;
+		x86) arch=intel386 ;;
+		*) die "Architecture ${ARCH} not yet supported" ;;
 	esac
 	local cmd="s/\"s-.*\.h\"/\"s-linux.h\"/;s/\"m-.*\.h\"/\"m-${arch}.h\"/"
 	#use X && cmd="${cmd};s/.*\(#define HAVE_X_WINDOWS\).*/\1/"

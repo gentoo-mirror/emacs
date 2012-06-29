@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Jun 2012; Ulrich Müller <ulm@gentoo.org> emacs-18.59-r8.ebuild:
+  Preliminary support for x32 ABI on amd64.
+
 *emacs-18.59-r8 (29 Jun 2012)
 
   29 Jun 2012; Ulrich Müller <ulm@gentoo.org> +emacs-18.59-r8.ebuild,
