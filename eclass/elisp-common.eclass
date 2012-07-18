@@ -41,7 +41,7 @@
 # known to fail with lower Emacs versions; the standard case is to
 # depend on virtual/emacs without version.
 #
-# .SS
+# @ROFF .SS
 # src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined
@@ -60,7 +60,7 @@
 # comments.  See the Emacs Lisp Reference Manual (node "Autoload") for
 # a detailed explanation.
 #
-# .SS
+# @ROFF .SS
 # src_install() usage:
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
@@ -120,7 +120,7 @@
 # "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
 # the differing name as second argument.
 #
-# .SS
+# @ROFF .SS
 # pkg_postinst() / pkg_postrm() usage:
 #
 # After that you need to recreate the start-up file of Emacs after

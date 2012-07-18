@@ -735,3 +735,7 @@
 
 Copyright 2002-2012 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
+
+  18 Jul 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Sync from Portage tree: Make use of the @ROFF token in documentation.
+
