@@ -1,6 +1,11 @@
 # ChangeLog for app-editors/sxemacs
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*sxemacs-22.1.15 (23 Jul 2012)
+
+  23 Jul 2012; Hans de Graaff <graaff@gentoo.org> +sxemacs-22.1.15.ebuild:
+  Update from Horst Günther Burkhardt III
 
 *sxemacs-22.1.14 (18 Mar 2011)
 

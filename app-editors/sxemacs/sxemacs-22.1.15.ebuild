@@ -4,39 +4,39 @@
 # it is not an official subset of the project and thus only limited
 # support can be offered for this ebuild.
 
-EAPI="2"
+EAPI="4"
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="A text editing and development environment based on XEmacs that aims to be second to none in regards to stability, features, and innovation."
+DESCRIPTION="A text editing and development environment based on XEmacs that aims to be second to none in stability, features, and innovation."
 HOMEPAGE="http://www.sxemacs.org/"
-SRC_URI="http://downloads.sxemacs.org/releases/${P}.tar.lzma
+SRC_URI="http://downloads.sxemacs.org/releases/${P}.tar.xz
 	http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="X alsa jack pulseaudio oss nas ao esd gif png jpeg xface tiff ffmpeg mad bdwgc
-      sndfile sox ssl tls ipv6 pop kerberos hesiod postgresql libffi gmp mpfr magic xpm
-      athena neXt Xaw3d motif xim canna freewnn gdbm berkdb tty gpm ncurses mule socks
+IUSE="X alsa jack pulseaudio oss nas ao gif png jpeg xface tiff ffmpeg mad bdwgc \
+      sndfile sox ssl tls ipv6 pop kerberos hesiod postgresql libffi gmp mpfr magic xpm \
+      athena neXt motif xim canna freewnn gdbm berkdb tty gpm ncurses mule socks \
       omgoptimize warnfull"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
+# The blockers at the end are because sxemacs has file conflicts with all of
+# those packages and blockers are the easiest solution.
 DEPEND="virtual/libc
-	=sys-libs/zlib-1.2*
-	app-arch/bzip2
+	sys-libs/zlib
 	>=media-libs/audiofile-0.2.3
-	X? ( $X_DEPEND !Xaw3d? ( !neXt? ( x11-libs/libXaw ) ) )
+	X? ( $X_DEPEND !neXt? ( x11-libs/libXaw ) )
 	alsa? ( media-sound/alsa-headers )
 	jack? ( media-sound/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 	nas? ( media-libs/nas )
 	ao? ( >=media-libs/libao-0.8.5 )
-	esd? ( media-sound/esound )
-	png? ( =media-libs/libpng-1.2* )
-	jpeg? ( media-libs/jpeg )
+	png? ( media-libs/libpng )
+	jpeg? ( virtual/jpeg )
 	xface? ( media-libs/compface )
 	tiff? ( media-libs/tiff )
 	ffmpeg? ( media-video/ffmpeg )
@@ -54,7 +54,6 @@ DEPEND="virtual/libc
 	mpfr? ( dev-libs/mpfr )
 	athena? ( x11-libs/libXaw )
 	neXt? ( x11-libs/neXtaw )
-	Xaw3d? ( x11-libs/Xaw3d )
 	motif? ( >=x11-libs/openmotif-2.1.30 )
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
@@ -62,10 +61,16 @@ DEPEND="virtual/libc
 	berkdb? ( sys-libs/db )
 	gpm? ( sys-libs/gpm )
 	ncurses? ( >=sys-libs/ncurses-5.2 )
-	magic? ( sys-apps/file )"
+	magic? ( sys-apps/file )
+	!app-admin/eselect-ctags
+	!app-editors/emacs
+	!app-editors/emacs-vcs
+	!app-editors/xemacs
+	!dev-util/ctags"
 
-PDEPEND="app-xemacs/xemacs-base
-	 mule? ( app-xemacs/mule-base )"
+# app-xemacs/xemacs-base should probably be here but it causes
+# app-editors/xemacs to be installed which causes file conflicts
+PDEPEND="mule? ( app-xemacs/mule-base )"
 
 pkg_setup() {
 	if use libffi ;
@@ -93,7 +98,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${P}.tar.lzma
+	unpack ${P}.tar.xz
 	use neXt && unpack NeXT_XEmacs.tar.gz
 }
 
@@ -101,7 +106,7 @@ src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 }
 
-src_compile() {
+src_configure() {
 
 	#####################################
 	# Allow SXEmacs to decide on CFLAGS #
@@ -111,7 +116,7 @@ src_compile() {
 	# the optimisation level.
 	# Also work around hardened compiler bugs.
 	if use omgoptimize ; then
-	    echo "" 
+	    echo ""
 	else
 	    replace-flags -O* -O2
 	fi
@@ -140,9 +145,7 @@ src_compile() {
 	    if use athena ; then
 		myconf="--with-scrollbars=athena"
 	    fi
-	    if use Xaw3d ; then
-		myconf="${myconf} --with-athena=3d"
-	    elif use neXt ; then
+	    if use neXt ; then
 		myconf="${myconf} --with-athena=next"
 	    else
 		myconf="${myconf} --with-athena=xaw"
@@ -175,7 +178,6 @@ src_compile() {
 	    fi
 	    myconf="${myconf} ${ttyconf}"
 
-
 	    ######################
 	    # MULE Configuration #
 	    ######################
@@ -203,7 +205,6 @@ src_compile() {
 	    # Define what sound outputs we use
 	    use alsa && soundconf="${soundconf},alsa"
 	    use jack && soundconf="${soundconf},jack"
-	    use pulseaudio && soundconf="${soundconf},pulse"
 	    use oss && soundconf="${soundconf},oss"
 	    use nas && soundconf="${soundconf},nas"
 	    use arts && soundconf="${soundconf},arts"
@@ -211,6 +212,7 @@ src_compile() {
 	    use esd && soundconf="${soundconf},esd"
 	    # And make them work
 	    myconf="${myconf} --with-sound=${soundconf}"
+	    use pulseaudio && myconf="${myconf} --with-pulseaudio"
 
 	    ########################
 	    # Images Configuration #
@@ -311,14 +313,16 @@ src_compile() {
 	# ./configure #
 	###############
 
-	tuple=$(configgmp.guess)
-	./configure --prefix=/usr ${myconf} || die "The SXEmacs Configure Script failed to run correctly."
+	econf ${myconf}
+}
 
+src_compile()
+{
 	#################
 	# Build SXEmacs #
 	#################
 
-	emake beta check || die "The SXEmacs Build Process (compilation) failed."
+	emake build-report
 
 }
 
@@ -326,16 +330,12 @@ src_install() {
 	###################
 	# Install SXEmacs #
 	###################
+	default
 
-	emake prefix="${D}"/usr mandir="${D}"/usr/share/man/man1 infodir="${D}"/usr/share/info install gzip-el
-
+	dodir /usr/share/sxemacs-22.1.15/
 	dodir /usr/share/sxemacs/xemacs-packages/
 	dodir /usr/share/sxemacs/sxemacs-packages/
 	dodir /usr/share/sxemacs/site-packages/
-	dodir /usr/lib/sxemacs/${tuple}/modules/
-	dodir /usr/lib/${P}/${tuple}/modules/
-	dodir /usr/lib/sxemacs/${tuple}/site-modules/
-	dodir /usr/lib/${P}/${tuple}/site-modules/
 
 	if use mule;
 	then
@@ -349,7 +349,6 @@ src_install() {
 	doins "${S}"/etc/${PN}.desktop
 
 }
-
 
 pkg_postinst() {
 	eselect emacs update --if-unset
