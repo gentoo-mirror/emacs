@@ -1,3 +1,7 @@
+2012-08-17  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp.eclass (IUSE): Remove unnecessary variable assignment.
+
 2012-02-11  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-need-emacs): Require GNU Emacs.

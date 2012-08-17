@@ -76,7 +76,6 @@ esac
 
 DEPEND=">=virtual/emacs-${NEED_EMACS:-21}"
 RDEPEND="${DEPEND}"
-IUSE=""
 
 # @FUNCTION: elisp_pkg_setup
 # @DESCRIPTION:
