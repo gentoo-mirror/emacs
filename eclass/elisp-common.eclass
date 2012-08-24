@@ -386,7 +386,8 @@ elisp-site-regen() {
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend
 		case ${#sflist[@]} in
-			0) ewarn "... Huh? No site initialisation files found." ;;
+			0) [[ ${PN} = emacs-common-gentoo ]] \
+				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
 		esac
