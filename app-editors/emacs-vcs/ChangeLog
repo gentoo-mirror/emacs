@@ -1,0 +1,11 @@
+# ChangeLog for app-editors/emacs-vcs
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-vcs-24.2.9999 (25 Aug 2012)
+
+  25 Aug 2012; Ulrich Müller <ulm@gentoo.org>
+  +files/emacs-24.0.92-ns-appdirs.patch, +emacs-vcs-24.2.9999.ebuild,
+  +metadata.xml:
+  Copied from Portage tree.
+
