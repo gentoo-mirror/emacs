@@ -18,6 +18,12 @@ IUSE="livecd"
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	# remove OpenBSD specific stuff
+	sed -i -e 's/theo\.o//' Makefile.in || die
+	sed -i -e '/theo_init/d' main.c || die
+}
+
 src_configure() {
 	# econf won't work, as this script does not accept any parameters
 	./configure || die "configure failed"
