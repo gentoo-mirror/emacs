@@ -2,6 +2,9 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  25 Aug 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
+  Display some elog messages only on first installation.
+
 *emacs-vcs-24.2.9999 (25 Aug 2012)
 
   25 Aug 2012; Ulrich Müller <ulm@gentoo.org>
