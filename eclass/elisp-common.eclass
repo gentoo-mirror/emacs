@@ -335,10 +335,6 @@ elisp-site-regen() {
 
 	ebegin "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE})"
 
-	# Until January 2009, elisp-common.eclass sometimes created an
-	# auxiliary file for backwards compatibility. Remove any such file.
-	rm -f "${sitelisp}"/00site-gentoo.el
-
 	for sf in "${sitelisp}"/[0-9][0-9]*-gentoo.el \
 		"${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el
 	do

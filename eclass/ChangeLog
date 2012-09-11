@@ -1,3 +1,8 @@
+2012-09-11  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Remove last remnants of
+	backwards compatibility code that was introduced at 2007-12-01.
+
 2012-08-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp.eclass (IUSE): Remove unnecessary variable assignment.
