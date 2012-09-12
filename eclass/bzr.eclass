@@ -215,19 +215,6 @@ bzr_fetch() {
 
 	addwrite "${EBZR_STORE_DIR}"
 
-	# Clean up if the existing local copy is a checkout (as was the case
-	# with an older version of bzr.eclass).
-	# This test can be removed after 1 Mar 2012.
-	if [[ ${EBZR_FETCH_CMD} != *checkout* && -d ${repo_dir}/.bzr/checkout ]]
-	then
-		local tmpname=$(mktemp -u "${repo_dir}._old_.XXXXXX")
-		ewarn "checkout from old version of ${EBZR} found, moving it to:"
-		ewarn "${tmpname}"
-		ewarn "you may manually remove it"
-		mv "${repo_dir}" "${tmpname}" \
-			|| die "${EBZR}: can't move old checkout out of the way"
-	fi
-
 	if [[ ! -d ${branch_dir}/.bzr ]]; then
 		if [[ ${repo_dir} != "${branch_dir}" && ! -d ${repo_dir}/.bzr ]]; then
 			einfo "creating shared bzr repository: ${repo_dir}"
