@@ -64,7 +64,7 @@ esac
 # @ECLASS-VARIABLE: EBZR_CHECKOUT_CMD
 # @DESCRIPTION:
 # The Bazaar command to checkout a branch.
-: ${EBZR_CHECKOUT_CMD:="bzr checkout --lightweight"}
+: ${EBZR_CHECKOUT_CMD:="bzr checkout --lightweight -q"}
 
 # @ECLASS-VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
