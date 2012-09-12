@@ -3,6 +3,9 @@
 # $Header: $
 
   12 Sep 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
+  Use lightweight checkout for WORKDIR, bug 434746.
+
+  12 Sep 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
   Bootstrapping in src_compile shouldn't be needed, because we already call
   eautoreconf in src_prepare.
 
