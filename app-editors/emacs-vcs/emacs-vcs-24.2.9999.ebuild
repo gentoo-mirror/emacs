@@ -105,10 +105,6 @@ src_prepare() {
 
 	epatch_user
 
-	# http://debbugs.gnu.org/12047#8
-	sed -i -e '/freebsd.*)/,+2s:[^ ]*crt\(begin\|\end\)\.o::' configure.ac \
-		|| die "unable to sed configure.ac"
-
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
 		# Suppress it by supplying pkg-config with a wrong library name.
@@ -317,26 +313,23 @@ pkg_postinst() {
 	elisp-site-regen
 	eselect emacs update ifunset
 
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		# new installation, or new slot
-		if use X; then
-			elog "You need to install some fonts for Emacs. Installing"
-			elog "media-fonts/font-adobe-{75,100}dpi on the X server's"
-			elog "machine would satisfy basic Emacs requirements under X11."
-			elog "See also http://www.gentoo.org/proj/en/lisp/emacs/xft.xml"
-			elog "for how to enable anti-aliased fonts."
-			elog
-		fi
-
-		elog "You can set the version to be started by /usr/bin/emacs through"
-		elog "the Emacs eselect module. Therefore, several Emacs versions can"
-		elog "be installed at the same time. See emacs.eselect(5) for details."
+	if use X; then
+		elog "You need to install some fonts for Emacs."
+		elog "Installing media-fonts/font-adobe-{75,100}dpi on the X server's"
+		elog "machine would satisfy basic Emacs requirements under X11."
+		elog "See also http://www.gentoo.org/proj/en/lisp/emacs/xft.xml"
+		elog "for how to enable anti-aliased fonts."
 		elog
-		elog "If you upgrade from a previous major version of Emacs, then it"
-		elog "is strongly recommended that you use app-admin/emacs-updater to"
-		elog "rebuild all byte-compiled elisp files of the installed Emacs"
-		elog "packages."
 	fi
+
+	elog "You can set the version to be started by /usr/bin/emacs through"
+	elog "the Emacs eselect module, which also redirects man and info pages."
+	elog "Therefore, several Emacs versions can be installed at the same time."
+	elog "\"man emacs.eselect\" for details."
+	elog
+	elog "If you upgrade from a previous major version of Emacs, then it is"
+	elog "strongly recommended that you use app-admin/emacs-updater to rebuild"
+	elog "all byte-compiled elisp files of the installed Emacs packages."
 }
 
 pkg_postrm() {
