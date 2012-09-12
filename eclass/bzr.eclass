@@ -61,6 +61,11 @@ esac
 # The Bazaar command to export a branch.
 : ${EBZR_EXPORT_CMD:="bzr export"}
 
+# @ECLASS-VARIABLE: EBZR_CHECKOUT_CMD
+# @DESCRIPTION:
+# The Bazaar command to checkout a branch.
+: ${EBZR_CHECKOUT_CMD:="bzr checkout --lightweight"}
+
 # @ECLASS-VARIABLE: EBZR_REVNO_CMD
 # @DESCRIPTION:
 # The Bazaar command to list a revision number of the branch.
@@ -145,6 +150,12 @@ esac
 # by users.
 : ${EBZR_OFFLINE=${EVCS_OFFLINE}}
 
+# @ECLASS-VARIABLE: EBZR_WORKDIR_CHECKOUT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If this variable is set to a non-empty value, EBZR_CHECKOUT_CMD will
+# be used instead of EBZR_EXPORT_CMD to copy the sources to WORKDIR.
+
 # @FUNCTION: bzr_initial_fetch
 # @USAGE: <repository URI> <branch directory>
 # @DESCRIPTION:
@@ -196,11 +207,11 @@ bzr_update() {
 # working copy.
 bzr_fetch() {
 	local repo_dir branch_dir
+	local save_sandbox_write=${SANDBOX_WRITE}
 
 	[[ -n ${EBZR_REPO_URI} ]] || die "${EBZR}: EBZR_REPO_URI is empty"
 
 	if [[ ! -d ${EBZR_STORE_DIR} ]] ; then
-		local save_sandbox_write=${SANDBOX_WRITE}
 		addwrite /
 		mkdir -p "${EBZR_STORE_DIR}" \
 			|| die "${EBZR}: can't mkdir ${EBZR_STORE_DIR}"
@@ -239,14 +250,23 @@ bzr_fetch() {
 		bzr_update "${EBZR_REPO_URI}" "${branch_dir}"
 	fi
 
+	# Restore sandbox environment
+	SANDBOX_WRITE=${save_sandbox_write}
+
 	cd "${branch_dir}" || die "${EBZR}: can't chdir to ${branch_dir}"
 
 	# Save revision number in environment. #311101
 	export EBZR_REVNO=$(${EBZR_REVNO_CMD})
 
-	einfo "exporting ..."
-	${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
-		"${WORKDIR}/${P}" . || die "${EBZR}: export failed"
+	if [[ -n ${EBZR_WORKDIR_CHECKOUT} ]]; then
+		einfo "checking out ..."
+		${EBZR_CHECKOUT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
+			. "${WORKDIR}/${P}" || die "${EBZR}: checkout failed"
+	else
+		einfo "exporting ..."
+		${EBZR_EXPORT_CMD} ${EBZR_REVISION:+-r ${EBZR_REVISION}} \
+			"${WORKDIR}/${P}" . || die "${EBZR}: export failed"
+	fi
 	einfo "revision ${EBZR_REVISION:-${EBZR_REVNO}} is now in ${WORKDIR}/${P}"
 
 	popd > /dev/null
