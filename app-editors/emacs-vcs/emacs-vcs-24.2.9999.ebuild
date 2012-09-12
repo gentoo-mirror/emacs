@@ -225,11 +225,11 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	if [[ ${PV##*.} = 9999 ]]; then
-		emake CC="$(tc-getCC)" bootstrap
-		# cleanup, otherwise emacs will be dumped again in src_install
-		(cd src; emake versionclean)
-	fi
+	#if [[ ${PV##*.} = 9999 ]]; then
+	#	emake CC="$(tc-getCC)" bootstrap
+	#	# cleanup, otherwise emacs will be dumped again in src_install
+	#	(cd src; emake versionclean)
+	#fi
 	emake CC="$(tc-getCC)"
 }
 

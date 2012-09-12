@@ -3,6 +3,10 @@
 # $Header: $
 
   12 Sep 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
+  Bootstrapping in src_compile shouldn't be needed, because we already call
+  eautoreconf in src_prepare.
+
+  12 Sep 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
   Undo previous change. Sync from Portage tree.
 
   25 Aug 2012; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.2.9999.ebuild:
