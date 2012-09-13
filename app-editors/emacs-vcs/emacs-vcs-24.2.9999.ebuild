@@ -31,7 +31,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="alsa athena dbus games gconf gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
+IUSE="alsa athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
@@ -167,7 +167,7 @@ src_configure() {
 
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
-			myconf="${myconf} --with-x-toolkit=$(usev gtk3 || echo gtk)"
+			myconf="${myconf} --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
 			local f
 			for f in athena Xaw3d motif; do
 				use ${f} && ewarn "USE flag \"${f}\" ignored" \
@@ -185,9 +185,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf="${myconf} --with-x-toolkit=no"
 		fi
-
-		! use gtk && use gtk3 \
-			&& ewarn "USE flag \"gtk3\" has no effect if \"gtk\" is not set."
 	else
 		myconf="${myconf} --without-x --without-ns"
 	fi
