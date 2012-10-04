@@ -28,7 +28,7 @@ fi
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="http://www.gnu.org/software/emacs/"
 
-LICENSE="GPL-3 FDL-1.3 BSD as-is MIT W3C unicode PSF-2"
+LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="alsa athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
@@ -205,6 +205,7 @@ src_configure() {
 
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
+		--program-transform-name="s/emacs-[0-9].*/${EMACS_SUFFIX}/" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-crt-dir="${crtdir}" \
@@ -223,19 +224,11 @@ src_configure() {
 
 src_compile() {
 	export SANDBOX_ON=0			# for the unbelievers, see Bug #131505
-	#if [[ ${PV##*.} = 9999 ]]; then
-	#	emake CC="$(tc-getCC)" bootstrap
-	#	# cleanup, otherwise emacs will be dumped again in src_install
-	#	(cd src; emake versionclean)
-	#fi
-	emake CC="$(tc-getCC)"
+	emake
 }
 
 src_install () {
-	emake install DESTDIR="${D}" NO_BIN_LINK=t
-
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
-		|| die "Moving emacs executable failed"
+	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
 	# move man pages to the correct place
 	local m
