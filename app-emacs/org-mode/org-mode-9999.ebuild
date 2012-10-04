@@ -17,19 +17,15 @@ fi
 DESCRIPTION="An Emacs mode for notes and project planning"
 HOMEPAGE="http://www.orgmode.org/"
 
-LICENSE="GPL-3 FDL-1.3 contrib? ( GPL-2 MIT as-is )"
+LICENSE="GPL-3+ FDL-1.3+ contrib? ( GPL-2+ MIT ) odt-schema? ( OASIS-Open )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-macos"
-IUSE="contrib"
+IUSE="contrib doc odt-schema"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="doc? ( virtual/texi2dvi )"
 if [[ ${PV} = 9999 ]]; then
-	# additional build time dependencies for perl and TeX
 	DEPEND="${DEPEND}
-		dev-lang/perl
-		virtual/tex-base
-		virtual/texi2dvi"
+		dev-lang/perl"
 else
 	# Remove autoload file to make sure that it is regenerated with
 	# the right Emacs version.
@@ -40,19 +36,14 @@ S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	emake datadir="${SITEETC}/${PN}"
-
-	if [[ ${PV} = 9999 ]]; then
-		emake info pdf card
-	fi
+	emake
+	use doc && emake pdf card
 }
 
 src_install() {
 	emake \
-		prefix="${ED}/usr" \
-		lispdir="${ED}${SITELISP}/${PN}" \
-		datadir="${ED}${SITEETC}/${PN}" \
-		infodir="${ED}/usr/share/info" \
+		DESTDIR="${D}" \
+		ETCDIRS="styles $(use odt-schema && echo schema)" \
 		install
 
 	cp "${FILESDIR}/${SITEFILE}" "${T}/${SITEFILE}"
@@ -69,6 +60,6 @@ src_install() {
 	fi
 
 	elisp-site-file-install "${T}/${SITEFILE}" || die
-	doinfo doc/org
-	dodoc README doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
+	dodoc README etc/ORG-NEWS
+	use doc && dodoc doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf
 }
