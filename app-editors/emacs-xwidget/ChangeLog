@@ -1,6 +1,12 @@
 # ChangeLog for app-editors/emacs-xwidget
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*emacs-xwidget-24.2.9999 (04 Oct 2012)
+
+  04 Oct 2012; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.0.9999.ebuild,
+  +emacs-xwidget-24.2.9999.ebuild, metadata.xml:
+  Update from emacs-vcs ebuild.
 
 *emacs-xwidget-24.0.9999 (30 Sep 2011)
 
