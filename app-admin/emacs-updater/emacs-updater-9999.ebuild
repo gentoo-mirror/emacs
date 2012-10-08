@@ -14,13 +14,12 @@ HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SRC_URI=""
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
 
 RDEPEND="!<=app-admin/eselect-emacs-1.5
-	>=app-portage/portage-utils-0.1.28
+	>=app-portage/portage-utils-0.3
 	virtual/emacs"
 
 S="${WORKDIR}/${PN}"
