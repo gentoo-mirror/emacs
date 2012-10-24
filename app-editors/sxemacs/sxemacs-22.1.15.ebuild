@@ -56,7 +56,7 @@ DEPEND="virtual/libc
 	mpfr? ( dev-libs/mpfr )
 	athena? ( x11-libs/libXaw )
 	neXt? ( x11-libs/neXtaw )
-	motif? ( >=x11-libs/openmotif-2.1.30 )
+	motif? ( >=x11-libs/motif-2.3:0 )
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )

@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.2.9999.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
   05 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.2.9999.ebuild:
   With USE=xwidgets, add webkit-gtk as dependency and enable gtk3. Drop ~hppa
   and ~sh keywords.

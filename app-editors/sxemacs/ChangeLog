@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> sxemacs-22.1.15.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
   24 Oct 2012; Hans de Graaff <graaff@gentoo.org> sxemacs-22.1.15.ebuild,
   metadata.xml:
   Fix all repoman warnings and errors, bug 439448.

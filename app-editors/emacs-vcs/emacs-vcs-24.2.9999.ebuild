@@ -75,7 +75,7 @@ RDEPEND="sys-libs/ncurses
 			Xaw3d? ( x11-libs/libXaw3d )
 			!Xaw3d? (
 				athena? ( x11-libs/libXaw )
-				!athena? ( motif? ( >=x11-libs/openmotif-2.3:0 ) )
+				!athena? ( motif? ( >=x11-libs/motif-2.3:0 ) )
 			)
 		)
 	)"
