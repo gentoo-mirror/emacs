@@ -2,6 +2,12 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-xwidget-24.3.9999 (17 Nov 2012)
+
+  17 Nov 2012; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.2.9999.ebuild,
+  +emacs-xwidget-24.3.9999.ebuild:
+  Version number has changed upstream.
+
   24 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.2.9999.ebuild:
   Update dependency after package move from x11-libs/openmotif to
   x11-libs/motif.
