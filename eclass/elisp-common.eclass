@@ -186,14 +186,14 @@ elisp-emacs-version() {
 
 # @FUNCTION: elisp-need-emacs
 # @USAGE: <version>
-# @RETURN: 0 if true, 1 otherwise
+# @RETURN: 0 if true, 1 if false, 2 if trouble
 # @DESCRIPTION:
 # Test if the eselected Emacs version is at least the major version
-# specified as argument.
+# of GNU Emacs specified as argument.
 
 elisp-need-emacs() {
 	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return
+	have_emacs=$(elisp-emacs-version) || return 2
 	einfo "Emacs version: ${have_emacs}"
 	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
 		eerror "This package needs GNU Emacs."
