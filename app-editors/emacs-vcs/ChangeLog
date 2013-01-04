@@ -2,6 +2,10 @@
 # Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Jan 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Use installsources dir for find-function-C-source-directory if that feature
+  is enabled.
+
 *emacs-vcs-24.3.9999 (03 Jan 2013)
 
   03 Jan 2013; Ulrich Müller <ulm@gentoo.org> +emacs-vcs-24.3.9999.ebuild,
