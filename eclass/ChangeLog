@@ -1,3 +1,11 @@
+2013-02-26  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-compile, elisp-make-autoload-file)
+	(elisp-install, elisp-site-file-install): Die on failure.
+	* elisp.eclass (elisp_src_compile, elisp_src_install): Remove die
+	commands that are no longer necessary because the called functions
+	die themselves.
+
 2012-12-12  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-need-emacs): Return 2 as exit status
