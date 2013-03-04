@@ -1,3 +1,9 @@
+2013-03-04  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp.eclass (elisp_src_install, elisp_pkg_postinst):
+	Call readme.gentoo_create_doc and readme.gentoo_print_elog
+	from readme.gentoo.eclass if these functions exist.
+
 2013-02-26  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-compile, elisp-make-autoload-file)

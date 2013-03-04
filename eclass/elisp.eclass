@@ -177,6 +177,9 @@ elisp_src_install() {
 	if [[ -n ${DOCS} ]]; then
 		dodoc ${DOCS} || die
 	fi
+	if declare -f readme.gentoo_create_doc >/dev/null; then
+		readme.gentoo_create_doc
+	fi
 }
 
 # @FUNCTION: elisp_pkg_postinst
@@ -186,6 +189,9 @@ elisp_src_install() {
 
 elisp_pkg_postinst() {
 	elisp-site-regen
+	if declare -f readme.gentoo_print_elog >/dev/null; then
+		readme.gentoo_print_elog
+	fi
 }
 
 # @FUNCTION: elisp_pkg_postrm
