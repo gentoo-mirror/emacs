@@ -32,7 +32,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="alsa aqua athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
+IUSE="acl alsa aqua athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
@@ -45,6 +45,7 @@ RDEPEND="sys-libs/ncurses
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
 	gnutls? ( net-libs/gnutls )
+	acl? ( virtual/acl )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	X? (
@@ -223,19 +224,11 @@ src_configure() {
 		myconf+=" EBZR_BRANCH=${EBZR_BRANCH} EBZR_REVNO=${EBZR_REVNO}"
 	fi
 
-	# According to configure, this option is only used for GNU/Linux
-	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
-	# out the location because $(get_libdir) does not necessarily return
-	# something that matches the host OS's libdir naming (e.g. RHEL).
-	local crtdir=$($(tc-getCC) -print-file-name=crt1.o)
-	crtdir=${crtdir%/*}
-
 	econf \
 		--program-suffix=-${EMACS_SUFFIX} \
 		--program-transform-name="s/emacs-[0-9].*/${EMACS_SUFFIX}/" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--with-crt-dir="${crtdir}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
 		$(use_with hesiod) \
@@ -243,6 +236,8 @@ src_configure() {
 		$(use_with gpm) \
 		$(use_with dbus) \
 		$(use_with gnutls) \
+		$(use_with inotify) \
+		$(use_with acl) \
 		$(use_with libxml2 xml2) \
 		$(use_with selinux) \
 		$(use_with wide-int) \
