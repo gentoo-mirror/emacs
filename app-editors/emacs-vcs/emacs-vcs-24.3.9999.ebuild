@@ -255,26 +255,24 @@ src_install () {
 	# remove unused <version>/site-lisp dir
 	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
 
-	local cdir="${EPREFIX}/usr/share/emacs/${FULL_VERSION}/src"
-	local c=";;"
+	local cdir
 	if use source; then
-		insinto /usr/share/emacs/${FULL_VERSION}/src
+		cdir="/usr/share/emacs/${FULL_VERSION}/src"
+		insinto "${cdir}"
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.{c,h,m}
-		c=""
 	elif has installsources ${FEATURES}; then
-		cdir="${EPREFIX}/usr/src/debug/${CATEGORY}/${PF}/${S#${WORKDIR}/}/src"
-		c=""
+		cdir="/usr/src/debug/${CATEGORY}/${PF}/${S#"${WORKDIR}/"}/src"
 	fi
 
-	sed 's/^X//' >"${T}/${SITEFILE}" <<-EOF
+	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF
 	X
 	;;; ${PN}-${SLOT} site-lisp configuration
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-	X  ${c}(setq find-function-C-source-directory
-	X  ${c}      "${cdir}")
+	Y  (setq find-function-C-source-directory
+	Y	"${EPREFIX}${cdir}")
 	X  (let ((path (getenv "INFOPATH"))
 	X	(dir "${EPREFIX}/usr/share/info/${EMACS_SUFFIX}")
 	X	(re "\\\\\`${EPREFIX}/usr/share/info\\\\>"))
