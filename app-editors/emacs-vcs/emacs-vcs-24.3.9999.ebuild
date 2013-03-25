@@ -193,7 +193,7 @@ src_configure() {
 			myconf+=" --with-x-toolkit=no"
 		fi
 	elif use aqua; then
-		einfo "Configuring to build with Cocoa support"
+		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
 		myconf+=" --without-x"
 	else
