@@ -3,6 +3,9 @@
 # $Header: $
 
   25 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  25 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
   Simplify logic for configuring C source directory.
 
   21 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild,
