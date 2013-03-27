@@ -32,7 +32,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
+IUSE="acl alsa aqua athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
@@ -210,7 +210,7 @@ src_configure() {
 		! use gtk && use xwidgets && ewarn \
 			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
-		einfo "Configuring to build with Cocoa support"
+		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
 		myconf+=" --without-x"
 	else
@@ -272,22 +272,24 @@ src_install () {
 	# remove unused <version>/site-lisp dir
 	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
 
-	local c=";;"
+	local cdir
 	if use source; then
-		insinto /usr/share/emacs/${FULL_VERSION}/src
+		cdir="/usr/share/emacs/${FULL_VERSION}/src"
+		insinto "${cdir}"
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.{c,h,m}
-		c=""
+	elif has installsources ${FEATURES}; then
+		cdir="/usr/src/debug/${CATEGORY}/${PF}/${S#"${WORKDIR}/"}/src"
 	fi
 
-	sed 's/^X//' >"${T}/${SITEFILE}" <<-EOF
+	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF
 	X
 	;;; ${PN}-${SLOT} site-lisp configuration
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
-	X  ${c}(setq find-function-C-source-directory
-	X  ${c}      "${EPREFIX}/usr/share/emacs/${FULL_VERSION}/src")
+	Y  (setq find-function-C-source-directory
+	Y	"${EPREFIX}${cdir}")
 	X  (let ((path (getenv "INFOPATH"))
 	X	(dir "${EPREFIX}/usr/share/info/${EMACS_SUFFIX}")
 	X	(re "\\\\\`${EPREFIX}/usr/share/info\\\\>"))
