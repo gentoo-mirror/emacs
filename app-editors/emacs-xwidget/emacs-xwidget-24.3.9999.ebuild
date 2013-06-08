@@ -39,13 +39,13 @@ RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
 	>=app-emacs/emacs-common-gentoo-1.3-r3[games?,X?]
 	net-libs/liblockfile
-	hesiod? ( net-dns/hesiod )
-	kerberos? ( virtual/krb5 )
+	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
-	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
 	gnutls? ( net-libs/gnutls )
-	acl? ( virtual/acl )
+	gpm? ( sys-libs/gpm )
+	hesiod? ( net-dns/hesiod )
+	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	X? (
@@ -56,7 +56,7 @@ RDEPEND="sys-libs/ncurses
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib )
 		jpeg? ( virtual/jpeg )
-		png? ( >=media-libs/libpng-1.4:0 )
+		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
 		xpm? ( x11-libs/libXpm )
@@ -97,6 +97,11 @@ DEPEND="${RDEPEND}
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )
 	pax_kernel? ( sys-apps/paxctl )"
+
+if [[ ${PV##*.} = 9999 ]]; then
+	DEPEND="${DEPEND}
+	sys-apps/texinfo"
+fi
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
@@ -231,13 +236,13 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
-		$(use_with hesiod) \
-		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with gpm) \
+		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with gnutls) \
+		$(use_with gpm) \
+		$(use_with hesiod) \
 		$(use_with inotify) \
-		$(use_with acl) \
+		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
 		$(use_with selinux) \
 		$(use_with wide-int) \
