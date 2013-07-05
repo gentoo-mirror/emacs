@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
@@ -13,21 +13,21 @@ DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
 SRC_URI=""
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
 
+S="${WORKDIR}/${PN}"
 DOCS="ChangeLog"
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="${PN}.texi"
 
 src_install() {
-	elisp-install ${PN} *.el *.elc || die
+	elisp-install ${PN} *.el *.elc
 	sed -e "s:@PORTDIR@:${PORTDIR}:" \
 		"${FILESDIR}/${SITEFILE}" >"${T}/${SITEFILE}" || die
-	elisp-site-file-install "${T}/${SITEFILE}" || die
-	doinfo gentoo-syntax.info
+	elisp-site-file-install "${T}/${SITEFILE}"
+	doinfo ${PN}.info
 	dodoc ${DOCS}
 }
 
