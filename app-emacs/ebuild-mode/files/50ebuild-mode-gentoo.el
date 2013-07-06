@@ -10,6 +10,4 @@
 	     '("/[0-9]\\{4\\}-[01][0-9]-[0-3][0-9]-.+\\.[a-z]\\{2\\}\\.txt\\'"
 	       . gentoo-newsitem-mode))
 (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
-(modify-coding-system-alist 'file "\\.\\(ebuild\\|eclass\\)\\'" 'utf-8)
-
-(setq ebuild-mode-portdir "@PORTDIR@")
+(modify-coding-system-alist 'file "\\.\\(ebuild\\|eclass\\|eblit\\)\\'" 'utf-8)
