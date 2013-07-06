@@ -9,7 +9,7 @@ EGIT_SOURCEDIR="${WORKDIR}/${PN}"
 
 inherit elisp git-2
 
-DESCRIPTION="Gentoo's multi-purpose configuration and management tool"
+DESCRIPTION="Emacs major mode for editing eselect files"
 HOMEPAGE="http://www.gentoo.org/proj/en/eselect/"
 SRC_URI=""
 
