@@ -12,9 +12,10 @@ if [[ ${PV##*.} = 9999 ]]; then
 	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
 	# "Nosmart" is much faster for initial branching.
 	EBZR_INITIAL_URI="nosmart+${EBZR_REPO_URI}"
+	EBZR_UNPACK_DIR="${WORKDIR}/emacs"
 	EBZR_WORKDIR_CHECKOUT="t"	#434746
 	inherit bzr
-	SRC_URI=""
+	S="${EBZR_UNPACK_DIR}"
 else
 	SRC_URI="mirror://gentoo/emacs-${PV}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
