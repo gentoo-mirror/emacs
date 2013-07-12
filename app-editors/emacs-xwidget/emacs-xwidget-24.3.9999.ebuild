@@ -32,20 +32,21 @@ HOMEPAGE="http://www.gnu.org/software/emacs/
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena dbus games gconf gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
+IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.2
 	>=app-emacs/emacs-common-gentoo-1.3-r3[games?,X?]
 	net-libs/liblockfile
+	acl? ( virtual/acl )
+	alsa? ( media-libs/alsa-lib )
+	dbus? ( sys-apps/dbus )
+	gfile? ( >=dev-libs/glib-2.28.6 )
+	gnutls? ( net-libs/gnutls )
+	gpm? ( sys-libs/gpm )
 	hesiod? ( net-dns/hesiod )
 	kerberos? ( virtual/krb5 )
-	alsa? ( media-libs/alsa-lib )
-	gpm? ( sys-libs/gpm )
-	dbus? ( sys-apps/dbus )
-	gnutls? ( net-libs/gnutls )
-	acl? ( virtual/acl )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	X? (
@@ -56,7 +57,7 @@ RDEPEND="sys-libs/ncurses
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib )
 		jpeg? ( virtual/jpeg )
-		png? ( >=media-libs/libpng-1.4:0 )
+		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
 		xpm? ( x11-libs/libXpm )
@@ -92,11 +93,17 @@ RDEPEND="sys-libs/ncurses
 DEPEND="${RDEPEND}
 	alsa? ( virtual/pkgconfig )
 	dbus? ( virtual/pkgconfig )
+	gfile? ( virtual/pkgconfig )
 	gnutls? ( virtual/pkgconfig )
 	libxml2? ( virtual/pkgconfig )
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )
 	pax_kernel? ( sys-apps/paxctl )"
+
+if [[ ${PV##*.} = 9999 ]]; then
+	DEPEND="${DEPEND}
+	sys-apps/texinfo"
+fi
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
@@ -231,13 +238,13 @@ src_configure() {
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-info \
-		$(use_with hesiod) \
-		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with gpm) \
+		--with-file-notification=$(usev gfile || usev inotify || echo no) \
+		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with gnutls) \
-		$(use_with inotify) \
-		$(use_with acl) \
+		$(use_with gpm) \
+		$(use_with hesiod) \
+		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
 		$(use_with selinux) \
 		$(use_with wide-int) \

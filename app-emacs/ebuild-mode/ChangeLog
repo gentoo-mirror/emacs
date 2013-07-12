@@ -1,0 +1,24 @@
+# ChangeLog for app-emacs/ebuild-mode
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  06 Jul 2013; Ulrich Müller <ulm@gentoo.org> ebuild-mode-9999.ebuild,
+  files/50ebuild-mode-gentoo.el:
+  Update from Portage tree.
+
+*ebuild-mode-9999 (05 Jul 2013)
+
+  05 Jul 2013; Ulrich Müller <ulm@gentoo.org> +ebuild-mode-9999.ebuild,
+  +files/50ebuild-mode-gentoo.el, +metadata.xml:
+  Package renamed from app-emacs/gentoo-syntax to app-emacs/ebuild-mode.
+
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> gentoo-syntax-9999.ebuild:
+  Change live ebuild to use Git. Update to EAPI 4.
+
+*gentoo-syntax-9999 (15 Nov 2009)
+
+  15 Nov 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/50gentoo-syntax-gentoo.el, +gentoo-syntax-9999.ebuild,
+  +metadata.xml:
+  Move live ebuild from Portage tree to emacs overlay.
+
