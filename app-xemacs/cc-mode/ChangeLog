@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/cc-mode
+# Copyright 2002-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/cc-mode/ChangeLog,v 1.13 2008/03/19 19:19:38 graaff Exp $
+
+*cc-mode-1.69 (17 Jul 2013)
+
+  17 Jul 2013; Mats Lidell <matsl@gentoo.org> +cc-mode-1.69.ebuild,
+  +metadata.xml:
+  Upstream experimental version bump and use EAPI=5
+
