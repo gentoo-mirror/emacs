@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/scheme
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/scheme/ChangeLog,v 1.29 2011/07/22 11:24:59 xarthisius Exp $
+
+*scheme-1.19 (18 Jul 2013)
+
+  18 Jul 2013; Mats Lidell <matsl@gentoo.org> +metadata.xml,
+  +scheme-1.19.ebuild:
+  app-xemacs/scheme: Upstream experimental version bump and use EAPI=5
+
