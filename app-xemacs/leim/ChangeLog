@@ -1,0 +1,9 @@
+# ChangeLog for app-xemacs/leim
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/leim/ChangeLog,v 1.22 2011/07/22 11:25:06 xarthisius Exp $
+
+*leim-1.33 (19 Jul 2013)
+
+  19 Jul 2013; Mats Lidell <matsl@gentoo.org> +leim-1.33.ebuild, +metadata.xml:
+  app-xemacs/leim: Upstream experimental version bump and use EAPI=5
+
