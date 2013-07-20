@@ -177,9 +177,10 @@ elisp-emacs-version() {
 	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
-		# EMACS could be a microemacs variant that doesn't know our
-		# options and would hang in interactive mode. Redirecting stdin
-		# and unsetting TERM and DISPLAY will make most of them fail.
+		# EMACS could be a microemacs variant that ignores the -batch
+		# option and would therefore hang, waiting for user interaction.
+		# Redirecting stdin and unsetting TERM and DISPLAY will cause
+		# most of them to exit with an error.
 		unset TERM DISPLAY
 		${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
 	)
