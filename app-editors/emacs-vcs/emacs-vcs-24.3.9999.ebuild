@@ -56,7 +56,7 @@ RDEPEND="sys-libs/ncurses
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib )
-		jpeg? ( virtual/jpeg )
+		jpeg? ( virtual/jpeg:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff )
