@@ -1,3 +1,8 @@
+2013-07-18  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-emacs-version): Unset TERM and
+	DISPLAY so that microemacsen won't hang, but exit with an error.
+
 2013-07-16  Mats Lidell  <matsl@gentoo.org>
 
 	* xemacs-packages.eclass (xemacs-packages_src_prepare,
