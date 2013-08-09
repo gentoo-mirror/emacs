@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/eselect-emacs
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Update HOMEPAGE. Merge changes from Portage tree.
 
   09 Jun 2012; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
   Change live ebuild to use Git. Update to EAPI 4.

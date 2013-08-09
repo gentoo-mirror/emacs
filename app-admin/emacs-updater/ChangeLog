@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/emacs-updater
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-updater-9999.ebuild:
+  Update HOMEPAGE. Merge changes from Portage tree.
 
   08 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-updater-9999.ebuild:
   Update version of portage-utils dependency. Specify LICENSE more precisely.
