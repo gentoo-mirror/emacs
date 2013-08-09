@@ -10,8 +10,7 @@ EGIT_BRANCH="${PN}"
 inherit readme.gentoo elisp git-2
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-SRC_URI=""
+HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-2+"
 SLOT="0"

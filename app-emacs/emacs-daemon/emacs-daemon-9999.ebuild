@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
@@ -10,13 +10,11 @@ EGIT_BRANCH="${PN}"
 inherit elisp git-2
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-SRC_URI=""
+HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE=""
 
 DEPEND=">=virtual/emacs-23"
 RDEPEND="${DEPEND}"
@@ -40,7 +38,8 @@ pkg_setup() {
 		bug in GTK+ that prevents Emacs from recovering from X disconnects:
 		<http://bugzilla.gnome.org/show_bug.cgi?id=85715>
 		If you run Emacs as a daemon, then it is strongly recommended that
-		you compile it with the Lucid toolkit, i.e. with USE="Xaw3d -gtk".
+		you compile it with the Motif or the Lucid toolkit instead, i.e.
+		with USE="motif -athena -gtk" or USE="athena -gtk -motif".
 		EOF
 	fi
 }
@@ -52,6 +51,6 @@ src_install() {
 	newconfd emacs.conf emacs
 	exeinto /usr/libexec/emacs
 	doexe emacs-wrapper.sh emacs-stop.sh
-	elisp-site-file-install "${SITEFILE}" || die
+	elisp-site-file-install "${SITEFILE}"
 	dodoc README ChangeLog
 }

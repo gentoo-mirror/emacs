@@ -1,19 +1,18 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 
-inherit elisp-common eutils fdo-mime gnome2-utils user git-2
+inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo user git-2
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
-HOMEPAGE="http://www.gentoo.org/proj/en/lisp/emacs/"
-#SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="games X"
@@ -63,6 +62,18 @@ src_install() {
 
 		gnome2_icon_savelist
 	fi
+
+	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
+		added to ${SITELISP}/site-gentoo.el. In order for this site
+		initialisation to be loaded for all users automatically, a default
+		site startup file /etc/emacs/site-start.el is installed. You are
+		responsible for maintenance of this file.
+		\n\nAlternatively, individual users can add the following command:
+		\n\n(require 'site-gentoo)
+		\n\nto their ~/.emacs initialisation files, or, for greater
+		flexibility, users may load single package-specific initialisation
+		files from the ${SITELISP}/site-gentoo.d/ directory."
+	readme.gentoo_create_doc
 }
 
 site-start-modified-p() {
@@ -101,25 +112,9 @@ pkg_postinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
 	elisp-site-regen
 
-	local line
-	while read line; do elog "${line:- }"; done <<-EOF
-	All site initialisation for Gentoo-installed packages is added to
-	${SITELISP}/site-gentoo.el. In order for this site
-	initialisation to be loaded for all users automatically, a default
-	site startup file /etc/emacs/site-start.el is installed. You are
-	responsible for maintenance of this file.
-
-	Alternatively, individual users can add the following command:
-
-	(require 'site-gentoo)
-
-	to their ~/.emacs initialisation files, or, for greater flexibility,
-	users may load single package-specific initialisation files from
-	${SITELISP}/site-gentoo.d/.
-	EOF
+	readme.gentoo_print_elog
 
 	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
-		elog
 		ewarn "The location of the site startup file for Emacs has changed to"
 		ewarn "/etc/emacs/site-start.el."
 		if site-start-modified-p; then
