@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
@@ -32,7 +32,7 @@ DEPEND="virtual/libc
 	sys-libs/zlib
 	>=media-libs/audiofile-0.2.3
 	X? ( $X_DEPEND !neXt? ( x11-libs/libXaw ) )
-	alsa? ( media-sound/alsa-headers )
+	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack )
 	pulseaudio? ( media-sound/pulseaudio )
 	nas? ( media-libs/nas )

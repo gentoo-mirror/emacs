@@ -1,6 +1,12 @@
 # ChangeLog for app-editors/sxemacs
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> sxemacs-22.1.15.ebuild:
+  Non-maintainer commit: Drop dependency on media-sound/alsa-headers because
+  that package has been masked for removal; also it is not clear why it was
+  needed as a dependency, in the first place. Depend on media-libs/alsa-lib,
+  otherwise the configure phase will fail with USE=alsa.
 
   24 Oct 2012; Ulrich Müller <ulm@gentoo.org> sxemacs-22.1.15.ebuild:
   Update dependency after package move from x11-libs/openmotif to
