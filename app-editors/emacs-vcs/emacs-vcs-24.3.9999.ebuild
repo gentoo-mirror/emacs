@@ -147,10 +147,10 @@ src_configure() {
 
 	local myconf
 
-	if use alsa && ! use sound; then
-		einfo "Although sound USE flag is disabled you chose to have alsa,"
-		einfo "so sound is switched on anyway."
-		myconf+=" --with-sound"
+	if use alsa; then
+		use sound || einfo \
+			"USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
+		myconf+=" --with-sound=alsa"
 	else
 		myconf+=" $(use_with sound)"
 	fi
