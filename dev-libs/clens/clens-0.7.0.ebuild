@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs
+inherit multilib toolchain-funcs
 
 DESCRIPTION="Convenience library to aid in porting code from OpenBSD"
 HOMEPAGE="https://opensource.conformal.com/wiki/clens"
@@ -26,5 +26,8 @@ src_prepare() {
 }
 
 src_install() {
-	emake LOCALBASE=/usr DESTDIR="${ED}" install
+	emake DESTDIR="${ED}" \
+		INCDIR="/usr/include" \
+		LIBDIR="/usr/$(get_libdir)" \
+		install
 }
