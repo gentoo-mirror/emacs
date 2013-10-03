@@ -10,7 +10,7 @@ DESCRIPTION="MicroGnuEmacs, a port from the BSDs"
 HOMEPAGE="http://homepage.boetes.org/software/mg/"
 SRC_URI="http://homepage.boetes.org/software/mg/${P}.tar.gz"
 
-LICENSE="public-domain BSD"
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="livecd"
