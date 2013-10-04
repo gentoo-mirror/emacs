@@ -20,7 +20,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" \
+	emake DESTDIR="${D}" \
 		LOCALBASE="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
 		install
