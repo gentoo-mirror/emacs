@@ -22,8 +22,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# create our own Makefile to avoid BSD make
-	echo -e 'SRCS =' *.c '\nmg: $(SRCS:.c=.o)' \
-		'\n\t$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)' >Makefile || die
+	echo -e 'SRCS =' *.c '\n\nmg: $(SRCS:.c=.o)' \
+		'\n\t$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)' >Makefile || die
 
 	# remove OpenBSD specific easter egg
 	sed -i -e 's/theo\.c//' Makefile || die
