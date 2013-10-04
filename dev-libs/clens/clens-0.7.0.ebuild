@@ -4,30 +4,24 @@
 
 EAPI=5
 
-inherit multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs
 
-DESCRIPTION="Convenience library to aid in porting code from OpenBSD"
+DESCRIPTION="Convenience library to aid in porting OpenBSD code to other OSes"
 HOMEPAGE="https://opensource.conformal.com/wiki/clens"
 SRC_URI="https://opensource.conformal.com/snapshots/${PN}/${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="arc4random"
-
-DEPEND="arc4random? ( dev-libs/libbsd )"
-RDEPEND="${DEPEND}"
 
 src_prepare() {
-	if ! use arc4random; then
-		sed -i -e "s/arc4random[^.]*\.c//" GNUmakefile || die
-	fi
+	epatch "${FILESDIR}"/${P}-no-arc4random.patch
 	tc-export CC AR
 }
 
 src_install() {
 	emake DESTDIR="${ED}" \
-		INCDIR="/usr/include" \
+		LOCALBASE="/usr" \
 		LIBDIR="/usr/$(get_libdir)" \
 		install
 }
