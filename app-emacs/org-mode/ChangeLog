@@ -3,6 +3,9 @@
 # $Header: $
 
   10 Oct 2013; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Merge updates from Portage tree.
+
+  10 Oct 2013; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
   Migrate to git-r3.eclass.
 
   04 Oct 2012; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild,
