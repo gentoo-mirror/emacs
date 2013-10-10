@@ -7,8 +7,9 @@ EAPI=5
 MY_PN="eselect-emacs"
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${MY_PN}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_PN}"
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Manages ctags implementations"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"

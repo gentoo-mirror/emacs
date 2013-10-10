@@ -6,8 +6,9 @@ EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp git-2
+inherit elisp git-r3
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
@@ -19,6 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 DEPEND=">=virtual/emacs-23"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/${PN}"
 SITEFILE="10${PN}-gentoo.el"
 
 pkg_setup() {

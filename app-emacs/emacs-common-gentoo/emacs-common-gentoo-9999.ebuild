@@ -6,8 +6,9 @@ EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo user git-2
+inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo user git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"

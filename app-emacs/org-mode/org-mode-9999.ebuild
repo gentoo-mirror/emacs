@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -9,9 +9,12 @@ inherit elisp
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://orgmode.org/org-mode.git"
-	inherit git-2
+	EGIT_CHECKOUT_DIR="${WORKDIR}/org"
+	inherit git-r3
+	S="${WORKDIR}/org"
 else
 	SRC_URI="http://orgmode.org/org-${PV}.tar.gz"
+	S="${WORKDIR}/org-${PV}"
 fi
 
 DESCRIPTION="An Emacs mode for notes and project planning"
@@ -32,7 +35,6 @@ else
 	ELISP_REMOVE="lisp/org-install.el"
 fi
 
-S="${WORKDIR}/org-${PV}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {

@@ -1,21 +1,23 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+EAPI=5
 
-inherit git-2 toolchain-funcs
+EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
+
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
 HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
 	ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK"
-SRC_URI=""
 
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+S="${WORKDIR}/${PN}"
 
 DEPEND="sys-libs/ncurses"
 RDEPEND="${DEPEND}"

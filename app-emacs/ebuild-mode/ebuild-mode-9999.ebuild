@@ -6,8 +6,9 @@ EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit readme.gentoo elisp git-2
+inherit readme.gentoo elisp git-r3
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"

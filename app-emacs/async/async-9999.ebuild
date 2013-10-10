@@ -1,20 +1,21 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-EGIT_REPO_URI="https://github.com/jwiegley/emacs-async.git"
+EAPI=5
 
-inherit elisp git-2
+EGIT_REPO_URI="https://github.com/jwiegley/emacs-async.git"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
+
+inherit elisp git-r3
 
 DESCRIPTION="A simple asynchronous framework for Emacs"
 HOMEPAGE="https://github.com/jwiegley/emacs-async"
-SRC_URI=""
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
+S="${WORKDIR}/${PN}"
 SITEFILE="50${PN}-gentoo.el"
 DOCS="README.md"

@@ -6,8 +6,9 @@ EAPI=5
 
 EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Rebuild Emacs packages"
 HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
