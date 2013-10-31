@@ -778,6 +778,9 @@
 Copyright 2002-2012 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
 
+  31 Oct 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
+  Don't create site-gentoo.el in postrm phase.
+
   04 Sep 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
   Add proper @CODE tags in comments.
 

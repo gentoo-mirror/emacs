@@ -362,6 +362,11 @@ elisp-site-regen() {
 		return 1
 	fi
 
+	if [[ ${EBUILD_PHASE} = *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
+		ewarn "Refusing to create site-gentoo.el in ${EBUILD_PHASE} phase."
+		return 0
+	fi
+
 	ebegin "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE})"
 
 	for sf in "${sitelisp}"/[0-9][0-9]*-gentoo.el \
