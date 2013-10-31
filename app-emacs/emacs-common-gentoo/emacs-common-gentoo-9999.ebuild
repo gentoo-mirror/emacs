@@ -92,6 +92,10 @@ site-start-modified-p() {
 }
 
 pkg_preinst() {
+	# make sure that site-gentoo.el exists since site-start.el requires it
+	elisp-site-regen
+	cp "${EROOT}${SITELISP}/site-gentoo.el" "${ED}${SITELISP}/" || die
+
 	if use games; then
 		local f
 		for f in /var/lib/games/emacs/{snake,tetris}-scores; do
@@ -109,9 +113,6 @@ pkg_postinst() {
 		fdo-mime_desktop_database_update
 		gnome2_icon_cache_update
 	fi
-
-	# make sure that site-gentoo.el exists since site-start.el requires it
-	elisp-site-regen
 
 	readme.gentoo_print_elog
 
