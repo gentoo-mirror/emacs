@@ -1,3 +1,12 @@
+2013-10-31  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Don't create
+	site-gentoo.el in postrm phase.
+
+2013-09-04  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Add proper @CODE tags in comments.
+
 2013-07-18  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp-common.eclass (elisp-emacs-version): Unset TERM and
@@ -5,8 +14,8 @@
 
 2013-07-16  Mats Lidell  <matsl@gentoo.org>
 
-	* xemacs-packages.eclass (xemacs-packages_src_prepare,
-	xemacs-packages_src_configure): New functions that does
+	* xemacs-packages.eclass (xemacs-packages_src_prepare)
+	(xemacs-packages_src_configure): New functions that does
 	nothing. Needed for EAPI>2 support.
 
 2013-03-04  Ulrich Müller  <ulm@gentoo.org>
@@ -36,9 +45,19 @@
 	* elisp-common.eclass (elisp-site-regen): Remove last remnants of
 	backwards compatibility code that was introduced at 2007-12-01.
 
+2012-08-24  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass (elisp-site-regen): Suppress warning for
+	initial installation.
+
 2012-08-17  Ulrich Müller  <ulm@gentoo.org>
 
 	* elisp.eclass (IUSE): Remove unnecessary variable assignment.
+
+2012-07-18  Ulrich Müller  <ulm@gentoo.org>
+
+	* elisp-common.eclass: Make use of the @ROFF token in
+	documentation.
 
 2012-02-11  Ulrich Müller  <ulm@gentoo.org>
 
@@ -775,18 +794,5 @@
 
 	* elisp.eclass: Initial.
 
-Copyright 2002-2012 Gentoo Foundation
+Copyright 2002-2013 Gentoo Foundation
 Distributed under the terms of the GNU General Public License v2
-
-  31 Oct 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
-  Don't create site-gentoo.el in postrm phase.
-
-  04 Sep 2013; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
-  Add proper @CODE tags in comments.
-
-  24 Aug 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
-  Suppress warning for initial installation.
-
-  18 Jul 2012; Ulrich Müller <ulm@gentoo.org> elisp-common.eclass:
-  Sync from Portage tree: Make use of the @ROFF token in documentation.
-
