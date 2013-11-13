@@ -106,6 +106,21 @@ pkg_preinst() {
 			chown "${GAMES_USER_DED:-games}" "${ED}${f}" || die
 		done
 	fi
+
+	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
+		ewarn "The location of the site startup file for Emacs has changed to"
+		ewarn "/etc/emacs/site-start.el."
+		if site-start-modified-p; then
+			eerror "Locally modified ${SITELISP}/site-start.el file found."
+			eerror "If this file contains your own customisation, you should"
+			eerror "move it to /etc/emacs/. In any case, you must remove the"
+			eerror "file from the old location."
+			die "Cannot continue unless ${SITELISP}/site-start.el is removed."
+		else
+			ewarn "Removing the old ${SITELISP}/site-start.el file."
+			rm -f "${EROOT}${SITELISP}/site-start.el"
+		fi
+	fi
 }
 
 pkg_postinst() {
@@ -115,19 +130,6 @@ pkg_postinst() {
 	fi
 
 	readme.gentoo_print_elog
-
-	if [[ -e ${EROOT}${SITELISP}/site-start.el ]]; then
-		ewarn "The location of the site startup file for Emacs has changed to"
-		ewarn "/etc/emacs/site-start.el."
-		if site-start-modified-p; then
-			ewarn "If your site-start.el file contains your own customisation,"
-			ewarn "you should move it to the new file. In any case, you should"
-			ewarn "remove the old ${SITELISP}/site-start.el file."
-		else
-			ewarn "Removing the old ${SITELISP}/site-start.el file."
-			rm -f "${EROOT}${SITELISP}/site-start.el"
-		fi
-	fi
 }
 
 pkg_postrm() {
