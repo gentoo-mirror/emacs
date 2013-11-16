@@ -34,7 +34,7 @@ pkg_setup() {
 src_install() {
 	insinto "${SITELISP}"
 	doins subdirs.el
-	newins site-gentoo.el site-gentoo.el.orig
+	newins site-gentoo.el{,.orig}
 
 	keepdir /etc/emacs
 	insinto /etc/emacs
@@ -94,12 +94,12 @@ site-start-modified-p() {
 
 pkg_preinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
-	if [[ -d ${EROOT}${SITELISP} ]]; then
-		elisp-site-regen
-		cp "${EROOT}${SITELISP}/site-gentoo.el" "${ED}${SITELISP}/" || die
-		rm "${ED}${SITELISP}/site-gentoo.el.orig" || die
-	else
+	if [[ ! -d ${EROOT}${SITELISP} ]]; then
 		mv "${ED}${SITELISP}"/site-gentoo.el{.orig,} || die
+	else
+		elisp-site-regen
+		rm "${ED}${SITELISP}/site-gentoo.el.orig" || die
+		cp "${EROOT}${SITELISP}/site-gentoo.el" "${ED}${SITELISP}/" || die
 	fi
 
 	if use games; then
