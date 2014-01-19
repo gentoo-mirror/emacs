@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.3.9999.ebuild,v 1.21 2013/12/16 23:59:27 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-vcs/emacs-vcs-24.3.9999.ebuild,v 1.22 2014/01/04 20:05:39 ulm Exp $
 
 EAPI=5
 
@@ -17,7 +17,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 	inherit bzr
 	S="${EBZR_UNPACK_DIR}"
 else
-	SRC_URI="mirror://gentoo/emacs-${PV}.tar.xz
+	SRC_URI="http://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
