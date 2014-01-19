@@ -3,6 +3,9 @@
 # $Header: $
 
   19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
   Merge changes from Portage tree.
 
   29 Dec 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:

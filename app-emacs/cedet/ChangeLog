@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/cedet
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> cedet-9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
 
   29 Mar 2011; Ulrich Mueller <ulm@gentoo.org> cedet-9999.ebuild:
   CEDET upstream has moved to Bazaar. Update ebuild accordingly, bug 361091,

@@ -1,6 +1,9 @@
 # ChangeLog for app-admin/emacs-updater
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-updater-9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
 
   10 Oct 2013; Ulrich Müller <ulm@gentoo.org> emacs-updater-9999.ebuild:
   Migrate to git-r3.eclass.

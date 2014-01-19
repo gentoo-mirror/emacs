@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -11,12 +11,9 @@ inherit elisp eutils bzr
 
 DESCRIPTION="CEDET: Collection of Emacs Development Tools"
 HOMEPAGE="http://cedet.sourceforge.net/"
-SRC_URI=""
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE=""
 
 RDEPEND="!app-emacs/semantic
 	!app-emacs/eieio

@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -11,12 +11,9 @@ EBZR_REPO_URI="bzr://rudel.bzr.sourceforge.net/bzrroot/rudel/trunk"
 DESCRIPTION="Collaborative editing environment for GNU Emacs"
 HOMEPAGE="http://rudel.sourceforge.net/
 	http://www.emacswiki.org/emacs/Rudel"
-SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 DEPEND="virtual/emacs-cedet"
 RDEPEND="${DEPEND}"
