@@ -3,7 +3,7 @@
 # $Header: $
 
   19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
-  Merge changes from emacs-vcs
+  Merge changes from emacs-vcs.
 
   19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
   Switch from package.mask to empty KEYWORDS.
