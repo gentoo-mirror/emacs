@@ -31,7 +31,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
-IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
@@ -71,15 +71,15 @@ RDEPEND="sys-libs/ncurses
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? (
-			gtk3? ( x11-libs/gtk+:3 )
-			!gtk3? ( x11-libs/gtk+:2 )
-		)
-		!gtk? (
-			motif? ( >=x11-libs/motif-2.3:0 )
-			!motif? (
-				Xaw3d? ( x11-libs/libXaw3d )
-				!Xaw3d? ( athena? ( x11-libs/libXaw ) )
+		gtk3? ( x11-libs/gtk+:3 )
+		!gtk3? (
+			gtk? ( x11-libs/gtk+:2 )
+			!gtk? (
+				motif? ( >=x11-libs/motif-2.3:0 )
+				!motif? (
+					Xaw3d? ( x11-libs/libXaw3d )
+					!Xaw3d? ( athena? ( x11-libs/libXaw ) )
+				)
 			)
 		)
 	)"
@@ -168,21 +168,15 @@ src_configure() {
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
-		local f
-		if use gtk; then
-			einfo "Configuring to build with GIMP Toolkit (GTK+)"
-			myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
-			for f in motif Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"gtk\" is set."
-			done
+		if use gtk3; then
+			einfo "Configuring to build with GIMP Toolkit (GTK+) version 3"
+			myconf+=" --with-x-toolkit=gtk3"
+		elif use gtk; then
+			einfo "Configuring to build with GIMP Toolkit (GTK+) version 2"
+			myconf+=" --with-x-toolkit=gtk2"
 		elif use motif; then
 			einfo "Configuring to build with Motif toolkit"
 			myconf+=" --with-x-toolkit=motif"
-			for f in Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"motif\" is set."
-			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
 			myconf+=" --with-x-toolkit=lucid $(use_with Xaw3d xaw3d)"
@@ -190,6 +184,14 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
+
+		local f tk
+		for f in gtk3 gtk motif Xaw3d athena; do
+			use ${f} || continue
+			[[ ${tk} = gtk* || ${tk} = motif ]] \
+				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"
+			: ${tk:=${f}}
+		done
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
