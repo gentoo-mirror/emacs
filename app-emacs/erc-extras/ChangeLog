@@ -1,0 +1,11 @@
+# ChangeLog for app-emacs/erc-extras
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*erc-extras-5.3 (20 Feb 2014)
+
+  20 Feb 2014; Ulrich Müller <ulm@gentoo.org> +erc-extras-5.3.ebuild,
+  +files/50erc-extras-gentoo.el, +metadata.xml:
+  Initial import. Ebuild contributed by me. These are ERC modules that have not
+  become part of GNU Emacs.
+
