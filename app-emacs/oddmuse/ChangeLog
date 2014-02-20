@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/oddmuse
-# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  20 Feb 2014; Ulrich Müller <ulm@gentoo.org> -oddmuse-20080421.ebuild,
+  oddmuse-20090411.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely. Remove old.
 
 *oddmuse-20090411 (11 Mar 2010)
 
