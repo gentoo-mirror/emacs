@@ -7,7 +7,7 @@ EAPI=5
 inherit elisp
 
 MY_P="erc-${PV}-extras"
-DESCRIPTION="The Emacs IRC Client"
+DESCRIPTION="Extra modules for the Emacs IRC Client"
 HOMEPAGE="http://www.emacswiki.org/emacs/ErcExtraModules"
 SRC_URI="http://ftp.gnu.org/old-gnu/erc/${MY_P}.tar.gz"
 
