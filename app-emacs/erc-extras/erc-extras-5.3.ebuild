@@ -14,14 +14,21 @@ SRC_URI="http://ftp.gnu.org/old-gnu/erc/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="bbdb chess"
+
+DEPEND="bbdb? ( app-emacs/bbdb )
+	chess? ( app-emacs/chess )"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"
 DOCS="README.extras"
 
-src_compile() {
+src_prepare() {
+	use bbdb || rm erc-bbdb.el || die
+	use chess || rm erc-chess.el || die
 	# erc-speak fails byte-compilation, cannot open emacspeak
-	elisp-compile erc-{bbdb,chess,list-old,nicklist}.el
+	rm erc-speak.el || die
 }
 
 src_install() {

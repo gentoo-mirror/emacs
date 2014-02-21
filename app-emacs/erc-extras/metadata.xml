@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>emacs</herd>
+<use>
+  <flag name='bbdb'>Include support for <pkg>app-emacs/bbdb</pkg></flag>
+  <flag name='chess'>Include support for <pkg>app-emacs/chess</pkg></flag>
+</use>
 </pkgmetadata>
