@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-base/xemacs-base-2.27.ebuild,v 1.8 2012/06/02 14:11:37 aballier Exp $
 
