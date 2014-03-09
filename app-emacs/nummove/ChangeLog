@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/nummove
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  09 Mar 2014; Ulrich Müller <ulm@gentoo.org> nummove-20070312.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
 
   15 Mar 2009; Ulrich Mueller <ulm@gentoo.org> nummove-20070312.ebuild:
   Adapt to new version of elisp.eclass.
