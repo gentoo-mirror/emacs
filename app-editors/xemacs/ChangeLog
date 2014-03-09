@@ -2,6 +2,13 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*xemacs-21.5.34-r2 (09 Mar 2014)
+
+  09 Mar 2014; Ulrich Müller <ulm@gentoo.org> +xemacs-21.5.34-r2.ebuild:
+  Sync from Portage tree: Install gnuserv binaries with -xemacs suffix to avoid
+  file collisions with app-emacs/gnuserv; active versions of gnuclient and
+  gnudoit can now be selected with the gnuclient eselect module, bug 177936.
+
 *xemacs-21.5.34-r1 (01 Feb 2014)
 
   01 Feb 2014: Mats Lidell <matsl@gentoo.org> +xemacs-21.5.34-r1.ebuild,
