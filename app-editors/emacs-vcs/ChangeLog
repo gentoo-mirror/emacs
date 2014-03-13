@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Mar 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Install emacs man page under the same name as the binary.
+
   19 Feb 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild,
   metadata.xml:
   Follow QA policy on gtk and gtk3 USE flags.
