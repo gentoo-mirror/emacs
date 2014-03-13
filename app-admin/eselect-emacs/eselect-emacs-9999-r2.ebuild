@@ -23,7 +23,7 @@ S="${WORKDIR}/${PN}"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins {emacs,etags}.eselect
-	doman {emacs,etags}.eselect.5
+	doins {emacs,etags,gnuclient}.eselect
+	doman {emacs,etags,gnuclient}.eselect.5
 	dodoc ChangeLog
 }
