@@ -119,7 +119,7 @@ src_install() {
 	done
 
 	# move man page
-	mv "${D}"/usr/share/man/man1/emacs{,-emacs-${SLOT}}.1 || die
+	mv "${D}"/usr/share/man/man1/emacs{,-${SLOT}}.1 || die
 
 	# move Info files
 	dodir /usr/share/info
