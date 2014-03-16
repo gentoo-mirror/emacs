@@ -217,7 +217,7 @@ src_install () {
 	rm "${ED}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
 		|| die "removing duplicate emacs executable failed"
 	mv "${ED}"/usr/bin/emacs-${EMACS_SUFFIX} "${ED}"/usr/bin/${EMACS_SUFFIX} \
-		|| die "moving Emacs executable failed"
+		|| die "moving emacs executable failed"
 
 	# move man pages to the correct place
 	local m
