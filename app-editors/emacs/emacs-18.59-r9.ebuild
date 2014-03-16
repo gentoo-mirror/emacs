@@ -143,17 +143,6 @@ pkg_preinst() {
 	if [[ -d "${D}"/usr/share/info ]]; then
 		mv "${D}"/usr/share/info/emacs-${SLOT}/dir{.orig,} || die
 	fi
-
-	# remove symlink and directory installed by -r6 and earlier
-	if [[ -L "${ROOT}"/usr/share/info/emacs-${SLOT} ]]; then
-		ewarn "Removing old symlink /usr/share/info/emacs-${SLOT}"
-		rm "${ROOT}"/usr/share/info/emacs-${SLOT} || die
-	fi
-	if [[ -d "${ROOT}"/usr/share/emacs/${PV}/info \
-		&& ! -L "${ROOT}"/usr/share/emacs/${PV}/info ]]; then
-		ewarn "Removing old directory /usr/share/emacs/${PV}/info"
-		rm -r "${ROOT}"/usr/share/emacs/${PV}/info || die
-	fi
 }
 
 pkg_postinst() {
