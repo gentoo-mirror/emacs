@@ -51,6 +51,9 @@ src_prepare() {
 	sed -i -e "s:/usr/lib/\([^ ]*\).o:/usr/$(get_libdir)/\1.o:g" \
 		"${S}/src/s/gnu-linux.h" || die
 
+	sed -i -e "/^\\.so/s/etags/&-emacs-${SLOT}/" etc/ctags.1 \
+		|| die "unable to sed ctags.1"
+
 	# custom aclocal.m4 was only needed for autoconf 2.13 and earlier
 	rm aclocal.m4
 	eaclocal

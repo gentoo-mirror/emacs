@@ -2,6 +2,10 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  18 Mar 2014; Ulrich Müller <ulm@gentoo.org> emacs-21.4-r24.ebuild,
+  emacs-22.3-r10.ebuild:
+  Further fixes to man page installation.
+
   16 Mar 2014; Ulrich Müller <ulm@gentoo.org> emacs-18.59-r9.ebuild,
   emacs-21.4-r24.ebuild, emacs-22.3-r10.ebuild, emacs-23.4-r6.ebuild,
   emacs-24.3-r2.ebuild:
