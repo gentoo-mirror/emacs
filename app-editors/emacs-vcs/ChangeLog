@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Apr 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.4.9999.ebuild:
+  Merge changes from Portage tree.
+
 *emacs-vcs-24.4.9999 (26 Mar 2014)
 
   26 Mar 2014; Ulrich Müller <ulm@gentoo.org> -emacs-vcs-24.3.9999.ebuild,
