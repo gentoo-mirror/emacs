@@ -36,7 +36,7 @@ REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.3-r3[games?,X?]
+	>=app-emacs/emacs-common-gentoo-1.4-r1[games?,X?]
 	net-libs/liblockfile
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -92,7 +92,10 @@ DEPEND="${RDEPEND}
 	libxml2? ( virtual/pkgconfig )
 	X? ( virtual/pkgconfig )
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/paxctl )"
+	pax_kernel? (
+		sys-apps/attr
+		sys-apps/paxctl
+	)"
 
 if [[ ${PV##*.} = 9999 ]]; then
 	DEPEND="${DEPEND}
@@ -210,6 +213,7 @@ src_configure() {
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
+		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
 		--with-gameuser="${GAMES_USER_DED:-games}" \
 		--without-compress-install \
