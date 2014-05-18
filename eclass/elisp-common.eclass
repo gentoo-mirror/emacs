@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 #
@@ -369,16 +369,8 @@ elisp-site-regen() {
 
 	ebegin "Regenerating site-gentoo.el for GNU Emacs (${EBUILD_PHASE})"
 
-	for sf in "${sitelisp}"/[0-9][0-9]*-gentoo.el \
-		"${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el
-	do
-		[[ -r ${sf} ]] || continue
-		# sort files by their basename. straight insertion sort.
-		for ((i=${#sflist[@]}; i>0; i--)); do
-			[[ ${sf##*/} < ${sflist[i-1]##*/} ]] || break
-			sflist[i]=${sflist[i-1]}
-		done
-		sflist[i]=${sf}
+	for sf in "${sitelisp}"/site-gentoo.d/[0-9][0-9]*.el; do
+		[[ -r ${sf} ]] && sflist+=("${sf}")
 	done
 
 	cat <<-EOF >"${T}"/site-gentoo.el
