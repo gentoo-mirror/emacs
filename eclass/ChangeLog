@@ -1,5 +1,7 @@
 2014-05-18  Ulrich Müller  <ulm@gentoo.org>
 
+	* elisp-common.eclass (elisp-site-regen): Die on errors.
+
 	* elisp-common.eclass (elisp-site-regen): Look for site-init files
 	only in site-gentoo.d subdirectory.
 
