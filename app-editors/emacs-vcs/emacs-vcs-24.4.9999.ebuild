@@ -85,12 +85,7 @@ RDEPEND="sys-libs/ncurses
 	)"
 
 DEPEND="${RDEPEND}
-	alsa? ( virtual/pkgconfig )
-	dbus? ( virtual/pkgconfig )
-	gfile? ( virtual/pkgconfig )
-	gnutls? ( virtual/pkgconfig )
-	libxml2? ( virtual/pkgconfig )
-	X? ( virtual/pkgconfig )
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
 	pax_kernel? (
 		sys-apps/attr
