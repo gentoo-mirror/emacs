@@ -342,10 +342,6 @@ elisp-site-file-install() {
 # Regenerate the site-gentoo.el file, based on packages' site
 # initialisation files in the /usr/share/emacs/site-lisp/site-gentoo.d/
 # directory.
-#
-# Note: Before December 2007, site initialisation files were installed
-# in /usr/share/emacs/site-lisp/.  For backwards compatibility, this
-# location is still supported when generating site-gentoo.el.
 
 elisp-site-regen() {
 	local sitelisp=${ROOT}${EPREFIX}${SITELISP}
