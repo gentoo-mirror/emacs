@@ -1,0 +1,10 @@
+# ChangeLog for app-emacs/bbdb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*bbdb-3.1.2 (29 May 2014)
+
+  29 May 2014; Ulrich Müller <ulm@gentoo.org> +bbdb-3.1.2.ebuild,
+  +files/50bbdb-gentoo-3.1.2.el, +metadata.xml:
+  Ebuild for BBDB version 3, bug 511572. Work in progress.
+
