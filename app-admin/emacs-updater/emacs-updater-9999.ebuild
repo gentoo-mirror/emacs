@@ -16,15 +16,22 @@ HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 LICENSE="GPL-2+"
 SLOT="0"
 
-RDEPEND=">=app-portage/portage-utils-0.3
+DEPEND="|| ( sys-apps/util-linux app-misc/getopt )"
+RDEPEND="${DEPEND}
+	>=app-portage/portage-utils-0.3
 	virtual/emacs"
 
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	if ! has_version sys-apps/util-linux; then
+		# BSD ships a dumb getopt(1), so use getopt-long instead
+		sed -i -e '/^GETOPT=/s/getopt/&-long/' emacs-updater || die
+	fi
+
 	if [[ -n ${EPREFIX} ]]; then
 		sed -i -e "1s:/:${EPREFIX%/}/:" \
-			-e "s:^\(EMACS\|SITELISP\)=:&${EPREFIX%/}:" \
+			-e "s:^\([[:upper:]]*=\)/:\1${EPREFIX%/}/:" \
 			emacs-updater || die
 	fi
 }
