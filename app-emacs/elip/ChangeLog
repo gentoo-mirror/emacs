@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/elip
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -elip-0.803.ebuild,
+  elip-0.804.ebuild:
+  Remove redundant NEED_EMACS assignment. Remove old.
 
 *elip-0.804 (10 Nov 2009)
 

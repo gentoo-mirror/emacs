@@ -1,8 +1,6 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
-
-NEED_EMACS=22
 
 inherit elisp
 
@@ -13,7 +11,6 @@ SRC_URI="http://www.gnuvola.org/software/elip/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND=">=app-emacs/edb-1.31"
 RDEPEND="${DEPEND}"
@@ -29,9 +26,8 @@ src_compile() {
 src_install() {
 	# the build system of the package is horribly broken,
 	# so we install everything manually
-	elisp-install ${PN} source/*.{el,elc} || die "elisp-install failed"
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" \
-		|| die "elisp-site-file-install failed"
+	elisp-install ${PN} source/*.{el,elc}
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	doinfo doc/elip.info*
 
 	dodoc ChangeLog ChangeLog.OLD NEWS README

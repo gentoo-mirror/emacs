@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> rudel-9999.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
   17 Mar 2014; Ulrich Müller <ulm@gentoo.org> rudel-9999.ebuild:
   Merge changes from Portage tree.
 

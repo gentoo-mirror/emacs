@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/smex
-# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> smex-20090716.ebuild:
+  Remove redundant NEED_EMACS assignment. Specify LICENSE more precisely.
 
 *smex-20090716 (05 Dec 2009)
 

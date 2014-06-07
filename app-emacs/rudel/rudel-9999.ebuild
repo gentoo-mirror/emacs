@@ -3,7 +3,6 @@
 # $Header: $
 
 EAPI=5
-NEED_EMACS=23
 
 inherit readme.gentoo elisp bzr
 

@@ -4,8 +4,6 @@
 
 EAPI=5
 
-NEED_EMACS=23
-
 inherit elisp
 
 if [[ ${PV} = 9999 ]]; then
