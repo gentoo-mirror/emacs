@@ -92,12 +92,7 @@ RDEPEND="sys-libs/ncurses
 	)"
 
 DEPEND="${RDEPEND}
-	alsa? ( virtual/pkgconfig )
-	dbus? ( virtual/pkgconfig )
-	gfile? ( virtual/pkgconfig )
-	gnutls? ( virtual/pkgconfig )
-	libxml2? ( virtual/pkgconfig )
-	X? ( virtual/pkgconfig )
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
 	pax_kernel? (
 		sys-apps/attr
@@ -117,7 +112,7 @@ src_prepare() {
 	sed -i -e "/AC_INIT/s/\(24\.[0-9]*\)\.[0-9]*/\1.60/" configure.ac
 
 	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT(emacs,[ \t]*\([^ \t,)]*\).*/\1/p' \
+		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
 			configure.ac)
 		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
 		einfo "Emacs branch: ${EBZR_BRANCH}"

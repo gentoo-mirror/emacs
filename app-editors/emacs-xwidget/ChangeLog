@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-xwidget-24.4.9999 (07 Jun 2014)
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.3.9999.ebuild,
+  +emacs-xwidget-24.4.9999.ebuild:
+  Upstream version number has changed.
+
   06 May 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
   Merge changes from emacs-vcs.
 
