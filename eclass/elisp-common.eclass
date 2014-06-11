@@ -30,15 +30,15 @@
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
 #
-# If your package requires a minimum Emacs version, e.g. Emacs 23, then
-# the dependency should be on >=virtual/emacs-23 instead.  Because the
+# If your package requires a minimum Emacs version, e.g. Emacs 24, then
+# the dependency should be on >=virtual/emacs-24 instead.  Because the
 # user can select the Emacs executable with eselect, you should also
 # make sure that the active Emacs version is sufficient.  This can be
 # tested with function elisp-need-emacs(), which would typically be
 # called from pkg_setup(), as in the following example:
 #
 # @CODE
-# 	elisp-need-emacs 23 || die "Emacs version too low"
+# 	elisp-need-emacs 24 || die "Emacs version too low"
 # @CODE
 #
 # Please note that such tests should be limited to packages that are
