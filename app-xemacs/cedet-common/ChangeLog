@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/cedet-common
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/cedet-common/ChangeLog,v 1.10 2011/07/22 11:25:04 xarthisius Exp $
+
+*cedet-common-1.03 (10 Jul 2014)
+
+  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +cedet-common-1.03.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+
