@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/ilisp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ilisp/ChangeLog,v 1.22 2011/07/22 11:25:08 xarthisius Exp $
+
+*ilisp-1.38 (10 Jul 2014)
+
+  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +ilisp-1.38.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+
