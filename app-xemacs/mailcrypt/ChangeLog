@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/mailcrypt
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/mailcrypt/ChangeLog,v 1.14 2008/03/19 19:44:34 graaff Exp $
+
+*mailcrypt-2.16 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +mailcrypt-2.16.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+
