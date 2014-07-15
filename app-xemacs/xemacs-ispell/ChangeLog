@@ -2,6 +2,12 @@
 # Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-ispell/ChangeLog,v 1.15 2008/03/19 20:14:48 graaff Exp $
 
+*xemacs-ispell-1.37 (15 Jul 2014)
+
+  15 Jul 2014; Mats Lidell <matsl@gentoo.org> -xemacs-ispell-1.36.ebuild,
+  +xemacs-ispell-1.37.ebuild:
+  Pre release version bump
+
 *xemacs-ispell-1.36 (06 Jul 2014)
 
   06 Jul 2014; Mats Lidell <matsl@gentoo.org> +xemacs-ispell-1.36.ebuild,
