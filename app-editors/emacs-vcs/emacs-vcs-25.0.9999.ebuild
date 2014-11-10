@@ -123,6 +123,7 @@ src_prepare() {
 
 src_configure() {
 	strip-flags
+	filter-flags -pie					#526948
 
 	if use sh; then
 		replace-flags "-O[1-9]" -O0		#262359
@@ -252,6 +253,9 @@ src_install () {
 
 	# remove unused <version>/site-lisp dir
 	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+
+	# remove COPYING file (except for etc/COPYING used by describe-copying)
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
