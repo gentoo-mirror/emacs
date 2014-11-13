@@ -7,15 +7,11 @@ EAPI=5
 inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo
 
 if [[ ${PV##*.} = 9999 ]]; then
-	EBZR_PROJECT="emacs"
-	EBZR_BRANCH="xwidget"
-	EBZR_REPO_URI="bzr://bzr.savannah.gnu.org/emacs/${EBZR_BRANCH}/"
-	# "Nosmart" is much faster for initial branching.
-	EBZR_INITIAL_URI="nosmart+${EBZR_REPO_URI}"
-	EBZR_UNPACK_DIR="${WORKDIR}/emacs"
-	EBZR_WORKDIR_CHECKOUT="t"	#434746
-	inherit bzr
-	S="${EBZR_UNPACK_DIR}"
+	inherit git-r3
+	EGIT_REPO_URI="git://git.sv.gnu.org/emacs.git"
+	EGIT_BRANCH="xwidget"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
+	S="${EGIT_CHECKOUT_DIR}"
 else
 	SRC_URI="http://dev.gentoo.org/~ulm/distfiles/emacs-${PV}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/emacs-${PV}.tar.xz"
@@ -109,14 +105,14 @@ SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
 	# set a fake version number to avoid collisions between SLOTs
-	sed -i -e "/AC_INIT/s/\(24\.[0-9]*\)\.[0-9]*/\1.60/" configure.ac
+	#sed -i -e "/AC_INIT/s/\(24\.[0-9]*\)\.[0-9]*/\1.60/" configure.ac
 
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
 			configure.ac)
 		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
-		einfo "Emacs branch: ${EBZR_BRANCH}"
-		einfo "Revision: ${EBZR_REVISION:-${EBZR_REVNO}}"
+		einfo "Emacs branch: ${EGIT_BRANCH}"
+		einfo "Commit: ${EGIT_VERSION}"
 		einfo "Emacs version number: ${FULL_VERSION}"
 		[[ ${FULL_VERSION} =~ ^${PV%.*}(\..*)?$ ]] \
 			|| die "Upstream version number changed to ${FULL_VERSION}"
@@ -133,6 +129,7 @@ src_prepare() {
 
 src_configure() {
 	strip-flags
+	filter-flags -pie					#526948
 
 	if use sh; then
 		replace-flags "-O[1-9]" -O0		#262359
@@ -217,7 +214,7 @@ src_configure() {
 	# in variable "system-configuration-options".
 	myconf+=" GENTOO_PACKAGE=${CATEGORY}/${PF}"
 	if [[ ${PV##*.} = 9999 ]]; then
-		myconf+=" EBZR_BRANCH=${EBZR_BRANCH} EBZR_REVNO=${EBZR_REVNO}"
+		myconf+=" EGIT_BRANCH=${EGIT_BRANCH} EGIT_VERSION=${EGIT_VERSION}"
 	fi
 
 	econf \
@@ -262,11 +259,14 @@ src_install () {
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{applications,icons}
+	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir
 	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+
+	# remove COPYING file (except for etc/COPYING used by describe-copying)
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
