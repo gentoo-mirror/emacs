@@ -2,6 +2,15 @@
 # Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-xemacs/cc-mode/ChangeLog,v 1.13 2008/03/19 19:19:38 graaff Exp $
 
+  20 Nov 2014; Mats Lidell <matsl@gentoo.org> -cc-mode-1.83.ebuild,
+  +cc-mode-1.84.ebuild:
+  Pre release version bump.
+
+*cc-mode-1.84 (20 Nov 2014)
+
+  20 Nov 2014; Mats Lidell <matsl@gentoo.org> +cc-mode-1.84.ebuild:
+  Pre release version bump.
+
 *cc-mode-1.83 (18 Nov 2014)
 
   18 Nov 2014; Mats Lidell <matsl@gentoo.org> -cc-mode-1.82.ebuild,
