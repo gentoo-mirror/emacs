@@ -21,9 +21,11 @@ RDEPEND=">=app-admin/eselect-1.2.6
 
 S="${WORKDIR}/${PN}"
 
+src_compile() { :; }
+
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins {emacs,etags,gnuclient}.eselect
-	doman {emacs,etags,gnuclient}.eselect.5
+	doins {emacs,gnuclient}.eselect
+	doman {emacs,gnuclient}.eselect.5
 	dodoc ChangeLog
 }

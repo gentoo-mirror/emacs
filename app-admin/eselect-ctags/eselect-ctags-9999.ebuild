@@ -17,14 +17,13 @@ HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 LICENSE="GPL-2+"
 SLOT="0"
 
-RDEPEND=">=app-admin/eselect-1.2.3"
+RDEPEND="!<app-admin/eselect-emacs-1.18
+	>=app-admin/eselect-1.2.3"
 
 S="${WORKDIR}/${MY_PN}"
 
-src_compile() { :; }
-
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins ctags.eselect
-	doman ctags.eselect.5
+	doins {ctags,etags}.eselect
+	doman {ctags,etags}.eselect.5
 }

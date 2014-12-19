@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Dec 2014; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r2.ebuild:
+  Install etags module in eselect-ctags instead of eselect-emacs.
+
 *eselect-emacs-9999-r2 (13 Mar 2014)
 
   13 Mar 2014; Ulrich Müller <ulm@gentoo.org> -eselect-emacs-9999-r1.ebuild,
