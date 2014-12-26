@@ -6,9 +6,9 @@
 # want to use xemacs on a hardened profile then compile with the
 # -nopie flag in CFLAGS or help fix bug #75028.
 
-EAPI=4
+EAPI=5
 
-export WANT_AUTOCONF="2.5"
+WANT_AUTOCONF="2.5"
 inherit eutils flag-o-matic multilib
 
 DESCRIPTION="highly customizable open source text editor and application development system"
@@ -199,6 +199,7 @@ src_install() {
 	for i in ctags etags gnuserv gnuclient gnudoit gnuattach; do
 		mv "${D}"/usr/share/man/{${i},/man1/${i}-xemacs}.1 || die "mv ${i}.1 failed"
 	done
+	mv "${D}"/usr/share/man/{xemacs,/man1/xemacs}.1 || die "mv xemacs.1 failed"
 
 	# install base packages directories
 	dodir /usr/lib/xemacs/xemacs-packages/
