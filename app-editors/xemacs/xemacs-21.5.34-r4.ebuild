@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-libs/openssl-0.9.6
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
-	postgres? ( dev-db/postgresql-base )
+	postgres? ( dev-db/postgresql )
 	ldap? ( net-nds/openldap )
 	alsa? ( media-libs/alsa-lib )
 	nas? ( media-libs/nas )
