@@ -104,8 +104,8 @@ EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
 src_prepare() {
-	# set a fake version number to avoid collisions between SLOTs
-	#sed -i -e "/AC_INIT/s/\(24\.[0-9]*\)\.[0-9]*/\1.60/" configure.ac
+	# set a fake version number to avoid collisions with emacs-vcs
+	sed -i -e "/AC_INIT/s/\(25\.[0-9]*\)\.[0-9]*/\1.60/" configure.ac
 
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
