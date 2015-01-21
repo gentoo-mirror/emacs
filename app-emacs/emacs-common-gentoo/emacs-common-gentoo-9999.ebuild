@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -40,8 +40,8 @@ src_install() {
 	doins site-start.el
 
 	if use games; then
-		keepdir /var/lib/games/emacs
-		fowners "${GAMES_USER_DED:-games}" /var/lib/games/emacs
+		keepdir /var/games/emacs
+		fowners "${GAMES_USER_DED:-games}" /var/games/emacs
 	fi
 
 	if use X; then
@@ -103,9 +103,12 @@ pkg_preinst() {
 
 	if use games; then
 		local f
-		for f in /var/lib/games/emacs/{snake,tetris}-scores; do
+		for f in /var/games/emacs/{snake,tetris}-scores; do
 			if [[ -e ${EROOT}${f} ]]; then
 				cp "${EROOT}${f}" "${ED}${f}" || die
+			elif [[ -e ${EROOT}/var/lib${f#/var} ]]; then
+				# backwards compatibility
+				cp "${EROOT}/var/lib${f#/var}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
 			chown "${GAMES_USER_DED:-games}" "${ED}${f}" || die
