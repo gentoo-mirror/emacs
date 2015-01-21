@@ -37,6 +37,7 @@ src_install() {
 	if use games; then
 		keepdir /var/games/emacs
 		fowners root:games /var/games/emacs
+		fperms g+w /var/games/emacs
 	fi
 
 	if use X; then
@@ -107,6 +108,7 @@ pkg_preinst() {
 			fi
 			touch "${ED}${f}" || die
 			chown root:games "${ED}${f}" || die
+			chmod g+w "${ED}${f}" || die
 		done
 	fi
 
