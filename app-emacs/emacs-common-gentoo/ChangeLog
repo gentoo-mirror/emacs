@@ -2,6 +2,12 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-common-gentoo-9999-r1 (21 Jan 2015)
+
+  21 Jan 2015; Ulrich Müller <ulm@gentoo.org>
+  +emacs-common-gentoo-9999-r1.ebuild:
+  Test new setgid games setup.
+
   21 Jan 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
   Merge changes from Portage tree.
 
