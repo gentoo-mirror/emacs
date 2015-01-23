@@ -22,7 +22,7 @@ PDEPEND="virtual/emacs"
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	use games && enewgroup games 35
+	use games && enewgroup "${GAMES_GROUP:-games}" 35
 }
 
 src_install() {
@@ -36,7 +36,7 @@ src_install() {
 
 	if use games; then
 		keepdir /var/games/emacs
-		fowners root:games /var/games/emacs
+		fowners "root:${GAMES_GROUP:-games}" /var/games/emacs
 		fperms g+w /var/games/emacs
 	fi
 
@@ -107,7 +107,7 @@ pkg_preinst() {
 				cp "${EROOT}/var/lib${f#/var}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
-			chown root:games "${ED}${f}" || die
+			chown "root:${GAMES_GROUP:-games}" "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
 	fi

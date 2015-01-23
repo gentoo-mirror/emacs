@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Jan 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Respect GAMES_GROUP variable.
+
 *emacs-common-gentoo-9999-r1 (21 Jan 2015)
 
   21 Jan 2015; Ulrich Müller <ulm@gentoo.org>
