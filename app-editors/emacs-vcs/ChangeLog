@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  01 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r1.ebuild,
+  emacs-vcs-25.0.9999-r2.ebuild, metadata.xml:
+  Update for upstream merge of the xwidget branch.
+
   01 Feb 2015; Ulrich Müller <ulm@gentoo.org> metadata.xml:
   Sync metadata.xml from Portage tree.
 

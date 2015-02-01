@@ -27,7 +27,7 @@ HOMEPAGE="http://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="25"
-IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
+IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
@@ -67,7 +67,13 @@ RDEPEND="sys-libs/ncurses
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk3? ( x11-libs/gtk+:3 )
+		gtk3? (
+			x11-libs/gtk+:3
+			xwidgets? (
+				>=dev-libs/gobject-introspection-1.32.1
+				net-libs/webkit-gtk:3
+			)
+		)
 		!gtk3? (
 			gtk? ( x11-libs/gtk+:2 )
 			!gtk? (
@@ -165,7 +171,7 @@ src_configure() {
 
 		if use gtk3; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+) version 3"
-			myconf+=" --with-x-toolkit=gtk3"
+			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 		elif use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+) version 2"
 			myconf+=" --with-x-toolkit=gtk2"
@@ -187,6 +193,8 @@ src_configure() {
 				&& ewarn "USE flag \"${f}\" ignored (superseded by \"${tk}\")"
 			: ${tk:=${f}}
 		done
+		! use gtk3 && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk3\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"

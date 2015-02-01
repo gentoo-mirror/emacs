@@ -44,5 +44,6 @@
   <flag name='wide-int'>Prefer wide Emacs integers (typically 62-bit).
     This option has an effect only on architectures where "long" and
     "long long" types have different size.</flag>
+  <flag name='xwidgets'>Enable use of some gtk widgets in Emacs buffers</flag>
 </use>
 </pkgmetadata>
