@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Use group 'scores' instead of 'games' for shared score files.
+
   23 Jan 2015; Ulrich Müller <ulm@gentoo.org>
   emacs-common-gentoo-9999-r1.ebuild:
   Respect GAMES_GROUP variable.
