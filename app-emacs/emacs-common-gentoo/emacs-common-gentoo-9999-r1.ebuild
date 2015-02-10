@@ -129,6 +129,11 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	# update permissions of shared score dir
+	chmod 755 "${EROOT}"/var/games
+	chown root:scores "${EROOT}"/var/games/emacs
+	chmod 775 "${EROOT}"/var/games/emacs
+
 	if use X; then
 		fdo-mime_desktop_database_update
 		gnome2_icon_cache_update
