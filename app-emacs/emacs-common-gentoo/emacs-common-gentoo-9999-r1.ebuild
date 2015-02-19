@@ -22,7 +22,7 @@ PDEPEND="virtual/emacs"
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	use games && enewgroup scores 36
+	use games && enewgroup gamestat 36
 }
 
 src_install() {
@@ -36,7 +36,7 @@ src_install() {
 
 	if use games; then
 		keepdir /var/games/emacs
-		fowners root:scores /var/games/emacs
+		fowners root:gamestat /var/games/emacs
 		fperms g+w /var/games/emacs
 	fi
 
@@ -107,7 +107,7 @@ pkg_preinst() {
 				cp "${EROOT}/var/lib${f#/var}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
-			chown root:scores "${ED}${f}" || die
+			chown root:gamestat "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
 	fi
@@ -129,10 +129,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	# update permissions of shared score dir
-	chmod 755 "${EROOT}"/var/games
-	chown root:scores "${EROOT}"/var/games/emacs
-	chmod 775 "${EROOT}"/var/games/emacs
+	if use games; then
+		# update permissions of shared score dir
+		chmod 755 "${EROOT}"/var/games
+		chown root:gamestat "${EROOT}"/var/games/emacs
+		chmod 775 "${EROOT}"/var/games/emacs
+	fi
 
 	if use X; then
 		fdo-mime_desktop_database_update

@@ -2,6 +2,10 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Use "gamestat" group for shared score files, following QA tree policy.
+
   10 Feb 2015; Ulrich Müller <ulm@gentoo.org>
   emacs-common-gentoo-9999-r1.ebuild:
   Fix permissions of shared score dir in pkg_postinst.
