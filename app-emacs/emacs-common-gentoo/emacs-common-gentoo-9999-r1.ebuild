@@ -130,7 +130,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if use games; then
-		# update permissions of shared score dir
+		# update permissions of shared score dir #537580
+		chown root:root "${EROOT}"/var/games
 		chmod 755 "${EROOT}"/var/games
 		chown root:gamestat "${EROOT}"/var/games/emacs
 		chmod 775 "${EROOT}"/var/games/emacs
