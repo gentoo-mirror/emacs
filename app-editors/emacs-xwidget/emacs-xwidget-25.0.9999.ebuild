@@ -33,7 +33,7 @@ REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
 	>=app-admin/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.4-r1[games?,X?]
+	>=app-emacs/emacs-common-gentoo-1.4-r2[games?,X?]
 	net-libs/liblockfile
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -56,7 +56,7 @@ RDEPEND="sys-libs/ncurses
 		jpeg? ( virtual/jpeg:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
-		tiff? ( media-libs/tiff )
+		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2 )
 		xft? (
@@ -219,7 +219,7 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--with-gameuser="${GAMES_USER_DED:-games}" \
+		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--with-file-notification=$(usev gfile || usev inotify || echo no) \
 		$(use_enable acl) \
