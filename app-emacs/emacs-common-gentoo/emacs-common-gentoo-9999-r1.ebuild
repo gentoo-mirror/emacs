@@ -36,7 +36,7 @@ src_install() {
 
 	if use games; then
 		keepdir /var/games/emacs
-		fowners root:gamestat /var/games/emacs
+		fowners 0:gamestat /var/games/emacs
 		fperms g+w /var/games/emacs
 	fi
 
@@ -44,17 +44,17 @@ src_install() {
 		local i
 		domenu emacs.desktop emacsclient.desktop || die
 
-		pushd icons
-		newicon sink.png emacs-sink.png || die
-		newicon emacs_48.png emacs.png || die
-		newicon emacs22_48.png emacs22.png || die
+		pushd icons || die
+		newicon sink.png emacs-sink.png
+		newicon emacs_48.png emacs.png
+		newicon emacs22_48.png emacs22.png
 		for i in 16 24 32 48 128; do
-			insinto /usr/share/icons/hicolor/${i}x${i}/apps
-			newins emacs_${i}.png emacs.png
-			[[ ${i} -ne 128 ]] && newins emacs22_${i}.png emacs22.png
+			newicon -s ${i} emacs_${i}.png emacs.png
 		done
-		insinto /usr/share/icons/hicolor/scalable/apps
-		doins emacs.svg
+		for i in 16 24 32 48; do
+			newicon -s ${i} emacs22_${i}.png emacs22.png
+		done
+		doicon -s scalable emacs.svg
 		popd
 
 		gnome2_icon_savelist
@@ -107,7 +107,7 @@ pkg_preinst() {
 				cp "${EROOT}/var/lib${f#/var}" "${ED}${f}" || die
 			fi
 			touch "${ED}${f}" || die
-			chown root:gamestat "${ED}${f}" || die
+			chgrp gamestat "${ED}${f}" || die
 			chmod g+w "${ED}${f}" || die
 		done
 	fi
@@ -131,9 +131,9 @@ pkg_preinst() {
 pkg_postinst() {
 	if use games; then
 		# update permissions of shared score dir #537580
-		chown root:root "${EROOT}"/var/games
+		chown 0:0 "${EROOT}"/var/games
 		chmod 755 "${EROOT}"/var/games
-		chown root:gamestat "${EROOT}"/var/games/emacs
+		chown 0:gamestat "${EROOT}"/var/games/emacs
 		chmod 775 "${EROOT}"/var/games/emacs
 	fi
 
