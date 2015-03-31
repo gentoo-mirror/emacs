@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,7 +17,7 @@ HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
 LICENSE="GPL-2+"
 SLOT="0"
 
-RDEPEND="!<app-admin/eselect-emacs-1.18
+RDEPEND="!<app-eselect/eselect-emacs-1.18
 	>=app-admin/eselect-1.2.3"
 
 S="${WORKDIR}/${MY_PN}"

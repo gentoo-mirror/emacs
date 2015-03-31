@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,7 +17,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 RDEPEND=">=app-admin/eselect-1.2.6
-	~app-admin/eselect-ctags-${PV}"
+	~app-eselect/eselect-ctags-${PV}"
 
 S="${WORKDIR}/${PN}"
 
