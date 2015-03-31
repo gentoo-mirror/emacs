@@ -2,6 +2,9 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
   21 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
   Merge changes from emacs-vcs.
 

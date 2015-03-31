@@ -31,7 +31,7 @@ IUSE="acl alsa aqua athena dbus games gconf gfile gif gnutls gpm gsettings gtk g
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses
-	>=app-admin/eselect-emacs-1.16
+	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.4-r2[games?,X?]
 	net-libs/liblockfile
 	acl? ( virtual/acl )

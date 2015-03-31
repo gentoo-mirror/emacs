@@ -1,6 +1,9 @@
 # ChangeLog for app-editors/xemacs
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> xemacs-21.5.34-r4.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
 
   28 Dec 2014; Ulrich Müller <ulm@gentoo.org> xemacs-21.5.34-r4.ebuild:
   Rename dev-db/postgresql-base to dev-db/postgresql, following package move in

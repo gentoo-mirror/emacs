@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header:  $
 
@@ -64,7 +64,7 @@ DEPEND="virtual/libc
 	gpm? ( sys-libs/gpm )
 	ncurses? ( >=sys-libs/ncurses-5.2 )
 	magic? ( sys-apps/file )
-	!app-admin/eselect-ctags
+	!app-eselect/eselect-ctags
 	!app-editors/emacs
 	!app-editors/emacs-vcs
 	!app-editors/xemacs

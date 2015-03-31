@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.5.34-r2.ebuild,v 1.1 2014/02/17 21:37:43 ulm Exp $
 
@@ -48,7 +48,7 @@ RDEPEND="
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
 	>=sys-libs/ncurses-5.2
-	>=app-admin/eselect-emacs-1.15"
+	>=app-eselect/eselect-emacs-1.15"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
