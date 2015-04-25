@@ -4,7 +4,7 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://git.overlays.gentoo.org/proj/emacs-tools.git"
+EGIT_REPO_URI="git://anongit.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
