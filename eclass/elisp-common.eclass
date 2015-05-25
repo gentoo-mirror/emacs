@@ -322,7 +322,8 @@ elisp-site-file-install() {
 
 	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
 		|| ewarn "elisp-site-file-install: bad name of site-init file"
-	sf="${T}/${sf/%-gentoo*.el/-gentoo.el}"
+	[[ ${sf%-gentoo*.el} != "${sf}" ]] && sf="${sf%-gentoo*.el}-gentoo.el"
+	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
