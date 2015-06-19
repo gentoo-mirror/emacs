@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/psgml-dtds
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/psgml-dtds/ChangeLog,v 1.13 2008/03/19 19:54:37 graaff Exp $
+
+*psgml-dtds-1.05 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +psgml-dtds-1.05.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+

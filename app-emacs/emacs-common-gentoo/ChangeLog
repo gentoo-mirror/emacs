@@ -1,0 +1,147 @@
+# ChangeLog for app-emacs/emacs-common-gentoo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  25 Apr 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Update EGIT_REPO_URI.
+
+  22 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Remove all backwards compatibility code from the live ebuild.
+
+  22 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  +emacs-common-gentoo-9999.ebuild, -emacs-common-gentoo-9999-r1.ebuild:
+  Sync from Portage tree.
+
+  21 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  -emacs-common-gentoo-9999.ebuild, emacs-common-gentoo-9999-r1.ebuild:
+  Sync from Portage tree. Remove old.
+
+  19 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Use "gamestat" group for shared score files, following QA tree policy.
+
+  10 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Fix permissions of shared score dir in pkg_postinst.
+
+  09 Feb 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Use group 'scores' instead of 'games' for shared score files.
+
+  23 Jan 2015; Ulrich Müller <ulm@gentoo.org>
+  emacs-common-gentoo-9999-r1.ebuild:
+  Respect GAMES_GROUP variable.
+
+*emacs-common-gentoo-9999-r1 (21 Jan 2015)
+
+  21 Jan 2015; Ulrich Müller <ulm@gentoo.org>
+  +emacs-common-gentoo-9999-r1.ebuild:
+  Test new setgid games setup.
+
+  21 Jan 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Merge changes from Portage tree.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  15 Nov 2013; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Install initial site-gentoo.el file from tarball.
+
+  13 Nov 2013; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Refuse installation if the site-start.el file is still in its old location;
+  we have warned about this since almost two years.
+
+  31 Oct 2013; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Create site-gentoo.el in preinst phase and have it belong to this package.
+
+  10 Oct 2013; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Migrate to git-r3.eclass.
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Update HOMEPAGE. Merge changes from Portage tree.
+
+  10 Jun 2012; Ulrich Müller <ulm@gentoo.org>
+  -emacs-common-gentoo-1.3-r2.ebuild:
+  Moved to Portage tree.
+
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild,
+  metadata.xml:
+  Change live ebuild to use Git. Forward port changes from 1.3-r2.
+
+*emacs-common-gentoo-1.3-r2 (06 Jun 2012)
+
+  06 Jun 2012; Ulrich Müller <ulm@gentoo.org>
+  +emacs-common-gentoo-1.3-r2.ebuild, metadata.xml:
+  Copy from Portage tree. Move handling of game score files from emacs ebuilds
+  to here. Create games user if necessary, bug 368647.
+
+  29 Jan 2012; Ulrich Müller <ulm@gentoo.org> -emacs-common-gentoo-1.3.ebuild,
+  emacs-common-gentoo-9999.ebuild:
+  Sync from Portage tree.
+
+  28 Jan 2012; Ulrich Müller <ulm@gentoo.org> +emacs-common-gentoo-1.3.ebuild,
+  emacs-common-gentoo-9999.ebuild:
+  Remove old site-start.el file if it hasn't been modified by the user.
+
+  15 Dec 2011; Ulrich Mueller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Sync from Portage tree.
+
+  13 Dec 2011; Ulrich Mueller <ulm@gentoo.org> -emacs-common-gentoo-1.3.ebuild,
+  emacs-common-gentoo-9999.ebuild:
+  Moved to Portage tree. Update wording of elog message.
+
+  06 Dec 2011; Ulrich Mueller <ulm@gentoo.org> emacs-common-gentoo-1.3.ebuild,
+  emacs-common-gentoo-9999.ebuild:
+  Get rid of all echo commands because they aren't logged.
+
+*emacs-common-gentoo-1.3 (06 Dec 2011)
+
+  06 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-common-gentoo-1.3.ebuild:
+  Version bump. The Emacs site-start.el file has moved to /etc/emacs/.
+
+  31 Jan 2011; Ulrich Mueller <ulm@gentoo.org>
+  -emacs-common-gentoo-1.2-r2.ebuild, emacs-common-gentoo-9999.ebuild:
+  Moved to portage tree. Sync live ebuild.
+
+  02 Jan 2011; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-1.2-r2.ebuild:
+  Copied from -r1 in portage tree. Update for EAPI 4.
+
+  01 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-9999.ebuild:
+  Regenerate site-gentoo file in pkg_config, too.
+
+  08 Aug 2009; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-9999.ebuild, metadata.xml:
+  Emacs 23 style icons are default now.
+
+  16 Apr 2009; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
+  emacs-common-gentoo-9999.ebuild:
+  Rename USE flag to "emacs23icons".
+
+*emacs-common-gentoo-9999 (12 Apr 2009)
+
+  12 Apr 2009; Ulrich Mueller <ulm@gentoo.org> -files/site-start.el,
+  -emacs-common-gentoo-1.0-r20.ebuild +emacs-common-gentoo-9999.ebuild:
+  Live CVS ebuild; LICENSE is GPL-3 now. Remove old.
+
+*emacs-common-gentoo-1.0-r20 (29 Mar 2009)
+
+  29 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +files/site-start.el,
+  -emacs-common-gentoo-1.0.ebuild, +emacs-common-gentoo-1.0-r20.ebuild:
+  Sync from Portage tree. Try a different approach using CONFIG_PROTECT.
+
+  08 Mar 2009; Ulrich Mueller <ulm@gentoo.org>
+  emacs-common-gentoo-1.0.ebuild:
+  PDEPEND on virtual/emacs.
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  emacs-common-gentoo-1.0.ebuild:
+  explicitely state GNU Emacs
+
+*emacs-common-gentoo-1.0 (07 Mar 2009)
+
+  07 Mar 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +emacs-common-gentoo-1.0.ebuild:
+  Initial import, successor of x11-misc/emacs-desktop.
+

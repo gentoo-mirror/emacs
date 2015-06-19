@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/ibuffer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ibuffer/ChangeLog,v 1.17 2011/07/22 11:25:06 xarthisius Exp $
+
+*ibuffer-1.12 (10 Jul 2014)
+
+  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +ibuffer-1.12.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+

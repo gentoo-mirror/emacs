@@ -1,0 +1,14 @@
+# ChangeLog for app-xemacs/games
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/games/ChangeLog,v 1.24 2011/06/03 12:10:48 graaff Exp $
+
+*games-1.23 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> +games-1.23.ebuild:
+  Pre release version bump
+
+*games-1.21 (17 Jul 2013)
+
+  17 Jul 2013; Mats Lidell <matsl@gentoo.org> +games-1.21.ebuild, +metadata.xml:
+  Upstream experimental version bump and use EAPI=5
+

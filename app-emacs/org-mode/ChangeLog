@@ -1,0 +1,39 @@
+# ChangeLog for app-emacs/org-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  10 Oct 2013; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Merge updates from Portage tree.
+
+  10 Oct 2013; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Migrate to git-r3.eclass.
+
+  04 Oct 2012; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild,
+  metadata.xml:
+  Sync from Portage tree.
+
+  05 Jun 2012; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Don't try to install files no longer present, bug 419817.
+
+  01 Jan 2012; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Define ELISP_REMOVE and delete src_prepare function.
+
+  30 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Upstream has renamed etcdir to datadir, bug 396269.
+  Set org-odt-data-dir in site-init file.
+
+  28 Dec 2011; Ulrich Mueller <ulm@gentoo.org> org-mode-9999.ebuild:
+  Specify etcdir to emake.
+
+*org-mode-9999 (03 Dec 2011)
+
+  03 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +files/50org-mode-gentoo.el,
+  +org-mode-9999.ebuild, +metadata.xml:
+  Live ebuild, bug 392303. Thanks to Tom Prince <tom.prince@ualberta.net>.
+

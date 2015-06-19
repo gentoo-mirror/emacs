@@ -1,0 +1,14 @@
+# ChangeLog for app-xemacs/ediff
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ediff/ChangeLog,v 1.29 2011/07/22 11:25:04 xarthisius Exp $
+
+*ediff-1.84 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> ChangeLog:
+  Pre release version bump.
+
+*ediff-1.82 (18 Jul 2013)
+
+  18 Jul 2013; Mats Lidell <matsl@gentoo.org> +ediff-1.82.ebuild, +metadata.xml:
+  app-xemacs/ediff: Upstream experimental version bump and use EAPI=5
+

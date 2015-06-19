@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/dired
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/dired/ChangeLog,v 1.21 2011/07/22 11:25:03 xarthisius Exp $
+
+*dired-1.22 (10 Jul 2014)
+
+  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +dired-1.22.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+

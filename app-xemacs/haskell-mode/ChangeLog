@@ -1,0 +1,15 @@
+# ChangeLog for app-xemacs/haskell-mode
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/haskell-mode/ChangeLog,v 1.21 2009/02/20 00:10:55 fauli Exp $
+
+*haskell-mode-1.14 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> +haskell-mode-1.14.ebuild:
+  Pre release version bump
+
+*haskell-mode-1.12 (14 Oct 2013)
+
+  14 Oct 2013; Mats Lidell <matsl@gentoo.org> +haskell-mode-1.12.ebuild,
+  +metadata.xml:
+  app-xemacs/haskell-mode: Upstream experimental version bump and use EAPI=5
+

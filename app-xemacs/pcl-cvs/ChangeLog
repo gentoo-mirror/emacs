@@ -1,0 +1,15 @@
+# ChangeLog for app-xemacs/pcl-cvs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/pcl-cvs/ChangeLog,v 1.24 2011/07/22 11:24:57 xarthisius Exp $
+
+*pcl-cvs-1.73 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +pcl-cvs-1.73.ebuild:
+  Pre release version bump.
+
+*pcl-cvs-1.71 (17 Jul 2013)
+
+  17 Jul 2013; Mats Lidell <matsl@gentoo.org> +metadata.xml,
+  +pcl-cvs-1.71.ebuild:
+  app-xemacs/pcl-cvs: Upstream experimental version bump and use EAPI=5
+

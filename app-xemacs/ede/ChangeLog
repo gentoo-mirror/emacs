@@ -1,0 +1,9 @@
+# ChangeLog for app-xemacs/ede
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ede/ChangeLog,v 1.10 2011/07/22 11:25:05 xarthisius Exp $
+
+*ede-1.06 (10 Jul 2014)
+
+  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +ede-1.06.ebuild, +metadata.xml:
+  Pre release version bump.
+

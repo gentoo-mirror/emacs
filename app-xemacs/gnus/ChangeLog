@@ -1,0 +1,26 @@
+# ChangeLog for app-xemacs/gnus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/gnus/ChangeLog,v 1.34 2011/07/22 11:25:04 xarthisius Exp $
+
+*gnus-2.01 (28 Feb 2015)
+
+  28 Feb 2015; Mats Lidell <matsl@gentoo.org> -gnus-1.99.ebuild,
+  -gnus-2.00.ebuild, +gnus-2.01.ebuild:
+  Upstream pre release version bump.
+
+*gnus-2.00 (19 Sep 2014)
+
+  19 Sep 2014; Mats Lidell <matsl@gentoo.org> -gnus-1.95.ebuild,
+  +gnus-2.00.ebuild:
+  Upstream pre release version bump
+
+*gnus-1.99 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> +gnus-1.99.ebuild:
+  Pre release version bump
+
+*gnus-1.95 (18 Jul 2013)
+
+  18 Jul 2013; Mats Lidell <matsl@gentoo.org> +gnus-1.95.ebuild, +metadata.xml:
+  app-xemacs/gnus: Upstream experimental version bump and use EAPI=5
+

@@ -1,0 +1,72 @@
+# ChangeLog for app-eselect/eselect-emacs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  25 Apr 2015; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r2.ebuild:
+  Update EGIT_REPO_URI.
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-emacs-9999-r2.ebuild,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  19 Dec 2014; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r2.ebuild:
+  Install etags module in eselect-ctags instead of eselect-emacs.
+
+*eselect-emacs-9999-r2 (13 Mar 2014)
+
+  13 Mar 2014; Ulrich Müller <ulm@gentoo.org> -eselect-emacs-9999-r1.ebuild,
+  +eselect-emacs-9999-r2.ebuild:
+  Install gnuclient eselect module.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  10 Oct 2013; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Migrate to git-r3.eclass.
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Update HOMEPAGE. Merge changes from Portage tree.
+
+  09 Jun 2012; Ulrich Müller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Change live ebuild to use Git. Update to EAPI 4.
+
+  07 Nov 2009; Ulrich Mueller <ulm@gentoo.org> eselect-emacs-9999-r1.ebuild:
+  Update eselect dependency.
+
+  31 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  eselect-emacs-9999-r1.ebuild:
+  adjust DESCRIPTION a bit (sync with Portage)
+
+  22 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -eselect-emacs-1.5-r1.ebuild:
+  Remove old; this was moved to the Portage tree.
+
+*eselect-emacs-1.5-r1 (29 Aug 2008)
+
+  29 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +eselect-emacs-1.5-r1.ebuild:
+  Don't install the emacs-updater script since it's in its own package now.
+
+*eselect-emacs-9999-r1 (15 Aug 2008)
+
+  15 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -eselect-emacs-9999.ebuild,
+  +eselect-emacs-9999-r1.ebuild:
+  emacs-updater split off as an own package.
+
+  25 May 2008; Ulrich Mueller <ulm@gentoo.org> -files/emacs-updater,
+  -eselect-emacs-1.5_pre1.ebuild:
+  Remove old.
+
+*eselect-emacs-1.5_pre1 (23 May 2008)
+
+  23 May 2008; Ulrich Mueller <ulm@gentoo.org> +files/emacs-updater,
+  +eselect-emacs-1.5_pre1.ebuild:
+  Prerelease.
+
+  01 May 2008; Ulrich Mueller <ulm@gentoo.org> eselect-emacs-9999.ebuild:
+  etags.eselect is created from Makefile.
+
+*eselect-emacs-9999 (30 Apr 2008)
+
+  30 Apr 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +eselect-emacs-9999.ebuild:
+  Live SVN ebuild.
+

@@ -1,0 +1,22 @@
+# ChangeLog for app-emacs/dvc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> dvc-9999.ebuild:
+  Remove redundant NEED_EMACS assignment. Specify LICENSE more precisely.
+
+  16 Nov 2010; Christian Faulhammer <fauli@gentoo.org> dvc-9999.ebuild:
+  Fix expansion of @MKDIR_P@ macro, as reported by Max Arnold <lwarxx AT
+  gmail DOT com> in bug 333933
+
+  05 Jun 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml:
+  Add metadata.
+
+  23 Mar 2008; Christian Faulhammer <fauli@gentoo.org> dvc-9999.ebuild:
+  GNU Emacs 22 is at least needed, reflect this in NEED_EMACS
+
+*dvc-9999 (02 Feb 2008)
+
+  02 Feb 2008; Christian Faulhammer <fauli@gentoo.org> dvc-9999.ebuild:
+  do a live ebuild
+

@@ -1,0 +1,97 @@
+# ChangeLog for app-editors/emacs-xwidget
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  21 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  01 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild,
+  metadata.xml:
+  Merge changes from emacs-vcs.
+
+  29 Dec 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
+  Set a fake version number to avoid collisions with emacs-vcs.
+
+*emacs-xwidget-25.0.9999 (29 Dec 2014)
+
+  29 Dec 2014; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.4.9999.ebuild,
+  +emacs-xwidget-25.0.9999.ebuild:
+  Upstream version number has changed. Merge changes from emacs-vcs.
+
+  13 Nov 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.4.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+*emacs-xwidget-24.4.9999 (07 Jun 2014)
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.3.9999.ebuild,
+  +emacs-xwidget-24.4.9999.ebuild:
+  Upstream version number has changed.
+
+  06 May 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  13 Mar 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  19 Feb 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  16 Jul 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Install README.xwidget.
+
+  14 Jul 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from emacs-vcs.
+
+  15 Jun 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild,
+  metadata.xml:
+  Merge changes from emacs-vcs.
+
+  08 Jun 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge some changes from emacs-vcs.
+
+  31 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  27 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild,
+  metadata.xml:
+  Merge changes from emacs-vcs.
+
+  21 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.3.9999.ebuild,
+  metadata.xml:
+  Merge changes from emacs-vcs.
+
+*emacs-xwidget-24.3.9999 (17 Nov 2012)
+
+  17 Nov 2012; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.2.9999.ebuild,
+  +emacs-xwidget-24.3.9999.ebuild:
+  Version number has changed upstream.
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.2.9999.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  05 Oct 2012; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-24.2.9999.ebuild:
+  With USE=xwidgets, add webkit-gtk as dependency and enable gtk3. Drop ~hppa
+  and ~sh keywords.
+
+*emacs-xwidget-24.2.9999 (04 Oct 2012)
+
+  04 Oct 2012; Ulrich Müller <ulm@gentoo.org> -emacs-xwidget-24.0.9999.ebuild,
+  +emacs-xwidget-24.2.9999.ebuild, metadata.xml:
+  Update from emacs-vcs ebuild.
+
+*emacs-xwidget-24.0.9999 (30 Sep 2011)
+
+  30 Sep 2011; Ulrich Mueller <ulm@gentoo.org> +emacs-xwidget-24.0.9999.ebuild,
+  +metadata.xml:
+  Emacs xwidget branch.
+

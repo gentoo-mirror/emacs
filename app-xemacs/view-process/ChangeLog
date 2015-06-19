@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/view-process
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/view-process/ChangeLog,v 1.15 2008/03/19 20:11:14 graaff Exp $
+
+*view-process-1.15 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +view-process-1.15.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+

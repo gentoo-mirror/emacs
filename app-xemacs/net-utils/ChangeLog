@@ -1,0 +1,21 @@
+# ChangeLog for app-xemacs/net-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/net-utils/ChangeLog,v 1.30 2011/07/22 11:24:59 xarthisius Exp $
+
+*net-utils-1.61 (19 Sep 2014)
+
+  19 Sep 2014; Mats Lidell <matsl@gentoo.org> -net-utils-1.57.ebuild,
+  +net-utils-1.61.ebuild:
+  Upstream pre release version bump
+
+*net-utils-1.60 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +net-utils-1.60.ebuild:
+  Pre release version bump.
+
+*net-utils-1.57 (16 Jul 2013)
+
+  16 Jul 2013; Mats Lidell <matsl@gentoo.org> +metadata.xml,
+  +net-utils-1.57.ebuild:
+  Upstream experimental version bump and use EAPI=5
+

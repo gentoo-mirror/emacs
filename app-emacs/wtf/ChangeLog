@@ -1,0 +1,19 @@
+# ChangeLog for app-emacs/wtf
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  03 Jun 2008; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
+  SIMPLE_ELISP is no longer necessary with new elisp.eclass.
+
+  01 Jan 2008; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
+  Add ~amd64 keyword.
+
+  07 Jul 2007; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
+  Remove offensive flag.
+
+*wtf-2.0 (17 May 2007)
+
+  17 May 2007; Ulrich Mueller <ulm@gentoo.org> +wtf-2.0.ebuild,
+  +files/50wtf-gentoo.el, +metadata.xml:
+  Initial import.
+

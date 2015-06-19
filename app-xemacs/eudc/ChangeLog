@@ -1,0 +1,14 @@
+# ChangeLog for app-xemacs/eudc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/eudc/ChangeLog,v 1.18 2011/07/22 11:25:05 xarthisius Exp $
+
+*eudc-1.43 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> +eudc-1.43.ebuild:
+  Pre release version bump
+
+*eudc-1.41 (18 Jul 2013)
+
+  18 Jul 2013; Mats Lidell <matsl@gentoo.org> +eudc-1.41.ebuild, +metadata.xml:
+  app-xemacs/eudc: Upstream experimental version bump and use EAPI=5
+

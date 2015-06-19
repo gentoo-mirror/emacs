@@ -1,0 +1,45 @@
+# ChangeLog for app-emacs/rudel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> rudel-9999.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  17 Mar 2014; Ulrich Müller <ulm@gentoo.org> rudel-9999.ebuild:
+  Merge changes from Portage tree.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> rudel-9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  22 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.3_pre20110721.ebuild:
+  Moved to Portage tree.
+
+*rudel-0.3_pre20110721 (21 Jul 2011)
+
+  21 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.3_pre20110405.ebuild,
+  +rudel-0.3_pre20110721.ebuild, -files/rudel-0.3_pre20110405-icons-dir.patch,
+  rudel-9999.ebuild:
+  New snapshot.
+
+  20 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -rudel-0.2.4.ebuild,
+  -files/rudel-0.2.4-icons-dir.patch, -files/rudel-0.2.4-require-cl.patch,
+  files/rudel-0.3_pre20110405-icons-dir.patch:
+  Patch to fix image load path. Remove old.
+
+*rudel-0.3_pre20110405 (20 Jul 2011)
+
+  20 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-0.3_pre20110405.ebuild,
+  files/60rudel-gentoo.el, +files/rudel-0.3_pre20110405-icons-dir.patch:
+  Snapshot.
+
+*rudel-9999 (19 Jul 2011)
+
+  19 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +rudel-9999.ebuild:
+  Live ebuild.
+
+*rudel-0.2.4 (18 Jul 2011)
+
+  18 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +files/60rudel-gentoo.el,
+  +rudel-0.2.4.ebuild, +files/rudel-0.2.4-icons-dir.patch, +metadata.xml:
+  Initial import. Ebuild contributed by me.
+

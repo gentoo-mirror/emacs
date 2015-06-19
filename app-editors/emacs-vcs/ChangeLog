@@ -1,0 +1,131 @@
+# ChangeLog for app-editors/emacs-vcs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r2.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  21 Feb 2015; Ulrich Müller <ulm@gentoo.org> -emacs-vcs-25.0.9999-r1.ebuild,
+  emacs-vcs-25.0.9999-r2.ebuild:
+  Sync from Portage tree. Remove old.
+
+  19 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r2.ebuild:
+  Use "gamestat" group for shared score files, following QA tree policy.
+
+  09 Feb 2015; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r2.ebuild:
+  Use group 'scores' instead of 'games' for shared score files.
+
+  01 Feb 2015; Ulrich Müller <ulm@gentoo.org> metadata.xml:
+  Sync metadata.xml from Portage tree.
+
+  23 Jan 2015; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r2.ebuild:
+  Respect GAMES_GROUP variable.
+
+*emacs-vcs-25.0.9999-r2 (21 Jan 2015)
+
+  21 Jan 2015; Ulrich Müller <ulm@gentoo.org> +emacs-vcs-25.0.9999-r2.ebuild:
+  Test new setgid games setup.
+
+  29 Dec 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999-r1.ebuild:
+  Install CONTRIBUTE file.
+
+*emacs-vcs-25.0.9999-r1 (13 Nov 2014)
+
+  13 Nov 2014; Ulrich Müller <ulm@gentoo.org> -emacs-vcs-25.0.9999.ebuild,
+  +emacs-vcs-25.0.9999-r1.ebuild:
+  Merge changes from Portage tree.
+
+  10 Nov 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-25.0.9999.ebuild:
+  Merge changes from Portage tree.
+
+  18 May 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.4.9999.ebuild:
+  Merge changes from Portage tree.
+
+  05 May 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.4.9999.ebuild:
+  Merge changes from Portage tree.
+
+  08 Apr 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.4.9999.ebuild:
+  Merge changes from Portage tree.
+
+  04 Apr 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.4.9999.ebuild:
+  Merge changes from Portage tree.
+
+*emacs-vcs-24.4.9999 (26 Mar 2014)
+
+  26 Mar 2014; Ulrich Müller <ulm@gentoo.org> -emacs-vcs-24.3.9999.ebuild,
+  +emacs-vcs-24.4.9999.ebuild:
+  Version bump to reflect upstream change of version number.
+
+  13 Mar 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Install emacs man page under the same name as the binary.
+
+  19 Feb 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild,
+  metadata.xml:
+  Follow QA policy on gtk and gtk3 USE flags.
+
+  19 Feb 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Switch from package.mask to empty KEYWORDS.
+
+  19 Jan 2014; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  29 Dec 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  31 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  14 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  13 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Explicitly ask for --with-sound=alsa with USE="alsa".
+
+  12 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  02 Aug 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  14 Jul 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Update URI for Xft font guide.
+
+  11 Jul 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Define EBZR_UNPACK_DIR.
+
+  09 Jun 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  08 Jun 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild,
+  metadata.xml:
+  Merge changes from Portage tree.
+
+  31 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  27 Mar 2013; Ulrich Müller <ulm@gentoo.org> metadata.xml:
+  Remove flag description for inotify, it is a global USE flag now.
+
+  25 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Merge changes from Portage tree.
+
+  25 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Simplify logic for configuring C source directory.
+
+  21 Mar 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild,
+  metadata.xml:
+  Merge changes from portage tree.
+
+  04 Jan 2013; Ulrich Müller <ulm@gentoo.org> emacs-vcs-24.3.9999.ebuild:
+  Use installsources dir for find-function-C-source-directory if that feature
+  is enabled.
+
+*emacs-vcs-24.3.9999 (03 Jan 2013)
+
+  03 Jan 2013; Ulrich Müller <ulm@gentoo.org> +emacs-vcs-24.3.9999.ebuild,
+  +metadata.xml:
+  Copied from Portage tree.
+

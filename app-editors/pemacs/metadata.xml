@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+  Perfect Emacs is a small footprint Emacs derived from Chris Baird's
+  Ersatz Emacs which was based on MicroEMACS 3.6 as released to
+  mod.sources and the Public Domain by Daniel Lawrence in 1986, and
+  was itself based on the work of Steve Wilhite and George Jones to
+  MicroEMACS 2.0 (then also public domain) by Dave Conroy.
+
+  Perfect Emacs is an attempt to find the perfect balance between
+  minimalism (i.e. the smallest functional emacs and code) whilst
+  still retaining the feeling of GNU Emacs.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+# ChangeLog for app-emacs/js2-mode
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*js2-mode-20090723b (26 Nov 2010)
+
+  26 Nov 2010; Ulrich Mueller <ulm@gentoo.org> +js2-mode-20090723b.ebuild:
+  Version bump.
+
+  01 May 2009; Ulrich Mueller <ulm@gentoo.org> js2-mode-20080616a.ebuild:
+  Add message about autoloading to pkg_postinst.
+
+*js2-mode-20080616a (16 Jan 2009)
+
+  16 Jan 2009; Ulrich Mueller <ulm@gentoo.org> +files/50js2-mode-gentoo.el,
+  +js2-mode-20080616a.ebuild, +metadata.xml:
+  Initial import.
+

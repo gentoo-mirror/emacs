@@ -1,0 +1,11 @@
+--- nummove-orig/nummove.el	2007-03-11 19:14:42.000000000 +0100
++++ nummove/nummove.el	2008-09-12 17:48:36.000000000 +0200
+@@ -15,7 +15,7 @@
+ ;; along with this program; if not, write to the Free Software
+ ;; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+-(setq nummove-path-to-images "~/source/nummove/")
++(defvar nummove-path-to-images "~/source/nummove/")
+ 
+ (defun nummove-nada()(interactive))
+ 

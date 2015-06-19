@@ -1,0 +1,15 @@
+# ChangeLog for app-xemacs/speedbar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/speedbar/ChangeLog,v 1.21 2011/07/22 11:25:01 xarthisius Exp $
+
+*speedbar-1.32 (11 Jul 2014)
+
+  11 Jul 2014; Mats Lidell <matsl@gentoo.org> +speedbar-1.32.ebuild:
+  Pre release version bump
+
+*speedbar-1.30 (17 Jul 2013)
+
+  17 Jul 2013; Mats Lidell <matsl@gentoo.org> +metadata.xml,
+  +speedbar-1.30.ebuild:
+  Upstream experimental version bump and use EAPI=5
+

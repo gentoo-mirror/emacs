@@ -1,0 +1,12 @@
+# ChangeLog for app-editors/pemacs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*pemacs-9999 (15 Feb 2014)
+*pemacs-1.5_pre20130322 (15 Feb 2014)
+
+  15 Feb 2014; Ulrich Müller <ulm@gentoo.org> +pemacs-1.5_pre20130322.ebuild,
+  +pemacs-9999.ebuild, +metadata.xml:
+  Initial import. Ebuild based on ersatz-emacs-20060515.ebuild, with
+  modifications by me.
+

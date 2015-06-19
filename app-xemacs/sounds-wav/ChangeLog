@@ -1,0 +1,10 @@
+# ChangeLog for app-xemacs/sounds-wav
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/sounds-wav/ChangeLog,v 1.12 2008/03/19 20:03:48 graaff Exp $
+
+*sounds-wav-1.14 (08 Jul 2014)
+
+  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +sounds-wav-1.14.ebuild,
+  +metadata.xml:
+  Pre release version bump.
+

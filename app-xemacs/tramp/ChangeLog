@@ -1,0 +1,31 @@
+# ChangeLog for app-xemacs/tramp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/tramp/ChangeLog,v 1.24 2011/07/22 11:25:04 xarthisius Exp $
+
+*tramp-1.55 (25 Jan 2015)
+
+  25 Jan 2015; Mats Lidell <matsl@gentoo.org> -tramp-1.54.ebuild,
+  +tramp-1.55.ebuild:
+  Upstream pre release version bump.
+
+*tramp-1.54 (23 Jan 2015)
+
+  23 Jan 2015; Mats Lidell <matsl@gentoo.org> -tramp-1.45.ebuild,
+  -tramp-1.46.ebuild, -tramp-1.53.ebuild, +tramp-1.54.ebuild:
+  Upstream pre release version bump.
+
+*tramp-1.53 (30 Dec 2014)
+
+  30 Dec 2014; Mats Lidell <matsl@gentoo.org> -tramp-1.52.ebuild,
+  +tramp-1.53.ebuild:
+  Upstream experimental version bump.
+
+*tramp-1.46 (07 Oct 2013)
+
+  07 Oct 2013; Mats Lidell <matsl@gentoo.org> +tramp-1.46.ebuild:
+  app-xemacs/tramp: Upstream experimental version bump
+
+*tramp-1.45 (16 Jul 2013)
+
+  16 Jul 2013; Mats Lidell <matsl@gentoo.org> +metadata.xml, +tramp-1.45.ebuild:
+  Upstream experimental version bump and use EAPI=5
