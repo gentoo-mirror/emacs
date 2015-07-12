@@ -75,11 +75,11 @@ src_install() {
 
 pkg_preinst() {
 	# make sure that site-gentoo.el exists since site-start.el requires it
-	if [[ ! -d ${EROOT}${SITELISP} ]]; then
+	if [[ ! -f ${ED}${SITELISP}/site-gentoo.el ]]; then		#554518
 		mv "${ED}${SITELISP}"/site-gentoo.el{.orig,} || die
-	else
+	fi
+	if [[ -d ${EROOT}${SITELISP} ]]; then
 		elisp-site-regen
-		rm "${ED}${SITELISP}/site-gentoo.el.orig" || die
 		cp "${EROOT}${SITELISP}/site-gentoo.el" "${ED}${SITELISP}/" || die
 	fi
 
