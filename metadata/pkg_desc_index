@@ -47,7 +47,7 @@ app-xemacs/build 1.17: Build XEmacs from within (UNIX, Windows).
 app-xemacs/c-support 1.24: Basic single-file add-ons for editing C code.
 app-xemacs/calc 1.28: Emacs calculator
 app-xemacs/calendar 1.40 1.41: Calendar and diary support.
-app-xemacs/cc-mode 1.90: C, C++ and Java language support.
+app-xemacs/cc-mode 1.91: C, C++ and Java language support.
 app-xemacs/cedet-common 1.03: Common files for CEDET development environment.
 app-xemacs/clearcase 1.12: New Clearcase Version Control for XEmacs (UNIX, Windows).
 app-xemacs/cogre 1.04: Graph editing mode.
@@ -82,9 +82,9 @@ app-xemacs/fortran-modes 1.07: Fortran support.
 app-xemacs/frame-icon 1.13: Set up mode-specific icons for each frame under XEmacs
 app-xemacs/fsf-compat 1.24: FSF Emacs compatibility files.
 app-xemacs/games 1.21 1.23: Tetris, Sokoban, and Snake.
-app-xemacs/general-docs 1.08: General XEmacs documentation.
+app-xemacs/general-docs 1.09: General XEmacs documentation.
 app-xemacs/gnats 1.19: XEmacs bug reports.
-app-xemacs/gnus 2.01: The Gnus Newsreader and Mailreader.
+app-xemacs/gnus 2.03: The Gnus Newsreader and Mailreader.
 app-xemacs/guided-tour 0.54: Phil Sung's Guided Tour of Emacs.
 app-xemacs/haskell-mode 1.12 1.14: Haskell editing support.
 app-xemacs/hm-html-menus 1.26: HTML editing.
