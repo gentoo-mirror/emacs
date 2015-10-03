@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/general-docs/general-docs-1.06.ebuild,v 1.6 2011/07/22 11:24:59 xarthisius Exp $
+# $Id$
 
 EAPI=5
 
