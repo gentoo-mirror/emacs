@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.5.34-r2.ebuild,v 1.1 2014/02/17 21:37:43 ulm Exp $
+# $Id$
 
 # Note: xemacs currently does not work with a hardened profile. If you
 # want to use xemacs on a hardened profile then compile with the
@@ -19,18 +19,19 @@ SRC_URI="http://ftp.xemacs.org/xemacs-21.5/${P}.tar.gz
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
-IUSE="alsa debug eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn canna xft xim athena neXt Xaw3d gdbm berkdb"
+IUSE="alsa debug eolconv gif gpm pop postgres ldap libressl xface nas dnd X jpeg tiff png mule motif freewnn canna xft xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
 RDEPEND="
-	berkdb? ( >=sys-libs/db-4 !!<sys-libs/db-4 )
+	berkdb? ( >=sys-libs/db-4:= !!<sys-libs/db-4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.3[berkdb(+)] )
 	>=sys-libs/zlib-1.1.4
-	>=dev-libs/openssl-0.9.6
+	!libressl? ( >=dev-libs/openssl-0.9.6:0 )
+	libressl? ( dev-libs/libressl )
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	ldap? ( net-nds/openldap )
 	alsa? ( media-libs/alsa-lib )
 	nas? ( media-libs/nas )
@@ -42,12 +43,12 @@ RDEPEND="
 	xft? ( media-libs/freetype:2 x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
-	tiff? ( media-libs/tiff )
-	png? ( >=media-libs/libpng-1.2 )
-	jpeg? ( virtual/jpeg )
+	tiff? ( media-libs/tiff:0 )
+	png? ( >=media-libs/libpng-1.2:0 )
+	jpeg? ( virtual/jpeg:0 )
 	canna? ( app-i18n/canna )
 	freewnn? ( app-i18n/freewnn )
-	>=sys-libs/ncurses-5.2
+	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"
 
 DEPEND="${RDEPEND}
@@ -66,6 +67,7 @@ src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	epatch "${FILESDIR}/${P}-ncurses-tinfo.patch"
+	epatch "${FILESDIR}/${P}-gcc5.patch"
 	epatch "${FILESDIR}/${P}-destdir.patch"
 
 	# Some binaries and man pages are installed under suffixed names
