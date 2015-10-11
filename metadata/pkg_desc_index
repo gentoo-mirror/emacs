@@ -4,7 +4,7 @@ app-editors/emacs-vcs 25.0.9999-r2: The extensible, customizable, self-documenti
 app-editors/emacs-xwidget 25.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/pemacs 1.5_pre20130322 9999: Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 app-editors/uemacs-pk 9999: uEmacs/PK is an enhanced version of MicroEMACS
-app-editors/xemacs 21.5.34-r4: highly customizable open source text editor and application development system
+app-editors/xemacs 21.5.34-r5: highly customizable open source text editor and application development system
 app-emacs/anything 9999: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/async 9999: A simple asynchronous framework for Emacs
 app-emacs/auto-lang 0.02_beta: Guess language of current buffer
