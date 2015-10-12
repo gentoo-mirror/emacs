@@ -64,7 +64,7 @@ app-xemacs/ede 1.06: Emacs Development Environment.
 app-xemacs/edebug 1.24: An Emacs Lisp debugger.
 app-xemacs/edict 1.19: MULE: Lisp Interface to EDICT, Kanji Dictionary
 app-xemacs/ediff 1.82 1.84: Interface over GNU patch.
-app-xemacs/edit-utils 2.52 2.55 2.56: Miscellaneous editor extensions, you probably need this.
+app-xemacs/edit-utils 2.57: Miscellaneous editor extensions, you probably need this.
 app-xemacs/edt 1.16: DEC EDIT/EDT emulation.
 app-xemacs/efs 1.35 1.37: Treat files on remote systems the same as local files.
 app-xemacs/egg-its 1.29: MULE: Wnn (4.2 and 6) support. SJ3 support.
@@ -117,7 +117,7 @@ app-xemacs/pcl-cvs 1.71 1.73: CVS frontend.
 app-xemacs/pcomplete 1.08: Provides programmatic completion.
 app-xemacs/perl-modes 1.16: Perl support.
 app-xemacs/pgg 1.08 1.10: Emacs interface to various PGP implementations.
-app-xemacs/prog-modes 2.29 2.31: Support for various programming languages.
+app-xemacs/prog-modes 2.32: Support for various programming languages.
 app-xemacs/ps-print 1.14: Printing functions and utilities
 app-xemacs/psgml 1.49: Validated HTML/SGML editing.
 app-xemacs/psgml-dtds 1.05: Deprecated collection of DTDs for psgml.
