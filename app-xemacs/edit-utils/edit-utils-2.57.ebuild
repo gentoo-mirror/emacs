@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/edit-utils/edit-utils-2.44.ebuild,v 1.1 2011/05/24 06:20:54 graaff Exp $
+# $Id$
 
 EAPI=5
 
