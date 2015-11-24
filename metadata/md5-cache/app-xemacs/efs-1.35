@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=Treat files on remote systems the same as local files.
+EAPI=5
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-xemacs/dired app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/efs-1.35-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
+_md5_=ba0aeaca9beee2edc897f23ad0c56ff0

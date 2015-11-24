@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=XSLT processing support.
+EAPI=5
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/jde app-xemacs/cc-mode app-xemacs/semantic app-xemacs/cedet-common app-xemacs/debug app-xemacs/speedbar app-xemacs/edit-utils app-xemacs/xemacs-eterm app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/elib app-xemacs/eieio app-xemacs/sh-script app-xemacs/fsf-compat app-xemacs/xemacs-devel app-xemacs/os-utils app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/xslt-process-1.14-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
+_md5_=321d6a856a2f61cbc43c7b72827fe800

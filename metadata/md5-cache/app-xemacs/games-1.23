@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=Tetris, Sokoban, and Snake.
+EAPI=5
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/games-1.23-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
+_md5_=d2c64c045e13a4001bd7886b17247516

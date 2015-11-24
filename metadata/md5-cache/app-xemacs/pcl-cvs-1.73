@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=CVS frontend.
+EAPI=5
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-xemacs/elib app-xemacs/vc app-xemacs/dired app-xemacs/edebug app-xemacs/ediff app-xemacs/edit-utils app-xemacs/mail-lib app-xemacs/prog-modes app-xemacs/tramp app-xemacs/gnus app-xemacs/sh-script app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/pcl-cvs-1.73-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
+_md5_=61ceef0c335e82ca297968612a1482ed

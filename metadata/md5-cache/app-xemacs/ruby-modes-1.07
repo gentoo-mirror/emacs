@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=Ruby support.
+EAPI=5
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-xemacs/debug app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/ruby-modes-1.07-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
+_md5_=e197bfede43f91b8c7805b7d5fa23a8f
