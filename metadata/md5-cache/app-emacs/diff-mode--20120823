@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=app-arch/xz-utils >=virtual/emacs-23
+DESCRIPTION=Extensions to diff-mode.el
+EAPI=4
+HOMEPAGE=http://emacswiki.org/emacs/diff-mode-.el
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~ulm/distfiles/diff-mode--20120823.el.xz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:- pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
+_eclasses_=elisp	eaf2bf1c82ebf1a5f15f628b5ba36d34	elisp-common	0b09a8fcafdf76d294e17c62a535a892	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=47a36bad87cce1653b57022441e7aa91
