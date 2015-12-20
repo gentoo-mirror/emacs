@@ -2,6 +2,9 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  20 Dec 2015; Ulrich Müller <ulm@gentoo.org> ebuild-mode-9999.ebuild:
+  Merge changes from Portage tree.
+
   25 Apr 2015; Ulrich Müller <ulm@gentoo.org> ebuild-mode-9999.ebuild:
   Update EGIT_REPO_URI.
 

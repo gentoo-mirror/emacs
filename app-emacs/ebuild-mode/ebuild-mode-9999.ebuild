@@ -1,17 +1,17 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit readme.gentoo elisp git-r3
+inherit readme.gentoo-r1 elisp git-r3
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-2+"
 SLOT="0"
