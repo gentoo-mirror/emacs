@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DEPEND=>=virtual/emacs-23 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
-EAPI=5
-HOMEPAGE=http://wiki.gentoo.org/wiki/Project:Emacs
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:git-r3 src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
-_eclasses_=elisp	eaf2bf1c82ebf1a5f15f628b5ba36d34	elisp-common	0b09a8fcafdf76d294e17c62a535a892	eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo	cbc4807273837f5fccb5372e385e99eb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=9890e0b449e9192cc3edcdcc32566fcd
+_eclasses_=elisp	a9bf9dff8b552467c28787ca5393fa0c	elisp-common	73c48c11ad6a6494eda0d0cca848c8fa	eutils	d9bd2ddd85a58e470b49ca997e255a4c	git-r3	0961ca04f93a7ae0e4c4a0b2b8c3be99	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo-r1	672548871faf7fee400f9e10cb057a6a	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=1aaba037838126cc3299168dfdd9af1a
