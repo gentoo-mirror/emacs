@@ -1,6 +1,12 @@
 # ChangeLog for app-xemacs/tramp
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-xemacs/tramp/ChangeLog,v 1.24 2011/07/22 11:25:04 xarthisius Exp $
+
+*tramp-1.57 (07 Jan 2016)
+
+  07 Jan 2016; Mats Lidell <matsl@gentoo.org> -tramp-1.56.ebuild,
+  +tramp-1.57.ebuild:
+  Pre release version bump.
 
 *tramp-1.56 (05 Oct 2015)
 
