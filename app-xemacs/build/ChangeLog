@@ -1,6 +1,12 @@
 # ChangeLog for app-xemacs/build
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/app-xemacs/build/ChangeLog,v 1.19 2011/07/22 11:24:58 xarthisius Exp $
+
+*build-1.18 (12 Jan 2016)
+
+  12 Jan 2016; Mats Lidell <matsl@gentoo.org> -build-1.17.ebuild,
+  +build-1.18.ebuild:
+  Pre release version bump.
 
 *build-1.17 (10 Jul 2014)
 
