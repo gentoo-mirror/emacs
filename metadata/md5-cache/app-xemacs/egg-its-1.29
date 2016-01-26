@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/leim app-xemacs/mule-base app-xemacs/fsf-compat app-xemacs/xe
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/egg-its-1.29-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=8c3dfec33fbc924306283a9541ee54a3
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=987a2d28008976ba70297ee52bc7b570

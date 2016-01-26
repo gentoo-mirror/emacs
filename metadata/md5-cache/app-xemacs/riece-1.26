@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/mail-lib app-xemacs/bbdb app-editors/x
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/riece-1.26-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=006dfd75dd377fccfd7932bbaedb77b9
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=e8f9b4cf6fa5fba8289e0218324aa77a

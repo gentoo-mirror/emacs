@@ -8,5 +8,5 @@ RDEPEND=app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/re-builder-1.07-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=381c0af32973c97b7239b3c32ef55ac9
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=44faa3a11e40209a13592f9bd0cc07de

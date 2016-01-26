@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/pcl-cvs app-xemacs/elib app-xemacs/dired app-xemacs/xemacs-ba
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/ediff-1.82-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=de4713fe8b43ef7e70e84f9e50759f6e
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=0ea8a8fed9a59e61fdead6451df51a34

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/dired app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/e
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/haskell-mode-1.14-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=f37c74e4b240e76b8ff10ceca462cfca
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=0535c6540516d667b0b5d1f1e2242399

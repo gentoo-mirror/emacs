@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/mule-base app-xemacs/fsf-compat app-xemacs/xemacs-base app-xe
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/leim-1.37-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=a425169c1121df0936c873bf65b9ce11
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=ca52e3a705bbd1b9df009425c4a2b083

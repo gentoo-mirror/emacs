@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/mail-lib app-xemacs/fsf-compat app-xem
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/ess-1.18-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=f140c8d2735e137c6faec6b72eb66503
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=3dd87ff790a477bedff907a2e1a133a7

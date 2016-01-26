@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/edit-utils app-xemacs/edebug app-xemac
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/psgml-1.49-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=efd0a8e73a7c138c353334b8815eb701
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=5bb665d602fec7336fd3937795ec6fb9

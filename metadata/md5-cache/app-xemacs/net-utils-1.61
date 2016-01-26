@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/gnus app-xemacs/bbdb app-xemacs/xemacs-ba
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/net-utils-1.61-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=14bb2b5ba384fac8c2dde01b8627a604
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=2955358d2a0c31b2992ea322250a0be8

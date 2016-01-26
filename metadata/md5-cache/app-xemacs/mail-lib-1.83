@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-eterm app-xemacs/xemacs-base app-xemacs/fsf-compat app
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/mail-lib-1.83-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	b332c80a81da0f82124bf5c427fa5b64
-_md5_=278be09bb2807897618fc6d5ac62276b
+_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
+_md5_=e3449d0f9a2ab888ddead54b98bc32df
