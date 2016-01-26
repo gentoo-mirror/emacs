@@ -1,6 +1,6 @@
 # ChangeLog for app-editors/uemacs-pk
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Id$
 
   19 Jan 2014; Ulrich Müller <ulm@gentoo.org> uemacs-pk-9999.ebuild:
   Switch from package.mask to empty KEYWORDS.

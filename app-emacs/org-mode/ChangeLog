@@ -1,6 +1,6 @@
 # ChangeLog for app-emacs/org-mode
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Id$
 
   07 Jun 2014; Ulrich Müller <ulm@gentoo.org> org-mode-9999.ebuild:
   Remove redundant NEED_EMACS assignment.

@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/text-modes/text-modes-1.98.ebuild,v 1.7 2011/07/22 11:25:00 xarthisius Exp $
+# $Id$
 
 EAPI=5
 

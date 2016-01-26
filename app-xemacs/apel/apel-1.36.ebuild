@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/apel/apel-1.34.ebuild,v 1.8 2012/06/02 14:11:30 aballier Exp $
+# $Id$
 
 EAPI=5
 

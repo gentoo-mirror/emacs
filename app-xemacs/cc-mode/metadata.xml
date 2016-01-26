@@ -3,6 +3,6 @@
 <pkgmetadata>
   <maintainer type="project">
     <email>xemacs@gentoo.org</email>
-    <description>Primary Maintainer</description>
+    <name>Gentoo XEmacs project</name>
   </maintainer>
 </pkgmetadata>
