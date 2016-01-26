@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/speedbar/speedbar-1.29.ebuild,v 1.6 2011/07/22 11:25:01 xarthisius Exp $
+# $Id$
 
 EAPI=5
 
