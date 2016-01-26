@@ -1,6 +1,6 @@
 # ChangeLog for app-editors/emacs-xwidget
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
+# $Id$
 
   31 Mar 2015; Ulrich Müller <ulm@gentoo.org> emacs-xwidget-25.0.9999.ebuild:
   Update dependency after package move of eselect modules to app-eselect.
