@@ -17,22 +17,6 @@ app-editors/emacs-vcs:pax_kernel - Enable building under a PaX enabled kernel
 app-editors/emacs-vcs:source - Install C source files and make them available for find-function
 app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/emacs-vcs:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
-app-editors/emacs-xwidget:athena - Enable the MIT Athena widget set (x11-libs/libXaw)
-app-editors/emacs-xwidget:games - Support shared score files for games
-app-editors/emacs-xwidget:gconf - Use gnome-base/gconf to read the system font name
-app-editors/emacs-xwidget:gfile - Use gfile (dev-libs/glib) for file notification
-app-editors/emacs-xwidget:gsettings - Use gsettings (dev-libs/glib) to read the system font name
-app-editors/emacs-xwidget:gtk - Add support for x11-libs/gtk+ (the GIMP Toolkit) version 2
-app-editors/emacs-xwidget:gtk3 - Add support for x11-libs/gtk+ (the GIMP Toolkit) version 3
-app-editors/emacs-xwidget:gzip-el - Compress bundled Emacs Lisp source
-app-editors/emacs-xwidget:hesiod - Enable support for net-dns/hesiod
-app-editors/emacs-xwidget:imagemagick - Use media-gfx/imagemagick for image processing
-app-editors/emacs-xwidget:libxml2 - Use dev-libs/libxml2 to parse XML instead of the internal Lisp implementations
-app-editors/emacs-xwidget:pax_kernel - Enable building under a PaX enabled kernel
-app-editors/emacs-xwidget:source - Install C source files and make them available for find-function
-app-editors/emacs-xwidget:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
-app-editors/emacs-xwidget:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
-app-editors/emacs-xwidget:xwidgets - Enable use of some gtk widgets in Emacs buffers
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
