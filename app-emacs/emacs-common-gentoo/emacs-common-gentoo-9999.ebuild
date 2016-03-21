@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo user git-r3
+inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo-r1 user git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
