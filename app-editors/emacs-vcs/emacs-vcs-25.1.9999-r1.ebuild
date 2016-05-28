@@ -104,6 +104,48 @@ fi
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
 
+pkg_pretend() {
+	local f
+
+	if use alsa && ! use sound; then
+		ewarn "USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
+	fi
+
+	if use X; then
+		if ! use xft; then
+			for f in cairo m17n-lib; do
+				use ${f} && ewarn \
+					"USE flag \"${f}\" has no effect if \"xft\" is not set."
+			done
+		fi
+
+		if use gtk; then
+			while read line; do ewarn "${line}"; done <<-EOF
+				Your version of GTK+ will have problems with closing open
+				displays. This is no problem if you just use one display, but
+				if you use more than one and close one of them Emacs may crash.
+				See <https://bugzilla.gnome.org/show_bug.cgi?id=85715>.
+				If you intend to use more than one display, then it is strongly
+				recommended that you compile Emacs with the Athena/Lucid or the
+				Motif toolkit instead.
+			EOF
+			for f in motif Xaw3d athena; do
+				use ${f} && ewarn \
+					"USE flag \"${f}\" has no effect if \"gtk\" is set."
+			done
+		elif use motif; then
+			for f in Xaw3d athena; do
+				use ${f} && ewarn \
+					"USE flag \"${f}\" has no effect if \"motif\" is set."
+			done
+		fi
+
+		if ! use gtk && use xwidgets; then
+		   ewarn "USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		fi
+	fi
+}
+
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
 		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
