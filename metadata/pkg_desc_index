@@ -46,7 +46,7 @@ app-xemacs/build 1.18: Build XEmacs from within (UNIX, Windows).
 app-xemacs/c-support 1.24: Basic single-file add-ons for editing C code.
 app-xemacs/calc 1.28: Emacs calculator
 app-xemacs/calendar 1.40 1.41: Calendar and diary support.
-app-xemacs/cc-mode 1.98: C, C++ and Java language support.
+app-xemacs/cc-mode 1.99: C, C++ and Java language support.
 app-xemacs/cedet-common 1.03: Common files for CEDET development environment.
 app-xemacs/clearcase 1.12: New Clearcase Version Control for XEmacs (UNIX, Windows).
 app-xemacs/cogre 1.04: Graph editing mode.
