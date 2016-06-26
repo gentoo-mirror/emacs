@@ -9,5 +9,5 @@ RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~ulm/distfiles/pemacs-1.5_pre20130322.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=5188de5ea36c53822240f7910a8c7861
