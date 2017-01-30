@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -69,6 +69,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-ncurses-tinfo.patch"
 	epatch "${FILESDIR}/${P}-gcc5.patch"
 	epatch "${FILESDIR}/${P}-destdir.patch"
+	epatch "${FILESDIR}/${P}-glibc-macro.patch"
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
