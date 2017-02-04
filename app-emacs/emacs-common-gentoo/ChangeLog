@@ -1,6 +1,9 @@
 # ChangeLog for app-emacs/emacs-common-gentoo
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
+
+  04 Feb 2017; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
+  Update for added Emacs 25.1 icons.
 
   12 Jul 2015; Ulrich Müller <ulm@gentoo.org> emacs-common-gentoo-9999.ebuild:
   Sync from Portage tree.
