@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,15 +46,14 @@ src_install() {
 
 		pushd icons || die
 		newicon sink.png emacs-sink.png
-		newicon emacs_48.png emacs.png
-		newicon emacs22_48.png emacs22.png
+		newicon emacs25_48.png emacs.png
 		for i in 16 24 32 48 128; do
-			newicon -s ${i} emacs_${i}.png emacs.png
+			[[ ${i} -le 48 ]] && newicon -s ${i} emacs22_${i}.png emacs22.png
+			newicon -s ${i} emacs23_${i}.png emacs23.png
+			newicon -s ${i} emacs25_${i}.png emacs.png
 		done
-		for i in 16 24 32 48; do
-			newicon -s ${i} emacs22_${i}.png emacs22.png
-		done
-		doicon -s scalable emacs.svg
+		doicon -s scalable emacs23.svg
+		newicon -s scalable emacs25.svg emacs.svg
 		popd
 
 		gnome2_icon_savelist
