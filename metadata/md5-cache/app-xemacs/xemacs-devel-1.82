@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/xemacs-ispell app-xemacs/mail-lib app-
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/xemacs-devel-1.82-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=4cbed6e6839a2b10a6183867cc460f69
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=72e316578cda1d4d3e114d086e2d8f1b

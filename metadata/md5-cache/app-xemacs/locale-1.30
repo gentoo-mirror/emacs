@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/mule-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/locale-1.30-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=9ab9068432989d953e69378c05290dbe
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=0ccba4650f8c2f86d020ee8c076cbd5c

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/dired app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/s
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/clearcase-1.12-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=0f9afe4b0f438f76fa2450198e7570b2
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=96932ea6033b02e6b99213eeb29bf1cc

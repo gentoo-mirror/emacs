@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/viper app-xemacs/mule-base app-xemacs/elib app-xemacs/xemacs-
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/skk-1.27-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=cd5c34f64bffcc8fd2dabfbd4eb5b849
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=38767dab874c26973354c95b4e273343

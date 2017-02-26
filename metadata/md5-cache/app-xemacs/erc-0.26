@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/edit-utils app-xemacs/fsf-compat app-xemacs/gnus app-xemacs/p
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/erc-0.26-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=3614aee721bb7c4bc14758121b07debe
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=9a3d54ba70b09cae1c9dd7cfbbe27ea5

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/viper-1.69-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=59bb02a45ebc7fb8be62a27b8b74d9b1
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=2ede2cc7b3fd27e9c66bdacb894d9c62

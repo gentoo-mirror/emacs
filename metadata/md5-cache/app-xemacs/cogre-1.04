@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/edebug app-xemacs/xemacs-devel app-xem
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/cogre-1.04-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=9c0581363583c8aaf38410db0584730a
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=2a29b3a67f6f27096eb19a9fc641bef7

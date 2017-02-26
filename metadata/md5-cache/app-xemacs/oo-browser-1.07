@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/hyperbole app-xemacs/gnus app-xemacs/s
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/oo-browser-1.07-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=2db9cb06343a01cf49cbc6c862ad7771
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=d20dfeb1cd6df61d54730b3b92bb8e57

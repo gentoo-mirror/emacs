@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/fsf-compat app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/mmm-mode-1.06-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=69e7b8bd97bf5130096cb2e3175dccb6
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=06d5322c32f490c1d2a5b2c464c79db3

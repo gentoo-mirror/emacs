@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/elib-1.15-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=157ba5795b4732d891d6efcb55cf3ce1
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=b0deccf2b411e72fb2c6091d4f27534f

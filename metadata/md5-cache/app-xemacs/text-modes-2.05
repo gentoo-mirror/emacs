@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-ispell app-xemacs/fsf-compat app-xemacs/xemacs-base ap
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/text-modes-2.05-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=36c921d334dba84bd9ef087bfcd9303d
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=fdd48cb89f6d305db23dd1bf956fbf2a

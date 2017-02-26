@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=http://www.gnuvola.org/software/elisp-tutorial/elisp-tutorial-2.05.tar.gz
 _eclass_exported_funcs=pkg_postinst:readme.gentoo src_install:-
 _eclasses_=eutils	708f85bc1bf00876604e223fb56e062a	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	1b1da0c45c555989dc5d832b54880783
-_md5_=804fdef60639844f190e50a913b28797
+_md5_=52b38b9ae7c4fce65f300adf60fb61c5

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/textools-1.17-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=783bab1644c2cbca1ba09b4e1ef82b9f
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=75027b1832333b02be5e0ecfacd0948e

@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-ispell app-xemacs/mail-lib app-xemacs/xemacs-base app-
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/xslide-1.11-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=72b6a0d5a161e6f7e36f8951045dc5b4
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=a85a0536bbf6bd910a782b49046955e4

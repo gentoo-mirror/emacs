@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/mail-lib app-xemacs/edit-utils app-xem
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/python-modes-1.16-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=8e39245366b3cc926206f863f39e6fc3
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=aa65abc74cd9e9f6b4147b2d77cb0719

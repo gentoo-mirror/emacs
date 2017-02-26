@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/mule-base app-xemacs/latin-euro-standards app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/mule-ucs-1.20-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=2f689214a36b4782f020aff23534377a
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=c3ac1ad2598272a66fe3ffdb01c0889b

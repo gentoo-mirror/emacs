@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/elib app-xemacs/vc app-xemacs/dired ap
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/pcl-cvs-1.71-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=99508a885abc80ac4ec7a248829479ac
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=e82bf958b32eec281fd75a8cd50b31f9

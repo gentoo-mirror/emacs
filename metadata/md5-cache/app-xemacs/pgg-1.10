@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/fsf-compat app-xemacs/edebug app-xemac
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/pgg-1.10-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=9ab969b7b73879fdac670543f4b5a8a1
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=fef0f4a41da13d01eab2aeb6cf3e63eb

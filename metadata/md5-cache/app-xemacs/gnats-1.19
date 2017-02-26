@@ -8,5 +8,5 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/gnats-1.19-pkg.tar.gz
 _eclass_exported_funcs=src_unpack:xemacs-packages src_prepare:xemacs-packages src_configure:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
-_eclasses_=xemacs-packages	a9047e4ef3d1d58f4c2bd90e535aa044
-_md5_=12e278e372c8b146b793a80982d7e97d
+_eclasses_=xemacs-packages	f41adb3074125ba240b073d3324be4f8
+_md5_=f8d198baa352d2c6c0a017549384d3f1
