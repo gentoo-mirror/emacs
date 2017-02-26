@@ -1,6 +1,5 @@
 # ChangeLog for app-emacs/wtf
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
   03 Jun 2008; Ulrich Mueller <ulm@gentoo.org> wtf-2.0.ebuild:
   SIMPLE_ELISP is no longer necessary with new elisp.eclass.

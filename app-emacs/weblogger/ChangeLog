@@ -1,6 +1,5 @@
 # ChangeLog for app-emacs/weblogger
 # Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
   22 Aug 2008; Ulrich Mueller <ulm@gentoo.org> weblogger-1.2.ebuild:
   Use eclass default for src_compile instead of elisp-comp, bug 235442.
