@@ -1,6 +1,5 @@
 # ChangeLog for app-emacs/elip
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
   07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -elip-0.803.ebuild,
   elip-0.804.ebuild:

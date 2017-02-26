@@ -1,6 +1,5 @@
 # ChangeLog for app-emacs/codepad
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
   07 Jun 2014; Ulrich Müller <ulm@gentoo.org> codepad-20100605.ebuild:
   Remove redundant NEED_EMACS assignment.
