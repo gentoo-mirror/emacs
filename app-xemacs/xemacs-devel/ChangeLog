@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/xemacs-devel
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*xemacs-devel-1.84 (08 Jul 2014)
-
-  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +xemacs-devel-1.84.ebuild:
-  Pre release version bump.
-

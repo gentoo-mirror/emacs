@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/apel
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*apel-1.36 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +apel-1.36.ebuild, +metadata.xml:
-  Pre release version bump.
-

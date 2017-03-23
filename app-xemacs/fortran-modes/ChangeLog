@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/fortran-modes
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*fortran-modes-1.07 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +fortran-modes-1.07.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-

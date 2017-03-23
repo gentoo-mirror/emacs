@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/ocaml
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*ocaml-0.10 (08 Jul 2014)
-
-  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +ocaml-0.10.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-

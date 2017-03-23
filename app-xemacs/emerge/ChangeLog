@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/emerge
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*emerge-1.13 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +emerge-1.13.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-

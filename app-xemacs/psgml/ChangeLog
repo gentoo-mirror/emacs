@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/psgml
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*psgml-1.49 (08 Jul 2014)
-
-  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +psgml-1.49.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-

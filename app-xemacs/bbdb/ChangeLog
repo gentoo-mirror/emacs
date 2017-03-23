@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/bbdb
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*bbdb-1.34 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +bbdb-1.34.ebuild, +metadata.xml:
-  Pre release version bump.
-

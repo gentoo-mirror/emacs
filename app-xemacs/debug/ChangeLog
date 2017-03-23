@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/debug
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*debug-1.20 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +debug-1.20.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-

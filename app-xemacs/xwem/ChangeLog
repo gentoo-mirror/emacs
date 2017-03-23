@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/xwem
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*xwem-1.25 (05 Jul 2014)
-
-  05 Jul 2014; Mats Lidell <matsl@gentoo.org> +xwem-1.25.ebuild, +metadata.xml:
-  Pre release version dump.
-

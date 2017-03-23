@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/egg-its
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*egg-its-1.29 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +egg-its-1.29.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-
