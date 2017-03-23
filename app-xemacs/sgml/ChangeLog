@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/sgml
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*sgml-1.13 (08 Jul 2014)
-
-  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +sgml-1.13.ebuild, +metadata.xml:
-  Pre release version bump.
-

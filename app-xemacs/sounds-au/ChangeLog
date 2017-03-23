@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/sounds-au
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*sounds-au-1.14 (08 Jul 2014)
-
-  08 Jul 2014; Mats Lidell <matsl@gentoo.org> +sounds-au-1.14.ebuild,
-  +metadata.xml:
-  Pre release revision bump.
-

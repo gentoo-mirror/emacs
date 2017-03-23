@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/calc
-# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*calc-1.28 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +calc-1.28.ebuild, +metadata.xml:
-  Pre release version bump.
-

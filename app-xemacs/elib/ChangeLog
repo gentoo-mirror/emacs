@@ -1,8 +1,0 @@
-# ChangeLog for app-xemacs/elib
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*elib-1.15 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +elib-1.15.ebuild, +metadata.xml:
-  Pre release version bump.
-

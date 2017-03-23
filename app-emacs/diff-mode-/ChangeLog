@@ -1,9 +1,0 @@
-# ChangeLog for app-emacs/diff-mode-
-# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-
-*diff-mode--20120823 (14 Oct 2012)
-
-  14 Oct 2012; Ulrich Müller <ulm@gentoo.org> +files/50diff-mode--gentoo.el,
-  +diff-mode--20120823.ebuild, +metadata.xml:
-  Initial import. Ebuild contributed by me.
-

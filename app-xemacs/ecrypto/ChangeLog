@@ -1,9 +1,0 @@
-# ChangeLog for app-xemacs/ecrypto
-# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
-
-*ecrypto-0.23 (10 Jul 2014)
-
-  10 Jul 2014; Mats Lidell <matsl@gentoo.org> +ecrypto-0.23.ebuild,
-  +metadata.xml:
-  Pre release version bump.
-
