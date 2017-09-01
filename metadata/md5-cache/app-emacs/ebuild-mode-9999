@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:git-r3 src_prepare:elisp src_configure:elisp src_compile:elisp src_install:elisp
-_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	git-r3	78651c07ca1c1373bf81545d39eb9769	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
+_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	git-r3	4f7ddb4119309845d6687213171ab445	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
 _md5_=e779b400e6b5abc0fe02d4ec44f61ef6
