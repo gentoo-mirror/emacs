@@ -6,6 +6,5 @@ HOMEPAGE=http://wiki.gentoo.org/wiki/Project:Emacs
 LICENSE=GPL-2+
 RDEPEND=>=app-admin/eselect-1.2.6 ~app-eselect/eselect-ctags-9999
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_compile:- src_install:-
 _eclasses_=git-r3	4f7ddb4119309845d6687213171ab445
 _md5_=c61e67ffe22671cd6adeba6c68f054de
