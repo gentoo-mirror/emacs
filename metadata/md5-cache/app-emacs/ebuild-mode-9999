@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 _eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	git-r3	52a888802d25387c2c74cb845d1219bc	readme.gentoo-r1	6f03e110529650f57fc7d1fb908b8986
-_md5_=e779b400e6b5abc0fe02d4ec44f61ef6
+_md5_=75cc9e92a4b83816b19e9ead3eae6abb
