@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/emacs-tools.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
 inherit elisp git-r3
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
-HOMEPAGE="http://wiki.gentoo.org/wiki/Project:Emacs"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -28,18 +28,18 @@ pkg_setup() {
 
 	if [[ ${has_daemon} != t ]]; then
 		while read line; do ewarn "${line}"; done <<-EOF
-		Your current Emacs version does not support running as a daemon
-		which is required for ${CATEGORY}/${PN}.
+		Your current Emacs version does not support running as a daemon which
+		is required for ${CATEGORY}/${PN}.
 		Use "eselect emacs" to select an Emacs version >= 23.
 		EOF
 	elif [[ ${has_gtk} == t ]]; then
 		while read line; do ewarn "${line}"; done <<-EOF
-		Your current Emacs is compiled with GTK+. There is a long-standing
-		bug in GTK+ that prevents Emacs from recovering from X disconnects:
-		<http://bugzilla.gnome.org/show_bug.cgi?id=85715>
-		If you run Emacs as a daemon, then it is strongly recommended that
-		you compile it with the Motif or the Lucid toolkit instead, i.e.
-		with USE="motif -athena -gtk" or USE="athena -gtk -motif".
+		Your current Emacs is compiled with GTK+. There is a long-standing bug
+		in GTK+ that prevents Emacs from recovering from X disconnects:
+		<https://bugzilla.gnome.org/show_bug.cgi?id=85715>
+		If you run Emacs as a daemon, then it is strongly recommended that you
+		compile it with the Lucid or the Motif toolkit instead, i.e. with
+		USE="athena Xaw3d -gtk -motif" or USE="motif -gtk -athena -Xaw3d".
 		EOF
 	fi
 }
