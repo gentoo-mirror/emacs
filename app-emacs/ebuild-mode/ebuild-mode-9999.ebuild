@@ -12,7 +12,7 @@ inherit readme.gentoo-r1 elisp git-r3
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
-LICENSE="GPL-2+ GPL-3"  # GPL-3 (only) for glep-mode.el
+LICENSE="GPL-2+"
 SLOT="0"
 
 DEPEND="sys-apps/texinfo"
