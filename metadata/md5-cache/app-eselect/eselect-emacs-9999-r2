@@ -2,9 +2,9 @@ DEFINED_PHASES=compile install unpack
 DEPEND=>=dev-vcs/git-1.8.2.1
 DESCRIPTION=Manage multiple Emacs versions on one system
 EAPI=5
-HOMEPAGE=http://wiki.gentoo.org/wiki/Project:Emacs
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 LICENSE=GPL-2+
 RDEPEND=>=app-admin/eselect-1.2.6 ~app-eselect/eselect-ctags-9999
 SLOT=0
 _eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
-_md5_=c61e67ffe22671cd6adeba6c68f054de
+_md5_=de80408e963563132863e5d904743f6c

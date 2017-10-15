@@ -1,10 +1,10 @@
 DEFINED_PHASES=install prepare unpack
 DEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Rebuild Emacs packages
-EAPI=5
-HOMEPAGE=http://wiki.gentoo.org/wiki/Project:Emacs
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 LICENSE=GPL-2+
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=app-portage/portage-utils-0.3 virtual/emacs
 SLOT=0
 _eclasses_=git-r3	52a888802d25387c2c74cb845d1219bc
-_md5_=16449e7d74e2261f904cf06b20af2fac
+_md5_=daa4bf0c04a190cf1ca316f9c3962998

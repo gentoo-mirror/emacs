@@ -1,6 +1,5 @@
 app-admin/emacs-updater 9999: Rebuild Emacs packages
 app-doc/elisp-tutorial 2.05: A simple Emacs Lisp tutorial
-app-editors/emacs-vcs 25.1.9999-r1: The extensible, customizable, self-documenting real-time display editor
 app-editors/pemacs 1.5_pre20130322 9999: Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 app-editors/qemacs 9999: QEmacs is a very small but powerful UNIX editor
 app-editors/uemacs-pk 9999: uEmacs/PK is an enhanced version of MicroEMACS
