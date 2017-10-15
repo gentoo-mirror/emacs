@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/ebuild-mode.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/ebuild-mode.git"
 EGIT_BRANCH="master"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
