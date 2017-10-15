@@ -1,15 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+EGIT_REPO_URI="https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
-
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
-HOMEPAGE="http://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
+HOMEPAGE="https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
 	ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK"
 
 LICENSE="free-noncomm"
@@ -17,7 +16,7 @@ SLOT="0"
 
 S="${WORKDIR}/${PN}"
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses:0"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -25,7 +24,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	emake V=1 \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
 }
 
 src_install() {
