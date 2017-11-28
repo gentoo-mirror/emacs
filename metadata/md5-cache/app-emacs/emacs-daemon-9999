@@ -6,5 +6,5 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23 >=virtual/emacs-23
 SLOT=0
-_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	git-r3	52a888802d25387c2c74cb845d1219bc
+_eclasses_=elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	git-r3	fec09a83ae965b041b47f5ff7c8ba29a
 _md5_=d8b40bd471f6c11d9235edd7f396e83b
