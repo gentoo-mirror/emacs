@@ -2,19 +2,3 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-editors/xemacs:athena - Chooses the MIT Athena widget set
-app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
-app-editors/xemacs:eolconv - Support detection and translation of newline conventions
-app-editors/xemacs:pop - Support POP for mail retrieval
-app-editors/xemacs:xim - Enable X11 XiM input method
-app-emacs/anything:extensions - Install optional extensions
-app-emacs/bbdb:tex - Install plain TeX support files
-app-emacs/bbdb:vm - Add support for app-emacs/vm
-app-emacs/emacs-common-gentoo:games - Support shared score files for games
-app-emacs/erc-extras:bbdb - Include support for app-emacs/bbdb
-app-emacs/erc-extras:chess - Include support for app-emacs/chess
-app-emacs/org-mode:contrib - Install user-contributed files
-app-emacs/org-mode:odt-schema - Install non-free schema files for OpenDocument Text exporter
-app-emacs/whizzytex:advi - Enable support for app-text/active-dvi
-app-emacs/whizzytex:gv - Enable support for app-text/gv
-app-emacs/whizzytex:xdvi - Enable support for app-text/xdvik
