@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=virtual/emacs-23 >=dev-vcs/bzr-2.0.1
+DEPEND=>=virtual/emacs-23 >=dev-vcs/bzr-2.6.0
 DESCRIPTION=Collaborative editing environment for GNU Emacs
 EAPI=5
 HOMEPAGE=http://rudel.sourceforge.net/ http://www.emacswiki.org/emacs/Rudel
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-_eclasses_=bzr	c898d6ae4252d437c1a0d5d6196eb028	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	589f4c6d735919e293942dd66311dc40	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
+_eclasses_=bzr	fdfb7f923d3d9bc0881ff88e9b62fb30	desktop	2ccd1dd1dd7bfb8795eea024a4f91bb6	elisp	0f9fb41c5a844d876880e414faee1340	elisp-common	f49d14e575e158ccab82cf05b315a180	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	b4eee44966573b7fb6761e507910b306	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	589f4c6d735919e293942dd66311dc40	toolchain-funcs	885c7d8dd70a58825f3d17e35a3cd1e9
 _md5_=2cb3f0ec23ac12d822a59c6bfc9e62db
