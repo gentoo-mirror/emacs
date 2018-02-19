@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common eutils fdo-mime gnome2-utils readme.gentoo-r1 user git-r3
+inherit elisp-common eutils xdg-utils gnome2-utils readme.gentoo-r1 user git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -96,7 +96,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if use X; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 	readme.gentoo_print_elog
@@ -104,7 +104,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use X; then
-		fdo-mime_desktop_database_update
+		xdg_desktop_database_update
 		gnome2_icon_cache_update
 	fi
 }
