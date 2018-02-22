@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-#
+
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
 # Gentoo GNU Emacs project <gnu-emacs@gentoo.org>
@@ -344,7 +344,7 @@ elisp-site-file-install() {
 # directory.
 
 elisp-site-regen() {
-	local sitelisp=${ROOT}${EPREFIX}${SITELISP}
+	local sitelisp=${ROOT%/}${EPREFIX}${SITELISP}
 	local sf i ret=0 null="" page=$'\f'
 	local -a sflist
 
