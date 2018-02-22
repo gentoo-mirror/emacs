@@ -28,6 +28,14 @@ DEPEND="${RDEPEND}
 
 PATCHES="../${P}-linux22x-elf-glibc21.diff ../patch"
 
+src_prepare() {
+	default
+
+	# Do not use the sandbox, or the dumped Emacs will be twice as large
+	sed -i -e 's:\./temacs.*dump:env SANDBOX_ON=0 LD_PRELOAD= &:' \
+		src/ymakefile || die
+}
+
 src_configure() {
 	# autoconf? What's autoconf? We are living in 1992. ;-)
 	local arch
@@ -70,8 +78,7 @@ src_configure() {
 }
 
 src_compile() {
-	# Do not use the sandbox, or the dumped Emacs will be twice as large
-	export SANDBOX_ON=0
+	addpredict /var/lib/emacs/lock
 	emake --jobs=1 \
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"
