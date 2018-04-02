@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common eutils xdg-utils gnome2-utils readme.gentoo-r1 user git-r3
+inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 user git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
