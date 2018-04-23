@@ -7,5 +7,5 @@ IUSE=extensions
 LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-_eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_eclasses_=elisp	8a9eaaa38b2345593b1cbc5315dde83c	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	9a5f039771f143195164a15a4faa41a1	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	25b08efef07cea6bcd45b8c6dcce2782
 _md5_=6e83df4f2c24856d6f0ad2eb7349d617
