@@ -1,0 +1,25 @@
+commit ff3878d749591ebf78da532ec1eb6fa00cb5757d
+Author: Andreas Schwab <schwab@suse.de>
+Date:   Mon Mar 23 11:55:24 2015 +0100
+
+    * configure.ac: Fix jpeg version check to work with gcc >= 5.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -2598,10 +2598,12 @@
+   AH_TEMPLATE(HAVE_JPEG, [Define to 1 if you have the jpeg library (-ljpeg).])dnl
+   if test "${HAVE_JPEG}" = "yes"; then
+     AC_DEFINE(HAVE_JPEG)
+-    AC_EGREP_CPP([version= *(6[2-9]|[7-9][0-9])],
+-        [#include <jpeglib.h>
+-	 version=JPEG_LIB_VERSION
+-],
++    AC_EGREP_CPP([version 6b or later],
++	[#include <jpeglib.h>
++	 #if JPEG_LIB_VERSION >= 62
++	 version 6b or later
++	 #endif
++	],
+         [AC_DEFINE(HAVE_JPEG)],
+         [AC_MSG_WARN([libjpeg found, but not version 6b or later])
+         HAVE_JPEG=no])

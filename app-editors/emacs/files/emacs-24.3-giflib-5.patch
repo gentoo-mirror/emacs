@@ -1,0 +1,168 @@
+commit f3606ef766bcec86789316a05949f1e67a51e7c1
+Author: Barry Fishman <barry_fishman@acm.org>
+Date:   Wed Oct 9 20:37:44 2013 -0400
+
+    Handle giflib 5 changes (tiny change)
+
+    * configure.ac: Update for giflib 5.
+
+    * src/image.c (GIFLIB_MAJOR): Ensure it's defined.
+    (DGifOpen, DGifOpenFileName): Handle giflib 5 syntax.  (Bug#15531)
+
+commit be316ede5fffb724852ee225489e70778d240bb0
+Author: Paul Eggert <eggert@cs.ucla.edu>
+Date:   Tue Jan 7 13:14:32 2014 -0800
+
+    Fix misdisplay of interlaced GIFs with libgif5.
+
+    * image.c (gif_load): libgif5 deinterlaces for us, so don't do
+    it again.
+
+    Fixes: debbugs:16372
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -2674,8 +2674,9 @@
+         || test "${HAVE_W32}" = "yes"; then
+   AC_CHECK_HEADER(gif_lib.h,
+ # EGifPutExtensionLast only exists from version libungif-4.1.0b1.
+-# Earlier versions can crash Emacs.
+-    [AC_CHECK_LIB(gif, EGifPutExtensionLast, HAVE_GIF=yes, HAVE_GIF=maybe)])
++# Earlier versions can crash Emacs, but version 5.0 removes EGifPutExtensionLast.
++    [AC_CHECK_LIB(gif, GifMakeMapObject, HAVE_GIF=yes,
++        [AC_CHECK_LIB(gif, EGifPutExtensionLast, HAVE_GIF=yes, HAVE_GIF=maybe)])])
+ 
+   if test "$HAVE_GIF" = yes; then
+     LIBGIF=-lgif
+--- a/src/image.c
++++ b/src/image.c
+@@ -7095,14 +7095,25 @@
+ 
+ #endif /* HAVE_NTGUI */
+ 
++#ifndef GIFLIB_MAJOR
++#define GIFLIB_MAJOR 0
++#endif
++#ifndef GIFLIB_MINOR
++#define GIFLIB_MINOR 0
++#endif
+ 
+ #ifdef WINDOWSNT
+ 
+ /* GIF library details.  */
+ DEF_IMGLIB_FN (int, DGifCloseFile, (GifFileType *));
+ DEF_IMGLIB_FN (int, DGifSlurp, (GifFileType *));
++#if GIFLIB_MAJOR < 5
+ DEF_IMGLIB_FN (GifFileType *, DGifOpen, (void *, InputFunc));
+ DEF_IMGLIB_FN (GifFileType *, DGifOpenFileName, (const char *));
++#else
++DEF_IMGLIB_FN (GifFileType *, DGifOpen, (void *, InputFunc, int *));
++DEF_IMGLIB_FN (GifFileType *, DGifOpenFileName, (const char *, int *));
++#endif
+ 
+ static bool
+ init_gif_functions (void)
+@@ -7192,7 +7203,11 @@
+ 	}
+ 
+       /* Open the GIF file.  */
++#if GIFLIB_MAJOR < 5
+       gif = fn_DGifOpenFileName (SSDATA (file));
++#else
++      gif = fn_DGifOpenFileName (SSDATA (file), NULL);
++#endif
+       if (gif == NULL)
+ 	{
+ 	  image_error ("Cannot open `%s'", file, Qnil);
+@@ -7213,7 +7228,11 @@
+       memsrc.len = SBYTES (specified_data);
+       memsrc.index = 0;
+ 
++#if GIFLIB_MAJOR < 5
+       gif = fn_DGifOpen (&memsrc, gif_read_from_memory);
++#else
++      gif = fn_DGifOpen (&memsrc, gif_read_from_memory, NULL);
++#endif
+       if (!gif)
+ 	{
+ 	  image_error ("Cannot open memory source `%s'", img->spec, Qnil);
+@@ -7225,7 +7244,11 @@
+   if (!check_image_size (f, gif->SWidth, gif->SHeight))
+     {
+       image_error ("Invalid image size (see `max-image-size')", Qnil, Qnil);
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+       fn_DGifCloseFile (gif);
++#else
++      fn_DGifCloseFile (gif, NULL);
++#endif
+       return 0;
+     }
+ 
+@@ -7234,7 +7257,11 @@
+   if (rc == GIF_ERROR || gif->ImageCount <= 0)
+     {
+       image_error ("Error reading `%s'", img->spec, Qnil);
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+       fn_DGifCloseFile (gif);
++#else
++      fn_DGifCloseFile (gif, NULL);
++#endif
+       return 0;
+     }
+ 
+@@ -7246,7 +7273,11 @@
+       {
+ 	image_error ("Invalid image number `%s' in image `%s'",
+ 		     image_number, img->spec);
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+ 	fn_DGifCloseFile (gif);
++#else
++	fn_DGifCloseFile (gif, NULL);
++#endif
+ 	return 0;
+       }
+   }
+@@ -7264,14 +7295,22 @@
+   if (!check_image_size (f, width, height))
+     {
+       image_error ("Invalid image size (see `max-image-size')", Qnil, Qnil);
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+       fn_DGifCloseFile (gif);
++#else
++      fn_DGifCloseFile (gif, NULL);
++#endif
+       return 0;
+     }
+ 
+   /* Create the X image and pixmap.  */
+   if (!x_create_x_image_and_pixmap (f, width, height, 0, &ximg, &img->pixmap))
+     {
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+       fn_DGifCloseFile (gif);
++#else
++      fn_DGifCloseFile (gif, NULL);
++#endif
+       return 0;
+     }
+ 
+@@ -7370,7 +7409,7 @@
+ 	  }
+ 
+       /* Apply the pixel values.  */
+-      if (gif->SavedImages[j].ImageDesc.Interlace)
++      if (GIFLIB_MAJOR < 5 && gif->SavedImages[j].ImageDesc.Interlace)
+ 	{
+ 	  int row, pass;
+ 
+@@ -7447,7 +7486,11 @@
+ 			    Fcons (make_number (gif->ImageCount),
+ 				   img->lisp_data));
+ 
++#if GIFLIB_MAJOR < 5 || (GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0)
+   fn_DGifCloseFile (gif);
++#else
++  fn_DGifCloseFile (gif, NULL);
++#endif
+ 
+   /* Maybe fill in the background field while we have ximg handy. */
+   if (NILP (image_spec_value (img->spec, QCbackground, NULL)))
