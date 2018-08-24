@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24.3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="alsa aqua athena dbus gconf gif gpm gsettings gtk +gtk3 gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
+IUSE="alsa aqua athena dbus gconf gif gpm gsettings gtk gtk2 gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -58,8 +58,8 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		gtk? (
-			gtk3? ( x11-libs/gtk+:3 )
-			!gtk3? ( x11-libs/gtk+:2 )
+			gtk2? ( x11-libs/gtk+:2 )
+			!gtk2? ( x11-libs/gtk+:3 )
 		)
 		!gtk? (
 			motif? (
@@ -204,7 +204,7 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
+			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -223,6 +223,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
+		! use gtk && use gtk2 && ewarn \
+			"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
