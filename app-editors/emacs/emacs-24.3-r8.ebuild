@@ -117,7 +117,8 @@ src_prepare() {
 		../patch-24.5/08_all_enriched-mode.patch \
 		"${FILESDIR}"/${P}-jpeg-version.patch \
 		"${FILESDIR}"/${P}-giflib-5.patch \
-		"${FILESDIR}"/${P}-data-start.patch
+		"${FILESDIR}"/${P}-data-start.patch \
+		"${FILESDIR}"/${P}-imagemagick-7.patch
 	eapply_user
 
 	# Fix filename reference in redirected man page
