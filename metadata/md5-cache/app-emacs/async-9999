@@ -6,5 +6,5 @@ HOMEPAGE=https://github.com/jwiegley/emacs-async
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	git-r3	918d6a744039c29af2cadc7317459765
+_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	git-r3	0d4635eeb5a96cd5315597a47eba25c9
 _md5_=db64c10dd2a0038389752ed2ef8a1c6f
