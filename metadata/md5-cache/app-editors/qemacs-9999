@@ -5,8 +5,9 @@ EAPI=6
 HOMEPAGE=https://savannah.nongnu.org/projects/qemacs/
 IUSE=X png unicode xv
 LICENSE=LGPL-2.1+ GPL-2+
+PROPERTIES=live
 RDEPEND=X? ( x11-libs/libX11 x11-libs/libXext xv? ( x11-libs/libXv ) ) png? ( >=media-libs/libpng-1.2:0= )
 RESTRICT=test
 SLOT=0
-_eclasses_=cvs	d3ce3771c64d6a9644a7d57480a5d206	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=cvs	6625b4ea3655a11531b433946cebd6b3	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=51fa3ab0dc5c6ec761515f5ea7d96501
