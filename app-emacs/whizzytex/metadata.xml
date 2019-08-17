@@ -13,7 +13,6 @@
   and offer more functionalities.
 </longdescription>
 <use>
-  <flag name='advi'>Enable support for <pkg>app-text/active-dvi</pkg></flag>
   <flag name='xdvi'>Enable support for <pkg>app-text/xdvik</pkg></flag>
   <flag name='gv'>Enable support for <pkg>app-text/gv</pkg></flag>
 </use>
