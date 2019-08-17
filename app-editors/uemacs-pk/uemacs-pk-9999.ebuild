@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 EGIT_REPO_URI="https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
@@ -14,14 +14,11 @@ HOMEPAGE="https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
 LICENSE="free-noncomm"
 SLOT="0"
 
+RDEPEND="sys-libs/ncurses:0="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 S="${WORKDIR}/${PN}"
-
-DEPEND="sys-libs/ncurses:0"
-RDEPEND="${DEPEND}"
-
-src_prepare() {
-	sed -i -e "s:/usr/lib/:/usr/share/${PN}/:" epath.h || die
-}
 
 src_compile() {
 	emake V=1 \
