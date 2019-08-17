@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	# snapshot from git repo
-	SRC_URI="http://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 fi
 
 DESCRIPTION="Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs"
@@ -21,7 +21,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
