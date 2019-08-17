@@ -1,23 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit readme.gentoo
+inherit readme.gentoo-r1
 
 DESCRIPTION="A simple Emacs Lisp tutorial"
 HOMEPAGE="http://www.gnuvola.org/software/elisp-tutorial/"
-SRC_URI="http://www.gnuvola.org/software/${PN}/${P}.tar.gz"
+# taken from: http://www.gnuvola.org/software/${PN}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_install() {
-	dohtml index.html
+	docinto html
+	dodoc index.html
+	docinto .
 	dodoc *.el ChangeLog NEWS
 
 	DOC_CONTENTS="Open /usr/share/doc/${PF}/html/index.html with your browser.
 		The Lisp files of the tutorial can be found in /usr/share/doc/${PF}/."
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
