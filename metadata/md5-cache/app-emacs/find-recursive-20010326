@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install postinst postrm setup unpack
-DEPEND=>=virtual/emacs-23
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Find files recursively in a directory
-EAPI=0
-HOMEPAGE=http://www.webweavertech.com/ovidiu/emacs/
+EAPI=7
+HOMEPAGE=https://www.webweavertech.com/ovidiu/emacs/
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/find-recursive-20010326.el.bz2
-_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=117cfe0544dd3b81bb51b92114d6c0a3
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/find-recursive-20010326.el.bz2
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=b6dcdbbc5e8d4abb51bce7826bb44cfe

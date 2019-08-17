@@ -20,6 +20,5 @@ app-emacs/erc-extras:bbdb - Include support for app-emacs/bbdb
 app-emacs/erc-extras:chess - Include support for app-emacs/chess
 app-emacs/org-mode:contrib - Install user-contributed files
 app-emacs/org-mode:odt-schema - Install non-free schema files for OpenDocument Text exporter
-app-emacs/whizzytex:advi - Enable support for app-text/active-dvi
 app-emacs/whizzytex:gv - Enable support for app-text/gv
 app-emacs/whizzytex:xdvi - Enable support for app-text/xdvik

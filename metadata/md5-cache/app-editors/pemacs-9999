@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=sys-libs/ncurses virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 EAPI=5
 HOMEPAGE=https://github.com/hughbarney/pEmacs
 LICENSE=public-domain
 PROPERTIES=live
-RDEPEND=sys-libs/ncurses
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=9834690e267b58ac250cf32857ba732c
+_md5_=09a2208fc3e824323e0784fd169bc42d

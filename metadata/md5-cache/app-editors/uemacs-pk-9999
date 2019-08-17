@@ -1,11 +1,12 @@
-DEFINED_PHASES=compile install prepare unpack
-DEPEND=sys-libs/ncurses:0 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=uEmacs/PK is an enhanced version of MicroEMACS
-EAPI=5
+EAPI=7
 HOMEPAGE=https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK
 LICENSE=free-noncomm
 PROPERTIES=live
-RDEPEND=sys-libs/ncurses:0
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f4ac14dd920e34f3becde79427a6e664
+_md5_=531537316bc0121a950909cd67cb0216

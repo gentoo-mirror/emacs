@@ -2,37 +2,28 @@ app-admin/emacs-updater 9999: Rebuild Emacs packages
 app-doc/elisp-tutorial 2.05: A simple Emacs Lisp tutorial
 app-editors/emacs 24.3-r8: The extensible, customizable, self-documenting real-time display editor
 app-editors/pemacs 1.5_pre20130322 9999: Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
-app-editors/qemacs 9999: QEmacs is a very small but powerful UNIX editor
 app-editors/uemacs-pk 9999: uEmacs/PK is an enhanced version of MicroEMACS
 app-emacs/anything 9999: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/async 9999: A simple asynchronous framework for Emacs
 app-emacs/auto-lang 0.02_beta: Guess language of current buffer
-app-emacs/babel 0.8 1.1: Interface to web translation services such as Babelfish
+app-emacs/babel 1.1: Interface to web translation services such as Babelfish
 app-emacs/bbdb 3.1.2: The Insidious Big Brother Database
-app-emacs/cgi 0.3_pre20060425: Using Emacs for CGI scripting
-app-emacs/cgi+ 0.01: Run CGI inside Emacs
 app-emacs/codepad 20100605: Interface to the codepad.org paste service
-app-emacs/completion-ui 0.11.11: Library that implements user-interfaces for in-buffer completion
 app-emacs/diff-mode- 20120823: Extensions to diff-mode.el
 app-emacs/ebuild-mode 9999: Emacs modes for editing ebuilds and other Gentoo specific files
-app-emacs/elip 0.804: The Emacs Learning Instruction Program
 app-emacs/emacs-common-gentoo 9999: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 9999: Gentoo support for Emacs running as a server in the background
 app-emacs/erc-extras 5.3: Extra modules for the Emacs IRC Client
 app-emacs/evil 9999: Extensible vi layer
 app-emacs/find-recursive 20010326: Find files recursively in a directory
 app-emacs/fold-dwim 1.3: Unified user interface for Emacs folding modes
-app-emacs/js2-mode 20080616a 20090723b: An improved JavaScript mode for GNU Emacs
+app-emacs/js2-mode 20190219: An improved JavaScript mode for GNU Emacs
 app-emacs/nummove 20070312: A graphical game of fifteen
 app-emacs/oddmuse 20090411: Edit pages on an Oddmuse wiki
 app-emacs/org-mode 9999: An Emacs mode for notes and project planning
 app-emacs/rudel 9999: Collaborative editing environment for GNU Emacs
-app-emacs/smex 20090716: A smart M-x enhancement for Emacs
-app-emacs/snippet 0.2: Insert snippets of text into a buffer
-app-emacs/twitter 20090422: Simple Emacs-based client for Twitter
-app-emacs/vm-bogofilter 1.1.4: An interface between the VM mail reader and the bogofilter spam filter
+app-emacs/smex 1.1.4: A smart M-x enhancement for Emacs
 app-emacs/w3m-type-ahead 2.4.0: Type-ahead support for emacs-w3m
-app-emacs/weblogger 1.2: Weblog maintenance via XML-RPC APIs
 app-emacs/whizzytex 1.3.2: An Emacs minor mode for incremental viewing of LaTeX documents
 app-emacs/wtf 2.0: Look up conversational and computing acronyms
 app-eselect/eselect-ctags 9999: Manages ctags implementations

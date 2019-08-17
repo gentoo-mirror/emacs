@@ -1,13 +1,14 @@
+BDEPEND=>=virtual/emacs-23
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=virtual/latex-base advi? ( app-text/active-dvi ) xdvi? ( app-text/xdvik ) gv? ( app-text/gv ) !advi? ( !xdvi? ( !gv? ( app-text/active-dvi ) ) ) >=virtual/emacs-23
+DEPEND=virtual/latex-base xdvi? ( app-text/xdvik ) gv? ( app-text/gv ) !xdvi? ( !gv? ( app-text/xdvik ) )
 DESCRIPTION=An Emacs minor mode for incremental viewing of LaTeX documents
-EAPI=4
+EAPI=7
 HOMEPAGE=http://cristal.inria.fr/whizzytex/
-IUSE=advi xdvi gv doc examples
+IUSE=doc examples gv xdvi
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=virtual/latex-base advi? ( app-text/active-dvi ) xdvi? ( app-text/xdvik ) gv? ( app-text/gv ) !advi? ( !xdvi? ( !gv? ( app-text/active-dvi ) ) ) >=virtual/emacs-23
+RDEPEND=virtual/latex-base xdvi? ( app-text/xdvik ) gv? ( app-text/gv ) !xdvi? ( !gv? ( app-text/xdvik ) ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=http://cristal.inria.fr/whizzytex/whizzytex-1.3.2.tgz
-_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=20f69ee86291048ea4cc6e700bbd032c
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=192ad506f48da800c30527bd7ee73d87

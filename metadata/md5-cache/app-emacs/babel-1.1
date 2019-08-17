@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install postinst postrm setup unpack
-DEPEND=>=virtual/emacs-23
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Interface to web translation services such as Babelfish
-EAPI=0
+EAPI=7
 HOMEPAGE=http://www.hoetzel.info/Hacking/emacs/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/babel-1.1.el.bz2
-_eclasses_=elisp	12e33ba725e375a938c5997b692a8667	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=2b628622135d500c2dad595985d89185
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/babel-1.1.el.bz2
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=94ed2585ec926b26281f9dddd5d83d19

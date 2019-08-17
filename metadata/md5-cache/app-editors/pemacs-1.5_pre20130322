@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install
-DEPEND=sys-libs/ncurses virtual/pkgconfig
+DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 EAPI=5
 HOMEPAGE=https://github.com/hughbarney/pEmacs
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
-RDEPEND=sys-libs/ncurses
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/pemacs-1.5_pre20130322.tar.xz
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/pemacs-1.5_pre20130322.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f1bf0b4cb95e7a21e2f30157ac6c897a
+_md5_=36ff19ee63b93a0489af73f9926bac08
