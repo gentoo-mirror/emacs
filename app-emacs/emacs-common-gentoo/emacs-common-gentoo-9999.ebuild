@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 user git-r3
+inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -16,13 +16,11 @@ LICENSE="GPL-3+"
 SLOT="0"
 IUSE="games X"
 
+RDEPEND="games? ( acct-group/gamestat )"
+DEPEND="${RDEPEND}"
 PDEPEND="virtual/emacs"
 
 S="${WORKDIR}/${PN}"
-
-pkg_setup() {
-	use games && enewgroup gamestat 36
-}
 
 src_install() {
 	insinto "${SITELISP}"
