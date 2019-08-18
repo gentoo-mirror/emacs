@@ -1,12 +1,12 @@
+BDEPEND=>=virtual/emacs-23
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=app-arch/xz-utils >=virtual/emacs-23
 DESCRIPTION=Interface to the codepad.org paste service
-EAPI=4
+EAPI=7
 HOMEPAGE=http://codepad.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/codepad-20100605.el.xz
-_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=c62899bcdf01593dc190244880f57b25
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/codepad-20100605.el.xz
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=a9d92ec0dd5a0eb213069c3fb0ee2cae
