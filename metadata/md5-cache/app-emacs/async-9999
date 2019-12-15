@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	git-r3	6d22636df236df4cc8475f7b7668bdcd
+_eclasses_=elisp	11f1230b542918f2de1aef02bfbb3539	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
 _md5_=db64c10dd2a0038389752ed2ef8a1c6f
