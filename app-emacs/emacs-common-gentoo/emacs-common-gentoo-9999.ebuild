@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 git-r3
+inherit elisp-common desktop xdg-utils readme.gentoo-r1 git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -18,7 +18,7 @@ IUSE="games X"
 
 RDEPEND="games? ( acct-group/gamestat )"
 DEPEND="${RDEPEND}"
-PDEPEND="virtual/emacs"
+PDEPEND=">=app-editors/emacs-23.1:*"
 
 S="${WORKDIR}/${PN}"
 
@@ -39,7 +39,7 @@ src_install() {
 
 	if use X; then
 		local i
-		domenu emacs.desktop emacsclient.desktop || die
+		domenu emacs.desktop emacsclient.desktop
 
 		pushd icons || die
 		newicon sink.png emacs-sink.png
@@ -52,8 +52,6 @@ src_install() {
 		doicon -s scalable emacs23.svg
 		newicon -s scalable emacs25.svg emacs.svg
 		popd
-
-		gnome2_icon_savelist
 	fi
 
 	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
@@ -95,7 +93,7 @@ pkg_preinst() {
 pkg_postinst() {
 	if use X; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 	readme.gentoo_print_elog
 }
@@ -103,6 +101,6 @@ pkg_postinst() {
 pkg_postrm() {
 	if use X; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 }

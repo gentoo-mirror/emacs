@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
@@ -17,8 +17,8 @@ SLOT="0"
 
 DEPEND="|| ( sys-apps/util-linux app-misc/getopt )"
 RDEPEND="${DEPEND}
-	>=app-portage/portage-utils-0.3
-	virtual/emacs"
+	>=app-editors/emacs-23.1:*
+	>=app-portage/portage-utils-0.3"
 
 S="${WORKDIR}/${PN}"
 
