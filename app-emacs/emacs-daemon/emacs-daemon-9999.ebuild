@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,9 +14,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-2+"
 SLOT="0"
-
-DEPEND=">=virtual/emacs-23"
-RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 SITEFILE="10${PN}-gentoo.el"
