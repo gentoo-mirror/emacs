@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=app-editors/emacs-23.1:* >=app-portage/portage-utils-0.3
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
+_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
 _md5_=e74dd17564e279e2cd4a29e60ad9ed56
