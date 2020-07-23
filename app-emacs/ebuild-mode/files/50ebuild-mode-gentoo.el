@@ -14,6 +14,11 @@
 	     '("/[0-9]\\{4\\}-[01][0-9]-[0-3][0-9]-.+\\.[a-z]\\{2\\}\\.txt\\'"
 	       . gentoo-newsitem-mode))
 (add-to-list 'auto-mode-alist '("/glep.*\\.rst\\'" . glep-mode))
+(add-to-list 'auto-mode-alist
+	     '("/\\(package\\.\\(mask\\|unmask\\|use\\|env\
+\\|license\\|properties\\|accept_\\(keywords\\|restrict\\)\\)\
+\\|\\(package\\.\\)?use.\\(stable\\.\\)?\\(force\\|mask\\)\\)\\'"
+	       . conf-mode))
 (add-to-list 'interpreter-mode-alist '("openrc-run" . sh-mode))
 (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
 (modify-coding-system-alist 'file "\\.\\(ebuild\\|eclass\\)\\'" 'utf-8)
