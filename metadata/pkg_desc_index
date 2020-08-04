@@ -1,6 +1,8 @@
 app-admin/emacs-updater 9999: Rebuild Emacs packages
 app-doc/elisp-tutorial 2.05: A simple Emacs Lisp tutorial
+app-editors/atto 1.20_pre20180320: The smallest functional Emacs in less than 2000 lines of C
 app-editors/emacs 24.3-r8: The extensible, customizable, self-documenting real-time display editor
+app-editors/femto 2.10_pre20191107: Extended version of Atto Emacs with a Tiny Lisp extension language
 app-editors/pemacs 1.5_pre20130322 9999: Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 app-editors/uemacs-pk 9999: uEmacs/PK is an enhanced version of MicroEMACS
 app-emacs/anything 9999: Open anything - QuickSilver-like candidate-selection framework

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=The smallest functional Emacs in less than 2000 lines of C
+EAPI=7
+HOMEPAGE=https://github.com/hughbarney/atto
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://github.com/hughbarney/atto/archive/1485816cc8e7556c634d2676b3ff17c3b998062a.tar.gz -> atto-1.20_pre20180320.tar.gz
+_eclasses_=multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
+_md5_=987b0b200989efb84d22ae71ca283336
