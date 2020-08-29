@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="games X"
+IUSE="games gui"
 
 RDEPEND="games? ( acct-group/gamestat )"
 DEPEND="${RDEPEND}"
@@ -37,7 +37,7 @@ src_install() {
 		fperms g+w /var/games/emacs
 	fi
 
-	if use X; then
+	if use gui; then
 		local i
 		domenu emacs.desktop emacsclient.desktop
 
@@ -91,7 +91,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
@@ -99,7 +99,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
