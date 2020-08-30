@@ -9,9 +9,9 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches-7.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-23.4-patches-21.tar.xz
+	https://dev.gentoo.org/~ulm/emacs/${PN}-23.4-patches-23.tar.xz
 	https://dev.gentoo.org/~ulm/emacs/${PN}-24.4-patches-5.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-24.5-patches-4.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${PN}-24.5-patches-5.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24.3"
@@ -101,9 +101,9 @@ S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_unpack() {
 	unpack ${P}.tar.xz
-	unpack ${PN}-23.4-patches-21.tar.xz; mv patch{,-23.4} || die
+	unpack ${PN}-23.4-patches-23.tar.xz; mv patch{,-23.4} || die
 	unpack ${PN}-24.4-patches-5.tar.xz; mv patch{,-24.4} || die
-	unpack ${PN}-24.5-patches-4.tar.xz; mv patch{,-24.5} || die
+	unpack ${PN}-24.5-patches-5.tar.xz; mv patch{,-24.5} || die
 	unpack ${P}-patches-7.tar.xz
 }
 
@@ -116,7 +116,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-jpeg-version.patch \
 		"${FILESDIR}"/${P}-giflib-5.patch \
 		"${FILESDIR}"/${P}-data-start.patch \
-		"${FILESDIR}"/${P}-imagemagick-7.patch
+		"${FILESDIR}"/${P}-imagemagick-7.patch \
+		"${FILESDIR}"/${P}-glibc-2.28.patch
 	eapply_user
 
 	# Fix filename reference in redirected man page
