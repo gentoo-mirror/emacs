@@ -7,5 +7,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=!<app-eselect/eselect-emacs-1.18 >=app-admin/eselect-1.2.3
 SLOT=0
-_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=e240b9401a6ad88614df1c3681a3054b
