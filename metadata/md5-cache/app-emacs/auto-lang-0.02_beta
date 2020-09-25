@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~ulm/distfiles/auto-lang-0.02_beta.el.bz2
-_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	cae18e9c43c86703b074d0b15dcdb9e2
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce
 _md5_=64ea641cc6afc3f1dee19c87969ccd8d
