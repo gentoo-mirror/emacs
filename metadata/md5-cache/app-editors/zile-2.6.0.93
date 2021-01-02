@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/perl virtual/pkgconfig
+BDEPEND=dev-lang/perl sys-apps/help2man virtual/pkgconfig
 DEFINED_PHASES=configure test
 DEPEND=dev-libs/glib:2 dev-libs/libgee:0.8= sys-libs/ncurses:0=
 DESCRIPTION=Zile is a small Emacs clone
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 dev-libs/libgee:0.8= sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://gnu-alpha/zile/zile-2.6.0.93.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=21585e305616179882d9bf288e25fc9c
+_md5_=5ce59d77444c17b88956d8e74a771e66
