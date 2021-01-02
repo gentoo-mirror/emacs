@@ -5,6 +5,7 @@ app-editors/emacs 24.3-r8: The extensible, customizable, self-documenting real-t
 app-editors/femto 2.10_pre20191107: Extended version of Atto Emacs with a Tiny Lisp extension language
 app-editors/pemacs 1.5_pre20130322 9999: Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 app-editors/uemacs-pk 9999: uEmacs/PK is an enhanced version of MicroEMACS
+app-editors/zile 2.6.0.93: Zile is a small Emacs clone
 app-emacs/anything 9999: Open anything - QuickSilver-like candidate-selection framework
 app-emacs/async 9999: A simple asynchronous framework for Emacs
 app-emacs/auto-lang 0.02_beta: Guess language of current buffer
