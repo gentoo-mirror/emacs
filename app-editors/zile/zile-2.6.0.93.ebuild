@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 #	vala-build? ( $(vala_depend) )
 
 BDEPEND="dev-lang/perl
+	sys-apps/help2man
 	virtual/pkgconfig"
 
 # AUTHORS, FAQ, and NEWS are installed by the build system
