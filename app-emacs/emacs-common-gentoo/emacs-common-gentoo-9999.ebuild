@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,8 @@ S="${WORKDIR}/${PN}"
 
 src_install() {
 	insinto "${SITELISP}"
-	doins subdirs.el
+	sed -e "s:@libdir@:$(get_libdir):g" subdirs.el.in | newins - subdirs.el
+	assert
 	newins site-gentoo.el{,.orig}
 
 	keepdir /etc/emacs
