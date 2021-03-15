@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
-EGIT_BRANCH="${PN}"
+EGIT_BRANCH="emacs-common"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
 inherit elisp-common desktop xdg-utils readme.gentoo-r1 git-r3
