@@ -21,4 +21,5 @@
 	       . conf-space-mode))
 (add-to-list 'interpreter-mode-alist '("openrc-run" . sh-mode))
 (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
+(add-hook 'find-file-hook #'ebuild-repo-mode-maybe-enable)
 (modify-coding-system-alist 'file "\\.\\(ebuild\\|eclass\\)\\'" 'utf-8)
