@@ -15,7 +15,7 @@ app-editors/emacs:wide-int - Prefer wide Emacs integers (typically 62-bit). This
 app-emacs/anything:extensions - Install optional extensions
 app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/bbdb:vm - Add support for app-emacs/vm
-app-emacs/emacs-common-gentoo:games - Support shared score files for games
+app-emacs/emacs-common:games - Support shared score files for games
 app-emacs/erc-extras:bbdb - Include support for app-emacs/bbdb
 app-emacs/erc-extras:chess - Include support for app-emacs/chess
 app-emacs/org-mode:contrib - Install user-contributed files

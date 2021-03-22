@@ -3,9 +3,10 @@ DEPEND=>=app-editors/emacs-23.1:* >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Gentoo support for Emacs running as a server in the background
 EAPI=6
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
+INHERIT=elisp git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	34cc2b6f6d8914019a353fe39cff43ce	git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7	git-r3	3e7ec3d6619213460c85e2aa48398441
 _md5_=e9815aae3f5821389ca9b4675262843c
