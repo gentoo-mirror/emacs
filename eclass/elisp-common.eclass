@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -234,6 +234,8 @@ elisp-emacs-version() {
 	rm -f "${T}"/emacs-version.el
 	if [[ ${ret} -ne 0 ]]; then
 		eerror "elisp-emacs-version: Failed to run ${EMACS}"
+		[[ $(realpath ${EMACS} 2>/dev/null) == */emacs* ]] \
+			|| eerror "This package needs GNU Emacs"
 		return ${ret}
 	fi
 	if [[ -z ${version} ]]; then
@@ -492,7 +494,7 @@ elisp-site-regen() {
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend $? "elisp-site-regen: Replacing site-gentoo.el failed" || die
 		case ${#sflist[@]} in
-			0) [[ ${PN} = emacs-common-gentoo ]] \
+			0) [[ ${PN} = emacs-common ]] \
 				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
