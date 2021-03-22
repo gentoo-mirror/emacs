@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ SLOT="24.3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="alsa aqua athena dbus gconf gif gpm gsettings gtk gtk2 gui gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm"
 
-RDEPEND="app-emacs/emacs-common-gentoo[gui(-)?]
+RDEPEND="app-emacs/emacs-common[gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	alsa? ( media-libs/alsa-lib )
