@@ -3,9 +3,10 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Manage multiple Emacs versions on one system
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
+INHERIT=git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=app-admin/eselect-1.2.6 ~app-eselect/eselect-ctags-9999
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=de80408e963563132863e5d904743f6c

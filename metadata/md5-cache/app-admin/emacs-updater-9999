@@ -4,9 +4,10 @@ DEPEND=|| ( sys-apps/util-linux app-misc/getopt )
 DESCRIPTION=Rebuild Emacs packages
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
+INHERIT=git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=app-editors/emacs-23.1:* >=app-portage/portage-utils-0.3
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=e74dd17564e279e2cd4a29e60ad9ed56
