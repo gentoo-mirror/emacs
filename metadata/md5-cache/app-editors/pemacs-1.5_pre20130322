@@ -3,10 +3,11 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs
 EAPI=5
 HOMEPAGE=https://github.com/hughbarney/pEmacs
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=public-domain
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/pemacs-1.5_pre20130322.tar.xz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=36ff19ee63b93a0489af73f9926bac08
