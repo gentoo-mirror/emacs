@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
+INHERIT=git-r3
+LICENSE=GPL-2+
+PROPERTIES=live
+RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
+SLOT=0
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=e4933a39c0f8275f82636ad7de3a6fb9
