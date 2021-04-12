@@ -1,4 +1,4 @@
-# Copyright 2002-2020 Gentoo Authors
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -9,7 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
@@ -62,7 +62,7 @@
 
 inherit elisp-common
 case ${EAPI:-0} in
-	4|5) inherit epatch ;;
+	5) inherit epatch ;;
 	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -72,7 +72,6 @@ EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 
 RDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
 case ${EAPI} in
-	4) RDEPEND="${RDEPEND%:*}"; DEPEND="${RDEPEND}" ;;
 	5|6) DEPEND="${RDEPEND}" ;;
 	*) BDEPEND="${RDEPEND}" ;;
 esac
@@ -118,14 +117,14 @@ elisp_src_prepare() {
 			die "Cannot find ${patch}"
 		fi
 		case ${EAPI} in
-			4|5) epatch "${file}" ;;
+			5) epatch "${file}" ;;
 			*) eapply "${file}" ;;
 		esac
 	done
 
 	# apply PATCHES (if supported in EAPI), and any user patches
 	case ${EAPI} in
-		4|5) epatch_user ;;
+		5) epatch_user ;;
 		*) default ;;
 	esac
 
@@ -172,7 +171,7 @@ elisp_src_install() {
 	fi
 	# install documentation only when explicitly requested
 	case ${EAPI} in
-		4|5) [[ -n ${DOCS} ]] && dodoc ${DOCS} ;;
+		5) [[ -n ${DOCS} ]] && dodoc ${DOCS} ;;
 		*) [[ $(declare -p DOCS 2>/dev/null) == *=* ]] && einstalldocs ;;
 	esac
 	if declare -f readme.gentoo_create_doc >/dev/null; then

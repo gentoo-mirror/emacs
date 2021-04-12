@@ -10,6 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -165,7 +166,7 @@
 # to above calls of elisp-site-regen().
 
 case ${EAPI:-0} in
-	4|5|6) inherit eapi7-ver ;;
+	5|6) inherit eapi7-ver ;;
 	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -219,7 +220,9 @@ _ELISP_EMACS_VERSION=""
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	local version ret
+	local version ret tmout="timeout -k 5 55"
+	# Run without timeout if the command is not available
+	${tmout} true &>/dev/null || tmout=""
 	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
@@ -228,7 +231,7 @@ elisp-emacs-version() {
 		# Redirecting stdin and unsetting TERM and DISPLAY will cause
 		# most of them to exit with an error.
 		unset TERM DISPLAY
-		${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
+		${tmout} ${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
 	)
 	ret=$?
 	rm -f "${T}"/emacs-version.el
@@ -380,7 +383,7 @@ elisp-modules-install() {
 	shift
 	# Don't bother inheriting multilib.eclass for get_libdir(), but
 	# error out in old EAPIs that don't support it natively.
-	[[ ${EAPI} == [45] ]] \
+	[[ ${EAPI} == 5 ]] \
 		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
 	ebegin "Installing dynamic modules for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
@@ -409,7 +412,7 @@ elisp-site-file-install() {
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
-	if [[ ${EAPI} == [45] ]]; then
+	if [[ ${EAPI} == 5 ]]; then
 		grep -q "@EMACSMODULES@" "${sf}" \
 			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
 	else
