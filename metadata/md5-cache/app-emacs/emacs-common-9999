@@ -11,5 +11,5 @@ PDEPEND=>=app-editors/emacs-23.1:*
 PROPERTIES=live
 RDEPEND=games? ( acct-group/gamestat )
 SLOT=0
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=elisp-common	ec3e757258aea5ef3612f6777a6e7c22	desktop	c0d27bf73aa08ca05b663dbd31fbef28	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=d1ed8a3eaa8ab62b42b6aaeda1f45dcf

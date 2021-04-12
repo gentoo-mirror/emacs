@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/codepad-20100605.el.xz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	00840e1f4eb277c757dbfa5abf73c4c7
+_eclasses_=elisp-common	ec3e757258aea5ef3612f6777a6e7c22	elisp	e49d07382b70108adada888bce997541
 _md5_=a9d92ec0dd5a0eb213069c3fb0ee2cae

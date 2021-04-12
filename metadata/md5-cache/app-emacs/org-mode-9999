@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	00840e1f4eb277c757dbfa5abf73c4c7	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	ec3e757258aea5ef3612f6777a6e7c22	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	e49d07382b70108adada888bce997541	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=1bdc8bfae78b051ec0733777e7c7fae4
