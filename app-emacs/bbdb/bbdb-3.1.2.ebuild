@@ -1,17 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="The Insidious Big Brother Database"
-HOMEPAGE="http://savannah.nongnu.org/projects/bbdb/"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/bbdb/"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+ GPL-1+ FDL-1.3+"
 SLOT="0"
-KEYWORDS=""
 IUSE="tex vm"
 
 DEPEND="tex? ( virtual/tex-base )
