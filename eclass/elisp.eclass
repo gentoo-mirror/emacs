@@ -27,6 +27,7 @@
 # ${PN}.el in src_unpack().
 
 # @ECLASS-VARIABLE: NEED_EMACS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If you need anything different from Emacs 23, use the NEED_EMACS
