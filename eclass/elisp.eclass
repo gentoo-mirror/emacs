@@ -61,6 +61,7 @@
 # will be generated in src_compile() and installed in src_install().
 
 inherit elisp-common
+
 case ${EAPI:-0} in
 	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
