@@ -1,13 +1,13 @@
+BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=Edit pages on an Oddmuse wiki
-EAPI=5
-HOMEPAGE=http://www.emacswiki.org/cgi-bin/wiki/OddmuseMode
+EAPI=7
+HOMEPAGE=https://www.emacswiki.org/emacs/OddmuseMode
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/oddmuse-20090411.el.bz2
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	ec3e757258aea5ef3612f6777a6e7c22	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	elisp	e49d07382b70108adada888bce997541
-_md5_=f5e5af8bb3e818cfa7436e390fff3072
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/oddmuse-20090411.el.bz2
+_eclasses_=elisp-common	900672296ee41d5386f0cfd86d257596	elisp	fe2715ab9965e43eed8cff3f0916183c
+_md5_=08a81f8fabcb4828d8de0b161ef4fd4e

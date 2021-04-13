@@ -1,12 +1,12 @@
+BDEPEND=>=app-editors/emacs-23.1:* >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=>=app-editors/emacs-23.1:* >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Gentoo support for Emacs running as a server in the background
-EAPI=6
+EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 INHERIT=elisp git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	ec3e757258aea5ef3612f6777a6e7c22	elisp	e49d07382b70108adada888bce997541	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=e9815aae3f5821389ca9b4675262843c
+_eclasses_=elisp-common	900672296ee41d5386f0cfd86d257596	elisp	fe2715ab9965e43eed8cff3f0916183c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=f91c7761f9f0023a450054a4e077e79b

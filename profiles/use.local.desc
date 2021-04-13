@@ -12,12 +12,9 @@ app-editors/emacs:libxml2 - Use dev-libs/libxml2 to parse XML instead of the int
 app-editors/emacs:source - Install C source files and make them available for find-function
 app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/emacs:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
-app-emacs/anything:extensions - Install optional extensions
 app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/bbdb:vm - Add support for app-emacs/vm
 app-emacs/emacs-common:games - Support shared score files for games
-app-emacs/erc-extras:bbdb - Include support for app-emacs/bbdb
-app-emacs/erc-extras:chess - Include support for app-emacs/chess
 app-emacs/org-mode:contrib - Install user-contributed files
 app-emacs/org-mode:odt-schema - Install non-free schema files for OpenDocument Text exporter
 app-emacs/whizzytex:gv - Enable support for app-text/gv
