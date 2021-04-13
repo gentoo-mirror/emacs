@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${PN}"
-ELISP_PATCHES="${P}-image-path.patch"
+PATCHES=("${FILESDIR}"/${P}-image-path.patch)
 SITEFILE="50${PN}-gentoo.el"
 
 src_install() {
