@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/mooz/js2-mode/archive/20190219.tar.gz -> js2-mode-20190219.tar.gz
-_eclasses_=elisp-common	900672296ee41d5386f0cfd86d257596	elisp	fe2715ab9965e43eed8cff3f0916183c	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=elisp-common	900672296ee41d5386f0cfd86d257596	elisp	104ff03397e7c0d5154d9124b5698162	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=211ebf083955245c1a0f8a1fa6568937
