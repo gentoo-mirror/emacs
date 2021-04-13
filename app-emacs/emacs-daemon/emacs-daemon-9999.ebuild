@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
@@ -11,11 +11,11 @@ inherit elisp git-r3
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
 
-S="${WORKDIR}/${PN}"
 SITEFILE="10${PN}-gentoo.el"
 
 pkg_setup() {
