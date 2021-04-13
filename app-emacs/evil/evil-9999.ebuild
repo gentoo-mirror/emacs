@@ -1,23 +1,26 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="git://gitorious.org/evil/evil.git"
+EGIT_REPO_URI="https://github.com/emacs-evil/evil.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
 inherit elisp git-r3
 
-DESCRIPTION="Extensible vi layer"
-HOMEPAGE="http://gitorious.org/evil"
+DESCRIPTION="Extensible vi layer for Emacs"
+HOMEPAGE="https://github.com/emacs-evil/evil"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
+RESTRICT="test"
 
-DEPEND="app-emacs/undo-tree"
-RDEPEND="${DEPEND}"
+RDEPEND=">=app-emacs/undo-tree-0.6.3"
+BDEPEND="${RDEPEND}
+	sys-apps/texinfo"
 
-S="${WORKDIR}/${PN}"
-ELISP_REMOVE="evil-pkg.el evil-tests.el"
-ELISP_TEXINFO="doc/evil.texi"
+ELISP_REMOVE="evil-pkg.el evil-tests.el evil-test-helpers.el"
+ELISP_TEXINFO="doc/build/texinfo/evil.texi"
 SITEFILE="50${PN}-gentoo.el"
+DOCS="CHANGES.org CONTRIBUTING.md README.md"
