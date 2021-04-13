@@ -10,7 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -166,7 +166,7 @@
 # to above calls of elisp-site-regen().
 
 case ${EAPI:-0} in
-	5|6) inherit eapi7-ver ;;
+	6) inherit eapi7-ver ;;
 	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -277,27 +277,6 @@ elisp-check-emacs-version() {
 	fi
 }
 
-# Test if the eselected Emacs version is at least the major version
-# of GNU Emacs specified as argument.
-# Return 0 if true, 1 if false, 2 if trouble.
-# Deprecated, use elisp-check-emacs-version instead.
-
-elisp-need-emacs() {
-	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return 2
-	einfo "Emacs version: ${have_emacs}"
-	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
-		eerror "This package needs GNU Emacs."
-		return 1
-	fi
-	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
-		eerror "This package needs at least Emacs ${need_emacs%%.*}."
-		eerror "Use \"eselect emacs\" to select the active version."
-		return 1
-	fi
-	return 0
-}
-
 # @FUNCTION: elisp-compile
 # @USAGE: <list of elisp files>
 # @DESCRIPTION:
@@ -381,10 +360,6 @@ elisp-install() {
 elisp-modules-install() {
 	local subdir="$1"
 	shift
-	# Don't bother inheriting multilib.eclass for get_libdir(), but
-	# error out in old EAPIs that don't support it natively.
-	[[ ${EAPI} == 5 ]] \
-		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
 	ebegin "Installing dynamic modules for GNU Emacs support"
 	( # subshell to avoid pollution of calling environment
 		exeinto "${EMACSMODULES//@libdir@/$(get_libdir)}/${subdir}"
@@ -412,12 +387,7 @@ elisp-site-file-install() {
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
 	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
-	if [[ ${EAPI} == 5 ]]; then
-		grep -q "@EMACSMODULES@" "${sf}" \
-			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
-	else
-		modules=${EMACSMODULES//@libdir@/$(get_libdir)}
-	fi
+	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
 		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
