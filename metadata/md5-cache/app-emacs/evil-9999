@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=>=app-emacs/undo-tree-0.6.3 >=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
-_eclasses_=elisp-common	900672296ee41d5386f0cfd86d257596	elisp	b433b263c29ba23e53ea0c5200297311	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=elisp-common	7035b24874bfc137382951d57a11a690	elisp	8d41193227fc27c56371b201ec7d861c	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=18df880cf7c7994c2c9eea1c24a06be5
