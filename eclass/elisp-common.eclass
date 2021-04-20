@@ -386,7 +386,7 @@ elisp-site-file-install() {
 	[[ ${sf%-gentoo*.el} != "${sf}" ]] && sf="${sf%-gentoo*.el}-gentoo.el"
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
-	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
+	[[ $1 == "${sf}" ]] || cp "$1" "${sf}"
 	modules=${EMACSMODULES//@libdir@/$(get_libdir)}
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
@@ -412,7 +412,7 @@ elisp-site-regen() {
 	local sf i ret=0 null="" page=$'\f'
 	local -a sflist
 
-	if [[ ${EBUILD_PHASE} = *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
+	if [[ ${EBUILD_PHASE} == *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
 		ewarn "Refusing to create site-gentoo.el in ${EBUILD_PHASE} phase."
 		return 0
 	fi
@@ -467,7 +467,7 @@ elisp-site-regen() {
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend $? "elisp-site-regen: Replacing site-gentoo.el failed" || die
 		case ${#sflist[@]} in
-			0) [[ ${PN} = emacs-common ]] \
+			0) [[ ${PN} == emacs-common ]] \
 				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;
