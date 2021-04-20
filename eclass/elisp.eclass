@@ -40,7 +40,7 @@
 # Space separated list of patches to apply after unpacking the sources.
 # Patch files are searched for in the current working dir, WORKDIR, and
 # FILESDIR.  This variable is semi-deprecated, preferably use the
-# PATCHES array instead if the EAPI supports it.
+# PATCHES array instead.
 
 # @ECLASS-VARIABLE: ELISP_REMOVE
 # @DEFAULT_UNSET
