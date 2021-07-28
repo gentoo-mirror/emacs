@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://dev.gentoo.org/~ulm/distfiles/nummove-20070312.tar.gz
-_eclasses_=elisp-common	7035b24874bfc137382951d57a11a690	elisp	8d41193227fc27c56371b201ec7d861c
+_eclasses_=elisp-common	e90a0bd72722a68de1bffa96b1f3fa75	elisp	b165dc0288d12ab26e86f41c56f03914
 _md5_=306ea48e019b712598411b5c017c88c0
