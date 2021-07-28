@@ -1,0 +1,10 @@
+--- a/erc-sasl.el
++++ b/erc-sasl.el
+@@ -38,6 +38,7 @@
+ ;;; Code:
+ 
+ (eval-when-compile (require 'cl-lib))
++(require 'erc)
+ 
+ (defvar erc-sasl-use-sasl t
+   "Set to nil to disable SASL auth")

@@ -1,0 +1,34 @@
+Some updates from https://github.com/syl20bnr/spacemacs
+
+commit 2a983671af6652964b04382760ca530475debfc5
+Author: Yen-Chin Lee <coldnew.tw@gmail.com>
+Date:   Mon Oct 5 15:22:35 2015 +0800
+
+    Fix some cl-lib function with prefix
+
+commit da8063437052943f749bc0f14c5ef5a7536aeaac
+Author: kimr <kimr@synopsys.com>
+Date:   Sat Dec 14 09:14:56 2019 -0800
+
+    converted cl to cl-lib
+
+--- a/erc-sasl.el
++++ b/erc-sasl.el
+@@ -37,7 +37,7 @@
+ 
+ ;;; Code:
+ 
+-(eval-when-compile (require 'cl))
++(eval-when-compile (require 'cl-lib))
+ 
+ (defvar erc-sasl-use-sasl t
+   "Set to nil to disable SASL auth")
+@@ -51,7 +51,7 @@
+ current session"
+   (and erc-sasl-use-sasl
+        (boundp 'erc-session-server)
+-       (loop for re in erc-sasl-server-regexp-list
++       (cl-loop for re in erc-sasl-server-regexp-list
+              thereis (integerp (string-match re erc-session-server)))))
+ 
+ (define-erc-response-handler (CAP)
