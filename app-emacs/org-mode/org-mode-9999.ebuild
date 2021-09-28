@@ -7,7 +7,7 @@ NEED_EMACS=24
 inherit elisp readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://code.orgmode.org/bzg/org-mode.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs/${PN}.git"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/org"
 	inherit git-r3
 	S="${WORKDIR}/org"
