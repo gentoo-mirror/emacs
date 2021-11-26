@@ -15,7 +15,5 @@ app-editors/emacs:wide-int - Prefer wide Emacs integers (typically 62-bit). This
 app-emacs/bbdb:tex - Install plain TeX support files
 app-emacs/bbdb:vm - Add support for app-emacs/vm
 app-emacs/emacs-common:games - Support shared score files for games
-app-emacs/org-mode:contrib - Install user-contributed files
-app-emacs/org-mode:odt-schema - Install non-free schema files for OpenDocument Text exporter
 app-emacs/whizzytex:gv - Enable support for app-text/gv
 app-emacs/whizzytex:xdvi - Enable support for app-text/xdvik
