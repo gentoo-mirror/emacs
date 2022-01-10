@@ -22,6 +22,8 @@
 \\|license\\|properties\\|accept_\\(keywords\\|restrict\\)\\)\
 \\|\\(package\\.\\)?use.\\(stable\\.\\)?\\(force\\|mask\\)\\)\\'"
 	       . conf-space-mode))
+(add-to-list 'auto-mode-alist
+			 '("/make\\.\\(conf\\|defaults\\)\\'" . conf-unix-mode))
 (add-to-list 'interpreter-mode-alist '("openrc-run" . sh-mode))
 (add-to-list 'interpreter-mode-alist '("runscript" . sh-mode))
 (add-hook 'find-file-hook #'ebuild-repo-mode-maybe-enable)
