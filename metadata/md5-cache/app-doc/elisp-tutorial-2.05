@@ -1,11 +1,11 @@
 DEFINED_PHASES=install postinst
 DESCRIPTION=A simple Emacs Lisp tutorial
 EAPI=7
-HOMEPAGE=http://www.gnuvola.org/software/elisp-tutorial/
+HOMEPAGE=https://www.gnuvola.org/software/elisp-tutorial/
 INHERIT=readme.gentoo-r1
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/elisp-tutorial-2.05.tar.gz
 _eclasses_=readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55
-_md5_=a18d7c9b479cfa50d81551fd1fd38bf4
+_md5_=8faf5fa9a3cde1fa6604fb20cacfeb88
