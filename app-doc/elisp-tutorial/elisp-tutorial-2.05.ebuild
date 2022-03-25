@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit readme.gentoo-r1
 
 DESCRIPTION="A simple Emacs Lisp tutorial"
-HOMEPAGE="http://www.gnuvola.org/software/elisp-tutorial/"
-# taken from: http://www.gnuvola.org/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.gnuvola.org/software/elisp-tutorial/"
+# taken from: https://www.gnuvola.org/software/${PN}/${P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-3+"
