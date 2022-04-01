@@ -2,7 +2,7 @@ BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Look up conversational and computing acronyms
 EAPI=7
-HOMEPAGE=http://mwolson.org/projects/
+HOMEPAGE=https://mwolson.org/projects/
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
@@ -10,4 +10,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/wtf-2.0.el.bz2
 _eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a
-_md5_=576197372f0d6c95b5a037f953cb8a7c
+_md5_=18966c0ba7d626bfa12382a0ff698fe7
