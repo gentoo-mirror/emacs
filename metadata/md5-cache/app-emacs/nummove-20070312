@@ -2,12 +2,12 @@ BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=A graphical game of fifteen
 EAPI=7
-HOMEPAGE=http://www.emacswiki.org/cgi-bin/wiki/Nummove
+HOMEPAGE=https://www.emacswiki.org/emacs/Nummove
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/nummove-20070312.tar.gz
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nummove-20070312.tar.gz
 _eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a
-_md5_=306ea48e019b712598411b5c017c88c0
+_md5_=2fe53b2037b13dcc5bdf01e06ebc0644

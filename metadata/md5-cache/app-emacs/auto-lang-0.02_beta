@@ -2,12 +2,12 @@ BDEPEND=>=app-editors/emacs-23.1:*
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Guess language of current buffer
 EAPI=7
-HOMEPAGE=http://www.emacswiki.org/cgi-bin/wiki/AutoLangMode
+HOMEPAGE=https://www.emacswiki.org/emacs/AutoLangMode
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
-SRC_URI=http://dev.gentoo.org/~ulm/distfiles/auto-lang-0.02_beta.el.bz2
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/auto-lang-0.02_beta.el.bz2
 _eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a
-_md5_=64ea641cc6afc3f1dee19c87969ccd8d
+_md5_=151b0e202f4d58d1219706266d693516
