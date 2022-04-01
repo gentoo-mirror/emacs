@@ -9,8 +9,8 @@
   WhizzyTeX is an Emacs minor mode for incrementally viewing LaTeX documents
   that you are editing. It works under Unix with gv (<pkg>app-text/gv</pkg>)
   and xdvi (<pkg>app-text/xdvik</pkg>) viewers, but the Active-DVI viewer
-  (<pkg>app-text/active-dvi</pkg>) will provide much better visual effects
-  and offer more functionalities.
+  <!--(<pkg>app-text/active-dvi</pkg>)--> will provide much better visual
+  effects and offer more functionalities.
 </longdescription>
 <use>
   <flag name='xdvi'>Enable support for <pkg>app-text/xdvik</pkg></flag>

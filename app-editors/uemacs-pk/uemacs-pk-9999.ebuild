@@ -8,8 +8,8 @@ EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="uEmacs/PK is an enhanced version of MicroEMACS"
-HOMEPAGE="https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary
-	ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK"
+HOMEPAGE="https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git"
+S="${WORKDIR}/${PN}"
 
 LICENSE="free-noncomm"
 SLOT="0"
@@ -17,8 +17,6 @@ SLOT="0"
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake V=1 \
