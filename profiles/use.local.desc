@@ -3,7 +3,6 @@
 # * generated automatically using pmaint *
 
 app-editors/emacs:athena - Enable the MIT Athena widget set (x11-libs/libXaw)
-app-editors/emacs:gconf - Use gnome-base/gconf to read the system font name
 app-editors/emacs:gsettings - Use gsettings (dev-libs/glib) to read the system font name
 app-editors/emacs:gtk2 - Prefer version 2 of the GIMP Toolkit to version 3 (x11-libs/gtk+)
 app-editors/emacs:gzip-el - Compress bundled Emacs Lisp source
