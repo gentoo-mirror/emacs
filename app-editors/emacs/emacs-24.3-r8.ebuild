@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24.3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="alsa aqua athena dbus gconf gif gpm gsettings gtk gtk2 gui gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="alsa aqua athena dbus gif gpm gsettings gtk gtk2 gui gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm"
 
 RDEPEND="app-emacs/emacs-common[gui(-)?]
 	net-libs/liblockfile
@@ -36,7 +36,6 @@ RDEPEND="app-emacs/emacs-common[gui(-)?]
 		x11-libs/libXinerama
 		x11-libs/libXrandr
 		x11-misc/xbitmaps
-		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( virtual/jpeg:0= )
@@ -175,7 +174,7 @@ src_configure() {
 		myconf+=" --without-x"
 	else
 		myconf+=" --with-x --without-ns"
-		myconf+=" $(use_with gconf)"
+		myconf+=" --without-gconf"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with gif)"
