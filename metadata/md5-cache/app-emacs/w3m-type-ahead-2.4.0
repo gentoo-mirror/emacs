@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=app-emacs/emacs-w3m >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://alioth-archive.debian.org/releases/mph-emacs-pkgs/w3m-type-ahead-el/2.4.0/w3m-type-ahead-2.4.0.tar.gz
-_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a
+_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	c1c17e9c24d72d3bd58c611de8116fb6
 _md5_=349bd6c252c98e62745b72749c25ed8f

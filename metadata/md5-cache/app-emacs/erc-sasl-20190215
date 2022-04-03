@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-24.5:*
 SLOT=0
 SRC_URI=https://gitlab.com/psachin/erc-sasl/-/archive/0fa60fdf8c2c1cdbe048e5189e35e480fe931c20/erc-sasl-0fa60fdf8c2c1cdbe048e5189e35e480fe931c20.tar.gz -> erc-sasl-20190215.tar.gz
-_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a
+_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	c1c17e9c24d72d3bd58c611de8116fb6
 _md5_=326fce8251d6c159330dcbdc94127a5f

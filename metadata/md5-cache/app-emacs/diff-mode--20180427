@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/diff-mode--20180427.el.xz
-_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	ba40293f44b2e5c3c19d4671c19ce01a	readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55
+_eclasses_=elisp-common	191a4584459a8e97597d90e9fbd193b8	elisp	c1c17e9c24d72d3bd58c611de8116fb6	readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55
 _md5_=2ed490d40245d2b4c0bb8d9f9de486cb
