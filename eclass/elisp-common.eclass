@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -165,7 +165,7 @@
 # Again, with optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	6) inherit eapi7-ver ;;
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
