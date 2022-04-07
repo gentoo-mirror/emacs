@@ -1,12 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Manages ctags implementations
-EAPI=5
+EAPI=8
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 INHERIT=git-r3
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=!<app-eselect/eselect-emacs-1.18 >=app-admin/eselect-1.2.3
+RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 _eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53
-_md5_=e240b9401a6ad88614df1c3681a3054b
+_md5_=1e994046c65754ceecee3e86c2270c97
