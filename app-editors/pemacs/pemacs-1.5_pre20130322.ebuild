@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -16,6 +16,7 @@ fi
 
 DESCRIPTION="Perfect Emacs, a small footprint Emacs derived from Ersatz Emacs"
 HOMEPAGE="https://github.com/hughbarney/pEmacs"
+S="${WORKDIR}/${PN}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -24,8 +25,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}"
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
