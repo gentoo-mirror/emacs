@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
 SLOT=0
-_eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53
+_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
 _md5_=e4933a39c0f8275f82636ad7de3a6fb9
