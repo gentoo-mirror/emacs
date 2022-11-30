@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
@@ -38,7 +38,7 @@ RDEPEND="app-emacs/emacs-common[gui(-)?]
 		x11-misc/xbitmaps
 		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib:0= )
-		jpeg? ( virtual/jpeg:0= )
+		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
@@ -54,10 +54,7 @@ RDEPEND="app-emacs/emacs-common[gui(-)?]
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? (
-			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? ( x11-libs/gtk+:3 )
-		)
+		gtk? ( x11-libs/gtk+:3 )
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
@@ -83,12 +80,12 @@ RDEPEND="app-emacs/emacs-common[gui(-)?]
 DEPEND="${RDEPEND}
 	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
-BDEPEND="app-eselect/eselect-emacs
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-RDEPEND="${RDEPEND}
-	app-eselect/eselect-emacs"
+IDEPEND="app-eselect/eselect-emacs"
+
+RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
@@ -117,7 +114,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-data-start.patch \
 		"${FILESDIR}"/${P}-imagemagick-7.patch \
 		"${FILESDIR}"/${P}-glibc-2.28.patch
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
@@ -203,12 +200,13 @@ src_configure() {
 				Your version of GTK+ will have problems with closing open
 				displays. This is no problem if you just use one display, but
 				if you use more than one and close one of them Emacs may crash.
-				See <https://bugzilla.gnome.org/show_bug.cgi?id=85715>.
+				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
+				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
+			myconf+=" --with-x-toolkit=gtk3"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -227,8 +225,6 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use gtk2 && ewarn \
-			"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
 	fi
 
 	econf \
@@ -269,15 +265,15 @@ src_install() {
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{applications,icons}
-	rm -rf "${ED}"/var
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
+	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
-	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp || die
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
-	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
 	local cdir
 	if use source; then
@@ -312,9 +308,9 @@ src_install() {
 
 	dodoc README BUGS
 
-	if use aqua; then
+	if use gui && use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
@@ -322,18 +318,20 @@ src_install() {
 	local DOC_CONTENTS="You can set the version to be started by
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
-		be installed at the	same time. \"man emacs.eselect\" for details.
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."
-	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
-		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
-		machine would satisfy basic Emacs requirements under X11.
-		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
-		for how to enable anti-aliased fonts."
-	use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
-		\"${EPREFIX}/Applications/Gentoo\". You may want to copy or symlink
-		it into /Applications by yourself."
+	if use gui; then
+		DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+			Installing media-fonts/font-adobe-{75,100}dpi on the X server's
+			machine would satisfy basic Emacs requirements under X11.
+			See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
+			for how to enable anti-aliased fonts."
+		use aqua && DOC_CONTENTS+="\\n\\n${EMACS_SUFFIX^}.app is in
+			\"${EPREFIX}/Applications/Gentoo\". You may want to copy or
+			symlink it into /Applications by yourself."
+	fi
 	readme.gentoo_create_doc
 }
 
@@ -352,9 +350,6 @@ pkg_postinst() {
 		# force an update of the emacs symlink for the livecd/dvd,
 		# because some microemacs packages set it with USE=livecd
 		eselect emacs update
-	elif [[ $(readlink "${EROOT}"/usr/bin/emacs) = ${EMACS_SUFFIX} ]]; then
-		# refresh symlinks in case any installed files have changed
-		eselect emacs set ${EMACS_SUFFIX}
 	else
 		eselect emacs update ifunset
 	fi
