@@ -2,48 +2,41 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+WANT_AUTOMAKE="none"
 
-inherit autotools elisp-common flag-o-matic readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-7.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-23.4-patches-23.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-24.4-patches-5.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-24.5-patches-5.tar.xz"
+SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-23.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="24.3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="alsa aqua athena dbus gif gpm gsettings gtk gtk2 gui gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm"
+SLOT="23"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="alsa aqua athena dbus games gconf gif gpm gtk gui gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars Xaw3d xft +xpm"
 
-RDEPEND="app-emacs/emacs-common[gui(-)?]
+RDEPEND="acct-group/mail
+	app-emacs/emacs-common[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
-	alsa? ( media-libs/alsa-lib )
-	dbus? ( sys-apps/dbus )
-	gpm? ( sys-libs/gpm )
 	kerberos? ( virtual/krb5 )
-	libxml2? ( >=dev-libs/libxml2-2.2.0 )
-	selinux? ( sys-libs/libselinux )
-	ssl? ( net-libs/gnutls:0= )
+	alsa? ( media-libs/alsa-lib )
+	games? ( acct-group/gamestat )
+	gpm? ( sys-libs/gpm )
+	dbus? ( sys-apps/dbus )
 	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
-		x11-libs/libXext
-		x11-libs/libXinerama
-		x11-libs/libXrandr
 		x11-misc/xbitmaps
-		gsettings? ( >=dev-libs/glib-2.28.6 )
+		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -54,22 +47,25 @@ RDEPEND="app-emacs/emacs-common[gui(-)?]
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? ( x11-libs/gtk+:3 )
+		gtk? ( x11-libs/gtk+:2 )
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
 				x11-libs/libXpm
+				x11-libs/libXext
 				x11-libs/libXmu
 				x11-libs/libXt
 			)
 			!motif? (
 				Xaw3d? (
 					x11-libs/libXaw3d
+					x11-libs/libXext
 					x11-libs/libXmu
 					x11-libs/libXt
 				)
 				!Xaw3d? ( athena? (
 					x11-libs/libXaw
+					x11-libs/libXext
 					x11-libs/libXmu
 					x11-libs/libXt
 				) )
@@ -94,54 +90,37 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # operations later on
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
-
-src_unpack() {
-	unpack ${P}.tar.xz
-	unpack ${PN}-23.4-patches-23.tar.xz; mv patch{,-23.4} || die
-	unpack ${PN}-24.4-patches-5.tar.xz; mv patch{,-24.4} || die
-	unpack ${PN}-24.5-patches-5.tar.xz; mv patch{,-24.5} || die
-	unpack ${P}-patches-7.tar.xz
-}
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	eapply ../patch \
-		../patch-23.4/28_all_gmalloc.patch \
-		../patch-24.4/03_all_gnus-image.patch \
-		../patch-24.4/05_all_browse-url-firefox.patch \
-		../patch-24.5/08_all_enriched-mode.patch \
-		"${FILESDIR}"/${P}-jpeg-version.patch \
-		"${FILESDIR}"/${P}-giflib-5.patch \
-		"${FILESDIR}"/${P}-data-start.patch \
-		"${FILESDIR}"/${P}-imagemagick-7.patch \
-		"${FILESDIR}"/${P}-glibc-2.28.patch
 	default
 
-	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
 
 	if ! use alsa; then
 		# ALSA is detected even if not requested by its USE flag.
 		# Suppress it by supplying pkg-config with a wrong library name.
-		sed -i -e "/ALSA_MODULES=/s/alsa/DiSaBlEaLsA/" configure.ac \
-			|| die "unable to sed configure.ac"
+		sed -i -e "/ALSA_MODULES=/s/alsa/DiSaBlEaLsA/" configure.in \
+			|| die "unable to sed configure.in"
 	fi
 	if ! use gzip-el; then
 		# Emacs' build system automatically detects the gzip binary and
 		# compresses el files. We don't want that so confuse it with a
 		# wrong binary name
-		sed -i -e "/AC_PATH_PROG/s/gzip/PrEvEnTcOmPrEsSiOn/" configure.ac \
-			|| die "unable to sed configure.ac"
+		sed -i -e "s/ gzip/ PrEvEnTcOmPrEsSiOn/" configure.in \
+			|| die "unable to sed configure.in"
 	fi
 
-	AT_M4DIR=m4 eautoreconf
+	eautoreconf
 	touch src/stamp-h.in || die
 }
 
 src_configure() {
 	strip-flags
-	filter-flags -pie					#526948
-	append-ldflags $(test-flags -no-pie)	#639570
+	filter-flags -fstrict-aliasing -pie
+	append-flags $(test-flags -fno-strict-aliasing)
+	append-ldflags $(test-flags -no-pie)	#639568
 
 	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
@@ -171,8 +150,7 @@ src_configure() {
 		myconf+=" --without-x"
 	else
 		myconf+=" --with-x --without-ns"
-		myconf+=" --without-gconf"
-		myconf+=" $(use_with gsettings)"
+		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with gif)"
 		myconf+=" $(use_with jpeg)"
@@ -180,7 +158,6 @@ src_configure() {
 		myconf+=" $(use_with svg rsvg)"
 		myconf+=" $(use_with tiff)"
 		myconf+=" $(use_with xpm)"
-		myconf+=" $(use_with imagemagick)"
 
 		if use xft; then
 			myconf+=" --with-xft"
@@ -193,20 +170,13 @@ src_configure() {
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
-		local f line
+		# GTK+ is the default toolkit if USE=gtk is chosen with other
+		# possibilities. Emacs upstream thinks this should be standard
+		# policy on all distributions
+		local f
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
-			while read line; do ewarn "${line}"; done <<-EOF
-				Your version of GTK+ will have problems with closing open
-				displays. This is no problem if you just use one display, but
-				if you use more than one and close one of them Emacs may crash.
-				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
-				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
-				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid or the
-				Motif toolkit instead.
-			EOF
-			myconf+=" --with-x-toolkit=gtk3"
+			myconf+=" --with-x-toolkit=gtk"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -227,42 +197,61 @@ src_configure() {
 		fi
 	fi
 
+	# According to configure, this option is only used for GNU/Linux
+	# (x86_64 and s390). For Gentoo Prefix we have to explicitly spell
+	# out the location because $(get_libdir) does not necessarily return
+	# something that matches the host OS's libdir naming (e.g. RHEL).
+	local crtdir=$($(tc-getCC) -print-file-name=crt1.o)
+	crtdir=${crtdir%/*}
+
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--without-gameuser \
-		--without-compress-info \
+		--with-crt-dir="${crtdir}" \
+		--with-gameuser=":gamestat" \
 		--without-hesiod \
-		$(use_with dbus) \
-		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with libxml2 xml2) \
-		$(use_with selinux) \
-		$(use_with ssl gnutls) \
-		$(use_with wide-int) \
+		$(use_with gpm) \
+		$(use_with dbus) \
 		${myconf}
 }
 
 src_compile() {
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
-	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
+	emake CC="$(tc-getCC)" \
+		AR="$(tc-getAR) cq" \
+		RANLIB="$(tc-getRANLIB)" \
+		RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t install
+	emake DESTDIR="${D}" install
 
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
+	rm "${ED}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \
+		|| die "removing duplicate emacs executable failed"
+	mv "${ED}"/usr/bin/emacs-${EMACS_SUFFIX} "${ED}"/usr/bin/${EMACS_SUFFIX} \
 		|| die "moving emacs executable failed"
-	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 \
+
+	# move man pages to the correct place
+	local m
+	mv "${ED}"/usr/share/man/man1/{emacs,${EMACS_SUFFIX}}.1 \
 		|| die "moving emacs man page failed"
+	for m in b2m ctags ebrowse emacsclient etags grep-changelog rcs-checkin; do
+		mv "${ED}"/usr/share/man/man1/${m}{,-${EMACS_SUFFIX}}.1 \
+			|| die "moving ${m} man page failed"
+	done
 
 	# move info dir to avoid collisions with the dir file generated by portage
 	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
 		|| die "moving info dir failed"
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
+
+	# movemail must be setgid mail
+	fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
@@ -282,6 +271,9 @@ src_install() {
 		# This is not meant to install all the source -- just the
 		# C source you might find via find-function
 		doins src/*.{c,h,m}
+		doins -r src/{m,s}
+		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/Makefile.c || die
+		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/{m,s}/README || die
 	elif has installsources ${FEATURES}; then
 		cdir="/usr/src/debug/${CATEGORY}/${PF}/${S#"${WORKDIR}/"}/src"
 	fi
@@ -319,9 +311,10 @@ src_install() {
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
 		be installed at the same time. \"man emacs.eselect\" for details.
-		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
-		strongly recommended that you use app-admin/emacs-updater to rebuild
-		all byte-compiled elisp files of the installed Emacs packages."
+		\\n\\nIf you upgrade from a previous major version of Emacs, then
+		it is strongly recommended that you use app-admin/emacs-updater
+		to rebuild all byte-compiled elisp files of the installed Emacs
+		packages."
 	if use gui; then
 		DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 			Installing media-fonts/font-adobe-{75,100}dpi on the X server's

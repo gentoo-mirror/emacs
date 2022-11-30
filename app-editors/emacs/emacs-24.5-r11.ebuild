@@ -8,26 +8,28 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-7.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-23.4-patches-23.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-24.4-patches-5.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${PN}-24.5-patches-5.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="24.3"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="alsa aqua athena dbus gif gpm gsettings gtk gtk2 gui gzip-el imagemagick jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm"
+SLOT="24"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="acl alsa aqua athena dbus games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
-RDEPEND="app-emacs/emacs-common[gui(-)?]
+RDEPEND="acct-group/mail
+	app-emacs/emacs-common[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
+	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
+	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
+	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
@@ -94,45 +96,14 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # operations later on
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
-
-src_unpack() {
-	unpack ${P}.tar.xz
-	unpack ${PN}-23.4-patches-23.tar.xz; mv patch{,-23.4} || die
-	unpack ${PN}-24.4-patches-5.tar.xz; mv patch{,-24.4} || die
-	unpack ${PN}-24.5-patches-5.tar.xz; mv patch{,-24.5} || die
-	unpack ${P}-patches-7.tar.xz
-}
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	eapply ../patch \
-		../patch-23.4/28_all_gmalloc.patch \
-		../patch-24.4/03_all_gnus-image.patch \
-		../patch-24.4/05_all_browse-url-firefox.patch \
-		../patch-24.5/08_all_enriched-mode.patch \
-		"${FILESDIR}"/${P}-jpeg-version.patch \
-		"${FILESDIR}"/${P}-giflib-5.patch \
-		"${FILESDIR}"/${P}-data-start.patch \
-		"${FILESDIR}"/${P}-imagemagick-7.patch \
-		"${FILESDIR}"/${P}-glibc-2.28.patch
 	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
-
-	if ! use alsa; then
-		# ALSA is detected even if not requested by its USE flag.
-		# Suppress it by supplying pkg-config with a wrong library name.
-		sed -i -e "/ALSA_MODULES=/s/alsa/DiSaBlEaLsA/" configure.ac \
-			|| die "unable to sed configure.ac"
-	fi
-	if ! use gzip-el; then
-		# Emacs' build system automatically detects the gzip binary and
-		# compresses el files. We don't want that so confuse it with a
-		# wrong binary name
-		sed -i -e "/AC_PATH_PROG/s/gzip/PrEvEnTcOmPrEsSiOn/" configure.ac \
-			|| die "unable to sed configure.ac"
-	fi
 
 	AT_M4DIR=m4 eautoreconf
 	touch src/stamp-h.in || die
@@ -154,12 +125,12 @@ src_configure() {
 
 	local myconf
 
-	if use alsa && ! use sound; then
-		einfo "Although sound USE flag is disabled you chose to have alsa,"
-		einfo "so sound is switched on anyway."
-		myconf+=" --with-sound"
+	if use alsa; then
+		use sound || ewarn \
+			"USE flag \"alsa\" overrides \"-sound\"; enabling sound support."
+		myconf+=" --with-sound=alsa"
 	else
-		myconf+=" $(use_with sound)"
+		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
 	if ! use gui; then
@@ -232,9 +203,11 @@ src_configure() {
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
-		--without-gameuser \
-		--without-compress-info \
+		--with-gameuser=":gamestat" \
+		--without-compress-install \
 		--without-hesiod \
+		--with-file-notification=$(usev inotify || usev gfile || echo no) \
+		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
@@ -242,6 +215,7 @@ src_configure() {
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
 		$(use_with wide-int) \
+		$(use_with zlib) \
 		${myconf}
 }
 
@@ -251,7 +225,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" NO_BIN_LINK=t install
+	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
 		|| die "moving emacs executable failed"
@@ -264,6 +238,10 @@ src_install() {
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
+	# movemail must be setgid mail
+	fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
@@ -274,6 +252,13 @@ src_install() {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
+
+	if use gzip-el; then
+		# compress .el files when a corresponding .elc exists
+		find "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp -type f \
+			-name "*.elc" -print | sed 's/\.elc$/.el/' | xargs gzip -9n
+		assert "gzip .el failed"
+	fi
 
 	local cdir
 	if use source; then
