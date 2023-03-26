@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/elisp-tutorial-2.05.tar.gz
-_eclasses_=readme.gentoo-r1	b776ad4b42f564c406a95c41ccb42c55
+_eclasses_=readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3
 _md5_=8faf5fa9a3cde1fa6604fb20cacfeb88
