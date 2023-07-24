@@ -1,26 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
 
-inherit elisp-common desktop xdg-utils readme.gentoo-r1 git-r3
+inherit elisp-common desktop gnome2-utils xdg-utils readme.gentoo-r1 git-r3
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="games gui"
+IUSE="games gsettings gui"
 
-RDEPEND="games? ( acct-group/gamestat )"
-DEPEND="${RDEPEND}"
+DEPEND="games? ( acct-group/gamestat )"
+RDEPEND="!=app-editors/emacs-29.1_rc1-r0
+	${DEPEND}
+	gui? ( gsettings? ( dev-libs/glib ) )"
 PDEPEND=">=app-editors/emacs-23.1:*"
-
-S="${WORKDIR}/${PN}"
 
 src_install() {
 	insinto "${SITELISP}"
@@ -53,6 +54,11 @@ src_install() {
 		doicon -s scalable emacs23.svg
 		newicon -s scalable emacs25.svg emacs.svg
 		popd
+
+		if use gsettings; then
+			insinto /usr/share/glib-2.0/schemas
+			doins org.gnu.emacs.defaults.gschema.xml
+		fi
 	fi
 
 	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
@@ -95,6 +101,7 @@ pkg_postinst() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
+		use gsettings && gnome2_schemas_update
 	fi
 	readme.gentoo_print_elog
 }
@@ -103,5 +110,6 @@ pkg_postrm() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
+		use gsettings && gnome2_schemas_update
 	fi
 }
