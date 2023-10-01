@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/hughbarney/atto/archive/1485816cc8e7556c634d2676b3ff17c3b998062a.tar.gz -> atto-1.20_pre20180320.tar.gz
-_eclasses_=toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0
+_eclasses_=toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0
 _md5_=987b0b200989efb84d22ae71ca283336
