@@ -1,13 +1,13 @@
-BDEPEND=>=app-editors/emacs-23.1:*
-DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+BDEPEND=>=app-editors/emacs-25.3:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
 DESCRIPTION=An improved JavaScript mode for GNU Emacs
 EAPI=7
 HOMEPAGE=https://github.com/mooz/js2-mode/
 INHERIT=elisp readme.gentoo-r1
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3+
-RDEPEND=>=app-editors/emacs-23.1:*
+RDEPEND=>=app-editors/emacs-25.3:*
 SLOT=0
 SRC_URI=https://github.com/mooz/js2-mode/archive/20190219.tar.gz -> js2-mode-20190219.tar.gz
-_eclasses_=elisp-common	79f8e13c80c89792e5c9b3fc8ef59f3b	elisp	8aab2c847b5894dc40503ae1d203abcf	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3
+_eclasses_=elisp-common	dc179f98b2b4d9a4473fd3bdc154bbb6	elisp	fbefa95f5e9ab880a34bc69832b7c0d7	readme.gentoo-r1	204091a2cde6179cd9d3db26d09412d3
 _md5_=211ebf083955245c1a0f8a1fa6568937

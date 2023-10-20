@@ -1,5 +1,5 @@
-BDEPEND=>=app-editors/emacs-23.1:*
-DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+BDEPEND=>=app-editors/emacs-25.3:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
 DEPEND=app-emacs/emacs-w3m
 DESCRIPTION=Type-ahead support for emacs-w3m
 EAPI=7
@@ -7,8 +7,8 @@ HOMEPAGE=https://www.emacswiki.org/emacs/WThreeMTypeAhead
 INHERIT=elisp
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=app-emacs/emacs-w3m >=app-editors/emacs-23.1:*
+RDEPEND=app-emacs/emacs-w3m >=app-editors/emacs-25.3:*
 SLOT=0
 SRC_URI=https://alioth-archive.debian.org/releases/mph-emacs-pkgs/w3m-type-ahead-el/2.4.0/w3m-type-ahead-2.4.0.tar.gz
-_eclasses_=elisp-common	79f8e13c80c89792e5c9b3fc8ef59f3b	elisp	8aab2c847b5894dc40503ae1d203abcf
+_eclasses_=elisp-common	dc179f98b2b4d9a4473fd3bdc154bbb6	elisp	fbefa95f5e9ab880a34bc69832b7c0d7
 _md5_=349bd6c252c98e62745b72749c25ed8f

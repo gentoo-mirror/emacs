@@ -1,12 +1,12 @@
-BDEPEND=sys-apps/texinfo >=app-editors/emacs-23.1:* >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+BDEPEND=sys-apps/texinfo >=app-editors/emacs-25.3:* >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
 DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
 EAPI=8
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
 INHERIT=elisp git-r3 optfeature
 LICENSE=GPL-2+
 PROPERTIES=live
-RDEPEND=>=app-editors/emacs-23.1:*
+RDEPEND=>=app-editors/emacs-25.3:*
 SLOT=0
-_eclasses_=elisp-common	79f8e13c80c89792e5c9b3fc8ef59f3b	elisp	8aab2c847b5894dc40503ae1d203abcf	git-r3	2358a7b20091609e24bd3a83b3ac5991	optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54
+_eclasses_=elisp-common	dc179f98b2b4d9a4473fd3bdc154bbb6	elisp	fbefa95f5e9ab880a34bc69832b7c0d7	git-r3	2358a7b20091609e24bd3a83b3ac5991	optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54
 _md5_=d22bc40e6caf5ddfe8d35a506bd46396
