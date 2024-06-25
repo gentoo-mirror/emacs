@@ -1,6 +1,8 @@
 (add-to-list 'load-path "@SITELISP@")
 (autoload 'ebuild-mode "ebuild-mode"
-  "Major mode for Portage .ebuild and .eclass files." t)
+  "Major mode for Gentoo .ebuild files." t)
+(autoload 'ebuild-eclass-mode "ebuild-mode"
+  "Major mode for Gentoo .eclass files." t)
 (autoload 'ebuild-repo-mode "ebuild-mode"
   "Minor mode for files in an ebuild repository." t)
 (autoload 'ebuild-repo-mode-maybe-enable "ebuild-mode")
@@ -11,7 +13,8 @@
 (autoload 'glep-mode "glep-mode"
   "Major mode for Gentoo Linux Enhancement Proposals." t)
 
-(add-to-list 'auto-mode-alist '("\\.\\(ebuild\\|eclass\\)\\'" . ebuild-mode))
+(add-to-list 'auto-mode-alist '("\\.ebuild\\'" . ebuild-mode))
+(add-to-list 'auto-mode-alist '("\\.eclass\\'" . ebuild-eclass-mode))
 (add-to-list 'auto-mode-alist '("/devmanual.*\\.xml\\'" . devbook-mode))
 (add-to-list 'auto-mode-alist
 	     '("/[0-9]\\{4\\}-[01][0-9]-[0-3][0-9]-.+\\.[a-z]\\{2\\}\\.txt\\'"
