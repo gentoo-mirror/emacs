@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,5 +27,6 @@ pkg_postinst() {
 	optfeature "ebuild commands support" sys-apps/portage
 	optfeature "additional development tools" dev-util/pkgdev
 	optfeature "ebuild QA utilities" dev-util/pkgcheck
+	optfeature "XML syntax validation" app-emacs/nxml-gentoo-schemas
 	optfeature "generating HTML from GLEPs" dev-python/docutils-glep
 }
