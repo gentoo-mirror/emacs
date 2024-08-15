@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=>=app-editors/xemacs-21.4.20-r5 app-xemacs/sh-script
 SLOT=0
 _eclasses_=optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54	git-r3	875eb471682d3e1f18da124be97dcc81
-_md5_=3b944ebeb364febc2e5a550fc5950cbe
+_md5_=af336f5766f62c9ec078921eda2ccf38
