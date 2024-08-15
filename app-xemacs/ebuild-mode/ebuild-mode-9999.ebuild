@@ -26,7 +26,7 @@ src_compile() {
 	local XEMACS="${EPREFIX}/usr/bin/xemacs"
 
 	"${XEMACS}" -batch -q --no-site-file \
-		-eval "(add-to-list 'load-path \".\")" \
+		-eval "(add-to-list 'load-path nil)" \
 		-f batch-byte-compile \
 		ebuild-mode.el gentoo-newsitem-mode.el || die
 
@@ -37,7 +37,7 @@ src_compile() {
 		ebuild-mode.el gentoo-newsitem-mode.el || die
 }
 
-src_test() { :; }  # ert is not available for XEmacs
+src_test() { :; }  # ERT is not yet available for XEmacs
 
 src_install() {
 	insinto /usr/share/xemacs/site-packages/lisp/${PN}
