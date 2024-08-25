@@ -42,6 +42,8 @@ src_test() { :; }  # ERT is not yet available for XEmacs
 src_install() {
 	insinto /usr/share/xemacs/site-packages/lisp/${PN}
 	doins *.el *.elc
+	# XEmacs 21.4 compatibility
+	dosym -r /usr/{share,lib}/xemacs/site-packages/lisp/${PN}
 }
 
 pkg_postinst() {
