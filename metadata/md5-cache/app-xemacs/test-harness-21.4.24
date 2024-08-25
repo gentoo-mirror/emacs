@@ -1,0 +1,11 @@
+BDEPEND=>=app-editors/xemacs-21.4.24
+DEFINED_PHASES=compile install test
+DESCRIPTION=Test suite harness for testing XEmacs
+EAPI=8
+HOMEPAGE=https://www.xemacs.org/
+KEYWORDS=~amd64
+LICENSE=GPL-2+
+RDEPEND=>=app-editors/xemacs-21.4.24
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/xemacs-21.4/xemacs-21.4.24.tar.gz
+_md5_=c4e27b3b6c8d3950977d55295a1b3751
