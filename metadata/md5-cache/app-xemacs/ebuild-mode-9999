@@ -11,4 +11,4 @@ RDEPEND=>=app-editors/xemacs-21.4.24-r9 app-xemacs/sh-script
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54	git-r3	875eb471682d3e1f18da124be97dcc81
-_md5_=39049a3e6540214c7630aceaa8a3f740
+_md5_=41b637c7a274a06190b64a1cfb70ae12
