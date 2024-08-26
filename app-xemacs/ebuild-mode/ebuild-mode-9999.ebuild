@@ -48,10 +48,8 @@ src_test() {
 }
 
 src_install() {
-	insinto /usr/share/xemacs/site-packages/lisp/${PN}
+	insinto /usr/lib/xemacs/site-packages/lisp/${PN}
 	doins ebuild-mode.{el,elc} gentoo-newsitem-mode.{el,elc} auto-autoloads.el
-	# XEmacs 21.4 compatibility
-	dosym -r /usr/{share,lib}/xemacs/site-packages/lisp/${PN}
 }
 
 pkg_postinst() {
