@@ -28,15 +28,16 @@ BDEPEND="${RDEPEND}
 		app-xemacs/test-harness
 	) )"
 
-src_compile() {
-	local EMACS="${EPREFIX}/usr/bin/xemacs"
+EMACS="${EPREFIX}/usr/bin/xemacs"
+EMACSFLAGS="-batch -q --no-site-file"
 
-	"${EMACS}" -batch -q --no-site-file \
+src_compile() {
+	${EMACS} ${EMACSFLAGS} \
 		-eval "(add-to-list 'load-path nil)" \
 		-f batch-byte-compile \
 		ebuild-mode.el gentoo-newsitem-mode.el || die
 
-	"${EMACS}" -batch -q --no-site-file \
+	${EMACS} ${EMACSFLAGS} \
 		-eval "(setq autoload-package-name \"${PN}\")" \
 		-eval "(setq generated-autoload-file \"${S}/auto-autoloads.el\")" \
 		-l autoload -f batch-update-autoloads \
@@ -44,12 +45,13 @@ src_compile() {
 }
 
 src_test() {
-	emake check EMACS="${EPREFIX}/usr/bin/xemacs"
+	emake check EMACS="${EMACS}" EMACSFLAGS="${EMACSFLAGS}"
 }
 
 src_install() {
 	insinto /usr/lib/xemacs/site-packages/lisp/${PN}
-	doins ebuild-mode.{el,elc} gentoo-newsitem-mode.{el,elc} auto-autoloads.el
+	doins ebuild-mode.{el,elc} gentoo-newsitem-mode.{el,elc}
+	doins auto-autoloads.el
 }
 
 pkg_postinst() {
