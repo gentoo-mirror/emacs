@@ -207,7 +207,7 @@ elisp_pkg_postrm() {
 
 elisp_pkg_info() {
 	if [[ -n ${_ELISP_EMACS_VERSION} ]]; then
-		echo "Built with Emacs version ${_ELISP_EMACS_VERSION}"
+		echo "Built with Emacs version: ${_ELISP_EMACS_VERSION}"
 	fi
 }
 
