@@ -28,4 +28,3 @@ app-emacs/wtf 2.0: Look up conversational and computing acronyms
 app-eselect/eselect-ctags 9999: Manages ctags implementations
 app-eselect/eselect-emacs 9999-r2: Manage multiple Emacs versions on one system
 app-xemacs/ebuild-mode 9999: Emacs modes for editing ebuilds and other Gentoo specific files
-app-xemacs/test-harness 21.4.24: Test suite harness for testing XEmacs
