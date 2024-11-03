@@ -23,7 +23,7 @@ RDEPEND=">=app-editors/xemacs-21.5.35
 BDEPEND="${RDEPEND}"
 
 EMACS="${EPREFIX}/usr/bin/xemacs"
-EMACSFLAGS="-batch -q --no-site-file"
+EMACSFLAGS="-batch -q -no-site-file"
 
 src_compile() {
 	${EMACS} ${EMACSFLAGS} \
