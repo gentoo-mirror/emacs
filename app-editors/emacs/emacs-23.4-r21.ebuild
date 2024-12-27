@@ -118,7 +118,7 @@ src_prepare() {
 src_configure() {
 	strip-flags
 	filter-flags -fstrict-aliasing -pie
-	append-flags $(test-flags -fno-strict-aliasing)
+	append-flags -std=gnu17 -fno-strict-aliasing -Wno-implicit
 	append-ldflags $(test-flags -no-pie)	#639568
 	replace-flags "-O[3-9]" -O2
 
