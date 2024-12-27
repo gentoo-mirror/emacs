@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
 KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="alsa aqua athena dbus games gconf gif gpm gtk gui gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars Xaw3d xft +xpm"
+IUSE="alsa aqua athena dbus games gif gpm gtk gui gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars Xaw3d xft +xpm"
 
 RDEPEND="acct-group/mail
 	app-emacs/emacs-common[games?,gui(-)?]
@@ -30,7 +30,6 @@ RDEPEND="acct-group/mail
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-misc/xbitmaps
-		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
@@ -145,7 +144,7 @@ src_configure() {
 		myconf+=" --without-x"
 	else
 		myconf+=" --with-x --without-ns"
-		myconf+=" $(use_with gconf)"
+		myconf+=" --without-gconf"
 		myconf+=" $(use_with toolkit-scroll-bars)"
 		myconf+=" $(use_with gif)"
 		myconf+=" $(use_with jpeg)"
