@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="acl alsa aqua athena dbus games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND="acct-group/mail
@@ -113,12 +113,7 @@ src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
 	append-ldflags $(test-flags -no-pie)	#639570
-
-	if use ia64; then
-		replace-flags "-O[2-9]" -O1		#325373
-	else
-		replace-flags "-O[3-9]" -O2
-	fi
+	replace-flags "-O[3-9]" -O2
 
 	# Don't trigger a floating point exception for NaNs on alpha
 	use alpha && append-flags -mieee
