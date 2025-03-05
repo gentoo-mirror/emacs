@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
 EGIT_BRANCH="${PN}"
@@ -33,7 +33,8 @@ pkg_setup() {
 		while read line; do ewarn "${line}"; done <<-EOF
 		Your current Emacs is compiled with GTK+. There is a long-standing bug
 		in GTK+ that prevents Emacs from recovering from X disconnects:
-		<https://bugzilla.gnome.org/show_bug.cgi?id=85715>
+		<https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
+		<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 		If you run Emacs as a daemon, then it is strongly recommended that you
 		compile it with the Lucid or the Motif toolkit instead, i.e. with
 		USE="athena Xaw3d -gtk -motif" or USE="motif -gtk -athena -Xaw3d".
@@ -47,7 +48,7 @@ src_install() {
 	newinitd emacs.rc emacs
 	newconfd emacs.conf emacs
 	exeinto /usr/libexec/emacs
-	doexe emacs-wrapper.sh emacs-stop.sh
+	doexe emacs-wrapper.sh
 	elisp-site-file-install "${SITEFILE}"
 	dodoc README ChangeLog
 }
