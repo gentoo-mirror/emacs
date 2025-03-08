@@ -64,31 +64,11 @@ src_install() {
 		fi
 	fi
 
-	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
-		added to ${SITELISP}/site-gentoo.el. In order for this site
-		initialisation to be loaded for all users automatically, a default
-		site startup file /etc/emacs/site-start.el is installed. You are
-		responsible for maintenance of this file.
-		\n\nAlternatively, individual users can add the following command:
-		\n\n\t(require 'site-gentoo)
-		\n\nto their ~/.emacs initialisation files, or, for greater
-		flexibility, users may load single package-specific initialisation
-		files from the ${SITELISP}/site-gentoo.d/ directory."
+	dodoc README.daemon
 
-	[[ -d /run/openrc ]] && DOC_CONTENTS+="\n\n\nTo have OpenRC
-		(version 0.60 or later) automatically start Emacs as a daemon in
-		your user session, login as normal user and execute the command:
-		\n\n\t$ rc-update --user add emacs default
-		\n\nThis will add emacs to the default runlevel in
-		~/.config/rc/runlevels/.
-		\n\nIf you want to start your user's Emacs daemon at system startup
-		and have it persist between login sessions, do the following in
-		addition (as the superuser):
-		\n\n\t# ln -s user /etc/init.d/user.<user>
-		\n\t# rc-service user.<user> start
-		\n\t# rc-update add user.<user> default
-		\n\nSee OpenRC's user guide for the full documentation."
-
+	local DOC_CONTENTS DISABLE_AUTOFORMATTING=1
+	DOC_CONTENTS=$(sed -e "s:@SITELISP@:${EPREFIX}${SITELISP}:g" \
+		README.gentoo.in) || die
 	readme.gentoo_create_doc
 }
 
