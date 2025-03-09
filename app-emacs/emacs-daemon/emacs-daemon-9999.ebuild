@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2+"
 SLOT="0"
 
-SITEFILE="10${PN}-gentoo.el"
+RDEPEND=">=app-emacs/emacs-common-1.11"
 
 pkg_setup() {
 	local has_daemon has_gtk line
@@ -47,8 +47,5 @@ src_compile() { :; }
 src_install() {
 	newinitd emacs.rc emacs
 	newconfd emacs.conf emacs
-	exeinto /usr/libexec/emacs
-	doexe emacs-wrapper.sh
-	elisp-site-file-install "${SITEFILE}"
 	dodoc README ChangeLog
 }
