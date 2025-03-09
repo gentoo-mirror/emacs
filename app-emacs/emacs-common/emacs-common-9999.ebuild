@@ -13,18 +13,31 @@ DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 IUSE="games gsettings gui"
 
 DEPEND="games? ( acct-group/gamestat )"
-RDEPEND="${DEPEND}"
-PDEPEND=">=app-editors/emacs-23.1:*"
+RDEPEND="
+	!<app-emacs/emacs-daemon-0.24
+	${DEPEND}"
+PDEPEND=">=app-editors/emacs-26.1:*"
 IDEPEND="gui? ( gsettings? ( dev-libs/glib ) )"
+
+SITEFILE="10${PN}-gentoo.el"
+
+src_prepare() {
+	default
+	if [[ -n ${EPREFIX} ]]; then
+		sed -i -E -e "s,/(bin|sbin|usr)/,${EPREFIX}&," \
+			subdirs.el.in emacs.initd emacs.service \
+			emacs.desktop emacsclient.desktop || die
+	fi
+}
 
 src_install() {
 	insinto "${SITELISP}"
-	sed -e "s:@libdir@:$(get_libdir):g" subdirs.el.in | newins - subdirs.el
+	sed "s,@libdir@,$(get_libdir),g" subdirs.el.in | newins - subdirs.el
 	pipestatus || die
 	newins site-gentoo.el{,.orig}
 
@@ -33,8 +46,13 @@ src_install() {
 	doins site-start.el
 
 	exeinto /etc/user/init.d
-	sed -e "s,/usr/bin/emacs,${EPREFIX}&," emacs.initd | newexe - emacs
-	pipestatus || die
+	newexe emacs.initd emacs
+	exeinto /usr/libexec/emacs
+	doexe emacs-wrapper.sh
+	elisp-site-file-install "${SITEFILE}"
+
+	insinto /usr/lib/systemd/user
+	doins emacs.service
 
 	if use games; then
 		keepdir /var/games/emacs
@@ -67,7 +85,7 @@ src_install() {
 	dodoc README.daemon
 
 	local DOC_CONTENTS DISABLE_AUTOFORMATTING=1
-	DOC_CONTENTS=$(sed -e "s:@SITELISP@:${EPREFIX}${SITELISP}:g" \
+	DOC_CONTENTS=$(sed "s,@SITELISP@,${EPREFIX}${SITELISP},g" \
 		README.gentoo.in) || die
 	readme.gentoo_create_doc
 }
@@ -96,6 +114,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	elisp-site-regen
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
@@ -105,6 +124,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	elisp-site-regen
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
