@@ -3,15 +3,21 @@
 
 EAPI=8
 
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
-EGIT_BRANCH="${PN}"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
+inherit elisp
 
-inherit elisp git-r3
+if [[ ${PV##*.} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/emacs-tools.git"
+	EGIT_BRANCH="${PN}"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}"
+	S="${EGIT_CHECKOUT_DIR}"
+else
+	SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+fi
 
 DESCRIPTION="Gentoo support for Emacs running as a server in the background"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
-S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
