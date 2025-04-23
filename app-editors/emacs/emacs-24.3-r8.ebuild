@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -282,8 +282,7 @@ src_install() {
 	fi
 
 	sed -e "${cdir:+#}/^Y/d" -e "s/^[XY]//" >"${T}/${SITEFILE}" <<-EOF || die
-	X
-	;;; ${EMACS_SUFFIX} site-lisp configuration
+	;;; ${EMACS_SUFFIX} site-lisp configuration  -*-lexical-binding:t-*-
 	X
 	(when (string-match "\\\\\`${FULL_VERSION//./\\\\.}\\\\>" emacs-version)
 	Y  (setq find-function-C-source-directory
