@@ -34,7 +34,7 @@ SITEFILE="10${PN}-gentoo.el"
 src_prepare() {
 	default
 	if [[ -n ${EPREFIX} ]]; then
-		sed -i -E -e "s,/(bin|sbin|usr)/,${EPREFIX}&," \
+		sed -i -E -e "s,/(bin|sbin|usr)/,${EPREFIX}&,g" \
 			subdirs.el.in emacs.initd emacs.service \
 			emacs.desktop emacsclient.desktop || die
 	fi
@@ -56,7 +56,9 @@ src_install() {
 	doexe emacs-wrapper.sh
 	elisp-site-file-install "${SITEFILE}"
 
-	insinto /usr/lib/systemd/user
+	# don't use systemd_douserunit because it would require inheriting
+	# three eclasses (systemd pulls toolchain-funcs and multilib)
+	insinto "/usr/lib/systemd/user"
 	doins emacs.service
 
 	if use games; then
